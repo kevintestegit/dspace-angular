@@ -5,6 +5,7 @@
 *.iml
 
 # Build folders
+.angular
 node_modules
 build
 dist
