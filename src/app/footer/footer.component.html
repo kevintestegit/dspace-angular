@@ -1,103 +1,23 @@
-<footer>
-  @if (showTopFooter) {
-    <div class="top-footer">
-      <!-- Grid container -->
-      <div class=" container p-4">
-        <!--Grid row-->
-        <div class="row">
-          <!--Grid column-->
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <h5 class="text-uppercase">Footer Content</h5>
-            <ul class="list-unstyled mb-0">
-              <li>
-                <a routerLink="./" class="">Lorem ipsum</a>
-              </li>
-              <li>
-                <a routerLink="./" class="">Ut facilisis</a>
-              </li>
-              <li>
-                <a routerLink="./" class="">Aenean sit</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-          <!--Grid column-->
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <h5 class="text-uppercase">Footer Content</h5>
-            <ul class="list-unstyled mb-0">
-              <li>
-                <a routerLink="./" class="" role="link" tabindex="0">Suspendisse potenti</a>
-              </li>
-            </ul>
-          </div>
-          <!--Grid column-->
-          <!--Grid column-->
-          <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Footer Content</h5>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-              molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-              voluptatem veniam, est atque cumque eum delectus sint!
-            </p>
-          </div>
-          <!--Grid column-->
-        </div>
-        <!--Grid row-->
-      </div>
+<footer class="pcirn-footer">
+  <div class="pcirn-footer-main">
+    <div class="pcirn-footer-brand">
+      <div class="pcirn-footer-marks"><img src="assets/images/dspace-logo-mini.svg" alt="DSpace" /><img src="assets/pcirn/images/brasao-policia-cientifica-rn.png" alt="Polícia Científica do Rio Grande do Norte" /><img src="assets/pcirn/images/brasao-estado-rn.png" alt="Governo do Rio Grande do Norte" /></div>
+      <strong>Repositório Institucional da PCIRN</strong>
+      <p>Ciência que identifica. Informação que transforma.</p>
+      <div class="pcirn-footer-social" aria-label="Canais institucionais"><i class="fab fa-instagram" aria-hidden="true"></i><i class="fab fa-youtube" aria-hidden="true"></i><i class="fab fa-facebook-f" aria-hidden="true"></i><i class="far fa-envelope" aria-hidden="true"></i></div>
     </div>
-  }
-  <!-- Grid container -->
-
-  <!-- Copyright -->
-  <div class="bottom-footer p-1 d-flex flex-column flex-md-row justify-content-center align-items-center text-white">
-    <div class="content-container align-self-center">
-      <p class="m-0">
-        <a class="text-white"
-        href="http://www.dspace.org/" role="link" tabindex="0">{{ 'footer.link.dspace' | translate}}</a>
-        {{ 'footer.copyright' | translate:{year: dateObj | date:'y'} }}
-        <a class="text-white"
-        href="https://www.lyrasis.org/" role="link" tabindex="0">{{ 'footer.link.lyrasis' | translate}}</a>
-      </p>
-      <ul class="footer-info list-unstyled d-flex justify-content-center mb-0">
-        @if (showCookieSettings) {
-        <li>
-          <button class="btn btn-link text-white" type="button" (click)="openCookieSettings()" role="button" tabindex="0">
-            {{ 'footer.link.cookies' | translate}}
-          </button>
-        </li>
-        }
-        <li>
-          <a class="btn text-white"
-             routerLink="info/accessibility" role="link" tabindex="0">{{ 'footer.link.accessibility' | translate }}</a>
-        </li>
-        @if (showPrivacyPolicy) {
-          <li>
-            <a class="btn text-white"
-            routerLink="info/privacy" role="link" tabindex="0">{{ 'footer.link.privacy-policy' | translate}}</a>
-          </li>
-        }
-        @if (showEndUserAgreement) {
-          <li>
-            <a class="btn text-white"
-            routerLink="info/end-user-agreement" role="link" tabindex="0">{{ 'footer.link.end-user-agreement' | translate}}</a>
-          </li>
-        }
-        @if (showSendFeedback$ | async) {
-          <li>
-            <a class="btn text-white"
-            routerLink="info/feedback" role="link" tabindex="0">{{ 'footer.link.feedback' | translate}}</a>
-          </li>
-        }
-      </ul>
+    <div class="pcirn-footer-column">
+      <h2>Navegação</h2>
+      <a routerLink="/home">Início</a><a routerLink="/community-list">Comunidades</a><a routerLink="/community-list">Coleções</a><a routerLink="/search">Publicações</a>
     </div>
-    @if (coarLdnEnabled$ | async) {
-      <div class="notify-enabled text-white align-self-end">
-        <a class="coar-notify-support-route" routerLink="info/coar-notify-support" role="link" tabindex="0">
-          <img class="n-coar" src="assets/images/n-coar.svg" [attr.alt]="'menu.header.image.logo' | translate" />
-          {{ 'footer.link.coar-notify-support' | translate }}
-        </a>
-      </div>
-    }
+    <div class="pcirn-footer-column">
+      <h2>Ajuda e informações</h2>
+      <a routerLink="/info/about">Sobre o repositório</a><a routerLink="/info/accessibility">Política de acesso</a><a routerLink="/info/feedback">Ajuda</a><a routerLink="/info/fale-conosco">Fale conosco</a>
+    </div>
+    <div class="pcirn-footer-column">
+      <h2>Plataforma</h2>
+      <span></span><span>Sistema DSpace v9.0</span><p>Desenvolvido por <strong>NUGECID</strong></p>
+    </div>
   </div>
-  <!-- Copyright -->
+  <div class="pcirn-footer-bottom"><span>Polícia Científica do Rio Grande do Norte. Todos os direitos reservados.</span><span>© {{ dateObj | date:'y' }} Polícia Científica do Rio Grande do Norte</span></div>
 </footer>

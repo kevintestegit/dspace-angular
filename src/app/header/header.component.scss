@@ -1,6 +1,15 @@
 :host {
+  flex: 0 0 auto;
+  --ds-header-icon-color: #063a68;
+  --ds-header-icon-color-hover: #0b4f8a;
+
   header {
-    background-color: var(--ds-header-bg);
+    background-color: transparent;
+  }
+
+  .container {
+    padding-inline: 0;
+    width: auto;
   }
 
   .navbar-brand img {
@@ -27,5 +36,11 @@
     display: flex;
     gap: calc(var(--bs-spacer) / 3);
     align-items: center;
+  }
+
+  div[role="toolbar"] {
+    border-left: 1px solid #e4eaf1;
+    margin-left: .35rem;
+    padding-left: .6rem;
   }
 }
