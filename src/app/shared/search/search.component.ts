@@ -187,6 +187,11 @@ export class SearchComponent implements OnDestroy, OnInit {
   @Input() showCsvExport = false;
 
   /**
+   * A boolean representing if the RSS feed button is shown
+   */
+  @Input() showRSS = true;
+
+  /**
    * A boolean representing if show search sidebar button
    */
   @Input() showSidebar = true;

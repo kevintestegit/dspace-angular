@@ -41,6 +41,7 @@ export class ThemedSearchComponent extends ThemedComponent<SearchComponent> {
     'selectable',
     'selectionConfig',
     'showCsvExport',
+    'showRSS',
     'showSidebar',
     'showThumbnails',
     'showViewModes',
@@ -85,6 +86,8 @@ export class ThemedSearchComponent extends ThemedComponent<SearchComponent> {
   @Input() selectionConfig: SelectionConfig;
 
   @Input() showCsvExport: boolean;
+
+  @Input() showRSS: boolean;
 
   @Input() showSidebar: boolean;
 

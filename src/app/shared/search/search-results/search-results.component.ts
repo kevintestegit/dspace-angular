@@ -101,6 +101,11 @@ export class SearchResultsComponent {
   @Input() showCsvExport = false;
 
   /**
+   * A boolean representing if the RSS feed button is shown
+   */
+  @Input() showRSS = true;
+
+  /**
    * Whether to show the thumbnail preview
    */
   @Input() showThumbnails;
