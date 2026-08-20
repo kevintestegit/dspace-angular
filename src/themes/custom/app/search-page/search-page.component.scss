@@ -56,12 +56,12 @@
 
     .input-group {
       display: flex;
-      gap: .75rem;
+      gap: .5rem;
       align-items: stretch;
       margin: 0 !important;
-      padding: .75rem;
+      padding: .5rem;
       border: 1px solid rgba(16, 54, 88, .08);
-      border-radius: 1rem;
+      border-radius: .8rem;
       background: #fff;
       box-shadow: var(--pcirn-shadow);
     }
@@ -69,13 +69,13 @@
     .scope-button,
     input.form-control,
     .search-button {
-      min-height: 3.7rem;
+      min-height: 3rem;
       border-radius: .65rem;
-      font-size: 1rem;
+      font-size: .95rem;
     }
 
     .scope-button {
-      flex: 0 1 18rem;
+      flex: 0 1 15rem;
       max-width: none;
       overflow: hidden;
       border-color: var(--pcirn-line);
@@ -114,14 +114,15 @@
 
     .search-button {
       flex: 0 0 auto;
-      padding: 0 1.75rem;
+      padding: 0 1.25rem;
       border-color: var(--pcirn-navy);
       background: var(--pcirn-navy);
       color: #fff;
       font-weight: 700;
 
       .fa-search {
-        margin-right: .45rem;
+        margin-right: .4rem;
+        color: #fff;
       }
 
       &:hover,
