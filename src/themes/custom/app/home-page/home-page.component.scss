@@ -73,7 +73,7 @@
 .pcirn-home-metrics-grid strong { color: var(--pcirn-navy-deep); font-size: 1.2rem; line-height: 1.1; }
 .pcirn-home-metrics-grid span { color: var(--pcirn-muted); font-size: .55rem; font-weight: 700; }
 
-.pcirn-home-latest { background: #fff; border: 1px solid var(--pcirn-line); border-radius: .6rem; margin: .15rem auto 0; max-width: 1360px; padding: .85rem 1.15rem .95rem; }
+.pcirn-home-latest { background: #fff; border: 1px solid var(--pcirn-line); border-radius: .6rem; margin: .15rem 0 0; max-width: none; padding: .85rem 1.15rem .95rem; }
 .pcirn-home-latest-list { border-top: 1px solid var(--pcirn-line); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .pcirn-home-latest-list a { align-items: center; color: var(--pcirn-navy-deep); display: grid; gap: .65rem; grid-template-columns: auto minmax(0, 1fr) auto; min-width: 0; padding: .75rem .85rem .1rem 0; text-decoration: none; }
 .pcirn-home-latest-list a + a { border-left: 1px solid var(--pcirn-line); padding-left: .85rem; }

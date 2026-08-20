@@ -69,30 +69,34 @@
       </div>
     </section>
 
-    <section class="pcirn-home-latest" aria-labelledby="pcirn-home-latest-title">
+    <section class="pcirn-home-section" aria-labelledby="pcirn-home-latest-title">
       <div class="pcirn-home-section-label"><span>Últimas</span><span>publicações</span></div>
-      <div class="pcirn-home-section-heading"><h2 id="pcirn-home-latest-title">Últimas publicações</h2><a routerLink="/search" class="pcirn-home-text-link">Ver todas as publicações <i class="fas fa-arrow-right" aria-hidden="true"></i></a></div>
-      @if (pcirnHomeData.latestPublications | async; as latest) {
-        @if (latest.hasSucceeded && latest.payload; as payload) {
-          @if (payload.page?.length) {
-            <div class="pcirn-home-latest-list">
-              @for (item of payload.page.slice(0, 3); track item.id) {
-                <a [routerLink]="['/items', item.id]">
-                  <i class="pcirn-home-latest-icon far fa-file-alt" aria-hidden="true"></i>
-                  <span class="pcirn-home-latest-copy"><small>{{ item.metadata['dc.type']?.[0]?.value || 'Documento' }}</small><strong>{{ item.name }}</strong><span>{{ item.metadata['dc.contributor.author']?.[0]?.value || item.metadata['dc.publisher']?.[0]?.value || 'PCIRN' }}</span></span>
-                  <time>{{ item.metadata['dc.date.issued']?.[0]?.value }}</time>
-                </a>
+      <div class="pcirn-home-section-body">
+        <div class="pcirn-home-latest">
+          <div class="pcirn-home-section-heading"><h2 id="pcirn-home-latest-title">Últimas publicações</h2><a routerLink="/search" class="pcirn-home-text-link">Ver todas as publicações <i class="fas fa-arrow-right" aria-hidden="true"></i></a></div>
+          @if (pcirnHomeData.latestPublications | async; as latest) {
+            @if (latest.hasSucceeded && latest.payload; as payload) {
+              @if (payload.page?.length) {
+                <div class="pcirn-home-latest-list">
+                  @for (item of payload.page.slice(0, 3); track item.id) {
+                    <a [routerLink]="['/items', item.id]">
+                      <i class="pcirn-home-latest-icon far fa-file-alt" aria-hidden="true"></i>
+                      <span class="pcirn-home-latest-copy"><small>{{ item.metadata['dc.type']?.[0]?.value || 'Documento' }}</small><strong>{{ item.name }}</strong><span>{{ item.metadata['dc.contributor.author']?.[0]?.value || item.metadata['dc.publisher']?.[0]?.value || 'PCIRN' }}</span></span>
+                      <time>{{ item.metadata['dc.date.issued']?.[0]?.value }}</time>
+                    </a>
+                  }
+                </div>
+              } @else {
+                <p class="pcirn-home-state">Ainda não há publicações públicas para exibir.</p>
               }
-            </div>
-          } @else {
-            <p class="pcirn-home-state">Ainda não há publicações públicas para exibir.</p>
+            } @else if (latest.hasFailed) {
+              <p class="pcirn-home-state">Não foi possível carregar as publicações agora.</p>
+            } @else {
+              <div class="pcirn-home-latest-loading" aria-label="Carregando publicações" aria-busy="true"></div>
+            }
           }
-        } @else if (latest.hasFailed) {
-          <p class="pcirn-home-state">Não foi possível carregar as publicações agora.</p>
-        } @else {
-          <div class="pcirn-home-latest-loading" aria-label="Carregando publicações" aria-busy="true"></div>
-        }
-      }
+        </div>
+      </div>
     </section>
   </div>
 </main>
