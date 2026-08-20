@@ -522,7 +522,54 @@
       flex-direction: column;
     }
 
-    .card-element .card-body .btn {
+    .card-element .card-title {
+      display: -webkit-box;
+      height: 3rem;
+      max-height: 3rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
+    .card-element .card-text {
+      display: -webkit-box;
+      max-height: 4.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
+    .card-element .card-body > ds-truncatable {
+      display: block;
+      height: 12rem;
+      max-height: 12rem;
+      overflow: hidden;
+    }
+
+    .card-element .card-body > ds-truncatable > ds-truncatable-part {
+      display: block;
+    }
+
+    .card-element .card-body > ds-truncatable .card-title {
+      height: 3.5rem;
+      max-height: 3.5rem;
+      margin-bottom: 0;
+    }
+
+    .card-element .card-body > ds-truncatable .item-authors {
+      height: 3rem;
+      max-height: 3rem;
+      -webkit-line-clamp: 2;
+    }
+
+    .card-element .card-body > ds-truncatable .item-abstract {
+      height: 4.5rem;
+      max-height: 4.5rem;
+    }
+
+    .card-element .card-body > .text-center:last-child {
       margin-top: auto;
     }
   }
