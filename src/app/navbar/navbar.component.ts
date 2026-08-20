@@ -8,7 +8,11 @@ import {
   Injector,
   OnInit,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+} from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import {
   select,
@@ -45,6 +49,7 @@ import { ThemeService } from '../shared/theme-support/theme.service';
     NgbDropdownModule,
     NgClass,
     NgComponentOutlet,
+    RouterLink,
     ThemedUserMenuComponent,
     TranslateModule,
   ],
@@ -71,6 +76,7 @@ export class NavbarComponent extends MenuComponent implements OnInit {
               public browseService: BrowseService,
               public authorizationService: AuthorizationDataService,
               public route: ActivatedRoute,
+              public router: Router,
               protected themeService: ThemeService,
               private store: Store<AppState>,
   ) {
@@ -81,5 +87,23 @@ export class NavbarComponent extends MenuComponent implements OnInit {
     super.ngOnInit();
     this.isMobile$ = this.windowService.isUpTo(this.maxMobileWidth);
     this.isAuthenticated$ = this.store.pipe(select(isAuthenticated));
+  }
+
+  /**
+   * Whether a PCIRN header section matches the current URL.
+   */
+  isNavActive(section: 'home' | 'communities' | 'collections' | 'publications'): boolean {
+    const url = this.router.url.split(/[?#]/)[0].replace(/\/$/, '') || '/';
+
+    switch (section) {
+      case 'home':
+        return url === '/home';
+      case 'communities':
+        return url === '/community-list' || url.startsWith('/communities/');
+      case 'collections':
+        return url.startsWith('/collections/');
+      case 'publications':
+        return url === '/search' || url.startsWith('/search/');
+    }
   }
 }

@@ -9,7 +9,10 @@ import {
 } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ActivatedRoute } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+} from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import {
   Store,
@@ -162,6 +165,23 @@ describe('NavbarComponent', () => {
 
   it('should create', () => {
     expect(comp).toBeTruthy();
+  });
+
+  it('marks the header section that matches the current route', () => {
+    const router = TestBed.inject(Router);
+    const currentUrl = spyOnProperty(router, 'url', 'get');
+
+    currentUrl.and.returnValue('/search?spc.page=1&view=grid');
+    expect(comp.isNavActive('publications')).toBeTrue();
+    expect(comp.isNavActive('home')).toBeFalse();
+
+    currentUrl.and.returnValue('/collections/collection-id');
+    expect(comp.isNavActive('collections')).toBeTrue();
+    expect(comp.isNavActive('publications')).toBeFalse();
+
+    currentUrl.and.returnValue('/community-list');
+    expect(comp.isNavActive('communities')).toBeTrue();
+    expect(comp.isNavActive('collections')).toBeFalse();
   });
 
 

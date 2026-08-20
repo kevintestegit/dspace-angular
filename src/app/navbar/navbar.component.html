@@ -14,10 +14,18 @@
             <img class="pcirn-header-logo" src="assets/pcirn/images/brasao-policia-cientifica-rn.png" [attr.alt]="'menu.header.image.logo' | translate"/>
             <span class="pcirn-header-brand"><span>Repositório Institucional da</span><strong>PCIRN</strong></span>
           </a>
-          <a class="pcirn-header-nav-link active" routerLink="/home">Início</a>
-          <a class="pcirn-header-nav-link" routerLink="/community-list">Comunidades</a>
-          <a class="pcirn-header-nav-link" routerLink="/community-list">Coleções</a>
-          <a class="pcirn-header-nav-link" routerLink="/search">Publicações</a>
+          <a class="pcirn-header-nav-link" routerLink="/home"
+            [class.active]="isNavActive('home')"
+            [attr.aria-current]="isNavActive('home') ? 'page' : null">Início</a>
+          <a class="pcirn-header-nav-link" routerLink="/community-list"
+            [class.active]="isNavActive('communities')"
+            [attr.aria-current]="isNavActive('communities') ? 'page' : null">Comunidades</a>
+          <a class="pcirn-header-nav-link" routerLink="/community-list"
+            [class.active]="isNavActive('collections')"
+            [attr.aria-current]="isNavActive('collections') ? 'page' : null">Coleções</a>
+          <a class="pcirn-header-nav-link" routerLink="/search"
+            [class.active]="isNavActive('publications')"
+            [attr.aria-current]="isNavActive('publications') ? 'page' : null">Publicações</a>
         </div>
       </div>
     </div>
