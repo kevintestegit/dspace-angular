@@ -498,6 +498,34 @@
     width: min(15rem, 100%);
     margin: 0;
   }
+
+  :host ::ng-deep .pcirn-search-page ds-object-grid {
+    .card-columns {
+      margin-inline: 0;
+    }
+
+    .card-element,
+    .card-element > ds-listable-object-component-loader,
+    .card-element ds-listable-object-component-loader,
+    .card-element .card {
+      height: 33rem;
+    }
+
+    .card-element .card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-element .card-body {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+    }
+
+    .card-element .card-body .btn {
+      margin-top: auto;
+    }
+  }
 }
 
 @media (max-width: 991.98px) {
