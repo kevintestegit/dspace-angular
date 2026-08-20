@@ -17,6 +17,7 @@ const navbarTemplate = await readFile(new URL('../src/app/navbar/navbar.componen
 const navbarStyles = await readFile(new URL('../src/app/navbar/navbar.component.scss', import.meta.url), 'utf8');
 const footerTemplate = await readFile(new URL('../src/app/footer/footer.component.html', import.meta.url), 'utf8');
 const footerStyles = await readFile(new URL('../src/app/footer/footer.component.scss', import.meta.url), 'utf8');
+const globalStyles = await readFile(new URL('../src/styles/_global-styles.scss', import.meta.url), 'utf8');
 const homeDataService = await readFile(new URL('../src/themes/custom/app/home-page/pcirn-home-data.service.ts', import.meta.url), 'utf8');
 const statisticsMenu = await readFile(new URL('../src/app/shared/menu/providers/statistics.menu.ts', import.meta.url), 'utf8');
 const headerWrapperTemplate = await readFile(new URL('../src/app/header-nav-wrapper/header-navbar-wrapper.component.html', import.meta.url), 'utf8');
@@ -86,7 +87,7 @@ test('home and public repository reads do not require authentication', () => {
 test('anonymous footer is restricted to the home page', () => {
   assert.match(rootComponent, /!authenticated && route === '\/home'/);
   assert.match(rootTemplate, /@if \(\(showFooter\$ \| async\) === true\)/);
-  assert.match(rootTemplate, /<ds-footer><\/ds-footer>/);
+  assert.match(rootTemplate, /<ds-footer class="pcirn-home-footer"><\/ds-footer>/);
 });
 
 test('login page hides the site chrome', () => {
@@ -131,6 +132,12 @@ test('footer uses PCIRN institutional navigation', () => {
   assert.match(footerTemplate, /brasao-estado-rn\.png/);
   assert.match(footerTemplate, /NUGECID/);
   assert.match(footerStyles, /pcirn-footer/);
+});
+
+test('home closes the layout gap before the footer', () => {
+  assert.match(rootTemplate, /<ds-footer class="pcirn-home-footer"><\/ds-footer>/);
+  assert.match(globalStyles, /ds-footer\.pcirn-home-footer\s*\{\s*display:\s*block;\s*margin-top:\s*calc\(var\(--ds-content-spacing\) \* -1\);/);
+  assert.match(globalStyles, /ds-footer\.pcirn-home-footer \.pcirn-footer\s*\{\s*margin-top:\s*0;/);
 });
 
 test('legacy footer injection is not loaded', () => {

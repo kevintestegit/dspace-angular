@@ -494,6 +494,8 @@ ngb-accordion {
 .mt-cs { margin-top: var(--ds-content-spacing); }
 .mb-cs { margin-bottom: var(--ds-content-spacing); }
 .my-cs { margin-top: var(--ds-content-spacing); margin-bottom: var(--ds-content-spacing); }
+ds-footer.pcirn-home-footer { display: block; margin-top: calc(var(--ds-content-spacing) * -1); }
+ds-footer.pcirn-home-footer .pcirn-footer { margin-top: 0; }
 .mt-ncs { margin-top: calc(var(--ds-content-spacing) * -1); }
 .mb-ncs { margin-bottom: calc(var(--ds-content-spacing) * -1); }
 .my-ncs { margin-top: calc(var(--ds-content-spacing) * -1); margin-bottom: calc(var(--ds-content-spacing) * -1); }
