@@ -13,6 +13,8 @@ const rootTemplate = await readFile(new URL('../src/app/root/root.component.html
 const sectorSidebarComponent = await readFile(new URL('../src/app/shared/sector-sidebar/sector-sidebar.component.ts', import.meta.url), 'utf8');
 const sectorSidebarService = await readFile(new URL('../src/app/shared/sector-sidebar/sector-sidebar.service.ts', import.meta.url), 'utf8');
 const sectorSidebarTemplate = await readFile(new URL('../src/app/shared/sector-sidebar/sector-sidebar.component.html', import.meta.url), 'utf8');
+const expandableMenuProvider = await readFile(new URL('../src/app/shared/menu/providers/helper-providers/expandable-menu-provider.ts', import.meta.url), 'utf8');
+const newMenuProvider = await readFile(new URL('../src/app/shared/menu/providers/new.menu.ts', import.meta.url), 'utf8');
 const navbarTemplate = await readFile(new URL('../src/app/navbar/navbar.component.html', import.meta.url), 'utf8');
 const navbarStyles = await readFile(new URL('../src/app/navbar/navbar.component.scss', import.meta.url), 'utf8');
 const footerTemplate = await readFile(new URL('../src/app/footer/footer.component.html', import.meta.url), 'utf8');
@@ -100,14 +102,26 @@ test('regular users get sectors from authorized DSpace communities', () => {
   assert.match(rootTemplate, /<ds-sector-sidebar><\/ds-sector-sidebar>/);
   assert.match(rootComponent, /ThemedSectorSidebarComponent/);
   assert.match(sectorSidebarComponent, /selector: 'ds-base-sector-sidebar'/);
-  assert.match(sectorSidebarService, /communityDataService\.findTop/);
+  assert.match(sectorSidebarService, /collectionDataService\.getSubmitAuthorizedCollection/);
+  assert.match(sectorSidebarService, /followLink\('parentCommunity'\)/);
   assert.match(sectorSidebarService, /MenuID\.ADMIN/);
 });
 
 test('sector sidebar supports multiple authorized communities', () => {
   assert.match(sectorSidebarTemplate, /@for \(community of \(sectorSidebarService\.communities\$ \| async\)/);
   assert.match(sectorSidebarTemplate, /\['\/communities', community\.id\]/);
+  assert.match(sectorSidebarTemplate, /sector-sidebar\.add-document/);
+  assert.match(sectorSidebarComponent, /ThemedCreateItemParentSelectorComponent/);
+  assert.match(sectorSidebarComponent, /openSubmission/);
   assert.match(ptBrTranslations, /"sector-sidebar\.title":\s*"Setores"/);
+  assert.match(ptBrTranslations, /"sector-sidebar\.add-document":\s*"Adicionar documento"/);
+});
+
+test('administrative expandable menus disappear when all subsections are unauthorized', () => {
+  assert.match(expandableMenuProvider, /partialSubSections\.some\(section => section\.visible\)/);
+  assert.match(newMenuProvider, /FeatureID\.IsCollectionAdmin/);
+  assert.match(newMenuProvider, /FeatureID\.CanEditItem/);
+  assert.match(newMenuProvider, /canSubmit &&/);
 });
 
 test('anonymous navbar shows the institutional repository title and hides statistics', () => {

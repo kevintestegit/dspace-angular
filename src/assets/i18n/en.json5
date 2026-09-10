@@ -1031,6 +1031,10 @@
 
   "browse.comcol.by.title": "By Title",
 
+  "browse.comcol.by.type": "By Type",
+
+  "browse.comcol.by.pcirn-document-types": "By PCIRN Document Types",
+
   "browse.comcol.head": "Browse",
 
   "browse.empty": "No items to show.",
@@ -1042,6 +1046,10 @@
   "browse.metadata.subject": "Subject",
 
   "browse.metadata.title": "Title",
+
+  "browse.metadata.type": "Type",
+
+  "browse.metadata.pcirn-document-types": "PCIRN Document Types",
 
   "browse.metadata.srsc": "Subject Category",
 
@@ -1060,6 +1068,12 @@
   "browse.metadata.nsi.tree.description": "Select an index to add as search filter",
 
   "browse.metadata.title.breadcrumbs": "Browse by Title",
+
+  "browse.metadata.type.breadcrumbs": "Browse by Type",
+
+  "browse.metadata.pcirn-document-types.breadcrumbs": "Browse by PCIRN Document Types",
+
+  "browse.metadata.pcirn-document-types.tree.description": "Select a document type to add as search filter",
 
   "browse.metadata.map": "Browse by Geolocation",
 
@@ -2311,6 +2325,10 @@
 
   "info.feedback.page_help": "The page related to your feedback",
 
+  "info.fale-conosco.title": "Contact Us",
+
+  "info.fale-conosco.breadcrumbs": "Contact Us",
+
   "info.coar-notify-support.title": "COAR Notify Support",
 
   "info.coar-notify-support.breadcrumbs": "COAR Notify Support",
@@ -3495,6 +3513,10 @@
 
   "menu.section.browse_global_by_title": "By Title",
 
+  "menu.section.browse_global_by_type": "By Type",
+
+  "menu.section.browse_global_by_pcirn-document-types": "By PCIRN Document Type",
+
   "menu.section.browse_global_communities_and_collections": "Communities & Collections",
 
   "menu.section.browse_global_geospatial_map": "By Geolocation (Map)",
@@ -4016,6 +4038,84 @@
   "process.new.title": "Create a new process",
 
   "process.new.breadcrumbs": "Create a new process",
+
+  "process.new.script.bulk-access-control.label": "Bulk access control",
+
+  "process.new.script.bulk-access-control.description": "Bulk access control",
+
+  "process.new.script.curate.label": "Curate",
+
+  "process.new.script.curate.description": "Curation tasks",
+
+  "process.new.script.export.label": "Export",
+
+  "process.new.script.export.description": "Batch Export to Simple Archive Format (SAF)",
+
+  "process.new.script.filter-media.label": "Filter media",
+
+  "process.new.script.filter-media.description": "Perform the media filtering to extract full text from documents and to create thumbnails",
+
+  "process.new.script.harvest.label": "Harvest",
+
+  "process.new.script.harvest.description": "Manage the OAI-PMH harvesting of external collections",
+
+  "process.new.script.import.label": "Import",
+
+  "process.new.script.import.description": "Batch Import from Simple Archive Format (SAF)",
+
+  "process.new.script.import-loader-suggestions.label": "Import suggestions",
+
+  "process.new.script.import-loader-suggestions.description": "Imports suggestions from external providers for publication claim",
+
+  "process.new.script.import-openaire-events.label": "Import OpenAIRE events",
+
+  "process.new.script.import-openaire-events.description": "Import new openaire quality assurance broker events",
+
+  "process.new.script.index-discovery.label": "Update Discovery index",
+
+  "process.new.script.index-discovery.description": "Update Discovery Solr Search Index",
+
+  "process.new.script.metadata-deletion.label": "Delete metadata",
+
+  "process.new.script.metadata-deletion.description": "Delete all the values of the specified metadata field",
+
+  "process.new.script.metadata-export.label": "Export metadata",
+
+  "process.new.script.metadata-export.description": "Export metadata for batch editing",
+
+  "process.new.script.metadata-export-filtered-items-report.label": "Filtered items report",
+
+  "process.new.script.metadata-export-filtered-items-report.description": "Export metadata from item results in a Metadata Query Report",
+
+  "process.new.script.metadata-export-search.label": "Export by search",
+
+  "process.new.script.metadata-export-search.description": "export metadata from a discovery search",
+
+  "process.new.script.metadata-import.label": "Import metadata",
+
+  "process.new.script.metadata-import.description": "Import metadata after batch editing",
+
+  "process.new.script.orcid-bulk-push.label": "ORCID bulk push",
+
+  "process.new.script.orcid-bulk-push.description": "Perform the bulk synchronization of all the BATCH configured ORCID entities placed in the ORCID queue",
+
+  "process.new.script.process-cleaner.label": "Process cleaner",
+
+  "process.new.script.process-cleaner.description": "Cleanup all the old processes in the specified state",
+
+  "process.new.script.retry-tracker.label": "Retry tracker",
+
+  "process.new.script.retry-tracker.description": "Retry all failed commits to the OpenURLTracker",
+
+  "process.new.script.solr-database-resync.label": "Solr database resync",
+
+  "process.new.script.solr-database-resync.description": "Update the database status of Items in solr",
+
+  "process.new.script.subscription-send.label": "Send subscriptions",
+
+  "process.new.script.subscription-send.description": "Send emails related to Community/Collection/Item subscriptions",
+
+
 
   "process.detail.arguments": "Arguments",
 

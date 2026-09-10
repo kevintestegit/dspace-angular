@@ -24,9 +24,9 @@
           <button class="dropdown-item"
             role="menuitem"
             type="button"
-            title="{{ script.name }}"
+            title="{{ getLabel(script) }}"
             (click)="onSelect(script);">
-            <span class="text-truncate">{{ script.name }}</span>
+            <span class="text-truncate">{{ getLabel(script) }}</span>
           </button>
         }
         @if ((isLoading$ | async)) {

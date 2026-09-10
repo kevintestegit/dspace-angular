@@ -1,0 +1,31 @@
+@if (sectorSidebarService.visible$ | async) {
+  <aside id="pcirn-sector-sidebar" aria-label="Setores">
+    <div class="sector-sidebar-header">
+      <img src="assets/pcirn/images/brasao-policia-cientifica-rn.png"
+        alt="Polícia Científica do Rio Grande do Norte">
+      <span>{{ 'sector-sidebar.title' | translate }}</span>
+    </div>
+    @if (sectorSidebarService.canSubmit$ | async) {
+      <div class="sector-sidebar-actions">
+        <button type="button" class="sector-sidebar-action" (click)="openSubmission()">
+          <span class="sector-sidebar-code" aria-hidden="true">+</span>
+          <span class="sector-sidebar-label">{{ 'sector-sidebar.add-document' | translate }}</span>
+        </button>
+      </div>
+    }
+    <nav class="sector-sidebar-links" aria-label="Setores disponíveis">
+      @if ((sectorSidebarService.collectionsRD$ | async)?.isLoading) {
+        <p class="sector-sidebar-status">{{ 'sector-sidebar.loading' | translate }}</p>
+      }
+      @for (community of (sectorSidebarService.communities$ | async); track trackCommunity($index, community)) {
+        <a [routerLink]="['/communities', community.id]" [title]="dsoNameService.getName(community)">
+          <span class="sector-sidebar-code" aria-hidden="true">{{ dsoNameService.getName(community).slice(0, 2) }}</span>
+          <span class="sector-sidebar-label">{{ dsoNameService.getName(community) }}</span>
+        </a>
+      }
+      @if ((sectorSidebarService.collectionsRD$ | async)?.hasSucceeded && (sectorSidebarService.communities$ | async)?.length === 0) {
+        <p class="sector-sidebar-status">{{ 'sector-sidebar.empty' | translate }}</p>
+      }
+    </nav>
+  </aside>
+}

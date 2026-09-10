@@ -56,9 +56,12 @@ export class NewMenuProvider extends AbstractExpandableMenuProvider {
     return combineLatest([
       this.authorizationService.isAuthorized(FeatureID.IsCommunityAdmin),
       this.authorizationService.isAuthorized(FeatureID.AdministratorOf),
+      this.authorizationService.isAuthorized(FeatureID.IsCollectionAdmin),
       this.authorizationService.isAuthorized(FeatureID.CanSubmit),
+      this.authorizationService.isAuthorized(FeatureID.CanEditItem),
       this.authorizationService.isAuthorized(FeatureID.CoarNotifyEnabled),
-    ]).pipe(map(([isCommunityAdmin, isSiteAdmin, canSubmit, isCoarNotifyEnabled]: [boolean, boolean, boolean, boolean]) => {
+    ]).pipe(map(([isCommunityAdmin, isSiteAdmin, isCollectionAdmin, canSubmit, canEditItem, isCoarNotifyEnabled]: [boolean, boolean, boolean, boolean, boolean, boolean]) => {
+      const canManageItems = isCommunityAdmin || isSiteAdmin || isCollectionAdmin || canEditItem;
 
       return [
         {
@@ -82,7 +85,7 @@ export class NewMenuProvider extends AbstractExpandableMenuProvider {
           },
         },
         {
-          visible: canSubmit,
+          visible: canSubmit && canManageItems,
           model: {
             type: MenuItemType.ONCLICK,
             text: 'menu.section.new_item',

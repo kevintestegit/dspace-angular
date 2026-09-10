@@ -127,6 +127,12 @@
 
     div#sidebar-header-container {
       background-color: var(--ds-admin-sidebar-header-bg);
+
+      // Keep the branding block aligned with the desktop header row.
+      .sidebar-collapsible-element-inner-wrapper {
+        padding-block: 9.5px;
+      }
+
       .sidebar-fixed-element-wrapper {
         background-color: var(--ds-admin-sidebar-header-bg);
       }

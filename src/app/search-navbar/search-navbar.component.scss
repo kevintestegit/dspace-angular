@@ -1,5 +1,7 @@
 input[type="text"] {
-  margin-top: calc(-0.3 * var(--bs-font-size-base));
+  // Lift the expanded field slightly so it clears the hero divider without
+  // changing the header row height or the sidebar branding block.
+  margin-top: calc(-0.5 * var(--bs-font-size-base));
   background-color: #fff !important;
   border-color: var(--ds-header-icon-color);
   right: 0;
@@ -28,4 +30,3 @@ input[type="text"] {
   }
 
 }
-

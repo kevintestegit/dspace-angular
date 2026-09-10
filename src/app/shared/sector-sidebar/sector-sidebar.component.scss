@@ -1,0 +1,103 @@
+:host {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: var(--ds-sidebar-z-index);
+  width: var(--ds-admin-sidebar-fixed-element-width);
+  pointer-events: none;
+}
+
+#pcirn-sector-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: var(--ds-admin-sidebar-fixed-element-width);
+  height: 100%;
+  overflow: hidden;
+  color: var(--ds-admin-sidebar-link-color);
+  background: var(--ds-admin-sidebar-bg);
+  pointer-events: auto;
+  transition: width 180ms ease-in-out;
+}
+
+#pcirn-sector-sidebar:hover,
+#pcirn-sector-sidebar:focus-within {
+  width: var(--ds-admin-sidebar-total-width);
+}
+
+.sector-sidebar-header {
+  display: flex;
+  align-items: center;
+  min-height: 55px;
+  overflow: hidden;
+  background: var(--ds-admin-sidebar-header-bg);
+}
+
+.sector-sidebar-header img {
+  width: var(--ds-admin-sidebar-fixed-element-width);
+  height: var(--ds-admin-sidebar-logo-height);
+  object-fit: contain;
+  flex: 0 0 var(--ds-admin-sidebar-fixed-element-width);
+}
+
+.sector-sidebar-header span,
+.sector-sidebar-label {
+  min-width: calc(var(--ds-admin-sidebar-total-width) - var(--ds-admin-sidebar-fixed-element-width));
+  padding: 0 1rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 120ms ease-in-out;
+}
+
+#pcirn-sector-sidebar:hover .sector-sidebar-header span,
+#pcirn-sector-sidebar:focus-within .sector-sidebar-header span,
+#pcirn-sector-sidebar:hover .sector-sidebar-label,
+#pcirn-sector-sidebar:focus-within .sector-sidebar-label {
+  opacity: 1;
+}
+
+.sector-sidebar-links {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sector-sidebar-links a,
+.sector-sidebar-action {
+  display: flex;
+  align-items: center;
+  min-height: 3.5rem;
+  color: var(--ds-admin-sidebar-link-color);
+  text-decoration: none;
+}
+
+.sector-sidebar-action {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sector-sidebar-action:hover,
+.sector-sidebar-action:focus-visible,
+.sector-sidebar-links a:hover,
+.sector-sidebar-links a:focus-visible {
+  color: var(--ds-admin-sidebar-link-hover-color);
+  background: var(--ds-admin-sidebar-active-bg);
+}
+
+.sector-sidebar-status {
+  margin: 1rem;
+  color: var(--ds-admin-sidebar-link-color);
+  font-size: .875rem;
+}
+
+.sector-sidebar-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ds-admin-sidebar-fixed-element-width);
+  flex: 0 0 var(--ds-admin-sidebar-fixed-element-width);
+  font-weight: 700;
+  text-transform: uppercase;
+}

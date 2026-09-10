@@ -1,6 +1,6 @@
 <div class="text-secondary">
-  <h2>{{script?.name}}</h2>
-  <span>{{script?.description}}</span>
+  <h2>{{label}}</h2>
+  <span>{{description}}</span>
 
   <table class="table-borderless mt-3">
     @for (param of script?.parameters; track param) {
@@ -8,7 +8,7 @@
         <td class="align-top text-nowrap">{{param.name}} {{param.nameLong}}
           <ng-container *ngTemplateOutlet="type; context: param"></ng-container>
         </td>
-        <td>{{param.description}}</td>
+        <td>{{getParameterDescription(param)}}</td>
       </tr>
     }
   </table>

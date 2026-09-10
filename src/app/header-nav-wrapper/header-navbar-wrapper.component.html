@@ -1,4 +1,10 @@
-<div [ngClass]="{'open': (isNavBarCollapsed$ | async) !== true}" id="header-navbar-wrapper">
-    <ds-header></ds-header>
-    <ds-navbar></ds-navbar>
+<div class="pcirn-header-frame">
+  <div class="pcirn-header-shell">
+    <div [ngClass]="{'open': (isNavBarCollapsed$ | async) !== true}" id="header-navbar-wrapper">
+      <div class="pcirn-header-glass">
+        <ds-navbar></ds-navbar>
+        <ds-header></ds-header>
+      </div>
+    </div>
+  </div>
 </div>

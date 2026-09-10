@@ -12,6 +12,10 @@ import {
   Router,
   RouterOutlet,
 } from '@angular/router';
+import {
+  select,
+  Store,
+} from '@ngrx/store';
 import { TranslateModule } from '@ngx-translate/core';
 import {
   BehaviorSubject,
@@ -31,6 +35,11 @@ import { ThemeConfig } from '../../config/theme.config';
 import { environment } from '../../environments/environment';
 import { ThemedAdminSidebarComponent } from '../admin/admin-sidebar/themed-admin-sidebar.component';
 import { getPageInternalServerErrorRoute } from '../app-routing-paths';
+import {
+  AppState,
+  routerStateSelector,
+} from '../app.reducer';
+import { isAuthenticated } from '../core/auth/selectors';
 import { ThemedBreadcrumbsComponent } from '../breadcrumbs/themed-breadcrumbs.component';
 import {
   NativeWindowRef,
@@ -45,6 +54,8 @@ import { ThemedLoadingComponent } from '../shared/loading/themed-loading.compone
 import { MenuService } from '../shared/menu/menu.service';
 import { MenuID } from '../shared/menu/menu-id.model';
 import { NotificationsBoardComponent } from '../shared/notifications/notifications-board/notifications-board.component';
+import { ThemedSectorSidebarComponent } from '../shared/sector-sidebar/themed-sector-sidebar.component';
+import { SectorSidebarService } from '../shared/sector-sidebar/sector-sidebar.service';
 import { CSSVariableService } from '../shared/sass-helper/css-variable.service';
 import { SystemWideAlertBannerComponent } from '../system-wide-alert/alert-banner/system-wide-alert-banner.component';
 
@@ -61,6 +72,7 @@ import { SystemWideAlertBannerComponent } from '../system-wide-alert/alert-banne
     RouterOutlet,
     SystemWideAlertBannerComponent,
     ThemedAdminSidebarComponent,
+    ThemedSectorSidebarComponent,
     ThemedBreadcrumbsComponent,
     ThemedFooterComponent,
     ThemedHeaderNavbarWrapperComponent,
@@ -74,6 +86,8 @@ export class RootComponent implements OnInit {
   slideSidebarOver$: Observable<boolean>;
   collapsedSidebarWidth$: Observable<string>;
   expandedSidebarWidth$: Observable<string>;
+  showFooter$: Observable<boolean> = of(false);
+  isLoginRoute$: Observable<boolean> = of(false);
   notificationOptions: INotificationBoardOptions;
   models: any;
 
@@ -91,8 +105,10 @@ export class RootComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private store: Store<AppState>,
     private cssService: CSSVariableService,
     private menuService: MenuService,
+    private sectorSidebarService: SectorSidebarService,
     private windowService: HostWindowService,
     @Inject(NativeWindowService) private _window: NativeWindowRef,
   ) {
@@ -100,6 +116,20 @@ export class RootComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showFooter$ = combineLatestObservable([
+      this.store.pipe(select(isAuthenticated)),
+      this.store.pipe(select(routerStateSelector)),
+    ]).pipe(
+      map(([authenticated, routerState]) => {
+        const route = routerState?.state?.url?.split(/[?#]/)[0];
+        return !authenticated && route === '/home';
+      }),
+    );
+    this.isLoginRoute$ = this.store.pipe(
+      select(routerStateSelector),
+      map((routerState) => routerState?.state?.url?.split(/[?#]/)[0] === '/login'),
+    );
+
     const browserName = this.getBrowserName();
     if (browserName) {
       const browserOsClasses = new Array<string>();
@@ -111,7 +141,12 @@ export class RootComponent implements OnInit {
       this.browserOsClasses.next(browserOsClasses);
     }
 
-    this.isSidebarVisible$ = this.menuService.isMenuVisibleWithVisibleSections(MenuID.ADMIN);
+    this.isSidebarVisible$ = combineLatestObservable([
+      this.menuService.isMenuVisibleWithVisibleSections(MenuID.ADMIN),
+      this.sectorSidebarService.visible$,
+    ]).pipe(
+      map(([adminSidebarVisible, sectorSidebarVisible]) => adminSidebarVisible || sectorSidebarVisible),
+    );
 
     this.expandedSidebarWidth$ = this.cssService.getVariable('--ds-admin-sidebar-total-width').pipe(
       skipWhile((val) => !val),
@@ -123,9 +158,12 @@ export class RootComponent implements OnInit {
     );
 
     const sidebarCollapsed = this.menuService.isMenuCollapsed(MenuID.ADMIN);
-    this.slideSidebarOver$ = combineLatestObservable([sidebarCollapsed, this.windowService.isXsOrSm()])
-      .pipe(
-        map(([collapsed, mobile]) => collapsed || mobile),
+    this.slideSidebarOver$ = combineLatestObservable([
+      sidebarCollapsed,
+      this.windowService.isXsOrSm(),
+      this.sectorSidebarService.visible$,
+    ]).pipe(
+        map(([collapsed, mobile, sectorSidebarVisible]) => collapsed || mobile || sectorSidebarVisible),
         startWith(true),
       );
 

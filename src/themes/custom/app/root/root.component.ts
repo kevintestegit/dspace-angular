@@ -15,6 +15,7 @@ import { slideSidebarPadding } from '../../../../app/shared/animations/slide';
 import { LiveRegionComponent } from '../../../../app/shared/live-region/live-region.component';
 import { ThemedLoadingComponent } from '../../../../app/shared/loading/themed-loading.component';
 import { NotificationsBoardComponent } from '../../../../app/shared/notifications/notifications-board/notifications-board.component';
+import { ThemedSectorSidebarComponent } from '../../../../app/shared/sector-sidebar/themed-sector-sidebar.component';
 import { SystemWideAlertBannerComponent } from '../../../../app/system-wide-alert/alert-banner/system-wide-alert-banner.component';
 
 @Component({
@@ -32,6 +33,7 @@ import { SystemWideAlertBannerComponent } from '../../../../app/system-wide-aler
     RouterOutlet,
     SystemWideAlertBannerComponent,
     ThemedAdminSidebarComponent,
+    ThemedSectorSidebarComponent,
     ThemedBreadcrumbsComponent,
     ThemedFooterComponent,
     ThemedHeaderNavbarWrapperComponent,

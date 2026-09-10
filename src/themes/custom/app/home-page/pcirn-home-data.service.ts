@@ -15,6 +15,8 @@ import { Collection } from '../../../../app/core/shared/collection.model';
 import { DSpaceObjectType } from '../../../../app/core/shared/dspace-object-type.model';
 import { Item } from '../../../../app/core/shared/item.model';
 import { toDSpaceObjectListRD } from '../../../../app/core/shared/operators';
+import { SortDirection } from '../../../../app/core/cache/models/sort-options.model';
+import { SortOptions } from '../../../../app/core/cache/models/sort-options.model';
 import { PaginationComponentOptions } from '../../../../app/shared/pagination/pagination-component-options.model';
 import { PaginatedSearchOptions } from '../../../../app/shared/search/models/paginated-search-options.model';
 import { SearchService } from '../../../../app/core/shared/search/search.service';
@@ -73,6 +75,7 @@ export class PcirnHomeDataService {
     return this.searchService.search<Item>(new PaginatedSearchOptions({
       dsoTypes: [DSpaceObjectType.ITEM],
       pagination,
+      sort: new SortOptions('dc.date.accessioned', SortDirection.DESC),
     })).pipe(
       toDSpaceObjectListRD(),
     ) as Observable<RemoteData<PaginatedList<Item>>>;

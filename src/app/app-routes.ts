@@ -34,14 +34,12 @@ import { reloadGuard } from './core/reload/reload.guard';
 import { forgotPasswordCheckGuard } from './core/rest-property/forgot-password-check-guard.guard';
 import { ServerCheckGuard } from './core/server-check/server-check.guard';
 import { ThemedForbiddenComponent } from './forbidden/themed-forbidden.component';
-import { homePageResolver } from './home-page/home-page.resolver';
 import { ITEM_MODULE_PATH } from './item-page/item-page-routing-paths';
 import { provideSuggestionNotificationsState } from './notifications/provide-suggestion-notifications-state';
 import { ThemedPageErrorComponent } from './page-error/themed-page-error.component';
 import { ThemedPageInternalServerErrorComponent } from './page-internal-server-error/themed-page-internal-server-error.component';
 import { ThemedPageNotFoundComponent } from './pagenotfound/themed-pagenotfound.component';
 import { PROCESS_MODULE_PATH } from './process-page/process-page-routing.paths';
-import { viewTrackerResolver } from './statistics/angulartics/dspace/view-tracker.resolver';
 import { provideSubmissionState } from './submission/provide-submission-state';
 import { SUGGESTION_MODULE_PATH } from './suggestions-page/suggestions-page-routing-paths';
 
@@ -70,29 +68,21 @@ export const APP_ROUTES: Route[] = [
           dsoPath: 'site',
         },
         providers: [provideSuggestionNotificationsState()],
-        canActivate: [endUserAgreementCurrentUserGuard],
-        resolve: {
-          site: homePageResolver,
-          tracking: viewTrackerResolver,
-        },
       },
       {
         path: 'community-list',
         loadChildren: () => import('./community-list-page/community-list-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: 'id',
         loadChildren: () => import('./lookup-by-id/lookup-by-id-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: 'handle',
         loadChildren: () => import('./lookup-by-id/lookup-by-id-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: REGISTER_PATH,
@@ -110,37 +100,31 @@ export const APP_ROUTES: Route[] = [
         path: COMMUNITY_MODULE_PATH,
         loadChildren: () => import('./community-page/community-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: COLLECTION_MODULE_PATH,
         loadChildren: () => import('./collection-page/collection-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: ITEM_MODULE_PATH,
         loadChildren: () => import('./item-page/item-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: 'entities/:entity-type',
         loadChildren: () => import('./item-page/item-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: LEGACY_BITSTREAM_MODULE_PATH,
         loadChildren: () => import('./bitstream-page/bitstream-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: BITSTREAM_MODULE_PATH,
         loadChildren: () => import('./bitstream-page/bitstream-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: 'mydspace',
@@ -155,13 +139,12 @@ export const APP_ROUTES: Route[] = [
         loadChildren: () => import('./search-page/search-page-routes')
           .then((m) => m.ROUTES),
         data: { enableRSS: true },
-        canActivate: [endUserAgreementCurrentUserGuard],
       },
       {
         path: 'browse',
         loadChildren: () => import('./browse-by/browse-by-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
+        canActivate: [authenticatedGuard, endUserAgreementCurrentUserGuard],
       },
       {
         path: ADMIN_MODULE_PATH,
@@ -194,20 +177,20 @@ export const APP_ROUTES: Route[] = [
         loadChildren: () => import('./submit-page/submit-page-routes')
           .then((m) => m.ROUTES),
         providers: [provideSubmissionState()],
-        canActivate: [endUserAgreementCurrentUserGuard],
+        canActivate: [authenticatedGuard, endUserAgreementCurrentUserGuard],
       },
       {
         path: 'import-external',
         loadChildren: () => import('./import-external-page/import-external-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
+        canActivate: [authenticatedGuard, endUserAgreementCurrentUserGuard],
       },
       {
         path: 'workspaceitems',
         loadChildren: () => import('./workspaceitems-edit-page/workspaceitems-edit-page-routes')
           .then((m) => m.ROUTES),
         providers: [provideSubmissionState()],
-        canActivate: [endUserAgreementCurrentUserGuard],
+        canActivate: [authenticatedGuard, endUserAgreementCurrentUserGuard],
       },
       {
         path: WORKFLOW_ITEM_MODULE_PATH,
@@ -215,7 +198,7 @@ export const APP_ROUTES: Route[] = [
         loadChildren: () => import('./workflowitems-edit-page/workflowitems-edit-page-routes')
           .then((m) => m.ROUTES),
         data: { enableRSS: true },
-        canActivate: [endUserAgreementCurrentUserGuard],
+        canActivate: [authenticatedGuard, endUserAgreementCurrentUserGuard],
       },
       {
         path: PROFILE_MODULE_PATH,
@@ -240,11 +223,12 @@ export const APP_ROUTES: Route[] = [
       {
         path: INFO_MODULE_PATH,
         loadChildren: () => import('./info/info-routes').then((m) => m.ROUTES),
+        canActivate: [authenticatedGuard],
       },
       {
         path: REQUEST_COPY_MODULE_PATH,
         loadChildren: () => import('./request-copy/request-copy-routes').then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
+        canActivate: [authenticatedGuard, endUserAgreementCurrentUserGuard],
       },
       {
         path: FORBIDDEN_PATH,
@@ -255,7 +239,7 @@ export const APP_ROUTES: Route[] = [
         path: 'statistics',
         loadChildren: () => import('./statistics-page/statistics-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [endUserAgreementCurrentUserGuard],
+        canActivate: [authenticatedGuard, endUserAgreementCurrentUserGuard],
       },
       {
         path: HEALTH_PAGE_PATH,

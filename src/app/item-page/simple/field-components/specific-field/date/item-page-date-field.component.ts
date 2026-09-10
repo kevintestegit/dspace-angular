@@ -1,19 +1,36 @@
-import { AsyncPipe } from '@angular/common';
+import {
+  AsyncPipe,
+  DatePipe,
+} from '@angular/common';
 import {
   Component,
   Input,
 } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { Item } from '../../../../../core/shared/item.model';
-import { MetadataValuesComponent } from '../../../../field-components/metadata-values/metadata-values.component';
+import { MetadataFieldWrapperComponent } from '../../../../../shared/metadata-field-wrapper/metadata-field-wrapper.component';
 import { ItemPageFieldComponent } from '../item-page-field.component';
 
 @Component({
   selector: 'ds-item-page-date-field',
-  templateUrl: '../item-page-field.component.html',
+  template: `
+    <div class="item-page-field">
+      <ds-metadata-field-wrapper [label]="label | translate">
+        @for (mdValue of item?.allMetadata(fields); track mdValue; let last = $last) {
+          <span class="dont-break-out preserve-line-breaks">{{ (mdValue.value | date:'dd/MM/yyyy':'UTC') || mdValue.value }}</span>
+          @if (!last) {
+            <span class="separator" [innerHTML]="separator"></span>
+          }
+        }
+      </ds-metadata-field-wrapper>
+    </div>
+  `,
   imports: [
     AsyncPipe,
-    MetadataValuesComponent,
+    DatePipe,
+    MetadataFieldWrapperComponent,
+    TranslateModule,
   ],
 })
 /**

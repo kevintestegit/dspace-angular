@@ -1,0 +1,94 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Teste de Visualizacao DSpace</title>
+<style>body{font-family:sans-serif;background:#0a1628;color:#e0e8f0;padding:20px}
+h1{color:#7ec8ff;border-bottom:2px solid #7abf3a;padding-bottom:10px}
+h2{color:#a6d82e;margin-top:30px}
+.file-card{display:inline-block;margin:10px;padding:10px;background:#0d1f38;border:1px solid #1a3558;border-radius:8px;width:300px;vertical-align:top}
+.file-card h3{color:#cfe0ef;margin:0 0 8px;font-size:14px}
+pre{background:#071926;padding:10px;border-radius:4px;overflow:auto;max-height:200px;font-size:11px;color:#9fb4c7}
+.viewer{background:#071926;padding:6px;margin-top:6px;border-radius:4px;text-align:center;min-height:60px}
+.viewer img,.viewer video{max-width:100%;max-height:150px}
+.viewer object{width:100%;height:150px}
+.viewer audio{width:100%}
+.download{display:block;margin-top:6px;color:#7ec8ff;}
+.status{font-size:11px;color:#8fa8bc;margin-bottom:4px}
+</style></head><body>
+<h1>🧪 Teste de Visualizadores DSpace</h1>
+<div class="file-card">
+<h3>teste.pdf</h3>
+<div class="status">Tipo: pdf</div>
+<div class="viewer">
+<object data="/assets/pcirn/test-files/teste.pdf" type="application/pdf">PDF nao renderizou</object>
+</div><a class="download" href="/assets/pcirn/test-files/teste.pdf" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.png</h3>
+<div class="status">Tipo: png</div>
+<div class="viewer">
+<img src="/assets/pcirn/test-files/teste.png" alt="teste.png"/>
+</div><a class="download" href="/assets/pcirn/test-files/teste.png" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.jpg</h3>
+<div class="status">Tipo: jpg</div>
+<div class="viewer">
+<img src="/assets/pcirn/test-files/teste.jpg" alt="teste.jpg"/>
+</div><a class="download" href="/assets/pcirn/test-files/teste.jpg" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.gif</h3>
+<div class="status">Tipo: gif</div>
+<div class="viewer">
+<img src="/assets/pcirn/test-files/teste.gif" alt="teste.gif"/>
+</div><a class="download" href="/assets/pcirn/test-files/teste.gif" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.webp</h3>
+<div class="status">Tipo: webp</div>
+<div class="viewer">
+<img src="/assets/pcirn/test-files/teste.webp" alt="teste.webp"/>
+</div><a class="download" href="/assets/pcirn/test-files/teste.webp" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.svg</h3>
+<div class="status">Tipo: svg</div>
+<div class="viewer">
+<img src="/assets/pcirn/test-files/teste.svg" alt="teste.svg"/>
+</div><a class="download" href="/assets/pcirn/test-files/teste.svg" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.txt</h3>
+<div class="status">Tipo: txt</div>
+<div class="viewer">
+<iframe srcdoc="<h1>Teste</h1>" style="width:100%;height:60px;border:none;background:white"></iframe><br><a href="/assets/pcirn/test-files/teste.txt" target="_blank">Visualizar</a>
+</div><a class="download" href="/assets/pcirn/test-files/teste.txt" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.html</h3>
+<div class="status">Tipo: html</div>
+<div class="viewer">
+<iframe srcdoc="<h1>Teste</h1>" style="width:100%;height:60px;border:none;background:white"></iframe><br><a href="/assets/pcirn/test-files/teste.html" target="_blank">Visualizar</a>
+</div><a class="download" href="/assets/pcirn/test-files/teste.html" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.mp3</h3>
+<div class="status">Tipo: mp3</div>
+<div class="viewer">
+<audio controls><source src="/assets/pcirn/test-files/teste.mp3" type="audio/mpeg">Audio nao suportado</audio>
+</div><a class="download" href="/assets/pcirn/test-files/teste.mp3" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.mp4</h3>
+<div class="status">Tipo: mp4</div>
+<div class="viewer">
+<video controls><source src="/assets/pcirn/test-files/teste.mp4" type="video/mp4">Video nao suportado</video>
+</div><a class="download" href="/assets/pcirn/test-files/teste.mp4" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.webm</h3>
+<div class="status">Tipo: webm</div>
+<div class="viewer">
+<video controls><source src="/assets/pcirn/test-files/teste.webm" type="video/webm">Video nao suportado</video>
+</div><a class="download" href="/assets/pcirn/test-files/teste.webm" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.zip</h3>
+<div class="status">Tipo: zip</div>
+<div class="viewer">
+<a href="/assets/pcirn/test-files/teste.zip" download>📥 Download (não visualizável)</a>
+</div><a class="download" href="/assets/pcirn/test-files/teste.zip" download>📥 Download</a></div>
+<div class="file-card">
+<h3>teste.docx</h3>
+<div class="status">Tipo: docx</div>
+<div class="viewer">
+<a href="/assets/pcirn/test-files/teste.docx" download>📥 Download (não visualizável)</a>
+</div><a class="download" href="/assets/pcirn/test-files/teste.docx" download>📥 Download</a></div>
+</body></html>

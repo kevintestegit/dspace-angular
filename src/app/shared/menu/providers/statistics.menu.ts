@@ -7,6 +7,7 @@
  */
 
 import { Injectable } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import {
   combineLatest,
   map,
@@ -14,6 +15,8 @@ import {
 } from 'rxjs';
 
 import { getDSORoute } from '../../../app-routing-paths';
+import { AppState } from '../../../app.reducer';
+import { isAuthenticated } from '../../../core/auth/selectors';
 import { AuthorizationDataService } from '../../../core/data/feature-authorization/authorization-data.service';
 import { FeatureID } from '../../../core/data/feature-authorization/feature-id';
 import { DSpaceObject } from '../../../core/shared/dspace-object.model';
@@ -32,6 +35,7 @@ export class StatisticsMenuProvider extends DSpaceObjectPageMenuProvider {
 
   constructor(
     protected authorizationService: AuthorizationDataService,
+    private store: Store<AppState>,
   ) {
     super();
   }
@@ -39,8 +43,9 @@ export class StatisticsMenuProvider extends DSpaceObjectPageMenuProvider {
   public getSectionsForContext(dso: DSpaceObject): Observable<PartialMenuSection[]> {
     return combineLatest([
       this.authorizationService.isAuthorized(FeatureID.CanViewUsageStatistics, dso?._links.self.href),
+      this.store.pipe(select(isAuthenticated)),
     ]).pipe(
-      map(([authorized]) => {
+      map(([authorized, authenticated]) => {
         let link = `statistics`;
 
         let dsoRoute;
@@ -53,7 +58,7 @@ export class StatisticsMenuProvider extends DSpaceObjectPageMenuProvider {
 
         return [
           {
-            visible: authorized,
+            visible: authorized && authenticated,
             model: {
               type: MenuItemType.LINK,
               text: 'menu.section.statistics',

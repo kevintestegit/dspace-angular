@@ -20,6 +20,17 @@
   }
 }
 
+.dropdownLogin {
+  align-items: center;
+  background: #f6f8fb;
+  border: 1px solid #e4eaf1;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: .78rem;
+  gap: .45rem;
+  padding: .42rem .8rem !important;
+}
+
 .dropdownLogin, .dropdownLogout {
   &:not(:focus-visible).active,
   &:not(:focus-visible):active,

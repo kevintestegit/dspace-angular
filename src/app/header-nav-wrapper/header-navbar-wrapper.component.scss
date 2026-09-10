@@ -1,6 +1,50 @@
 :host {
+  display: block;
   position: relative;
-  div#header-navbar-wrapper {
-    border-bottom: 1px var(--ds-header-navbar-border-bottom-color) solid;
+  z-index: var(--ds-nav-z-index);
+}
+
+.pcirn-header-shell {
+  margin: 0;
+  position: relative;
+}
+
+#header-navbar-wrapper {
+  border: 0;
+  margin: 0;
+  max-width: none;
+}
+
+.pcirn-header-glass {
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #e5ebf2;
+  box-shadow: 0 2px 12px rgba(6, 28, 43, .05);
+  display: flex;
+  gap: 1rem;
+  min-height: 3.1rem;
+  padding: 0 max(1.25rem, calc((100% - 1280px) / 2));
+}
+
+.pcirn-header-glass > ds-navbar {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pcirn-header-glass > ds-header {
+  flex: 0 0 auto;
+}
+
+@media screen and (max-width: map-get($grid-breakpoints, md)-0.02) {
+  .pcirn-header-shell {
+    margin: .65rem .75rem 0;
   }
+
+  .pcirn-header-glass {
+    align-items: stretch;
+    flex-direction: column;
+    gap: .5rem;
+    padding: .65rem 1rem;
+  }
+
 }

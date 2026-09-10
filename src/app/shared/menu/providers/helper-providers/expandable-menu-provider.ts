@@ -46,6 +46,7 @@ export abstract class AbstractExpandableMenuProvider extends AbstractMenuProvide
         [partialTopSection, partialSubSections]: [PartialMenuSection, PartialMenuSection[]],
       ) => {
         const parentID = partialTopSection.id ?? this.getAutomatedSectionIdForTopSection();
+        const hasVisibleSubSections = partialSubSections.some(section => section.visible);
         const subSections = partialSubSections.map((partialSub, index) => {
           return {
             ...partialSub,
@@ -60,6 +61,7 @@ export abstract class AbstractExpandableMenuProvider extends AbstractMenuProvide
           {
             ...partialTopSection,
             id: parentID,
+            visible: partialTopSection.visible && hasVisibleSubSections,
             alwaysRenderExpandable: this.alwaysRenderExpandable,
           },
         ];

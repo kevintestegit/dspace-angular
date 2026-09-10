@@ -4,6 +4,7 @@ import {
   NgComponentOutlet,
 } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemedUserMenuComponent } from 'src/app/shared/auth-nav-menu/user-menu/themed-user-menu.component';
@@ -25,6 +26,7 @@ import { slideMobileNav } from '../../../../app/shared/animations/slide';
     NgComponentOutlet,
     ThemedUserMenuComponent,
     TranslateModule,
+    RouterLink,
   ],
 })
 export class NavbarComponent extends BaseComponent {

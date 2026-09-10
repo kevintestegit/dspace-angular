@@ -40,6 +40,7 @@ import { hasValue } from '../../../shared/empty.util';
 import { ThemedLoadingComponent } from '../../../shared/loading/themed-loading.component';
 import { Script } from '../../scripts/script.model';
 import { controlContainerFactory } from '../process-form-factory';
+import { ProcessScriptTranslationService } from '../process-script-translation.service';
 
 const SCRIPT_QUERY_PARAMETER = 'script';
 
@@ -88,7 +89,16 @@ export class ScriptsSelectComponent implements OnInit, OnDestroy {
     private scriptService: ScriptDataService,
     private router: Router,
     private route: ActivatedRoute,
+    private translationService: ProcessScriptTranslationService,
   ) {
+  }
+
+  /**
+   * Translated display label for a given script
+   * @param script The script to translate a label for
+   */
+  getLabel(script: Script): string {
+    return this.translationService.getLabel(script);
   }
 
   /**

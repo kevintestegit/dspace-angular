@@ -82,7 +82,7 @@
                     <a [routerLink]="['/items', item.id]">
                       <i class="pcirn-home-latest-icon far fa-file-alt" aria-hidden="true"></i>
                       <span class="pcirn-home-latest-copy"><small>{{ item.metadata['dc.type']?.[0]?.value || 'Documento' }}</small><strong>{{ item.name }}</strong><span>{{ item.metadata['dc.contributor.author']?.[0]?.value || item.metadata['dc.publisher']?.[0]?.value || 'PCIRN' }}</span></span>
-                      <time>{{ item.metadata['dc.date.issued']?.[0]?.value }}</time>
+                      <time [attr.datetime]="item.metadata['dc.date.issued']?.[0]?.value">{{ item.metadata['dc.date.issued']?.[0]?.value | date:'dd/MM/yyyy':'UTC' }}</time>
                     </a>
                   }
                 </div>

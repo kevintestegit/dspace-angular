@@ -1,5 +1,6 @@
 import {
   AsyncPipe,
+  DatePipe,
   DecimalPipe,
 } from '@angular/common';
 import {
@@ -41,6 +42,7 @@ import {
   templateUrl: './home-page.component.html',
   imports: [
     AsyncPipe,
+    DatePipe,
     DecimalPipe,
     RouterLink,
     ThemedSearchFormComponent,

@@ -2,15 +2,18 @@
   {{ 'root.skip-to-content' | translate }}
 </button>
 
-<div class="outer-wrapper" [class.d-none]="shouldShowFullscreenLoader" [ngClass]="browserOsClasses.asObservable() | async" [@slideSidebarPadding]="{
+  <div class="outer-wrapper" [class.d-none]="shouldShowFullscreenLoader" [ngClass]="browserOsClasses.asObservable() | async" [@slideSidebarPadding]="{
      value: ((isSidebarVisible$ | async) !== true ? 'hidden' : (slideSidebarOver$ | async) ? 'unpinned' : 'pinned'),
      params: { collapsedWidth: (collapsedSidebarWidth$ | async), expandedWidth: (expandedSidebarWidth$ | async) }
     }">
+  <ds-sector-sidebar></ds-sector-sidebar>
   <ds-admin-sidebar [expandedSidebarWidth$]="expandedSidebarWidth$" [collapsedSidebarWidth$]="collapsedSidebarWidth$"></ds-admin-sidebar>
   <div class="inner-wrapper">
-    <ds-system-wide-alert-banner></ds-system-wide-alert-banner>
-    <ds-header-navbar-wrapper></ds-header-navbar-wrapper>
-    <ds-breadcrumbs></ds-breadcrumbs>
+    @if ((isLoginRoute$ | async) !== true) {
+      <ds-system-wide-alert-banner></ds-system-wide-alert-banner>
+      <ds-header-navbar-wrapper></ds-header-navbar-wrapper>
+      <ds-breadcrumbs></ds-breadcrumbs>
+    }
     <main class="my-cs" id="main-content">
 
       @if (shouldShowRouteLoader) {
@@ -23,7 +26,9 @@
       </div>
     </main>
 
-    <ds-footer class="pcirn-home-footer"></ds-footer>
+    @if ((showFooter$ | async) === true) {
+      <ds-footer class="pcirn-home-footer"></ds-footer>
+    }
   </div>
 </div>
 

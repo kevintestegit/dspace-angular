@@ -60,7 +60,7 @@
 .pcirn-home-card small, .pcirn-home-featured-card small { color: var(--pcirn-muted); font-size: .66rem; font-weight: 400; line-height: 1.32; }
 .pcirn-home-card-arrow { color: var(--pcirn-blue); font-size: .78rem; margin-left: auto; }
 
-.pcirn-home-featured-row { display: grid; gap: .75rem; grid-template-columns: repeat(3, minmax(0, 1fr)) 1.1fr; }
+.pcirn-home-featured-row { display: grid; gap: .75rem; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; }
 .pcirn-home-featured-card { align-items: center; display: flex; gap: .72rem; min-height: 5.85rem; padding: .72rem .8rem; }
 .pcirn-home-featured-card > span { display: grid; gap: .24rem; min-width: 0; }
 .pcirn-home-featured-card b { color: var(--pcirn-blue); font-size: .61rem; margin-top: .12rem; }

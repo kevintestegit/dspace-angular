@@ -22,7 +22,6 @@ import { of } from 'rxjs';
 import { APP_CONFIG } from '../../../config/app-config.interface';
 import { environment } from '../../../environments/environment';
 import { BrowseService } from '../../core/browse/browse.service';
-import { SortDirection } from '../../core/cache/models/sort-options.model';
 import { DSpaceObjectDataService } from '../../core/data/dspace-object-data.service';
 import { ItemDataService } from '../../core/data/item-data.service';
 import { PaginationService } from '../../core/pagination/pagination.service';
@@ -77,7 +76,6 @@ describe('BrowseByTitleComponent', () => {
   const mockBrowseService = {
     getBrowseItemsFor: () => toRemoteData(mockItems),
     getBrowseEntriesFor: () => toRemoteData([]),
-    getConfiguredSortDirection: () => of(SortDirection.ASC),
   };
 
   const mockDsoService = {

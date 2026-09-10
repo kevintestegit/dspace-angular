@@ -41,6 +41,7 @@ import { HomePageComponent } from './app/home-page/home-page.component';
 import { EndUserAgreementComponent } from './app/info/end-user-agreement/end-user-agreement.component';
 import { FeedbackComponent } from './app/info/feedback/feedback.component';
 import { FeedbackFormComponent } from './app/info/feedback/feedback-form/feedback-form.component';
+import { FaleConoscoComponent } from './app/info/fale-conosco/fale-conosco.component';
 import { PrivacyComponent } from './app/info/privacy/privacy.component';
 import { ItemAlertsComponent } from './app/item-page/alerts/item-alerts.component';
 import { ItemStatusComponent } from './app/item-page/edit-item-page/item-status/item-status.component';
@@ -151,6 +152,7 @@ const DECLARATIONS = [
   BreadcrumbsComponent,
   FeedbackComponent,
   FeedbackFormComponent,
+  FaleConoscoComponent,
   CommunityListComponent,
   ComcolPageHandleComponent,
   AuthNavMenuComponent,

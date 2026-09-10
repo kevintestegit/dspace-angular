@@ -1,4 +1,16 @@
 {
+  // "sector-sidebar.title": "Sectors",
+  "sector-sidebar.title": "Setores",
+
+  // "sector-sidebar.loading": "Loading sectors...",
+  "sector-sidebar.loading": "Carregando setores...",
+
+  // "sector-sidebar.empty": "No sector has been assigned to your user.",
+  "sector-sidebar.empty": "Nenhum setor foi atribuído ao seu usuário.",
+
+  // "sector-sidebar.add-document": "Add document",
+  "sector-sidebar.add-document": "Adicionar documento",
+
   // "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
   "401.help": "Você não tem autorização para acessar esta página. Clique no botão abaixo para ir à página inicial.",
 
@@ -1548,6 +1560,12 @@
   // "browse.comcol.by.title": "By Title",
   "browse.comcol.by.title": "Por Título",
 
+  // "browse.comcol.by.type": "By Type",
+  "browse.comcol.by.type": "Por Tipo",
+
+  // "browse.comcol.by.pcirn-document-types": "By PCIRN Document Types",
+  "browse.comcol.by.pcirn-document-types": "Por Tipos de Documentos PCIRN",
+
   // "browse.comcol.head": "Browse",
   "browse.comcol.head": "Navegar",
 
@@ -1565,6 +1583,12 @@
 
   // "browse.metadata.title": "Title",
   "browse.metadata.title": "Título",
+
+  // "browse.metadata.type": "Type",
+  "browse.metadata.type": "Tipo",
+
+  // "browse.metadata.pcirn-document-types": "PCIRN Document Types",
+  "browse.metadata.pcirn-document-types": "Tipos de Documentos PCIRN",
 
   // "browse.metadata.srsc": "Subject Category",
   "browse.metadata.srsc": "Categoria de Assunto",
@@ -1592,6 +1616,15 @@
 
   // "browse.metadata.title.breadcrumbs": "Browse by Title",
   "browse.metadata.title.breadcrumbs": "Pesquisar por Título",
+
+  // "browse.metadata.type.breadcrumbs": "Browse by Type",
+  "browse.metadata.type.breadcrumbs": "Pesquisar por Tipo",
+
+  // "browse.metadata.pcirn-document-types.breadcrumbs": "Browse by PCIRN Document Types",
+  "browse.metadata.pcirn-document-types.breadcrumbs": "Pesquisar por Tipos de Documentos PCIRN",
+
+  // "browse.metadata.pcirn-document-types.tree.description": "Select a document type to add as search filter",
+  "browse.metadata.pcirn-document-types.tree.description": "Selecione um tipo de documento para adicionar como filtro de pesquisa",
 
   // "browse.metadata.map": "Browse by Geolocation",
   "browse.metadata.map": "Pesquisar por geolocalização",
@@ -3160,16 +3193,13 @@
   "form.number-picker.increment": "Incrementar {{field}}",
 
   // "form.number-picker.label.Year": "Year",
-  // TODO New key - Add a translation
-  "form.number-picker.label.Year": "Year",
+  "form.number-picker.label.Year": "Ano",
 
   // "form.number-picker.label.Month": "Month",
-  // TODO New key - Add a translation
-  "form.number-picker.label.Month": "Month",
+  "form.number-picker.label.Month": "Mês",
 
   // "form.number-picker.label.Day": "Day",
-  // TODO New key - Add a translation
-  "form.number-picker.label.Day": "Day",
+  "form.number-picker.label.Day": "Dia",
 
   // "form.repeatable.sort.tip": "Drop the item in the new position",
   "form.repeatable.sort.tip": "Solte o item na nova posição",
@@ -3474,6 +3504,12 @@
 
   // "info.feedback.page_help": "The page related to your feedback",
   "info.feedback.page_help": "A página relacionada à sua sugestão",
+
+  // "info.fale-conosco.title": "Fale Conosco",
+  "info.fale-conosco.title": "Fale Conosco",
+
+  // "info.fale-conosco.breadcrumbs": "Fale Conosco",
+  "info.fale-conosco.breadcrumbs": "Fale Conosco",
 
   // "info.coar-notify-support.title": "COAR Notify Support",
   "info.coar-notify-support.title": "Suporte COAR Notify",
@@ -5157,7 +5193,7 @@
   "login.form.forgot-password": "Esqueceu sua senha?",
 
   // "login.form.header": "Please log in to DSpace",
-  "login.form.header": "Por favor, entre no DSpace",
+  "login.form.header": "Entre no DSpace da PCIRN",
 
   // "login.form.new-user": "New user? Click here to register.",
   "login.form.new-user": "Novo usuário? Clique aqui para cadastrar.",
@@ -5251,6 +5287,12 @@
 
   // "menu.section.browse_global_by_author": "By Author",
   "menu.section.browse_global_by_author": "Por Autor",
+
+  // "menu.section.browse_global_by_type": "By Type",
+  "menu.section.browse_global_by_type": "Por Tipo",
+
+  // "menu.section.browse_global_by_pcirn-document-types": "By PCIRN Document Type",
+  "menu.section.browse_global_by_pcirn-document-types": "Por Tipo de Documento",
 
   // "menu.section.browse_global_by_dateissued": "By Issue Date",
   "menu.section.browse_global_by_dateissued": "Por Data de Publicação",
@@ -6049,6 +6091,283 @@
 
   // "process.new.breadcrumbs": "Create a new process",
   "process.new.breadcrumbs": "Criar Novo Processo",
+
+  "process.new.script.bulk-access-control.label": "Controle de acesso em massa",
+
+  "process.new.script.bulk-access-control.description": "Aplicar políticas de acesso a comunidades, coleções e itens em massa",
+
+  "process.new.script.bulk-access-control.params.--uuid.description": "UUID dos alvos (comunidades/coleções/itens)",
+
+  "process.new.script.bulk-access-control.params.--file.description": "arquivo JSON de origem",
+
+  "process.new.script.bulk-access-control.params.--help.description": "ajuda",
+
+  "process.new.script.curate.label": "Curadoria",
+
+  "process.new.script.curate.description": "Tarefas de curadoria",
+
+  "process.new.script.curate.params.--task.description": "nome da tarefa de curadoria; opções: [noop, profileformats, requiredmetadata, checklinks, registerdoi]",
+
+  "process.new.script.curate.params.--id.description": "Identificador (handle) do objeto em que executar a tarefa, ou 'all' para executar em todo o repositório",
+
+  "process.new.script.curate.params.--parameter.description": "parâmetro de tarefa no formato 'NOME=VALOR'",
+
+  "process.new.script.curate.params.--queue.description": "nome da fila de tarefas a processar",
+
+  "process.new.script.curate.params.--scope.description": "escopo da transação a impor: use 'object', 'curation' ou 'open'. Se ausente, 'open' é usado",
+
+  "process.new.script.curate.params.--verbose.description": "reportar atividade no stdout",
+
+  "process.new.script.curate.params.--help.description": "ajuda",
+
+  "process.new.script.export.label": "Exportar",
+
+  "process.new.script.export.description": "Exportar em lote para o Formato de Arquivo Simples (SAF)",
+
+  "process.new.script.export.params.--type.description": "tipo: COLLECTION ou ITEM",
+
+  "process.new.script.export.params.--id.description": "ID ou handle do que exportar",
+
+  "process.new.script.export.params.--number.description": "número de sequência para começar a exportar os itens",
+
+  "process.new.script.export.params.--migrate.description": "exportar para migração (remover handle e metadados que serão recriados no novo sistema)",
+
+  "process.new.script.export.params.--exclude-bitstreams.description": "não exportar bitstreams",
+
+  "process.new.script.export.params.--help.description": "ajuda",
+
+  "process.new.script.filter-media.label": "Filtrar mídia",
+
+  "process.new.script.filter-media.description": "Executar a filtragem de mídia para extrair texto completo dos documentos e criar miniaturas",
+
+  "process.new.script.filter-media.params.--verbose.description": "imprimir todo o texto extraído e outros detalhes no STDOUT",
+
+  "process.new.script.filter-media.params.--quiet.description": "não imprimir nada exceto em caso de erros",
+
+  "process.new.script.filter-media.params.--force.description": "forçar o processamento de todos os bitstreams",
+
+  "process.new.script.filter-media.params.--identifier.description": "processar SOMENTE bitstreams pertencentes ao identificador (handle) informado",
+
+  "process.new.script.filter-media.params.--maximum.description": "processar no máximo tantos itens quantos indicados",
+
+  "process.new.script.filter-media.params.--help.description": "ajuda",
+
+  "process.new.script.filter-media.params.--plugins.description": "executar SOMENTE o(s) plugin(s) de Filtro de Mídia indicados, listados em 'filter.plugins' no dspace.cfg. Separe múltiplos com vírgula. (ex.: MediaFilterManager -p \"Word Text Extractor\",\"PDF Text Extractor\")",
+
+  "process.new.script.filter-media.params.--fromdate.description": "processar apenas itens a partir da data de última modificação informada",
+
+  "process.new.script.filter-media.params.--skip.description": "SALTAR os bitstreams pertencentes ao identificador. Separe múltiplos identificadores com vírgula. (ex.: MediaFilterManager -s 123456789/34,123456789/323)",
+
+  "process.new.script.harvest.label": "Coleta",
+
+  "process.new.script.harvest.description": "Gerenciar a coleta OAI-PMH de coleções externas",
+
+  "process.new.script.harvest.params.--purge.description": "excluir todos os itens da coleção",
+
+  "process.new.script.harvest.params.--run.description": "executar o procedimento padrão de coleta",
+
+  "process.new.script.harvest.params.--ping.description": "testar o servidor OAI e definir",
+
+  "process.new.script.harvest.params.--setup.description": "configurar a coleção para a coleta",
+
+  "process.new.script.harvest.params.--start.description": "iniciar o loop de coleta",
+
+  "process.new.script.harvest.params.--reset.description": "redefinir o status de coleta de todas as coleções",
+
+  "process.new.script.harvest.params.--purgeCollections.description": "limpar todas as coleções coletáveis",
+
+  "process.new.script.harvest.params.--reimport.description": "reimportar todos os itens da coleção; equivale a -p -r, limpando todos os itens e reimportando-os",
+
+  "process.new.script.harvest.params.--collection.description": "coleção a coletar (handle ou id)",
+
+  "process.new.script.harvest.params.--type.description": "tipo de coleta (0 para nenhuma)",
+
+  "process.new.script.harvest.params.--address.description": "endereço do servidor OAI-PMH",
+
+  "process.new.script.harvest.params.--oai_set_id.description": "id do conjunto PMH que representa a coleção coletada",
+
+  "process.new.script.harvest.params.--metadata_format.description": "nome do formato de metadados desejado para a coleta, resolvido para namespace e crosswalk no dspace.cfg",
+
+  "process.new.script.harvest.params.--help.description": "ajuda",
+
+  "process.new.script.import.label": "Importar",
+
+  "process.new.script.import.description": "Importar em lote do Formato de Arquivo Simples (SAF)",
+
+  "process.new.script.import.params.--add.description": "adicionar itens ao DSpace",
+
+  "process.new.script.import.params.--replace.description": "substituir itens listados no mapfile",
+
+  "process.new.script.import.params.--delete.description": "excluir itens listados no mapfile",
+
+  "process.new.script.import.params.--zip.description": "nome do arquivo zip",
+
+  "process.new.script.import.params.--url.description": "URL do arquivo zip",
+
+  "process.new.script.import.params.--collection.description": "coleção(ões) de destino (Handle ou ID do banco de dados)",
+
+  "process.new.script.import.params.--mapfile.description": "verificar itens no mapfile",
+
+  "process.new.script.import.params.--workflow.description": "enviar a submissão pelo workflow da coleção",
+
+  "process.new.script.import.params.--notify.description": "se enviar submissões pelo workflow, enviar e-mails de notificação",
+
+  "process.new.script.import.params.--validate.description": "teste - não importar efetivamente os itens",
+
+  "process.new.script.import.params.--exclude-bitstreams.description": "não carregar nem esperar bitstreams de conteúdo",
+
+  "process.new.script.import.params.--template.description": "aplicar template",
+
+  "process.new.script.import.params.--resume.description": "retomar uma importação falha (somente add)",
+
+  "process.new.script.import.params.--quiet.description": "não exibir metadados",
+
+  "process.new.script.import.params.--help.description": "ajuda",
+
+  "process.new.script.import-loader-suggestions.label": "Importar sugestões",
+
+  "process.new.script.import-loader-suggestions.description": "Importar sugestões de provedores externos para reivindicação de publicações",
+
+  "process.new.script.import-loader-suggestions.params.--single-researcher.description": "UUID de pesquisador único",
+
+  "process.new.script.import-loader-suggestions.params.--loader.description": "Carregador de publicações a ser usado",
+
+  "process.new.script.import-loader-suggestions.params.--solrfilter.description": "O filtro SOLR adicional para refinar melhor os resultados",
+
+  "process.new.script.import-loader-suggestions.params.--max.description": "O número máximo de perfis de pesquisadores a processar. Se não informado, o padrão configurado será usado",
+
+  "process.new.script.import-loader-suggestions.params.--help.description": "ajuda",
+
+  "process.new.script.import-openaire-events.label": "Importar eventos OpenAIRE",
+
+  "process.new.script.import-openaire-events.description": "Importar novos eventos do broker de garantia de qualidade do OpenAIRE",
+
+  "process.new.script.import-openaire-events.params.--file.description": "Importar dados do arquivo JSON do broker OpenAIRE. Este parâmetro é mutuamente exclusivo com o parâmetro de e-mail.",
+
+  "process.new.script.import-openaire-events.params.--email.description": "E-mail relacionado às assinaturas para importar dados do broker OpenAIRE. Este parâmetro é mutuamente exclusivo com o parâmetro de arquivo.",
+
+  "process.new.script.index-discovery.label": "Atualizar índice (Discovery)",
+
+  "process.new.script.index-discovery.description": "Atualizar o Índice de Busca do Discovery Solr",
+
+  "process.new.script.index-discovery.params.--remove.description": "remover um Item, Coleção ou Comunidade do índice com base no seu handle",
+
+  "process.new.script.index-discovery.params.--index.description": "adicionar ou atualizar um Item, Coleção ou Comunidade com base no seu handle ou uuid",
+
+  "process.new.script.index-discovery.params.--type.description": "reindexar apenas o tipo específico de objetos (re)indexáveis; opções: [ClaimedTask, Collection, Community, Item, PoolTask, XmlWorkflowItem, WorkspaceItem, MetadataField, LDNMessageEntity]",
+
+  "process.new.script.index-discovery.params.--clean.description": "limpar o índice existente removendo documentos que não existem mais no banco",
+
+  "process.new.script.index-discovery.params.--delete.description": "excluir todos os registros do índice existente",
+
+  "process.new.script.index-discovery.params.--build.description": "(re)construir o índice, apagando o atual se existir",
+
+  "process.new.script.index-discovery.params.--spellchecker.description": "reconstruir o corretor ortográfico; pode ser combinado com -b e -f",
+
+  "process.new.script.index-discovery.params.--force.description": "se estiver atualizando o índice existente, forçar a reindexação de cada handle mesmo se já estiver atualizado",
+
+  "process.new.script.index-discovery.params.--help.description": "imprimir esta mensagem de ajuda",
+
+  "process.new.script.metadata-deletion.label": "Excluir metadados",
+
+  "process.new.script.metadata-deletion.description": "Excluir todos os valores do campo de metadados especificado",
+
+  "process.new.script.metadata-deletion.params.--metadata.description": "nome do campo de metadados",
+
+  "process.new.script.metadata-deletion.params.--list.description": "lista os campos de metadados que podem ser excluídos",
+
+  "process.new.script.metadata-export.label": "Exportar metadados",
+
+  "process.new.script.metadata-export.description": "Exportar metadados para edição em lote",
+
+  "process.new.script.metadata-export.params.--id.description": "ID ou handle do que exportar (item, coleção ou comunidade)",
+
+  "process.new.script.metadata-export.params.--all.description": "incluir todos os campos de metadados que normalmente não são alterados (ex.: provenance)",
+
+  "process.new.script.metadata-export.params.--help.description": "ajuda",
+
+  "process.new.script.metadata-export-filtered-items-report.label": "Relatório de itens filtrados",
+
+  "process.new.script.metadata-export-filtered-items-report.description": "Exportar metadados de resultados de itens em um Relatório de Consulta de Metadados",
+
+  "process.new.script.metadata-export-filtered-items-report.params.--collections.description": "UUIDs das coleções em que pesquisar registros elegíveis",
+
+  "process.new.script.metadata-export-filtered-items-report.params.--queryPredicates.description": "Predicados ou consultas de campo usados como critério para filtrar registros",
+
+  "process.new.script.metadata-export-filtered-items-report.params.--filters.description": "Filtros da enumeração org.dspace.contentreport.Filter usados para filtrar registros. Qualquer filtro incluído aqui é considerado selecionado, e não selecionado caso contrário.",
+
+  "process.new.script.metadata-export-filtered-items-report.params.--help.description": "ajuda",
+
+  "process.new.script.metadata-export-search.label": "Exportar por busca",
+
+  "process.new.script.metadata-export-search.description": "exportar metadados a partir de uma busca de discovery",
+
+  "process.new.script.metadata-export-search.params.--query.description": "A string de busca do discovery que será usada para corresponder aos registros. Não codificada em URL",
+
+  "process.new.script.metadata-export-search.params.--scope.description": "UUID de um contêiner DSpace específico (site, comunidade ou coleção) ao qual a busca deve ser limitada",
+
+  "process.new.script.metadata-export-search.params.--configuration.description": "O nome de uma configuração de Discovery que deve ser usada por esta busca",
+
+  "process.new.script.metadata-export-search.params.--filter.description": "Filtro de busca avançado usado para filtrar o conjunto de resultados, com a sintaxe `<:filter-name>,<:filter-operator>=<:filter-value>`. Não codificado em URL. Ex.: `author,authority=5df05073-3be7-410d-8166-e254369e4166` ou `title,contains=sample text`",
+
+  "process.new.script.metadata-export-search.params.--help.description": "ajuda",
+
+  "process.new.script.metadata-import.label": "Importar metadados",
+
+  "process.new.script.metadata-import.description": "Importar metadados após edição em lote",
+
+  "process.new.script.metadata-import.params.--file.description": "arquivo de origem",
+
+  "process.new.script.metadata-import.params.--silent.description": "operação silenciosa - não solicita confirmação de alterações. USE COM CUIDADO",
+
+  "process.new.script.metadata-import.params.--workflow.description": "workflow - ao adicionar novos itens, usar o workflow da coleção",
+
+  "process.new.script.metadata-import.params.--notify.description": "notificar - ao adicionar novos itens usando um workflow, enviar e-mails de notificação",
+
+  "process.new.script.metadata-import.params.--validate-only.description": "validar - apenas validar o csv, não executar a importação",
+
+  "process.new.script.metadata-import.params.--template.description": "template - ao adicionar novos itens, usar o template da coleção (se existir)",
+
+  "process.new.script.metadata-import.params.--help.description": "ajuda",
+
+  "process.new.script.orcid-bulk-push.label": "Sincronização ORCID em massa",
+
+  "process.new.script.orcid-bulk-push.description": "Executar a sincronização em massa de todas as entidades ORCID configuradas em BATCH colocadas na fila ORCID",
+
+  "process.new.script.orcid-bulk-push.params.--force.description": "forçar a sincronização ignorando tentativas máximas",
+
+  "process.new.script.process-cleaner.label": "Limpeza de processos",
+
+  "process.new.script.process-cleaner.description": "Limpar todos os processos antigos no estado especificado",
+
+  "process.new.script.process-cleaner.params.--help.description": "ajuda",
+
+  "process.new.script.process-cleaner.params.--running.description": "excluir o processo com status RUNNING",
+
+  "process.new.script.process-cleaner.params.--failed.description": "excluir o processo com status FAILED",
+
+  "process.new.script.process-cleaner.params.--completed.description": "excluir o processo com status COMPLETED (padrão se nenhum status for especificado)",
+
+  "process.new.script.retry-tracker.label": "Repetir rastreador",
+
+  "process.new.script.retry-tracker.description": "Repetir todos os commits falhos para o OpenURLTracker",
+
+  "process.new.script.retry-tracker.params.-a.description": "Adicionar uma nova linha \"falha\" à tabela com uma url (apenas para testes)",
+
+  "process.new.script.retry-tracker.params.-r.description": "Repetir o envio de solicitações a todas as urls armazenadas na tabela com solicitações falhas. Isso inclui a url que pode ser adicionada pela opção -a.",
+
+  "process.new.script.retry-tracker.params.--help.description": "imprimir esta mensagem de ajuda",
+
+  "process.new.script.solr-database-resync.label": "Ressincronizar Solr",
+
+  "process.new.script.solr-database-resync.description": "Atualizar o status no banco de dados dos Itens no Solr",
+
+  "process.new.script.subscription-send.label": "Enviar assinaturas",
+
+  "process.new.script.subscription-send.description": "Enviar e-mails relacionados a assinaturas de Comunidade/Coleção/Item",
+
+  "process.new.script.subscription-send.params.--frequency.description": "Frequência da assinatura. Valores válidos incluem: D (Dia), W (Semana) e M (Mês)",
+
 
   // "process.detail.arguments": "Arguments",
   "process.detail.arguments": "Argumentos",

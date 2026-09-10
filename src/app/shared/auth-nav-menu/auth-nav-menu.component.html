@@ -15,7 +15,7 @@
                   aria-controls="loginDropdownMenu"
                   [attr.aria-expanded]="loginDrop.isOpen()"
                   ngbDropdownToggle>
-            {{ 'nav.login' | translate }}
+            <i class="far fa-user" aria-hidden="true"></i><span>{{ 'nav.login' | translate }}</span>
           </button>
           <div id="loginDropdownMenu" [ngClass]="{'ps-3 pe-3': (loading | async)}" ngbDropdownMenu
                role="dialog"
