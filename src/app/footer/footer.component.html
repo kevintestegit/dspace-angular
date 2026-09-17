@@ -1,23 +1,27 @@
 <footer class="pcirn-footer">
   <div class="pcirn-footer-main">
     <div class="pcirn-footer-brand">
-      <div class="pcirn-footer-marks"><img src="assets/images/dspace-logo-mini.svg" alt="DSpace" /><img src="assets/pcirn/images/brasao-policia-cientifica-rn.png" alt="Polícia Científica do Rio Grande do Norte" /><img src="assets/pcirn/images/brasao-estado-rn.png" alt="Governo do Rio Grande do Norte" /></div>
-      <strong>Repositório Institucional da PCIRN</strong>
-      <p>Ciência que identifica. Informação que transforma.</p>
-      <div class="pcirn-footer-social" aria-label="Canais institucionais"><i class="fab fa-instagram" aria-hidden="true"></i><i class="fab fa-youtube" aria-hidden="true"></i><i class="fab fa-facebook-f" aria-hidden="true"></i><i class="far fa-envelope" aria-hidden="true"></i></div>
+      <div class="pcirn-footer-marks"><img src="assets/images/dspace-logo-mini.svg" alt="DSpace" /><img src="assets/pcirn/images/brasao-policia-cientifica-rn.png" [attr.alt]="'pcirn.header.institution' | translate" /><img src="assets/pcirn/images/brasao-estado-rn.png" alt="Governo do Rio Grande do Norte" /></div>
+      <strong>{{ 'pcirn.header.name' | translate }} {{ 'pcirn.header.acronym' | translate }}</strong>
+      <p>{{ 'pcirn.footer.slogan' | translate }}</p>
+      <div class="pcirn-footer-social" [attr.aria-label]="'pcirn.footer.social.aria' | translate">
+        <a href="https://www.instagram.com/policiacientificarn" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        <a href="mailto:arquivogeral@pci.rn.gov.br" [attr.aria-label]="'pcirn.footer.email.aria' | translate"><i class="far fa-envelope" aria-hidden="true"></i></a>
+        <a href="tel:+558432326928" [attr.aria-label]="'pcirn.footer.phone.aria' | translate"><i class="fas fa-phone" aria-hidden="true"></i></a>
+      </div>
     </div>
     <div class="pcirn-footer-column">
-      <h2>Navegação</h2>
-      <a routerLink="/home">Início</a><a routerLink="/community-list">Comunidades</a><a routerLink="/community-list">Coleções</a><a routerLink="/search">Publicações</a>
+      <h2>{{ 'pcirn.footer.nav.title' | translate }}</h2>
+      <a routerLink="/home">{{ 'home.breadcrumbs' | translate }}</a><a routerLink="/community-list">{{ 'communityList.breadcrumbs' | translate }}</a><a routerLink="/collection-list">{{ 'collection.listelement.badge' | translate }}</a><a routerLink="/search">{{ 'publicacoes.search.title' | translate }}</a>
     </div>
     <div class="pcirn-footer-column">
-      <h2>Ajuda e informações</h2>
-      <a routerLink="/info/about">Sobre o repositório</a><a routerLink="/info/accessibility">Política de acesso</a><a routerLink="/info/feedback">Ajuda</a><a routerLink="/info/fale-conosco">Fale conosco</a>
+      <h2>{{ 'pcirn.footer.help.title' | translate }}</h2>
+      <a routerLink="/info/about">{{ 'info.about.title' | translate }}</a><a routerLink="/info/politica-acesso">{{ 'info.access-policy.title' | translate }}</a><a routerLink="/info/ajuda">{{ 'pcirn.footer.help.feedback' | translate }}</a><a routerLink="/info/fale-conosco">{{ 'info.fale-conosco.title' | translate }}</a>
     </div>
     <div class="pcirn-footer-column">
-      <h2>Plataforma</h2>
-      <span></span><span>Sistema DSpace v9.0</span><p>Desenvolvido por <strong>NUGECID</strong></p>
+      <h2>{{ 'pcirn.footer.platform.title' | translate }}</h2>
+      <span></span><span>{{ 'pcirn.footer.platform.system' | translate }}</span><p>{{ 'pcirn.footer.developed-by' | translate }} <strong>NUGECID</strong></p>
     </div>
   </div>
-  <div class="pcirn-footer-bottom"><span>Polícia Científica do Rio Grande do Norte. Todos os direitos reservados.</span><span>© {{ dateObj | date:'y' }} Polícia Científica do Rio Grande do Norte</span></div>
+  <div class="pcirn-footer-bottom"><span>{{ 'pcirn.footer.copyright' | translate }}</span><span>© {{ dateObj | date:'y' }} {{ 'pcirn.header.institution' | translate }}</span></div>
 </footer>

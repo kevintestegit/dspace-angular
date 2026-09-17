@@ -1,4 +1,12 @@
 {
+  "user-menu.add-document": "New document",
+  "user-menu.sectors": "My sectors",
+  "user-menu.administration": "Administration",
+  "admin.dashboard.title": "Administration dashboard",
+  "admin.dashboard.title.breadcrumbs": "Administration dashboard",
+  "admin.dashboard.description": "Administrative actions and operations",
+  "publicacoes.search.title": "Publications",
+
   "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
 
   "401.link.home-page": "Take me to the home page",
@@ -1443,6 +1451,36 @@
 
   "communityList.title": "List of Communities",
 
+  "communityList.subtitle": "Browse the communities to access their documents, collections and publications.",
+
+  "communityList.search": "Search communities...",
+
+  "communityList.count": "{{ count }} communities found",
+
+  "communityList.count.one": "{{ count }} community found",
+
+  "communityList.empty": "No communities found.",
+
+  "communityList.error": "Unable to load communities right now.",
+
+  "collectionList.breadcrumbs": "Collection List",
+
+  "collectionList.tabTitle": "Collection List",
+
+  "collectionList.title": "List of Collections",
+
+  "collectionList.subtitle": "Browse the collections to access their documents and publications.",
+
+  "collectionList.search": "Search collections...",
+
+  "collectionList.count": "{{ count }} collections found",
+
+  "collectionList.count.one": "{{ count }} collection found",
+
+  "collectionList.empty": "No collections found.",
+
+  "collectionList.error": "Unable to load collections right now.",
+
   "communityList.showMore": "Show More",
 
   "communityList.expand": "Expand {{ name }}",
@@ -2325,9 +2363,21 @@
 
   "info.feedback.page_help": "The page related to your feedback",
 
+  "info.about.title": "About the repository",
+
+  "info.about.breadcrumbs": "About the repository",
+
   "info.fale-conosco.title": "Contact Us",
 
   "info.fale-conosco.breadcrumbs": "Contact Us",
+
+  "info.access-policy.title": "Access Policy",
+
+  "info.access-policy.breadcrumbs": "Access Policy",
+
+  "info.ajuda.title": "Help",
+
+  "info.ajuda.breadcrumbs": "Help",
 
   "info.coar-notify-support.title": "COAR Notify Support",
 
@@ -2929,6 +2979,105 @@
 
   "item.page.abstract": "Abstract",
 
+  "pcirn.item.type": "Document type",
+  "pcirn.item.view": "View",
+  "pcirn.item.institution": "Institution",
+  "pcirn.item.citation.title": "How to cite this document",
+  "pcirn.item.citation.copy": "Copy citation",
+  "pcirn.item.uri.copy": "Copy URI",
+  "pcirn.item.copy.done": "Copied",
+  "pcirn.item.full-metadata": "Complete metadata",
+  "pcirn.mydspace.tasks.title": "Workflow tasks waiting for review",
+  "pcirn.mydspace.tasks.pool": "{{count}} waiting for review",
+  "pcirn.mydspace.tasks.claimed": "{{count}} claimed by you",
+  "pcirn.mydspace.tasks.action": "Review tasks",
+  "pcirn.mydspace.tasks.submissions": "My submissions",
+
+  "pcirn.item.viewer.aria": "Document viewer",
+  "pcirn.item.info.aria": "Document information",
+
+  "pcirn.document-type.PORTARIA": "Ordinance",
+  "pcirn.document-type.PORTARIA_E_ATO_NORMATIVO_INTERNO": "Ordinance and Internal Normative Act",
+  "pcirn.document-type.DECRETO": "Decree",
+  "pcirn.document-type.LEI": "Law",
+  "pcirn.document-type.POP": "Standard Operating Procedure (SOP)",
+  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRÃO_(POP)": "Standard Operating Procedure (SOP)",
+  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRAO_POP": "Standard Operating Procedure (SOP)",
+  "pcirn.document-type.NOTA_TECNICA": "Technical Note",
+  "pcirn.document-type.NOTA_TÉCNICA": "Technical Note",
+  "pcirn.document-type.MANUAL_GUIA": "Technical Manual and Guide",
+  "pcirn.document-type.MANUAL_TECNICO_E_GUIA": "Technical Manual and Guide",
+  "pcirn.document-type.MANUAL_TÉCNICO_E_GUIA": "Technical Manual and Guide",
+  "pcirn.document-type.MANUAL_GESTAO": "Management and Planning Manual",
+  "pcirn.document-type.MANUAL_DE_GESTAO_E_PLANEJAMENTO": "Management and Planning Manual",
+  "pcirn.document-type.MANUAL_DE_GESTÃO_E_PLANEJAMENTO": "Management and Planning Manual",
+  "pcirn.document-type.RELATORIO_PRODUTIVIDADE": "Productivity Report",
+  "pcirn.document-type.RELATORIO_DE_PRODUTIVIDADE": "Productivity Report",
+  "pcirn.document-type.RELATÓRIO_DE_PRODUTIVIDADE": "Productivity Report",
+  "pcirn.document-type.RELATORIO_CONTAS": "Accountability Report",
+  "pcirn.document-type.RELATORIO_DE_PRESTACAO_DE_CONTAS": "Accountability Report",
+  "pcirn.document-type.RELATÓRIO_DE_PRESTAÇÃO_DE_CONTAS": "Accountability Report",
+  "pcirn.document-type.DIRETRIZ_INSTRUCAO": "Directive and Normative Instruction",
+  "pcirn.document-type.DIRETRIZ_E_INSTRUCAO_NORMATIVA_OPERACIONAL": "Directive and Normative Instruction",
+  "pcirn.document-type.DIRETRIZ_E_INSTRUÇÃO_NORMATIVA/OPERACIONAL": "Directive and Normative Instruction",
+  "pcirn.document-type.DIRETRIZ_E_INSTRUCAO_NORMATIVA/OPERACIONAL": "Directive and Normative Instruction",
+  "pcirn.document-type.TEXTO": "Text",
+  "pcirn.document-type.DOCUMENTO": "Document",
+  "pcirn.document-type.DEFAULT": "Document",
+
+  "pcirn.home.hero.title.part1": "Institutional",
+  "pcirn.home.hero.title.part2": "documents of",
+  "pcirn.home.hero.lead": "Browse official regulations, ordinances, reports and publications of the Scientific Police of Rio Grande do Norte.",
+  "pcirn.home.search.heading": "Search the repository",
+  "pcirn.home.search.chips.aria": "Repository categories",
+  "pcirn.home.search.chip.regulations": "Regulations and Ordinances",
+  "pcirn.home.search.chip.pops": "SOPs and Procedures",
+  "pcirn.home.search.chip.research": "Scientific Research",
+  "pcirn.home.search.chip.reports": "Technical Reports",
+  "pcirn.home.quick-access.label.part1": "Quick",
+  "pcirn.home.quick-access.label.part2": "access",
+  "pcirn.home.quick-access.title": "Quick access",
+  "pcirn.home.quick-access.regulations.title": "Regulations and Ordinances",
+  "pcirn.home.quick-access.regulations.desc": "Access official regulations, ordinances and acts.",
+  "pcirn.home.quick-access.pops.title": "SOPs and Procedures",
+  "pcirn.home.quick-access.pops.desc": "Standard operating procedures and workflows.",
+  "pcirn.home.quick-access.research.title": "Scientific Research",
+  "pcirn.home.quick-access.research.desc": "Scientific papers, studies and publications.",
+  "pcirn.home.quick-access.reports.title": "Technical Reports",
+  "pcirn.home.quick-access.reports.desc": "Technical reports, opinions and documents.",
+  "pcirn.home.quick-access.requires-login": "requires login",
+  "pcirn.home.featured.label.part1": "Featured",
+  "pcirn.home.featured.label.part2": "collections",
+  "pcirn.home.featured.title": "Featured collections",
+  "pcirn.home.featured.default-desc": "Institutional documents and publications.",
+  "pcirn.home.featured.explore": "Explore collection",
+  "pcirn.home.featured.error": "Unable to load collections right now.",
+  "pcirn.home.featured.loading": "Loading collections",
+  "pcirn.home.metrics.aria": "Repository statistics",
+  "pcirn.home.metrics.documents": "Documents",
+  "pcirn.home.metrics.collections": "Collections",
+  "pcirn.home.metrics.communities": "Communities",
+  "pcirn.home.latest.label.part1": "Latest",
+  "pcirn.home.latest.label.part2": "publications",
+  "pcirn.home.latest.heading": "Latest publications",
+  "pcirn.home.latest.view-all": "View all publications",
+  "pcirn.home.latest.empty": "No public items to display yet.",
+  "pcirn.home.latest.error": "Unable to load publications right now.",
+  "pcirn.home.latest.loading": "Loading publications",
+
+  "pcirn.footer.slogan": "Science that identifies. Information that transforms.",
+  "pcirn.footer.social.aria": "Institutional channels",
+  "pcirn.footer.email.aria": "Send email",
+  "pcirn.footer.phone.aria": "Phone +55 84 3232-6928",
+  "pcirn.footer.nav.title": "Navigation",
+  "pcirn.footer.help.title": "Help and Information",
+  "pcirn.footer.help.feedback": "Help",
+  "pcirn.footer.platform.title": "Platform",
+  "pcirn.footer.platform.system": "DSpace System v9.0",
+  "pcirn.footer.developed-by": "Developed by",
+  "pcirn.footer.copyright": "Scientific Police of Rio Grande do Norte. All rights reserved.",
+
+
   "item.page.author": "Author",
 
   "item.page.authors": "Authors",
@@ -3470,6 +3619,12 @@
   "menu.header.admin": "Management",
 
   "menu.header.image.logo": "Repository logo",
+
+  "pcirn.header.name": "Institutional Repository",
+  "pcirn.header.acronym": "PCIRN",
+  "pcirn.header.institution": "Scientific Police of Rio Grande do Norte",
+  "pcirn.header.tagline": "Science • Truth • Citizenship",
+  "pcirn.header.slogan": "Knowledge that strengthens justice and society",
 
   "menu.header.admin.description": "Management menu",
 
@@ -5913,6 +6068,16 @@
   "submission.workflow.tasks.claimed.decline": "Decline",
 
   "submission.workflow.tasks.claimed.decline_help": "",
+
+  "submission.workflow.tasks.claimed.delete": "Delete item",
+
+  "submission.workflow.tasks.claimed.delete_help": "Permanently delete the submission, the item and its files. This cannot be undone.",
+
+  "submission.workflow.tasks.claimed.delete.confirm.title": "Delete item permanently",
+
+  "submission.workflow.tasks.claimed.delete.confirm.info": "This action deletes the submission, the item and its files. It cannot be undone.",
+
+  "submission.workflow.tasks.claimed.delete.confirm.submit": "Delete permanently",
 
   "submission.workflow.tasks.claimed.reject.reason.info": "Please enter your reason for rejecting the submission into the box below, indicating whether the submitter may fix a problem and resubmit.",
 

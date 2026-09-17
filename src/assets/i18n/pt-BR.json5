@@ -1,15 +1,21 @@
 {
-  // "sector-sidebar.title": "Sectors",
-  "sector-sidebar.title": "Setores",
+  // "user-menu.add-document": "Add document",
+  "user-menu.add-document": "Novo documento",
 
-  // "sector-sidebar.loading": "Loading sectors...",
-  "sector-sidebar.loading": "Carregando setores...",
+  // "user-menu.sectors": "My sectors",
+  "user-menu.sectors": "Meus setores",
 
-  // "sector-sidebar.empty": "No sector has been assigned to your user.",
-  "sector-sidebar.empty": "Nenhum setor foi atribuído ao seu usuário.",
+  // "user-menu.administration": "Administration",
+  "user-menu.administration": "Administração",
 
-  // "sector-sidebar.add-document": "Add document",
-  "sector-sidebar.add-document": "Adicionar documento",
+  // "admin.dashboard.title": "Administration dashboard",
+  "admin.dashboard.title": "Painel administrativo",
+
+  // "admin.dashboard.title.breadcrumbs": "Administration dashboard",
+  "admin.dashboard.title.breadcrumbs": "Painel administrativo",
+
+  // "admin.dashboard.description": "Access the administrative actions authorized for your account.",
+  "admin.dashboard.description": "Acesse as ações administrativas autorizadas para sua conta.",
 
   // "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
   "401.help": "Você não tem autorização para acessar esta página. Clique no botão abaixo para ir à página inicial.",
@@ -2180,6 +2186,51 @@
   // "communityList.title": "List of Communities",
   "communityList.title": "Lista de Comunidades",
 
+  // "communityList.subtitle": "Browse the communities to access their documents, collections and publications.",
+  "communityList.subtitle": "Navegue pelas comunidades para acessar seus documentos, coleções e publicações.",
+
+  // "communityList.search": "Search communities...",
+  "communityList.search": "Buscar comunidades...",
+
+  // "communityList.count": "{{ count }} communities found",
+  "communityList.count": "{{ count }} comunidades encontradas",
+
+  // "communityList.count.one": "{{ count }} community found",
+  "communityList.count.one": "{{ count }} comunidade encontrada",
+
+  // "communityList.empty": "No communities found.",
+  "communityList.empty": "Nenhuma comunidade encontrada.",
+
+  // "communityList.error": "Unable to load communities right now.",
+  "communityList.error": "Não foi possível carregar as comunidades agora.",
+
+  // "collectionList.breadcrumbs": "Collection List",
+  "collectionList.breadcrumbs": "Lista de Coleções",
+
+  // "collectionList.tabTitle": "Collection List",
+  "collectionList.tabTitle": "Lista de Coleções",
+
+  // "collectionList.title": "List of Collections",
+  "collectionList.title": "Lista de Coleções",
+
+  // "collectionList.subtitle": "Browse the collections to access their documents and publications.",
+  "collectionList.subtitle": "Navegue pelas coleções para acessar seus documentos e publicações.",
+
+  // "collectionList.search": "Search collections...",
+  "collectionList.search": "Buscar coleções...",
+
+  // "collectionList.count": "{{ count }} collections found",
+  "collectionList.count": "{{ count }} coleções encontradas",
+
+  // "collectionList.count.one": "{{ count }} collection found",
+  "collectionList.count.one": "{{ count }} coleção encontrada",
+
+  // "collectionList.empty": "No collections found.",
+  "collectionList.empty": "Nenhuma coleção encontrada.",
+
+  // "collectionList.error": "Unable to load collections right now.",
+  "collectionList.error": "Não foi possível carregar as coleções agora.",
+
   // "communityList.showMore": "Show More",
   "communityList.showMore": "Mostrar Mais",
 
@@ -3505,11 +3556,29 @@
   // "info.feedback.page_help": "The page related to your feedback",
   "info.feedback.page_help": "A página relacionada à sua sugestão",
 
+  // "info.about.title": "About the repository",
+  "info.about.title": "Sobre o repositório",
+
+  // "info.about.breadcrumbs": "About the repository",
+  "info.about.breadcrumbs": "Sobre o repositório",
+
   // "info.fale-conosco.title": "Fale Conosco",
   "info.fale-conosco.title": "Fale Conosco",
 
   // "info.fale-conosco.breadcrumbs": "Fale Conosco",
   "info.fale-conosco.breadcrumbs": "Fale Conosco",
+
+  // "info.access-policy.title": "Política de acesso",
+  "info.access-policy.title": "Política de acesso",
+
+  // "info.access-policy.breadcrumbs": "Política de acesso",
+  "info.access-policy.breadcrumbs": "Política de acesso",
+
+  // "info.ajuda.title": "Ajuda",
+  "info.ajuda.title": "Ajuda",
+
+  // "info.ajuda.breadcrumbs": "Ajuda",
+  "info.ajuda.breadcrumbs": "Ajuda",
 
   // "info.coar-notify-support.title": "COAR Notify Support",
   "info.coar-notify-support.title": "Suporte COAR Notify",
@@ -4423,6 +4492,105 @@
   // "item.page.abstract": "Abstract",
   "item.page.abstract": "Resumo",
 
+  "pcirn.item.type": "Tipo de documento",
+  "pcirn.item.view": "Visualizar",
+  "pcirn.item.institution": "Instituição",
+  "pcirn.item.citation.title": "Como citar este documento",
+  "pcirn.item.citation.copy": "Copiar citação",
+  "pcirn.item.uri.copy": "Copiar URI",
+  "pcirn.item.copy.done": "Copiado",
+  "pcirn.item.full-metadata": "Metadados completos",
+  "pcirn.mydspace.tasks.title": "Tarefas de fluxo de trabalho aguardando análise",
+  "pcirn.mydspace.tasks.pool": "{{count}} aguardando análise",
+  "pcirn.mydspace.tasks.claimed": "{{count}} assumida(s) por você",
+  "pcirn.mydspace.tasks.action": "Analisar tarefas",
+  "pcirn.mydspace.tasks.submissions": "Minhas submissões",
+
+  "pcirn.item.viewer.aria": "Visualizador do documento",
+  "pcirn.item.info.aria": "Informações do documento",
+
+  "pcirn.document-type.PORTARIA": "Portaria",
+  "pcirn.document-type.PORTARIA_E_ATO_NORMATIVO_INTERNO": "Portaria e Ato Normativo Interno",
+  "pcirn.document-type.DECRETO": "Decreto",
+  "pcirn.document-type.LEI": "Lei",
+  "pcirn.document-type.POP": "Procedimento Operacional Padrão (POP)",
+  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRÃO_(POP)": "Procedimento Operacional Padrão (POP)",
+  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRAO_POP": "Procedimento Operacional Padrão (POP)",
+  "pcirn.document-type.NOTA_TECNICA": "Nota Técnica",
+  "pcirn.document-type.NOTA_TÉCNICA": "Nota Técnica",
+  "pcirn.document-type.MANUAL_GUIA": "Manual Técnico e Guia",
+  "pcirn.document-type.MANUAL_TECNICO_E_GUIA": "Manual Técnico e Guia",
+  "pcirn.document-type.MANUAL_TÉCNICO_E_GUIA": "Manual Técnico e Guia",
+  "pcirn.document-type.MANUAL_GESTAO": "Manual de Gestão e Planejamento",
+  "pcirn.document-type.MANUAL_DE_GESTAO_E_PLANEJAMENTO": "Manual de Gestão e Planejamento",
+  "pcirn.document-type.MANUAL_DE_GESTÃO_E_PLANEJAMENTO": "Manual de Gestão e Planejamento",
+  "pcirn.document-type.RELATORIO_PRODUTIVIDADE": "Relatório de Produtividade",
+  "pcirn.document-type.RELATORIO_DE_PRODUTIVIDADE": "Relatório de Produtividade",
+  "pcirn.document-type.RELATÓRIO_DE_PRODUTIVIDADE": "Relatório de Produtividade",
+  "pcirn.document-type.RELATORIO_CONTAS": "Relatório de Prestação de Contas",
+  "pcirn.document-type.RELATORIO_DE_PRESTACAO_DE_CONTAS": "Relatório de Prestação de Contas",
+  "pcirn.document-type.RELATÓRIO_DE_PRESTAÇÃO_DE_CONTAS": "Relatório de Prestação de Contas",
+  "pcirn.document-type.DIRETRIZ_INSTRUCAO": "Diretriz e Instrução Normativa",
+  "pcirn.document-type.DIRETRIZ_E_INSTRUCAO_NORMATIVA_OPERACIONAL": "Diretriz e Instrução Normativa/Operacional",
+  "pcirn.document-type.DIRETRIZ_E_INSTRUÇÃO_NORMATIVA/OPERACIONAL": "Diretriz e Instrução Normativa/Operacional",
+  "pcirn.document-type.DIRETRIZ_E_INSTRUCAO_NORMATIVA/OPERACIONAL": "Diretriz e Instrução Normativa/Operacional",
+  "pcirn.document-type.TEXTO": "Texto",
+  "pcirn.document-type.DOCUMENTO": "Documento",
+  "pcirn.document-type.DEFAULT": "Documento",
+
+  "pcirn.home.hero.title.part1": "Documentos",
+  "pcirn.home.hero.title.part2": "institucionais da",
+  "pcirn.home.hero.lead": "Consulte normas, portarias, relatórios e publicações oficiais da Polícia Científica do Rio Grande do Norte.",
+  "pcirn.home.search.heading": "Pesquise no acervo",
+  "pcirn.home.search.chips.aria": "Categorias do acervo",
+  "pcirn.home.search.chip.regulations": "Normas e Portarias",
+  "pcirn.home.search.chip.pops": "POPs e Procedimentos",
+  "pcirn.home.search.chip.research": "Produção Científica",
+  "pcirn.home.search.chip.reports": "Relatórios Técnicos",
+  "pcirn.home.quick-access.label.part1": "Acesso",
+  "pcirn.home.quick-access.label.part2": "rápido",
+  "pcirn.home.quick-access.title": "Acesso rápido",
+  "pcirn.home.quick-access.regulations.title": "Normas e Portarias",
+  "pcirn.home.quick-access.regulations.desc": "Acesse normas, portarias e atos oficiais.",
+  "pcirn.home.quick-access.pops.title": "POPs e Procedimentos",
+  "pcirn.home.quick-access.pops.desc": "Procedimentos operacionais e fluxos de trabalho.",
+  "pcirn.home.quick-access.research.title": "Produção Científica",
+  "pcirn.home.quick-access.research.desc": "Artigos, estudos e publicações científicas.",
+  "pcirn.home.quick-access.reports.title": "Relatórios Técnicos",
+  "pcirn.home.quick-access.reports.desc": "Relatórios, pareceres e documentos técnicos.",
+  "pcirn.home.quick-access.requires-login": "requer login",
+  "pcirn.home.featured.label.part1": "Coleções",
+  "pcirn.home.featured.label.part2": "em destaque",
+  "pcirn.home.featured.title": "Coleções em destaque",
+  "pcirn.home.featured.default-desc": "Documentos e publicações institucionais.",
+  "pcirn.home.featured.explore": "Explorar coleção",
+  "pcirn.home.featured.error": "Não foi possível carregar as coleções agora.",
+  "pcirn.home.featured.loading": "Carregando coleções",
+  "pcirn.home.metrics.aria": "Estatísticas do acervo",
+  "pcirn.home.metrics.documents": "Documentos",
+  "pcirn.home.metrics.collections": "Coleções",
+  "pcirn.home.metrics.communities": "Comunidades",
+  "pcirn.home.latest.label.part1": "Últimas",
+  "pcirn.home.latest.label.part2": "publicações",
+  "pcirn.home.latest.heading": "Últimas publicações",
+  "pcirn.home.latest.view-all": "Ver todas as publicações",
+  "pcirn.home.latest.empty": "Ainda não há publicações públicas para exibir.",
+  "pcirn.home.latest.error": "Não foi possível carregar as publicações agora.",
+  "pcirn.home.latest.loading": "Carregando publicações",
+
+  "pcirn.footer.slogan": "Ciência que identifica. Informação que transforma.",
+  "pcirn.footer.social.aria": "Canais institucionais",
+  "pcirn.footer.email.aria": "Enviar e-mail",
+  "pcirn.footer.phone.aria": "Telefone +55 84 3232-6928",
+  "pcirn.footer.nav.title": "Navegação",
+  "pcirn.footer.help.title": "Ajuda e informações",
+  "pcirn.footer.help.feedback": "Ajuda",
+  "pcirn.footer.platform.title": "Plataforma",
+  "pcirn.footer.platform.system": "Sistema DSpace v9.0",
+  "pcirn.footer.developed-by": "Desenvolvido por",
+  "pcirn.footer.copyright": "Polícia Científica do Rio Grande do Norte. Todos os direitos reservados.",
+
+
   // "item.page.author": "Author",
   "item.page.author": "Autor",
 
@@ -5239,6 +5407,12 @@
 
   // "menu.header.image.logo": "Repository logo",
   "menu.header.image.logo": "Logo do repositório",
+
+  "pcirn.header.name": "Repositório Institucional",
+  "pcirn.header.acronym": "PCIRN",
+  "pcirn.header.institution": "Polícia Científica do Rio Grande do Norte",
+  "pcirn.header.tagline": "Ciência • Verdade • Cidadania",
+  "pcirn.header.slogan": "Conhecimento que fortalece a justiça e a sociedade",
 
   // "menu.header.admin.description": "Management menu",
   "menu.header.admin.description": "Menu de gerenciamento",
@@ -7234,6 +7408,8 @@
   // "search.title": "Search",
   "search.title": "Procurar",
 
+  "publicacoes.search.title": "Publicações",
+
   // "search.breadcrumbs": "Search",
   "search.breadcrumbs": "Procurar",
 
@@ -9046,16 +9222,16 @@
   "submission.workflow.generic.submit_score-help": "",
 
   // "submission.workflow.tasks.claimed.approve": "Approve",
-  "submission.workflow.tasks.claimed.approve": "Aprovar",
+  "submission.workflow.tasks.claimed.approve": "Validar",
 
   // "submission.workflow.tasks.claimed.approve_help": "If you have reviewed the item and it is suitable for inclusion in the collection, select \"Approve\".",
-  "submission.workflow.tasks.claimed.approve_help": "Se você revisou o item e este está adequado para inclusão na coleção, selecione \"Aprovar\".",
+  "submission.workflow.tasks.claimed.approve_help": "Se você revisou o item e este está adequado, selecione \"Validar\" para publicá-lo.",
 
   // "submission.workflow.tasks.claimed.edit": "Edit",
   "submission.workflow.tasks.claimed.edit": "Editar",
 
   // "submission.workflow.tasks.claimed.edit_help": "Select this option to change the item's metadata.",
-  "submission.workflow.tasks.claimed.edit_help": "Selecione esta opção para modificar os metadados do item.",
+  "submission.workflow.tasks.claimed.edit_help": "Selecione esta opção para modificar os metadados e arquivos do item.",
 
   // "submission.workflow.tasks.claimed.decline": "Decline",
   "submission.workflow.tasks.claimed.decline": "Recusar",
@@ -9063,24 +9239,39 @@
   // "submission.workflow.tasks.claimed.decline_help": "",
   "submission.workflow.tasks.claimed.decline_help": "",
 
+  // "submission.workflow.tasks.claimed.delete": "Delete item",
+  "submission.workflow.tasks.claimed.delete": "Excluir item",
+
+  // "submission.workflow.tasks.claimed.delete_help": "Permanently delete the submission, the item and its files.",
+  "submission.workflow.tasks.claimed.delete_help": "Excluir definitivamente a submissão, o item e os arquivos. Não pode ser desfeito.",
+
+  // "submission.workflow.tasks.claimed.delete.confirm.title": "Delete item permanently",
+  "submission.workflow.tasks.claimed.delete.confirm.title": "Excluir item definitivamente",
+
+  // "submission.workflow.tasks.claimed.delete.confirm.info": "This action deletes the submission, the item and its files. It cannot be undone.",
+  "submission.workflow.tasks.claimed.delete.confirm.info": "Esta ação apaga a submissão, o item e os arquivos. Não pode ser desfeita.",
+
+  // "submission.workflow.tasks.claimed.delete.confirm.submit": "Delete permanently",
+  "submission.workflow.tasks.claimed.delete.confirm.submit": "Excluir definitivamente",
+
   // "submission.workflow.tasks.claimed.reject.reason.info": "Please enter your reason for rejecting the submission into the box below, indicating whether the submitter may fix a problem and resubmit.",
-  "submission.workflow.tasks.claimed.reject.reason.info": "Por favor, informe o motivo pela rejeição da submissão na caixa abaixo, indicando se o submetedor pode corrigir um problema e reenviar.",
+  "submission.workflow.tasks.claimed.reject.reason.info": "Informe abaixo o motivo de devolver a submissão ao setor, indicando o que o submetedor deve corrigir antes de reenviar.",
 
   // "submission.workflow.tasks.claimed.reject.reason.placeholder": "Describe the reason of reject",
-  "submission.workflow.tasks.claimed.reject.reason.placeholder": "Descreva o motivo da rejeição",
+  "submission.workflow.tasks.claimed.reject.reason.placeholder": "Descreva o motivo da devolução ao setor",
 
   // "submission.workflow.tasks.claimed.reject.reason.submit": "Reject item",
-  "submission.workflow.tasks.claimed.reject.reason.submit": "Rejeitar item",
+  "submission.workflow.tasks.claimed.reject.reason.submit": "Retornar ao setor",
 
   // "submission.workflow.tasks.claimed.reject.reason.title": "Reason",
-  "submission.workflow.tasks.claimed.reject.reason.title": "Motivo",
+  "submission.workflow.tasks.claimed.reject.reason.title": "Motivo da devolução",
 
   // "submission.workflow.tasks.claimed.reject.submit": "Reject",
-  "submission.workflow.tasks.claimed.reject.submit": "Rejeitar",
+  "submission.workflow.tasks.claimed.reject.submit": "Retornar ao setor",
 
   // "submission.workflow.tasks.claimed.reject_help": "If you have reviewed the item and found it is <strong>not</strong> suitable for inclusion in the collection, select \"Reject\". You will then be asked to enter a message indicating why the item is unsuitable, and whether the submitter should change something and resubmit.",
   // TODO Source message changed - Revise the translation
-  "submission.workflow.tasks.claimed.reject_help": "Se você revisou o item e achou que ele <strong>não</strong> é adequado para inclusão na coleção, selecione \"Rejeitar\".  Você será questionado a informar uma mensagem indicando porque o item está inadequado e se o submetedor deve modificar algo e reenviar.",
+  "submission.workflow.tasks.claimed.reject_help": "Se o item <strong>não</strong> está adequado, selecione \"Retornar ao setor\" e informe o motivo da devolução, para que o setor corrija e reenvie.",
 
   // "submission.workflow.tasks.claimed.return": "Return to pool",
   "submission.workflow.tasks.claimed.return": "Retornar para o conjunto",

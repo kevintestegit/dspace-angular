@@ -30,6 +30,7 @@ import { AppState } from '../../../../app/app.reducer';
 import { isAuthenticated } from '../../../../app/core/auth/selectors';
 import { HomePageComponent as BaseComponent } from '../../../../app/home-page/home-page.component';
 import { ThemedSearchFormComponent } from '../../../../app/shared/search-form/themed-search-form.component';
+import { PcirnDocumentTypePipe } from '../../../../app/shared/utils/pcirn-document-type.pipe';
 import {
   buildQuickAccess,
   PcirnHomeDataService,
@@ -44,6 +45,7 @@ import {
     AsyncPipe,
     DatePipe,
     DecimalPipe,
+    PcirnDocumentTypePipe,
     RouterLink,
     ThemedSearchFormComponent,
     TranslateModule,

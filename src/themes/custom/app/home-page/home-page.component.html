@@ -3,33 +3,33 @@
     <div class="pcirn-home-hero-forensics" aria-hidden="true"><i class="fas fa-fingerprint"></i><i class="fas fa-search"></i></div>
     <div class="pcirn-home-hero-inner">
       <div class="pcirn-home-hero-copy">
-        <h1 id="pcirn-home-title"><span>Documentos</span><span>institucionais da <em>PCIRN.</em></span></h1>
+        <h1 id="pcirn-home-title"><span>{{ 'pcirn.home.hero.title.part1' | translate }}</span><span>{{ 'pcirn.home.hero.title.part2' | translate }} <em>PCIRN.</em></span></h1>
         <span class="pcirn-home-rule" aria-hidden="true"></span>
-        <p class="pcirn-home-lead">Consulte normas, portarias, relatórios e publicações oficiais da Polícia Científica do Rio Grande do Norte.</p>
+        <p class="pcirn-home-lead">{{ 'pcirn.home.hero.lead' | translate }}</p>
       </div>
     </div>
-    <div class="pcirn-home-search" role="search" aria-label="Pesquisar no repositório">
-      <div class="pcirn-home-search-heading"><i class="fas fa-search" aria-hidden="true"></i><strong>Pesquise no acervo</strong></div>
+    <div class="pcirn-home-search" role="search" [attr.aria-label]="'pcirn.home.search.heading' | translate">
+      <div class="pcirn-home-search-heading"><i class="fas fa-search" aria-hidden="true"></i><strong>{{ 'pcirn.home.search.heading' | translate }}</strong></div>
       <ds-search-form [inPlaceSearch]="false" [searchPlaceholder]="'home.search-form.placeholder' | translate"></ds-search-form>
-      <div class="pcirn-home-search-chips" aria-label="Categorias do acervo">
-        <a routerLink="/search"><i class="fas fa-gavel" aria-hidden="true"></i>Normas e Portarias</a>
-        <a routerLink="/search"><i class="fas fa-clipboard-list" aria-hidden="true"></i>POPs e Procedimentos</a>
-        <a routerLink="/search"><i class="fas fa-microscope" aria-hidden="true"></i>Produção Científica</a>
-        <a routerLink="/search"><i class="fas fa-chart-bar" aria-hidden="true"></i>Relatórios Técnicos</a>
+      <div class="pcirn-home-search-chips" [attr.aria-label]="'pcirn.home.search.chips.aria' | translate">
+        <a routerLink="/search"><i class="fas fa-gavel" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.regulations' | translate }}</a>
+        <a routerLink="/search"><i class="fas fa-clipboard-list" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.pops' | translate }}</a>
+        <a routerLink="/search"><i class="fas fa-microscope" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.research' | translate }}</a>
+        <a routerLink="/search"><i class="fas fa-chart-bar" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.reports' | translate }}</a>
       </div>
     </div>
   </section>
 
   <div class="pcirn-home-content">
     <section class="pcirn-home-section" aria-labelledby="pcirn-home-quick-title">
-      <div class="pcirn-home-section-label"><span>Acesso</span><span>rápido</span></div>
+      <div class="pcirn-home-section-label"><span>{{ 'pcirn.home.quick-access.label.part1' | translate }}</span><span>{{ 'pcirn.home.quick-access.label.part2' | translate }}</span></div>
       <div class="pcirn-home-section-body">
-        <h2 id="pcirn-home-quick-title" class="visually-hidden">Acesso rápido</h2>
+        <h2 id="pcirn-home-quick-title" class="visually-hidden">{{ 'pcirn.home.quick-access.title' | translate }}</h2>
         <div class="pcirn-home-card-grid">
           @for (card of (quickAccess$ | async); track card.title) {
-            <a class="pcirn-home-card" [class.pcirn-home-card-locked]="card.requiresLogin" [routerLink]="card.route" [attr.aria-label]="card.title + (card.requiresLogin ? ', requer login' : '')">
+            <a class="pcirn-home-card" [class.pcirn-home-card-locked]="card.requiresLogin" [routerLink]="card.route" [attr.aria-label]="(card.titleKey ? (card.titleKey | translate) : card.title) + (card.requiresLogin ? (', ' + ('pcirn.home.quick-access.requires-login' | translate)) : '')">
               <i [class]="'pcirn-home-card-icon fas ' + card.icon" aria-hidden="true"></i>
-              <span class="pcirn-home-card-copy"><strong>{{ card.title }}</strong><small>{{ card.description }}</small></span>
+              <span class="pcirn-home-card-copy"><strong>{{ card.titleKey ? (card.titleKey | translate) : card.title }}</strong><small>{{ card.descriptionKey ? (card.descriptionKey | translate) : card.description }}</small></span>
               <i class="pcirn-home-card-arrow fas fa-arrow-right" aria-hidden="true"></i>
             </a>
           }
@@ -38,30 +38,30 @@
     </section>
 
     <section class="pcirn-home-section" aria-labelledby="pcirn-home-featured-title">
-      <div class="pcirn-home-section-label"><span>Coleções</span><span>em destaque</span></div>
+      <div class="pcirn-home-section-label"><span>{{ 'pcirn.home.featured.label.part1' | translate }}</span><span>{{ 'pcirn.home.featured.label.part2' | translate }}</span></div>
       <div class="pcirn-home-section-body">
-        <h2 id="pcirn-home-featured-title" class="visually-hidden">Coleções em destaque</h2>
+        <h2 id="pcirn-home-featured-title" class="visually-hidden">{{ 'pcirn.home.featured.title' | translate }}</h2>
         <div class="pcirn-home-featured-row">
           @if (pcirnHomeData.featuredCollections | async; as featured) {
             @if (featured.hasSucceeded && featured.payload; as payload) {
               @for (collection of payload.page.slice(0, 3); track collection.id; let index = $index) {
                 <a class="pcirn-home-featured-card" [routerLink]="['/collections', collection.id]">
                   <i class="pcirn-home-featured-mark fas" [class.fa-dna]="index === 0" [class.fa-fingerprint]="index === 1" [class.fa-flask]="index === 2" aria-hidden="true"></i>
-                  <span><strong>{{ collection.name }}</strong><small>Documentos e publicações institucionais.</small><b>Explorar coleção <i class="fas fa-arrow-right" aria-hidden="true"></i></b></span>
+                  <span><strong>{{ collection.name }}</strong><small>{{ 'pcirn.home.featured.default-desc' | translate }}</small><b>{{ 'pcirn.home.featured.explore' | translate }} <i class="fas fa-arrow-right" aria-hidden="true"></i></b></span>
                 </a>
               }
             } @else if (featured.hasFailed) {
-              <p class="pcirn-home-state">Não foi possível carregar as coleções agora.</p>
+              <p class="pcirn-home-state">{{ 'pcirn.home.featured.error' | translate }}</p>
             } @else {
-              <div class="pcirn-home-skeleton-grid" aria-label="Carregando coleções" aria-busy="true"><span></span><span></span><span></span></div>
+              <div class="pcirn-home-skeleton-grid" [attr.aria-label]="'pcirn.home.featured.loading' | translate" aria-busy="true"><span></span><span></span><span></span></div>
             }
           }
           @if (pcirnHomeData.metrics | async; as metrics) {
             @if (metrics.hasSucceeded && metrics.payload; as payload) {
-              <div class="pcirn-home-metrics-grid" aria-label="Estatísticas do acervo">
-                <div><i class="far fa-file-alt" aria-hidden="true"></i><strong>{{ payload.items | number }}</strong><span>Documentos</span></div>
-                <div><i class="far fa-folder-open" aria-hidden="true"></i><strong>{{ payload.collections | number }}</strong><span>Coleções</span></div>
-                <div><i class="fas fa-users" aria-hidden="true"></i><strong>{{ payload.communities | number }}</strong><span>Comunidades</span></div>
+              <div class="pcirn-home-metrics-grid" [attr.aria-label]="'pcirn.home.metrics.aria' | translate">
+                <div><i class="far fa-file-alt" aria-hidden="true"></i><strong>{{ payload.items | number }}</strong><span>{{ 'pcirn.home.metrics.documents' | translate }}</span></div>
+                <div><i class="far fa-folder-open" aria-hidden="true"></i><strong>{{ payload.collections | number }}</strong><span>{{ 'pcirn.home.metrics.collections' | translate }}</span></div>
+                <div><i class="fas fa-users" aria-hidden="true"></i><strong>{{ payload.communities | number }}</strong><span>{{ 'pcirn.home.metrics.communities' | translate }}</span></div>
               </div>
             }
           }
@@ -70,10 +70,10 @@
     </section>
 
     <section class="pcirn-home-section" aria-labelledby="pcirn-home-latest-title">
-      <div class="pcirn-home-section-label"><span>Últimas</span><span>publicações</span></div>
+      <div class="pcirn-home-section-label"><span>{{ 'pcirn.home.latest.label.part1' | translate }}</span><span>{{ 'pcirn.home.latest.label.part2' | translate }}</span></div>
       <div class="pcirn-home-section-body">
         <div class="pcirn-home-latest">
-          <div class="pcirn-home-section-heading"><h2 id="pcirn-home-latest-title">Últimas publicações</h2><a routerLink="/search" class="pcirn-home-text-link">Ver todas as publicações <i class="fas fa-arrow-right" aria-hidden="true"></i></a></div>
+          <div class="pcirn-home-section-heading"><h2 id="pcirn-home-latest-title">{{ 'pcirn.home.latest.heading' | translate }}</h2><a routerLink="/search" class="pcirn-home-text-link">{{ 'pcirn.home.latest.view-all' | translate }} <i class="fas fa-arrow-right" aria-hidden="true"></i></a></div>
           @if (pcirnHomeData.latestPublications | async; as latest) {
             @if (latest.hasSucceeded && latest.payload; as payload) {
               @if (payload.page?.length) {
@@ -81,18 +81,18 @@
                   @for (item of payload.page.slice(0, 3); track item.id) {
                     <a [routerLink]="['/items', item.id]">
                       <i class="pcirn-home-latest-icon far fa-file-alt" aria-hidden="true"></i>
-                      <span class="pcirn-home-latest-copy"><small>{{ item.metadata['dc.type']?.[0]?.value || 'Documento' }}</small><strong>{{ item.name }}</strong><span>{{ item.metadata['dc.contributor.author']?.[0]?.value || item.metadata['dc.publisher']?.[0]?.value || 'PCIRN' }}</span></span>
+                      <span class="pcirn-home-latest-copy"><small>{{ (item.metadata['dc.type']?.[0]?.value | dsPcirnDocumentType) || ('pcirn.document-type.DEFAULT' | translate) }}</small><strong>{{ item.name }}</strong><span>{{ item.metadata['dc.contributor.author']?.[0]?.value || item.metadata['dc.publisher']?.[0]?.value || 'PCIRN' }}</span></span>
                       <time [attr.datetime]="item.metadata['dc.date.issued']?.[0]?.value">{{ item.metadata['dc.date.issued']?.[0]?.value | date:'dd/MM/yyyy':'UTC' }}</time>
                     </a>
                   }
                 </div>
               } @else {
-                <p class="pcirn-home-state">Ainda não há publicações públicas para exibir.</p>
+                <p class="pcirn-home-state">{{ 'pcirn.home.latest.empty' | translate }}</p>
               }
             } @else if (latest.hasFailed) {
-              <p class="pcirn-home-state">Não foi possível carregar as publicações agora.</p>
+              <p class="pcirn-home-state">{{ 'pcirn.home.latest.error' | translate }}</p>
             } @else {
-              <div class="pcirn-home-latest-loading" aria-label="Carregando publicações" aria-busy="true"></div>
+              <div class="pcirn-home-latest-loading" [attr.aria-label]="'pcirn.home.latest.loading' | translate" aria-busy="true"></div>
             }
           }
         </div>

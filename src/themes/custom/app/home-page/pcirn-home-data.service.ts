@@ -22,6 +22,8 @@ import { PaginatedSearchOptions } from '../../../../app/shared/search/models/pag
 import { SearchService } from '../../../../app/core/shared/search/search.service';
 
 export interface PcirnQuickAccessCard {
+  titleKey: string;
+  descriptionKey: string;
   title: string;
   description: string;
   icon: string;
@@ -38,10 +40,42 @@ export interface PcirnHomeMetrics {
 export function buildQuickAccess(isAuthenticated: boolean): PcirnQuickAccessCard[] {
   const privateRoute = isAuthenticated ? '/search' : '/login';
   return [
-    { title: 'Normas e Portarias', description: 'Acesse normas, portarias e atos oficiais.', icon: 'fa-gavel', route: '/search', requiresLogin: false },
-    { title: 'POPs e Procedimentos', description: 'Procedimentos operacionais e fluxos de trabalho.', icon: 'fa-clipboard-list', route: privateRoute, requiresLogin: true },
-    { title: 'Produção Científica', description: 'Artigos, estudos e publicações científicas.', icon: 'fa-microscope', route: privateRoute, requiresLogin: true },
-    { title: 'Relatórios Técnicos', description: 'Relatórios, pareceres e documentos técnicos.', icon: 'fa-chart-bar', route: privateRoute, requiresLogin: true },
+    {
+      titleKey: 'pcirn.home.quick-access.regulations.title',
+      descriptionKey: 'pcirn.home.quick-access.regulations.desc',
+      title: 'Normas e Portarias',
+      description: 'Acesse normas, portarias e atos oficiais.',
+      icon: 'fa-gavel',
+      route: '/search',
+      requiresLogin: false,
+    },
+    {
+      titleKey: 'pcirn.home.quick-access.pops.title',
+      descriptionKey: 'pcirn.home.quick-access.pops.desc',
+      title: 'POPs e Procedimentos',
+      description: 'Procedimentos operacionais e fluxos de trabalho.',
+      icon: 'fa-clipboard-list',
+      route: privateRoute,
+      requiresLogin: true,
+    },
+    {
+      titleKey: 'pcirn.home.quick-access.research.title',
+      descriptionKey: 'pcirn.home.quick-access.research.desc',
+      title: 'Produção Científica',
+      description: 'Artigos, estudos e publicações científicas.',
+      icon: 'fa-microscope',
+      route: privateRoute,
+      requiresLogin: true,
+    },
+    {
+      titleKey: 'pcirn.home.quick-access.reports.title',
+      descriptionKey: 'pcirn.home.quick-access.reports.desc',
+      title: 'Relatórios Técnicos',
+      description: 'Relatórios, pareceres e documentos técnicos.',
+      icon: 'fa-chart-bar',
+      route: privateRoute,
+      requiresLogin: true,
+    },
   ];
 }
 
