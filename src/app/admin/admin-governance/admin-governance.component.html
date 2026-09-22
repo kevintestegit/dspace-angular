@@ -1,0 +1,181 @@
+<div class="container governance" data-test="governance">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h2 class="mb-0">{{ 'admin.governance.title' | translate }}</h2>
+    <div>
+      <button type="button" class="btn btn-outline-primary mr-2" (click)="openCreateCommunity()"
+              data-test="new-community">{{ 'admin.governance.new.community' | translate }}</button>
+      <button type="button" class="btn btn-outline-primary" (click)="openCreateCollection()"
+              data-test="new-collection">{{ 'admin.governance.new.collection' | translate }}</button>
+    </div>
+  </div>
+  <p class="text-muted">{{ 'admin.governance.subtitle' | translate }}</p>
+
+  @if (feedback) {
+    <div class="alert alert-info" data-test="feedback">{{ feedback | translate }}</div>
+  }
+
+  @if (loading) {
+    <div data-test="loading">{{ 'admin.governance.loading' | translate }}</div>
+  }
+
+  @if (error) {
+    <div class="alert alert-danger" data-test="error">{{ 'admin.governance.error' | translate }}</div>
+  }
+
+  @if (governance) {
+    @if (governance.curationGroup; as curation) {
+      <div class="card mb-4" data-test="curation">
+        <div class="card-body">
+          <h5 class="card-title">{{ 'admin.governance.curation.title' | translate }}: {{ curation.name }}</h5>
+          <p class="text-muted">{{ 'admin.governance.curation.help' | translate }}</p>
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="toggleMembers(curation.uuid)"
+                  data-test="curation-members">{{ 'admin.governance.members.manage' | translate }}</button>
+          @if (expandedMembers === curation.uuid) {
+            <ng-container *ngTemplateOutlet="memberEditor; context: { $implicit: curation.uuid }"></ng-container>
+          }
+        </div>
+      </div>
+    }
+
+    @for (community of governance.communities; track community.uuid) {
+      <div class="card mb-4" data-test="community">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="card-title">
+              {{ community.name }}
+              <span class="badge"
+                    [ngClass]="community.accessMode === 'restricted' ? 'badge-warning' : 'badge-success'"
+                    data-test="access-mode">{{ 'admin.governance.access.' + community.accessMode | translate }}</span>
+            </h5>
+            <a class="btn btn-sm btn-outline-secondary" [routerLink]="editCommunityLink(community)"
+               data-test="edit-community">{{ 'admin.governance.edit' | translate }}</a>
+          </div>
+          <p class="text-muted mb-2" data-test="sector-group">
+            {{ 'admin.governance.sector-group' | translate }}:
+            @if (community.sectorGroup) {
+              {{ community.sectorGroup.name }} ({{ community.sectorGroup.memberCount }})
+            } @else {
+              {{ 'admin.governance.sector-group.none' | translate }}
+            }
+          </p>
+          <div class="mb-2">
+            @if (community.sectorGroup) {
+              <button type="button" class="btn btn-sm btn-outline-primary mr-2"
+                      (click)="toggleMembers(community.sectorGroup.uuid)"
+                      data-test="members">{{ 'admin.governance.members.manage' | translate }}</button>
+            }
+            <button type="button" class="btn btn-sm btn-outline-warning mr-2" (click)="startRestrict(community)"
+                    data-test="restrict">{{ 'admin.governance.restrict' | translate }}</button>
+            <button type="button" class="btn btn-sm btn-outline-success" (click)="startPublic(community)"
+                    data-test="publish">{{ 'admin.governance.publish' | translate }}</button>
+          </div>
+
+          @if (pendingRestrictUuid === community.uuid) {
+            <div class="alert alert-warning" data-test="restrict-confirm">
+              <span>{{ 'admin.governance.confirm.restrict' | translate }}</span>
+              <button type="button" class="btn btn-sm btn-warning ml-2" (click)="confirmRestrict(community)"
+                      data-test="confirm-restrict">{{ 'admin.governance.confirm' | translate }}</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2" (click)="cancelPending()"
+                      data-test="cancel">{{ 'admin.governance.cancel' | translate }}</button>
+            </div>
+          }
+
+          @if (pendingPublicUuid === community.uuid) {
+            <div class="alert alert-info" data-test="publish-confirm">
+              <span>{{ 'admin.governance.confirm.publish' | translate }}</span>
+              <button type="button" class="btn btn-sm btn-info ml-2" (click)="confirmPublic(community)"
+                      data-test="confirm-publish">{{ 'admin.governance.confirm' | translate }}</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary ml-2" (click)="cancelPending()"
+                      data-test="cancel">{{ 'admin.governance.cancel' | translate }}</button>
+            </div>
+          }
+
+          @if (pickerCommunityUuid === community.uuid) {
+            <div class="border rounded p-2 mb-2" data-test="group-picker">
+              <input type="text" class="form-control mb-2" [(ngModel)]="groupQuery" (ngModelChange)="searchGroups()"
+                     [placeholder]="'admin.governance.group-search' | translate" data-test="group-query">
+              @for (group of groupResults; track group.uuid) {
+                <button type="button" class="btn btn-sm btn-link d-block" (click)="pickGroup(group)"
+                        data-test="group-option">{{ group.name }}</button>
+              }
+            </div>
+          }
+
+          @if (community.sectorGroup && expandedMembers === community.sectorGroup.uuid) {
+            <ng-container *ngTemplateOutlet="memberEditor; context: { $implicit: community.sectorGroup.uuid }"></ng-container>
+          }
+
+          <table class="table table-sm" data-test="collections">
+            <thead>
+              <tr>
+                <th>{{ 'admin.governance.collections.name' | translate }}</th>
+                <th>{{ 'admin.governance.collections.publish-group' | translate }}</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (collection of community.collections; track collection.uuid) {
+                <tr data-test="collection">
+                  <td>{{ collection.name }}</td>
+                  <td>
+                    @if (collection.publishGroup) {
+                      {{ collection.publishGroup.name }}
+                    } @else {
+                      <button type="button" class="btn btn-sm btn-outline-primary"
+                              (click)="startBindCollection(collection.uuid)"
+                              data-test="bind-collection">{{ 'admin.governance.collections.bind' | translate }}</button>
+                    }
+                    @if (pickerCollectionUuid === collection.uuid) {
+                      <div class="border rounded p-2 mt-2" data-test="group-picker">
+                        <input type="text" class="form-control mb-2" [(ngModel)]="groupQuery"
+                               (ngModelChange)="searchGroups()"
+                               [placeholder]="'admin.governance.group-search' | translate" data-test="group-query">
+                        @for (group of groupResults; track group.uuid) {
+                          <button type="button" class="btn btn-sm btn-link d-block" (click)="pickGroup(group)"
+                                  data-test="group-option">{{ group.name }}</button>
+                        }
+                      </div>
+                    }
+                  </td>
+                  <td>
+                    <a class="btn btn-sm btn-outline-secondary" [routerLink]="editCollectionLink(collection.uuid)"
+                       data-test="edit-collection">{{ 'admin.governance.edit' | translate }}</a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    }
+  }
+</div>
+
+<ng-template #memberEditor let-groupUuid>
+  <div class="border rounded p-2 mb-2" data-test="member-editor">
+    <ul class="list-unstyled mb-2">
+      @for (member of members[groupUuid] || []; track member.uuid) {
+        <li data-test="member">
+          {{ member.name }} <span class="text-muted">&lt;{{ member.email }}&gt;</span>
+          <button type="button" class="btn btn-sm btn-link text-danger" (click)="removeMember(groupUuid, member)"
+                  data-test="remove-member">{{ 'admin.governance.members.remove' | translate }}</button>
+        </li>
+      }
+      @if (!members[groupUuid] || members[groupUuid].length === 0) {
+        <li class="text-muted">{{ 'admin.governance.members.empty' | translate }}</li>
+      }
+    </ul>
+    <input type="text" class="form-control mb-2" [(ngModel)]="personQuery[groupUuid]"
+           (ngModelChange)="searchPersons(groupUuid)"
+           [placeholder]="'admin.governance.members.search' | translate" data-test="person-query">
+    <ul class="list-unstyled mb-0">
+      @for (person of personResults[groupUuid] || []; track person.uuid) {
+        <li>
+          {{ person.name }} <span class="text-muted">&lt;{{ person.email }}&gt;</span>
+          <button type="button" class="btn btn-sm btn-link" (click)="addMember(groupUuid, person)"
+                  data-test="add-member">{{ 'admin.governance.members.add' | translate }}</button>
+        </li>
+      }
+    </ul>
+  </div>
+</ng-template>

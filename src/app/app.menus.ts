@@ -10,6 +10,7 @@ import { MenuID } from './shared/menu/menu-id.model';
 import { MenuRoute } from './shared/menu/menu-route.model';
 import { AccessControlMenuProvider } from './shared/menu/providers/access-control.menu';
 import { AdminSearchMenuProvider } from './shared/menu/providers/admin-search.menu';
+import { BrevoEmailLogsMenuProvider } from './shared/menu/providers/brevo-email-logs.menu';
 import { BrowseMenuProvider } from './shared/menu/providers/browse.menu';
 import { CoarNotifyMenuProvider } from './shared/menu/providers/coar-notify.menu';
 import { SubscribeMenuProvider } from './shared/menu/providers/comcol-subscribe.menu';
@@ -20,6 +21,7 @@ import { DSpaceObjectEditMenuProvider } from './shared/menu/providers/dso-edit.m
 import { DsoOptionMenuProvider } from './shared/menu/providers/dso-option.menu';
 import { EditMenuProvider } from './shared/menu/providers/edit.menu';
 import { ExportMenuProvider } from './shared/menu/providers/export.menu';
+import { GovernanceMenuProvider } from './shared/menu/providers/governance.menu';
 import { HealthMenuProvider } from './shared/menu/providers/health.menu';
 import { ImportMenuProvider } from './shared/menu/providers/import.menu';
 import { ClaimMenuProvider } from './shared/menu/providers/item-claim.menu';
@@ -64,6 +66,8 @@ export const MENUS = buildMenuStructure({
     NotificationsMenuProvider,
     AccessControlMenuProvider,
     AdminSearchMenuProvider,
+    BrevoEmailLogsMenuProvider,
+    GovernanceMenuProvider,
     CreateReportMenuProvider,
     RegistriesMenuProvider,
     CurationMenuProvider,

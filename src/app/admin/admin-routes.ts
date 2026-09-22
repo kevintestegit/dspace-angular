@@ -2,6 +2,9 @@ import { Route } from '@angular/router';
 
 import { i18nBreadcrumbResolver } from '../core/breadcrumbs/i18n-breadcrumb.resolver';
 import { AdminCurationTasksComponent } from './admin-curation-tasks/admin-curation-tasks.component';
+import { ThemedAdminDashboardComponent } from './admin-dashboard/themed-admin-dashboard.component';
+import { AdminEmailLogsComponent } from './admin-email-logs/admin-email-logs.component';
+import { AdminGovernanceComponent } from './admin-governance/admin-governance.component';
 import { BatchImportPageComponent } from './admin-import-batch-page/batch-import-page.component';
 import { ThemedMetadataImportPageComponent } from './admin-import-metadata-page/themed-metadata-import-page.component';
 import {
@@ -15,6 +18,13 @@ import { ThemedAdminSearchPageComponent } from './admin-search-page/themed-admin
 import { ThemedAdminWorkflowPageComponent } from './admin-workflow-page/themed-admin-workflow-page.component';
 
 export const ROUTES: Route[] = [
+  {
+    path: '',
+    pathMatch: 'full',
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    component: ThemedAdminDashboardComponent,
+    data: { title: 'admin.dashboard.title', breadcrumbKey: 'admin.dashboard.title' },
+  },
   {
     path: NOTIFICATIONS_MODULE_PATH,
     loadChildren: () => import('./admin-notifications/admin-notifications-routes')
@@ -30,6 +40,18 @@ export const ROUTES: Route[] = [
     resolve: { breadcrumb: i18nBreadcrumbResolver },
     component: ThemedAdminSearchPageComponent,
     data: { title: 'admin.search.title', breadcrumbKey: 'admin.search' },
+  },
+  {
+    path: 'email-logs',
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    component: AdminEmailLogsComponent,
+    data: { title: 'admin.email-logs.title', breadcrumbKey: 'admin.email-logs.title' },
+  },
+  {
+    path: 'governance',
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    component: AdminGovernanceComponent,
+    data: { title: 'admin.governance.title', breadcrumbKey: 'admin.governance.title' },
   },
   {
     path: 'workflow',
