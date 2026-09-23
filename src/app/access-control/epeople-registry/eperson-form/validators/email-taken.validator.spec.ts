@@ -17,9 +17,9 @@ import { ValidateEmailNotTaken } from './email-taken.validator';
 describe('ValidateEmailNotTaken', () => {
   const control = new FormControl('new@example.com');
 
-  it('returns no validation error when the email lookup returns a failed response', async () => {
+  it('returns no validation error when the email is free', async () => {
     const service = {
-      getEPersonByEmail: () => of({ hasCompleted: true, hasSucceeded: false } as RemoteData<EPerson>),
+      getEPersonByEmail: () => of({ hasCompleted: true, hasSucceeded: true, payload: undefined } as RemoteData<EPerson>),
     } as unknown as EPersonDataService;
     const validator = ValidateEmailNotTaken.createValidator(service);
 
@@ -28,7 +28,29 @@ describe('ValidateEmailNotTaken', () => {
     await expectAsync(firstValueFrom(validationResult)).toBeResolvedTo(null);
   });
 
-  it('returns no validation error when the email lookup errors', async () => {
+  it('returns emailTaken when the email is taken', async () => {
+    const service = {
+      getEPersonByEmail: () => of({ hasCompleted: true, hasSucceeded: true, payload: { uuid: 'eperson-uuid' } } as RemoteData<EPerson>),
+    } as unknown as EPersonDataService;
+    const validator = ValidateEmailNotTaken.createValidator(service);
+
+    const validationResult = validator(control) as Observable<ValidationErrors | null>;
+
+    await expectAsync(firstValueFrom(validationResult)).toBeResolvedTo({ emailTaken: true });
+  });
+
+  it('returns emailCheckFailed when the email lookup fails', async () => {
+    const service = {
+      getEPersonByEmail: () => of({ hasCompleted: true, hasSucceeded: false } as RemoteData<EPerson>),
+    } as unknown as EPersonDataService;
+    const validator = ValidateEmailNotTaken.createValidator(service);
+
+    const validationResult = validator(control) as Observable<ValidationErrors | null>;
+
+    await expectAsync(firstValueFrom(validationResult)).toBeResolvedTo({ emailCheckFailed: true });
+  });
+
+  it('returns emailCheckFailed when the email lookup errors', async () => {
     const service = {
       getEPersonByEmail: () => throwError(() => new Error('lookup failed')),
     } as unknown as EPersonDataService;
@@ -36,6 +58,6 @@ describe('ValidateEmailNotTaken', () => {
 
     const validationResult = validator(control) as Observable<ValidationErrors | null>;
 
-    await expectAsync(firstValueFrom(validationResult)).toBeResolvedTo(null);
+    await expectAsync(firstValueFrom(validationResult)).toBeResolvedTo({ emailCheckFailed: true });
   });
 });

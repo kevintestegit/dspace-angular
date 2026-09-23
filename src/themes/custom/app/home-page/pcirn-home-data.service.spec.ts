@@ -1,6 +1,7 @@
 import { buildPaginatedList } from '../../../../app/core/data/paginated-list.model';
 import {
   createFailedRemoteDataObject$,
+  createPendingRemoteDataObject$,
   createSuccessfulRemoteDataObject$,
 } from '../../../../app/shared/remote-data.utils';
 import { buildQuickAccess, PcirnHomeDataService } from './pcirn-home-data.service';
@@ -75,6 +76,36 @@ describe('PcirnHomeDataService', () => {
         expect(latest.hasSucceeded).toBeTrue();
         done();
       });
+    });
+  });
+
+  it('stays pending without payload until every source succeeds', done => {
+    const emptyPage = buildPaginatedList(undefined, []);
+    const service = new PcirnHomeDataService(
+      { findTop: () => createPendingRemoteDataObject$() } as any,
+      { findAll: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
+      { search: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
+    );
+
+    service.metrics.subscribe(metrics => {
+      expect(metrics.hasSucceeded).toBeFalse();
+      expect(metrics.payload).toBeUndefined();
+      done();
+    });
+  });
+
+  it('passes the failure through when one source fails', done => {
+    const emptyPage = buildPaginatedList(undefined, []);
+    const service = new PcirnHomeDataService(
+      { findTop: () => createFailedRemoteDataObject$('communities unavailable') } as any,
+      { findAll: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
+      { search: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
+    );
+
+    service.metrics.subscribe(metrics => {
+      expect(metrics.hasFailed).toBeTrue();
+      expect(metrics.payload).toBeUndefined();
+      done();
     });
   });
 });

@@ -97,7 +97,9 @@ test('file section opens documents in the browser viewer instead of forcing a do
   assert.match(fileSection, /\[isBlank\]="true"/);
   assert.match(fileSection, /pcirn\.item\.view/);
   assert.doesNotMatch(fileSection, /item\.page\.filesection\.download/);
-  assert.doesNotMatch(fileSection, /dsFileSize|pcirn-document-download-size/);
+  assert.match(fileSection, /dsFileSize/);
+  assert.match(fileSection, /primaryBitstreamId/);
+  assert.match(fileSection, /item\.page\.bitstreams\.primary/);
 });
 
 test('custom header keeps only the existing functional DSpace controls', () => {
