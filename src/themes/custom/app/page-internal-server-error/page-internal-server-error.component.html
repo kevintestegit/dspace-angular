@@ -1,0 +1,38 @@
+<main class="pcirn-offline-wrapper">
+  <div class="pcirn-offline-card">
+    <div class="pcirn-offline-marks">
+      <img class="pcirn-mark-crest" src="assets/pcirn/images/brasao-policia-cientifica-rn.png" alt="Polícia Científica do RN">
+      <div class="pcirn-mark-divider" aria-hidden="true"></div>
+      <img class="pcirn-mark-dspace" src="assets/images/dspace-logo-mini.svg" alt="DSpace">
+      <div class="pcirn-mark-divider" aria-hidden="true"></div>
+      <img class="pcirn-mark-state" src="assets/pcirn/images/brasao-estado-rn.png" alt="Governo do Rio Grande do Norte">
+    </div>
+
+    <span class="pcirn-offline-badge">Erro 500 &bull; Instabilidade</span>
+
+    <h1 class="pcirn-offline-title">Estamos fora do ar</h1>
+
+    <p class="pcirn-offline-message">
+      O Repositório Institucional da Polícia Científica do RN está temporariamente indisponível. Por favor, tente novamente em alguns instantes.
+    </p>
+
+    <div class="pcirn-offline-actions">
+      <button type="button" class="btn pcirn-btn-primary" (click)="reload()">
+        <i class="fas fa-redo-alt" aria-hidden="true"></i>
+        Tentar novamente
+      </button>
+      <a routerLink="/home" class="btn pcirn-btn-outline">
+        <i class="fas fa-home" aria-hidden="true"></i>
+        Página Inicial
+      </a>
+    </div>
+
+    <div class="pcirn-offline-footer">
+      <p class="fw-semibold mb-1">Polícia Científica do Estado do Rio Grande do Norte</p>
+      <p class="text-muted small mb-1">Núcleo de Gestão do Conhecimento, Informação, Documentação e Memória (NUGECID)</p>
+      <p class="small mb-0">
+        <a href="mailto:arquivogeral@pci.rn.gov.br">arquivogeral@pci.rn.gov.br</a>
+      </p>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,426 @@
+// PCIRN: shell for the item submission editor (workspace and workflow items)
+.pcirn-submission {
+  --pcirn-navy-deep: #031b2d;
+  --pcirn-navy: #063a68;
+  --pcirn-blue: #0b4f8a;
+  --pcirn-teal: #0e5a73;
+  --pcirn-gold: #e7a91b;
+  --pcirn-paper: #f6f8fb;
+  --pcirn-line: #dfe7f0;
+  --pcirn-muted: #66758a;
+  --pcirn-soft: #f4f8fc;
+
+  background: var(--pcirn-paper);
+  color: var(--pcirn-navy-deep);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  margin: calc(var(--ds-content-spacing) * -1) 0;
+  min-height: 34rem;
+  padding: 2.4rem clamp(1rem, 4vw, 3.75rem) 4.5rem;
+}
+
+.pcirn-submission-inner {
+  margin: 0 auto;
+  max-width: 1150px;
+}
+
+.pcirn-submission-hero {
+  align-items: center;
+  display: flex;
+  gap: .9rem;
+  margin-bottom: 1.5rem;
+}
+
+.pcirn-submission-hero-icon {
+  align-items: center;
+  background: #e8f0f9;
+  border-radius: .5rem;
+  color: var(--pcirn-blue);
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 1.3rem;
+  height: 3.1rem;
+  justify-content: center;
+  width: 3.1rem;
+}
+
+.pcirn-submission-hero h1 {
+  color: var(--pcirn-navy-deep);
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -.028em;
+  margin: 0;
+}
+
+// Toolbar: upload dropzone + collection context
+.pcirn-submission-toolbar {
+  background: #fff;
+  border: 1px solid var(--pcirn-line);
+  border-radius: .6rem;
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.pcirn-submission-upload,
+.pcirn-submission-context,
+.pcirn-submission-context-collection,
+.pcirn-submission-context-add {
+  min-width: 0;
+}
+
+.pcirn-submission-upload .row > [class*="col-"] {
+  padding-inline: 0;
+}
+
+.pcirn-submission-upload .row {
+  margin-inline: 0;
+}
+
+.pcirn-submission .ds-base-drop-zone {
+  background: var(--pcirn-soft);
+  border: 2px dashed #b9cbdd;
+  border-radius: .55rem;
+  color: var(--pcirn-muted);
+  margin: .35rem 0 0;
+  padding: .35rem .6rem;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.pcirn-submission .ds-base-drop-zone .text-center span {
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 0;
+  row-gap: .25rem;
+}
+
+.pcirn-submission .ds-base-drop-zone:hover,
+.pcirn-submission .ds-base-drop-zone:focus-within {
+  background: #eef5fb;
+  border-color: var(--pcirn-blue);
+}
+
+.pcirn-submission .ds-base-drop-zone-file-over {
+  background: #e8f0f9;
+  border-color: var(--pcirn-navy);
+}
+
+.pcirn-submission .ds-base-drop-zone .btn-link,
+.pcirn-submission .ds-base-drop-zone label.btn-link {
+  color: var(--pcirn-blue);
+  font-weight: 700;
+}
+
+.pcirn-submission .ds-base-drop-zone-progress > div {
+  background-color: var(--pcirn-navy);
+}
+
+.pcirn-submission-context {
+  align-items: center;
+  border-top: 1px solid var(--pcirn-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.pcirn-submission-context-collection {
+  min-width: min(24rem, 100%);
+}
+
+.pcirn-submission-context .input-group-text {
+  background: var(--pcirn-soft);
+  border-color: var(--pcirn-line);
+  color: var(--pcirn-navy);
+  font-weight: 700;
+}
+
+.pcirn-submission-context .dropdown-toggle,
+.pcirn-submission-context .input-group-text {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.pcirn-submission-context .btn-outline-primary,
+.pcirn-submission-context .dropdown-toggle {
+  border-color: var(--pcirn-line);
+  color: var(--pcirn-navy);
+}
+
+.pcirn-submission-context .btn-outline-primary:hover,
+.pcirn-submission-context .btn-outline-primary:focus,
+.pcirn-submission-context .dropdown-toggle:hover,
+.pcirn-submission-context .dropdown-toggle:focus {
+  background: var(--pcirn-navy);
+  border-color: var(--pcirn-navy);
+  color: #fff;
+}
+
+// Section accordion
+.pcirn-submission-section {
+  margin-bottom: .9rem;
+}
+
+.pcirn-submission-section .accordion-item {
+  background: #fff;
+  border: 1px solid var(--pcirn-line);
+  border-radius: .6rem;
+  overflow: hidden;
+}
+
+.pcirn-submission-section .accordion-item + .accordion-item {
+  margin-top: .6rem;
+}
+
+.pcirn-submission-section .accordion-button {
+  background: #fff;
+  box-shadow: none;
+  color: var(--pcirn-navy-deep);
+  font-size: var(--pcirn-fs-label, 1.05rem);
+  font-weight: 700;
+  padding: 1rem 1.15rem;
+}
+
+.pcirn-submission-section .accordion-button:not(.collapsed) {
+  background: var(--pcirn-soft);
+  color: var(--pcirn-navy);
+}
+
+.pcirn-submission-section .accordion-button:focus {
+  border-color: var(--pcirn-line);
+  box-shadow: 0 0 0 3px rgba(11, 79, 138, .12);
+}
+
+.pcirn-submission-section .accordion-body {
+  border-top: 1px solid var(--pcirn-line);
+  padding: 1.15rem 1.25rem 1.35rem;
+}
+
+.pcirn-submission-section-title {
+  align-items: center;
+  display: flex;
+  gap: .55rem;
+}
+
+.pcirn-submission-section-status {
+  align-items: center;
+  display: inline-flex;
+  gap: .15rem;
+}
+
+.pcirn-submission-section-remove {
+  color: var(--pcirn-muted);
+}
+
+.pcirn-submission-section-remove:hover,
+.pcirn-submission-section-remove:focus {
+  color: #b02a37;
+}
+
+.pcirn-submission-section-content hr {
+  border-color: var(--pcirn-line);
+  opacity: 1;
+}
+
+.pcirn-submission-section-content .alert {
+  border-radius: .5rem;
+}
+
+// Native metadata form fields inside sections
+.pcirn-submission .form-label,
+.pcirn-submission .control-label {
+  color: var(--pcirn-navy);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.pcirn-submission .form-control,
+.pcirn-submission .form-select {
+  border-color: var(--pcirn-line);
+  border-radius: .45rem;
+  color: var(--pcirn-navy-deep);
+}
+
+.pcirn-submission .form-control:focus,
+.pcirn-submission .form-select:focus {
+  border-color: #9fbcd6;
+  box-shadow: 0 0 0 3px rgba(11, 79, 138, .12);
+}
+
+// Uploaded file row
+.pcirn-submission-file {
+  align-items: flex-start;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  padding: .9rem 0;
+}
+
+.pcirn-submission-file-primary {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: .35rem;
+}
+
+.pcirn-submission-file-primary .form-check-input:checked {
+  background-color: var(--pcirn-teal);
+  border-color: var(--pcirn-teal);
+}
+
+.pcirn-submission-file-main {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: space-between;
+  min-width: 0;
+}
+
+.pcirn-submission-file-info {
+  flex: 1 1 18rem;
+  min-width: 0;
+}
+
+.pcirn-submission-file-info h3 {
+  color: var(--pcirn-navy-deep);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.pcirn-submission-file-info h3 .text-muted {
+  color: var(--pcirn-muted) !important;
+  font-size: .85rem;
+  font-weight: 400;
+}
+
+.pcirn-submission-file-actions {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  gap: .35rem;
+}
+
+.pcirn-submission-file-actions .btn-link-focus,
+.pcirn-submission-file-actions a {
+  color: var(--pcirn-teal);
+  line-height: 1;
+}
+
+.pcirn-submission-file-actions .btn-link-focus:hover,
+.pcirn-submission-file-actions a:hover,
+.pcirn-submission-file-actions .btn-link-focus:focus,
+.pcirn-submission-file-actions a:focus {
+  color: var(--pcirn-navy);
+}
+
+.pcirn-submission-file-actions .fa-2x {
+  font-size: 1.35rem;
+}
+
+// Sticky action bar
+.pcirn-submission-actions {
+  background: #fff;
+  border: 1px solid var(--pcirn-line);
+  border-radius: .6rem;
+  bottom: 0;
+  box-shadow: 0 -6px 18px rgba(3, 27, 45, .08);
+  margin-top: 1.1rem;
+  padding: .8rem 1rem;
+  z-index: var(--ds-submission-footer-z-index, 10);
+}
+
+.pcirn-submission-actions-bar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: space-between;
+}
+
+.pcirn-submission-actions-right {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.pcirn-submission-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.pcirn-submission-save-state {
+  align-items: center;
+  display: inline-flex;
+  font-size: .85rem;
+  gap: .4rem;
+}
+
+.pcirn-submission-save-state.is-saved {
+  color: #146c43;
+}
+
+.pcirn-submission-save-state.is-pending {
+  color: #b58105;
+}
+
+.pcirn-submission-progress {
+  align-items: center;
+  display: flex;
+  min-width: 9rem;
+}
+
+.pcirn-submission-actions .btn {
+  border-radius: .45rem;
+  font-weight: 600;
+}
+
+.pcirn-submission-actions .btn-primary,
+.pcirn-submission-actions .btn-success {
+  background: var(--pcirn-navy);
+  border-color: var(--pcirn-navy);
+}
+
+.pcirn-submission-actions .btn-primary:hover,
+.pcirn-submission-actions .btn-primary:focus,
+.pcirn-submission-actions .btn-success:hover,
+.pcirn-submission-actions .btn-success:focus {
+  background: var(--pcirn-blue);
+  border-color: var(--pcirn-blue);
+}
+
+.pcirn-submission a:focus-visible,
+.pcirn-submission button:focus-visible,
+.pcirn-submission input:focus-visible,
+.pcirn-submission select:focus-visible,
+.pcirn-submission textarea:focus-visible {
+  outline: 3px solid var(--pcirn-gold);
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  .pcirn-submission {
+    padding: 1.8rem 1rem 4rem;
+  }
+
+  .pcirn-submission-file {
+    grid-template-columns: 1fr;
+  }
+
+  .pcirn-submission-file-primary {
+    justify-content: flex-start;
+    padding-top: 0;
+  }
+
+  .pcirn-submission-actions-right {
+    justify-content: flex-start;
+    margin-left: 0;
+    width: 100%;
+  }
+}

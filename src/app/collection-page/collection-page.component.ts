@@ -32,7 +32,6 @@ import {
   fadeIn,
   fadeInOut,
 } from '../shared/animations/fade';
-import { ThemedComcolPageBrowseByComponent } from '../shared/comcol/comcol-page-browse-by/themed-comcol-page-browse-by.component';
 import { ThemedComcolPageContentComponent } from '../shared/comcol/comcol-page-content/themed-comcol-page-content.component';
 import { ThemedComcolPageHandleComponent } from '../shared/comcol/comcol-page-handle/themed-comcol-page-handle.component';
 import { ComcolPageHeaderComponent } from '../shared/comcol/comcol-page-header/comcol-page-header.component';
@@ -64,7 +63,6 @@ import { getCollectionPageRoute } from './collection-page-routing-paths';
     DsoEditMenuComponent,
     ErrorComponent,
     RouterOutlet,
-    ThemedComcolPageBrowseByComponent,
     ThemedComcolPageContentComponent,
     ThemedComcolPageHandleComponent,
     ThemedLoadingComponent,

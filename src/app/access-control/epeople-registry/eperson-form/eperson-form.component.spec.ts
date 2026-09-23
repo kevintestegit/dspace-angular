@@ -215,6 +215,7 @@ describe('EPersonFormComponent', () => {
     });
     groupsDataService = jasmine.createSpyObj('groupsDataService', {
       findListByHref: createSuccessfulRemoteDataObject$(createPaginatedList([])),
+      searchGroups: createSuccessfulRemoteDataObject$(createPaginatedList([])),
       getGroupRegistryRouterLink: '',
     });
 
@@ -262,6 +263,14 @@ describe('EPersonFormComponent', () => {
 
   it('should create EPersonFormComponent', () => {
     expect(component).toBeDefined();
+  });
+
+  it('should expose group assignment and administrator access controls when editing an EPerson', () => {
+    component.activeEPerson$ = of(EPersonMock);
+    fixture.detectChanges();
+
+    expect(fixture.debugElement.query(By.css('.pcirn-group-access-management'))).not.toBeNull();
+    expect(fixture.debugElement.query(By.css('.pcirn-administrator-control'))).not.toBeNull();
   });
 
   describe('check form validation', () => {

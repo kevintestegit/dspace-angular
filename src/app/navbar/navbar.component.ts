@@ -101,7 +101,7 @@ export class NavbarComponent extends MenuComponent implements OnInit {
       case 'communities':
         return url === '/community-list' || url.startsWith('/communities/');
       case 'collections':
-        return url.startsWith('/collections/');
+        return url === '/collection-list' || url.startsWith('/collections/');
       case 'publications':
         return url === '/search' || url.startsWith('/search/');
     }

@@ -14,8 +14,7 @@ import { ThemedSubmissionSectionContainerComponent } from '../../../../../app/su
   selector: 'ds-themed-submission-form',
   // styleUrls: ['./submission-form.component.scss'],
   styleUrls: ['../../../../../app/submission/form/submission-form.component.scss'],
-  // templateUrl: './submission-form.component.html'
-  templateUrl: '../../../../../app/submission/form/submission-form.component.html',
+  templateUrl: './submission-form.component.html',
   imports: [
     CommonModule,
     SubmissionFormCollectionComponent,

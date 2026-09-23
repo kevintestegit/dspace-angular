@@ -2,12 +2,7 @@
   {{ 'root.skip-to-content' | translate }}
 </button>
 
-  <div class="outer-wrapper" [class.d-none]="shouldShowFullscreenLoader" [ngClass]="browserOsClasses.asObservable() | async" [@slideSidebarPadding]="{
-     value: ((isSidebarVisible$ | async) !== true ? 'hidden' : (slideSidebarOver$ | async) ? 'unpinned' : 'pinned'),
-     params: { collapsedWidth: (collapsedSidebarWidth$ | async), expandedWidth: (expandedSidebarWidth$ | async) }
-    }">
-  <ds-sector-sidebar></ds-sector-sidebar>
-  <ds-admin-sidebar [expandedSidebarWidth$]="expandedSidebarWidth$" [collapsedSidebarWidth$]="collapsedSidebarWidth$"></ds-admin-sidebar>
+  <div class="outer-wrapper" [class.d-none]="shouldShowFullscreenLoader" [ngClass]="browserOsClasses.asObservable() | async">
   <div class="inner-wrapper">
     @if ((isLoginRoute$ | async) !== true) {
       <ds-system-wide-alert-banner></ds-system-wide-alert-banner>
@@ -26,7 +21,7 @@
       </div>
     </main>
 
-    @if ((showFooter$ | async) === true) {
+    @if ((isLoginRoute$ | async) !== true) {
       <ds-footer class="pcirn-home-footer"></ds-footer>
     }
   </div>

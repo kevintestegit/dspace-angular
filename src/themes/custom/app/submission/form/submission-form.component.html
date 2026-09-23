@@ -1,0 +1,51 @@
+<div class="pcirn-submission-form">
+  @if ((isLoading$ | async) !== true) {
+    <div class="pcirn-submission-toolbar">
+      @if ((uploadEnabled$ | async)) {
+        <div class="pcirn-submission-upload">
+          <ds-submission-upload-files [submissionId]="submissionId"
+            [collectionId]="collectionId"
+          [uploadFilesOptions]="uploadFilesOptions"></ds-submission-upload-files>
+          <div class="clearfix"></div>
+        </div>
+      }
+      <div class="pcirn-submission-context">
+        @if (!isSectionHidden) {
+          <div class="pcirn-submission-context-collection">
+            <ds-submission-form-collection
+              [currentCollectionId]="collectionId"
+              [currentDefinition]="definitionId"
+              [submissionId]="submissionId"
+              [collectionModifiable]="collectionModifiable"
+              [isReadonly]="isSectionReadonly"
+              (collectionChange)="onCollectionChange($event)">
+            </ds-submission-form-collection>
+          </div>
+        }
+        <div class="pcirn-submission-context-add">
+          <ds-submission-form-section-add [collectionId]="collectionId"
+            [submissionId]="submissionId">
+          </ds-submission-form-section-add>
+        </div>
+      </div>
+    </div>
+  }
+
+  <div class="pcirn-submission-content">
+    @if (isLoading$ | async) {
+      <ds-loading [message]="'form.loading' | translate"></ds-loading>
+    }
+    @for (object of $any(submissionSections | async); track object) {
+      <ds-submission-section-container [collectionId]="collectionId"
+        [submissionId]="submissionId"
+        [sectionData]="$any(object)">
+      </ds-submission-section-container>
+    }
+  </div>
+
+  @if ((isLoading$ | async) !== true) {
+    <div class="pcirn-submission-actions position-sticky">
+      <ds-submission-form-footer [submissionId]="submissionId"></ds-submission-form-footer>
+    </div>
+  }
+</div>

@@ -1,0 +1,186 @@
+// PCIRN: compact task cards for MyDSpace (workflow, workspace and supervised
+// lists). The generic search cards are tuned for browsing published documents;
+// review tasks need denser typography, a small thumbnail and the action buttons
+// pulled to the full card width so they do not compete with the abstract.
+
+.pcirn-mydspace-page {
+  #search-content {
+    li[data-test='list-object'] {
+      margin: 0 0 .6rem !important;
+      padding: .75rem .9rem !important;
+      border-radius: .85rem;
+    }
+
+    li[data-test='list-object'] .row > [class*='col-'] {
+      padding-inline: .45rem;
+    }
+
+    li[data-test='list-object'] ds-thumbnail {
+      width: auto;
+      max-width: 4.25rem;
+    }
+
+    // Square placeholder tile instead of the tall A4 grey block. Only the
+    // placeholder/loading wrapper uses .outer, so real thumbnails keep their
+    // proportions.
+    li[data-test='list-object'] ds-thumbnail .thumbnail-content.outer::before {
+      padding-top: 100%;
+    }
+
+    li[data-test='list-object'] ds-thumbnail .thumbnail-content.outer,
+    li[data-test='list-object'] ds-thumbnail .thumbnail-content.outer > .inner {
+      border-radius: .5rem;
+    }
+
+    li[data-test='list-object'] ds-thumbnail .thumbnail-placeholder::before {
+      font-size: 1.35rem;
+    }
+
+    li[data-test='list-object'] ds-badges .badge,
+    li[data-test='list-object'] ds-badges [class*='badge'] {
+      padding: .22rem .45rem;
+      font-size: .66rem;
+    }
+
+    li[data-test='list-object'] .item-list-title,
+    li[data-test='list-object'] .lead {
+      margin: .06rem 0 .18rem;
+      font-size: var(--pcirn-fs-card-title);
+      line-height: 1.27;
+      -webkit-line-clamp: 2;
+    }
+
+    li[data-test='list-object'] .text-muted {
+      font-size: var(--pcirn-fs-meta);
+      line-height: 1.4;
+    }
+
+    li[data-test='list-object'] .item-list-abstract {
+      margin-top: .35rem;
+      font-size: var(--pcirn-fs-meta);
+      line-height: 1.4;
+      -webkit-line-clamp: 2;
+    }
+
+    li[data-test='list-object'] ds-item-submitter,
+    li[data-test='list-object'] ds-item-collection {
+      display: block;
+      margin-top: .18rem;
+      color: var(--pcirn-muted);
+      font-size: var(--pcirn-fs-meta);
+      line-height: 1.35;
+    }
+
+    li[data-test='list-object'] ds-item-submitter .mt-2.mb-2,
+    li[data-test='list-object'] ds-item-collection .mt-2.mb-2 {
+      margin: .18rem 0 0 !important;
+    }
+
+    // Review actions: full-width row, compact buttons that wrap instead of
+    // stacking as oversized pills on narrow screens.
+    li[data-test='list-object'] ds-claimed-task-actions,
+    li[data-test='list-object'] ds-pool-task-actions {
+      display: block;
+      margin-top: .35rem;
+    }
+
+    li[data-test='list-object'] .row > [class*='offset-'] {
+      flex: 0 0 100%;
+      width: 100%;
+      max-width: 100%;
+      margin-left: 0;
+      padding: 0;
+    }
+
+    li[data-test='list-object'] .row > [class*='offset-'] > ds-claimed-task-actions,
+    li[data-test='list-object'] .row > [class*='offset-'] > ds-pool-task-actions {
+      width: 100%;
+    }
+
+    li[data-test='list-object'] .space-children-mr {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      align-items: center;
+      margin: .5rem 0 0 !important;
+    }
+
+    // Let the option buttons be direct flex items so they wrap and share the
+    // row evenly instead of stacking through their loader hosts.
+    li[data-test='list-object'] .space-children-mr ds-claimed-task-actions-loader,
+    li[data-test='list-object'] .space-children-mr ds-pool-task-actions-loader {
+      display: contents;
+    }
+
+    li[data-test='list-object'] .space-children-mr .btn {
+      margin: 0 !important;
+      padding: .3rem .7rem;
+      border-radius: .5rem;
+      font-size: .8rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    li[data-test='list-object'] .space-children-mr .btn i {
+      margin-right: .3rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .pcirn-mydspace-page {
+    // The native preview fixes the metadata column at col-9 next to the
+    // col-md-2 thumbnail, leaving an empty column at the right. Let the
+    // thumbnail column shrink to the thumbnail and the text fill the rest.
+    #search-content li[data-test='list-object'] ds-item-list-preview .row > .col-md-2 {
+      flex: 0 0 4.5rem;
+      width: 4.5rem;
+      max-width: 4.5rem;
+    }
+
+    #search-content li[data-test='list-object'] ds-item-list-preview .row > .col-9 {
+      flex: 1 1 auto;
+      width: auto;
+      max-width: none;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .pcirn-mydspace-page {
+    #search-content li[data-test='list-object'] {
+      padding: .7rem .8rem !important;
+    }
+
+    // Keep the thumbnail beside the metadata instead of stacking it above.
+    #search-content li[data-test='list-object'] ds-item-list-preview .row > .col-3 {
+      flex: 0 0 30%;
+      width: 30%;
+      max-width: 30%;
+      padding-inline: 0 .5rem;
+    }
+
+    #search-content li[data-test='list-object'] ds-item-list-preview .row > .col-9 {
+      flex: 0 0 70%;
+      width: 70%;
+      max-width: 70%;
+      padding-inline: 0;
+    }
+
+    #search-content li[data-test='list-object'] ds-thumbnail {
+      max-width: 3.5rem;
+    }
+
+    #search-content li[data-test='list-object'] .item-list-abstract {
+      -webkit-line-clamp: 3;
+    }
+
+    // Let review buttons share the available width instead of stacking as
+    // oversized full-width pills.
+    #search-content li[data-test='list-object'] .space-children-mr .btn {
+      flex: 1 1 auto;
+      padding: .28rem .6rem;
+      font-size: .78rem;
+    }
+  }
+}

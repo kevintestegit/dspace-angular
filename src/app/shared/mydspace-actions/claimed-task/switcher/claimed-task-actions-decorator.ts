@@ -18,6 +18,10 @@ import {
   WORKFLOW_TASK_OPTION_DECLINE_TASK,
 } from '../decline-task/claimed-task-actions-decline-task.component';
 import {
+  ClaimedTaskActionsDeleteComponent,
+  WORKFLOW_TASK_OPTION_DELETE,
+} from '../delete/claimed-task-actions-delete.component';
+import {
   ClaimedTaskActionsEditMetadataComponent,
   WORKFLOW_TASK_OPTION_EDIT_METADATA,
 } from '../edit-metadata/claimed-task-actions-edit-metadata.component';
@@ -35,6 +39,7 @@ import { AdvancedClaimedTaskActionSelectReviewerComponent } from '../select-revi
 export type WorkflowTaskOptionComponent =
   typeof ClaimedTaskActionsApproveComponent |
   typeof ClaimedTaskActionsDeclineTaskComponent |
+  typeof ClaimedTaskActionsDeleteComponent |
   typeof ClaimedTaskActionsEditMetadataComponent |
   typeof AdvancedClaimedTaskActionRatingComponent |
   typeof ClaimedTaskActionsRejectComponent |
@@ -48,6 +53,7 @@ export type AdvancedWorkflowTaskOptionComponent =
 export const WORKFLOW_TASK_OPTION_DECORATOR_MAP = new Map<string, WorkflowTaskOptionComponent>([
   [WORKFLOW_TASK_OPTION_APPROVE, ClaimedTaskActionsApproveComponent],
   [WORKFLOW_TASK_OPTION_DECLINE_TASK, ClaimedTaskActionsDeclineTaskComponent],
+  [WORKFLOW_TASK_OPTION_DELETE, ClaimedTaskActionsDeleteComponent],
   [WORKFLOW_TASK_OPTION_EDIT_METADATA, ClaimedTaskActionsEditMetadataComponent],
   [ADVANCED_WORKFLOW_TASK_OPTION_RATING, AdvancedClaimedTaskActionRatingComponent],
   [WORKFLOW_TASK_OPTION_REJECT, ClaimedTaskActionsRejectComponent],

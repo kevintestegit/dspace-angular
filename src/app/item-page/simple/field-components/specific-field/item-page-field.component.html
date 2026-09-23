@@ -1,3 +1,4 @@
+@if (item?.allMetadata(fields)?.length > 0) {
 <div class="item-page-field">
   <ds-metadata-values
     [mdValues]="item?.allMetadata(fields)"
@@ -9,3 +10,4 @@
     [img]="img"
   ></ds-metadata-values>
 </div>
+}

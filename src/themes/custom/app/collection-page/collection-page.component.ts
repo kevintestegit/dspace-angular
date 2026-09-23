@@ -11,7 +11,6 @@ import {
   fadeIn,
   fadeInOut,
 } from '../../../../app/shared/animations/fade';
-import { ThemedComcolPageBrowseByComponent } from '../../../../app/shared/comcol/comcol-page-browse-by/themed-comcol-page-browse-by.component';
 import { ThemedComcolPageContentComponent } from '../../../../app/shared/comcol/comcol-page-content/themed-comcol-page-content.component';
 import { ThemedComcolPageHandleComponent } from '../../../../app/shared/comcol/comcol-page-handle/themed-comcol-page-handle.component';
 import { ComcolPageHeaderComponent } from '../../../../app/shared/comcol/comcol-page-header/comcol-page-header.component';
@@ -39,7 +38,6 @@ import { VarDirective } from '../../../../app/shared/utils/var.directive';
     DsoEditMenuComponent,
     ErrorComponent,
     RouterOutlet,
-    ThemedComcolPageBrowseByComponent,
     ThemedComcolPageContentComponent,
     ThemedComcolPageHandleComponent,
     ThemedLoadingComponent,

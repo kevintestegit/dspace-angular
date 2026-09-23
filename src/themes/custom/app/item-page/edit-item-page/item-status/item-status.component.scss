@@ -1,0 +1,127 @@
+:host {
+  display: block;
+}
+
+.pcirn-status-page {
+  display: grid;
+  gap: 1.25rem;
+  color: var(--bs-body-color);
+}
+
+.pcirn-status-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(0, 70, 115, 0.14);
+  border-inline-start: 4px solid var(--bs-primary);
+  border-radius: 0.4rem;
+  background: rgba(0, 70, 115, 0.045);
+  line-height: 1.55;
+}
+
+.pcirn-status-intro i {
+  margin-top: 0.2rem;
+  color: var(--bs-primary);
+}
+
+.pcirn-status-details,
+.pcirn-status-actions {
+  overflow: hidden;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.5rem;
+  background: var(--bs-body-bg);
+  box-shadow: 0 0.15rem 0.5rem rgba(24, 44, 64, 0.06);
+}
+
+.pcirn-status-details h2,
+.pcirn-status-actions h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--bs-border-color);
+  color: var(--bs-primary);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.pcirn-status-detail-list {
+  margin: 0;
+}
+
+.pcirn-status-detail-row {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.34fr) minmax(0, 1fr);
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.pcirn-status-detail-row:last-child {
+  border-bottom: 0;
+}
+
+.pcirn-status-detail-row .status-label,
+.pcirn-status-detail-row .status-data {
+  min-width: 0;
+  margin: 0;
+  padding: 0.85rem 1.15rem;
+  overflow-wrap: anywhere;
+}
+
+.pcirn-status-detail-row .status-label {
+  background: rgba(0, 70, 115, 0.035);
+  font-weight: 700;
+}
+
+.pcirn-status-detail-row .status-data a {
+  overflow-wrap: anywhere;
+}
+
+.pcirn-status-badge {
+  display: inline-block;
+  margin-inline-start: 0.55rem;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 999px;
+  background: rgba(0, 70, 115, 0.06);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.pcirn-status-action-list {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem;
+}
+
+.pcirn-status-action-row {
+  padding: 0.85rem 0.75rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.4rem;
+  background: var(--bs-body-bg);
+}
+
+.pcirn-status-action-row ds-item-operation {
+  display: block;
+}
+
+@media (max-width: 767.98px) {
+  .pcirn-status-detail-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pcirn-status-detail-row .status-label {
+    padding-bottom: 0.25rem;
+    border-bottom: 0;
+  }
+
+  .pcirn-status-detail-row .status-data {
+    padding-top: 0.25rem;
+  }
+
+  .pcirn-status-action-list {
+    padding: 0.75rem;
+  }
+}

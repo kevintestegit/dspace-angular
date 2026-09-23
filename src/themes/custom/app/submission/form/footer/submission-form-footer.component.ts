@@ -10,8 +10,7 @@ import { SubmissionFormFooterComponent as BaseComponent } from '../../../../../.
   selector: 'ds-themed-submission-form-footer',
   // styleUrls: ['./submission-form-footer.component.scss'],
   styleUrls: ['../../../../../../app/submission/form/footer/submission-form-footer.component.scss'],
-  // templateUrl: './submission-form-footer.component.html'
-  templateUrl: '../../../../../../app/submission/form/footer/submission-form-footer.component.html',
+  templateUrl: './submission-form-footer.component.html',
   imports: [
     AsyncPipe,
     BrowserOnlyPipe,

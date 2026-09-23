@@ -73,15 +73,14 @@ export class TruncatableComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
     if (this.showToggle) {
-      const truncatedElements = this.el.nativeElement.querySelectorAll('.truncated');
-      if (truncatedElements?.length > 0) {
-        const truncateElements = this.el.nativeElement.querySelectorAll('.dont-break-out');
-        for (let i = 0; i < (truncateElements.length - 1); i++) {
-          truncateElements[i].classList.remove('truncated');
-          truncateElements[i].classList.add('notruncatable');
+      const truncateElements = Array.from(this.el.nativeElement.querySelectorAll('.dont-break-out') as NodeListOf<HTMLElement>);
+      const overflowing = truncateElements.filter((element) => element.scrollHeight > element.clientHeight);
+      const toggleElement = overflowing[overflowing.length - 1];
+      truncateElements.forEach((element) => {
+        if (element !== toggleElement) {
+          element.classList.remove('truncated');
         }
-        truncateElements[truncateElements.length - 1].classList.add('truncated');
-      }
+      });
     }
   }
 

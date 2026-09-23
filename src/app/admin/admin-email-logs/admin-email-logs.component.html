@@ -1,0 +1,132 @@
+<div class="container">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1>{{ 'admin.email-logs.title' | translate }}</h1>
+    <div class="d-flex gap-2 align-items-center">
+      <label for="email-log-days">{{ 'admin.email-logs.period' | translate }}</label>
+      <select id="email-log-days" class="form-select" [value]="days" (change)="setDays($any($event.target).value)">
+        <option value="7">7</option>
+        <option value="30">30</option>
+        <option value="90">90</option>
+      </select>
+      <button class="btn btn-outline-primary" type="button" (click)="loadEvents()">
+        {{ 'admin.email-logs.refresh' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <p *ngIf="loading" role="status">{{ 'admin.email-logs.loading' | translate }}</p>
+  <p *ngIf="error" class="alert alert-danger" role="alert">{{ 'admin.email-logs.error' | translate }}</p>
+
+  <div class="table-responsive" *ngIf="!loading">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>{{ 'admin.email-logs.date' | translate }}</th>
+          <th>{{ 'admin.email-logs.recipient' | translate }}</th>
+          <th>{{ 'admin.email-logs.event' | translate }}</th>
+          <th>{{ 'admin.email-logs.reason' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events" class="email-event" tabindex="0" (click)="showEmail(event)"
+            (keydown.enter)="showEmail(event)" (keydown.space)="showEmail(event)">
+          <td>{{ event.date | date:'short' }}</td>
+          <td>{{ event.email }}</td>
+          <td>{{ event.event }}</td>
+          <td>
+            <span>{{ event.reason || '—' }}</span>
+            <button class="btn btn-sm btn-link ms-2 p-0" type="button" (click)="$event.stopPropagation(); showEmail(event)">
+              {{ 'admin.email-logs.view-details' | translate }}
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="events.length === 0 && !error">
+          <td colspan="4">{{ 'admin.email-logs.empty' | translate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button *ngIf="hasMore && !loading" class="btn btn-outline-secondary" type="button"
+          [disabled]="loadingMore" (click)="loadMore()">
+    {{ (loadingMore ? 'admin.email-logs.loading' : 'admin.email-logs.load-more') | translate }}
+  </button>
+  <p *ngIf="loadMoreError" class="alert alert-danger mt-3" role="alert">
+    {{ 'admin.email-logs.load-more-error' | translate }}
+  </p>
+
+  <ng-template #emailDetailsModal let-modal>
+    <div class="modal-header align-items-start">
+      <div class="min-w-0 flex-grow-1">
+        <h2 class="modal-title h4 mb-1 text-break" id="email-log-modal-title">
+          {{ selectedEmail?.subject || ('admin.email-logs.details' | translate) }}
+        </h2>
+        <div class="text-muted text-break">{{ selectedEmail?.email || selectedMessageId }}</div>
+      </div>
+      <button type="button" class="btn-close ms-3" [attr.aria-label]="'admin.email-logs.close' | translate"
+              (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+      <div *ngIf="detailsLoading" class="py-5 text-center" role="status">
+        <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
+        {{ 'admin.email-logs.loading-details' | translate }}
+      </div>
+      <p *ngIf="detailsError" class="alert alert-danger" role="alert">
+        {{ 'admin.email-logs.details-error' | translate }}
+      </p>
+      <ng-container *ngIf="selectedEmail as email">
+        <div class="row g-3 mb-4 p-3 bg-light border rounded">
+          <div class="col-md">
+            <span class="text-muted d-block">{{ 'admin.email-logs.recipient' | translate }}</span>
+            <strong class="text-break">{{ email.email }}</strong>
+          </div>
+          <div class="col-md">
+            <span class="text-muted d-block">{{ 'admin.email-logs.date' | translate }}</span>
+            <strong>{{ email.date | date:'medium' }}</strong>
+          </div>
+          <div *ngIf="email.templateId" class="col-md">
+            <span class="text-muted d-block">{{ 'admin.email-logs.template' | translate }}</span>
+            <strong>{{ email.templateId }}</strong>
+          </div>
+        </div>
+
+        <section *ngIf="email.events?.length" class="mb-4">
+          <h3 class="h6 mb-2">{{ 'admin.email-logs.timeline' | translate }}</h3>
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let item of email.events" class="list-group-item d-flex flex-wrap justify-content-between gap-2 px-0">
+              <strong>{{ item.name }}</strong><span>{{ item.time | date:'medium' }}</span>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3 class="h6 mb-2">{{ 'admin.email-logs.body' | translate }}</h3>
+          <iframe *ngIf="email.body; else bodyUnavailable" class="email-preview" sandbox=""
+                  referrerpolicy="no-referrer" [srcdoc]="emailPreview"
+                  style="display:block;width:100%;height:min(58vh,38rem);min-height:20rem;border:1px solid var(--bs-border-color);border-radius:var(--bs-border-radius);background:#fff;"
+                  [title]="'admin.email-logs.body' | translate"></iframe>
+          <ng-template #bodyUnavailable>
+            <div class="alert alert-light border mb-0">{{ 'admin.email-logs.body-unavailable' | translate }}</div>
+          </ng-template>
+        </section>
+      </ng-container>
+      <p *ngIf="selectedEmail?.attachmentCount > 0" class="alert alert-warning mt-3 mb-0" role="status">
+        {{ 'admin.email-logs.resend-attachments' | translate }}
+      </p>
+      <p *ngIf="resendSuccess" class="alert alert-success mt-3 mb-0" role="status">
+        {{ 'admin.email-logs.resend-success' | translate }}
+      </p>
+      <p *ngIf="resendError" class="alert alert-danger mt-3 mb-0" role="alert">
+        {{ 'admin.email-logs.resend-error' | translate }}
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button *ngIf="selectedEmail && canResend(selectedEmail)" class="btn btn-primary" type="button"
+              [disabled]="resending" (click)="resendEmail()">
+        {{ (resending ? 'admin.email-logs.resending' : 'admin.email-logs.resend') | translate }}
+      </button>
+      <button class="btn btn-outline-secondary" type="button" (click)="modal.close()">
+        {{ 'admin.email-logs.close' | translate }}
+      </button>
+    </div>
+  </ng-template>
+</div>

@@ -12,7 +12,7 @@
         <div class="navbar-nav align-items-md-center me-auto shadow-none gapx-3" role="menubar">
           <a class="pcirn-header-logo-link" routerLink="/home" role="button" tabindex="0">
             <img class="pcirn-header-logo" src="assets/pcirn/images/brasao-policia-cientifica-rn.png" [attr.alt]="'menu.header.image.logo' | translate"/>
-            <span class="pcirn-header-brand"><span>Repositório Institucional da</span><strong>PCIRN</strong></span>
+            <span class="pcirn-header-brand"><span>Repositório Institucional</span><strong>PCIRN</strong></span>
           </a>
           <a class="pcirn-header-nav-link" routerLink="/home"
             [class.active]="isNavActive('home')"
@@ -23,7 +23,7 @@
           <a class="pcirn-header-nav-link" routerLink="/community-list"
             [class.active]="isNavActive('collections')"
             [attr.aria-current]="isNavActive('collections') ? 'page' : null">Coleções</a>
-          <a class="pcirn-header-nav-link" routerLink="/search"
+          <a class="pcirn-header-nav-link" routerLink="/search/publicacoes"
             [class.active]="isNavActive('publications')"
             [attr.aria-current]="isNavActive('publications') ? 'page' : null">Publicações</a>
         </div>

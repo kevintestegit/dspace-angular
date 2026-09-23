@@ -1,0 +1,61 @@
+<main class="pcirn-list">
+  <div class="pcirn-list-inner">
+    <header class="pcirn-list-header">
+      <h1>Termos de Uso</h1>
+      <p>Repositório Institucional da Polícia Científica do Rio Grande do Norte</p>
+    </header>
+
+    <div class="pcirn-about-card">
+      <section class="pcirn-about-section">
+        <h2><i class="fas fa-handshake" aria-hidden="true"></i>Aceitação dos termos</h2>
+        <p>
+          Ao acessar, consultar ou submeter conteúdos no Repositório Institucional da Polícia Científica do Rio Grande do Norte (PCIRN), o usuário declara estar ciente e concordar integralmente com as disposições estabelecidas neste Contrato de Licença de Usuário Final e Termos de Uso, bem como com as diretrizes da Política de Privacidade e da Política de Acesso e Sigilo da instituição.
+        </p>
+      </section>
+
+      <section class="pcirn-about-section">
+        <h2><i class="fas fa-archive" aria-hidden="true"></i>Finalidade do repositório</h2>
+        <p>
+          O repositório destina-se à guarda permanente, organização sistemática, preservação digital e difusão de atos normativos, portarias, instruções técnicas, relatórios de gestão, produções técnico-científicas e documentos históricos da PCIRN, promovendo a transparência pública e o suporte à atividade pericial oficial do Estado do Rio Grande do Norte.
+        </p>
+      </section>
+
+      <section class="pcirn-about-section">
+        <h2><i class="fas fa-copyright" aria-hidden="true"></i>Propriedade intelectual e regime de acesso</h2>
+        <p>
+          Os atos normativos, portarias e documentos administrativos oficiais são de domínio público, assegurado o livre acesso nos termos da Lei de Acesso à Informação (Lei nº 12.527/2011). As publicações técnicas, laudos periciais e relatórios especializados mantêm os direitos autorais morais de seus signatários e titularidade patrimonial do Estado/PCIRN, sendo expressamente vedada a reprodução descontextualizada, comercial ou adulterada sem prévia autorização expressa da Direção Geral.
+        </p>
+      </section>
+
+      <section class="pcirn-about-section">
+        <h2><i class="fas fa-user-check" aria-hidden="true"></i>Responsabilidades do usuário</h2>
+        <p>
+          O usuário compromete-se a utilizar o repositório exclusivamente para finalidades legítimas e compatíveis com a ordem jurídica vigente. Usuários autenticados (servidores e gestores setoriais) são estritamente responsáveis pela custódia e sigilo de suas credenciais de acesso, pela exatidão dos metadados atribuídos aos documentos depositados e pela correta observância dos níveis de sigilo atribuídos a cada registro.
+        </p>
+      </section>
+
+      <section class="pcirn-about-section">
+        <h2><i class="fas fa-ban" aria-hidden="true"></i>Condutas vedadas</h2>
+        <p>
+          É terminantemente proibido: (a) tentar burlar ou violar mecanismos de autenticação, segurança e controle de acesso; (b) executar rotinas automatizadas de raspagem ou extração de dados em massa que comprometam a estabilidade dos serviços; (c) inserir dados falsos, adulterar metadados ou corromper identificadores persistentes; e (d) utilizar informações constantes no repositório para fins ilícitos, prejudiciais à segurança pública ou atentatórios à honra de terceiros.
+        </p>
+      </section>
+
+      <section class="pcirn-about-section">
+        <h2><i class="fas fa-sync-alt" aria-hidden="true"></i>Atualizações e vigência</h2>
+        <p>
+          A PCIRN, por meio do Núcleo de Gestão do Conhecimento, Informação, Documentação e Memória (NUGECID), reserva-se o direito de atualizar e aprimorar estes Termos de Uso periodicamente, visando atender a inovações regulatórias ou tecnológicas. Modificações substanciais serão comunicadas aos usuários através dos canais institucionais do repositório.
+        </p>
+      </section>
+
+      <form class="form-user-agreement-accept mt-4" (ngSubmit)="submit()" novalidate>
+        <input class="ms-1 me-2" type="checkbox" id="user-agreement-accept" [(ngModel)]="accepted" [ngModelOptions]="{standalone: true}">
+        <label class="col-form-label-lg" for="user-agreement-accept">{{ 'info.end-user-agreement.accept' | translate }}</label>
+        <div class="d-flex mt-4">
+          <button id="button-cancel" type="button" (click)="cancel()" class="btn btn-outline-secondary me-auto">{{ 'info.end-user-agreement.buttons.cancel' | translate }}</button>
+          <button id="button-save" type="submit" class="btn btn-primary" [dsBtnDisabled]="!accepted">{{ 'info.end-user-agreement.buttons.save' | translate }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

@@ -15,8 +15,7 @@ import { SectionsDirective } from '../../../../../../app/submission/sections/sec
   selector: 'ds-themed-base-submission-section-container',
   // styleUrls: ['./section-container.component.scss'],
   styleUrls: ['../../../../../../app/submission/sections/container/section-container.component.scss'],
-  // templateUrl: './section-container.component.html'
-  templateUrl: '../../../../../../app/submission/sections/container/section-container.component.html',
+  templateUrl: './section-container.component.html',
   imports: [
     AlertComponent,
     AsyncPipe,

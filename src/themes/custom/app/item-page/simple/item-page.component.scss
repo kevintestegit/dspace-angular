@@ -1,0 +1,12 @@
+:host {
+  background: #f5f7fa;
+  display: block;
+  min-height: calc(100vh - 12rem);
+}
+
+:host > .container {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}

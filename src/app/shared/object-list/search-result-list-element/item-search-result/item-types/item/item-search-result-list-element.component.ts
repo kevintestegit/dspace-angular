@@ -49,4 +49,17 @@ export class ItemSearchResultListElementComponent extends SearchResultListElemen
     this.showThumbnails = this.showThumbnails ?? this.appConfig.browseBy.showThumbnails;
     this.itemPageRoute = getItemPageRoute(this.dso);
   }
+
+  /**
+   * Whether to show the publisher span.
+   * Hidden when absent or identical to the first author, to avoid
+   * redundant "(Publisher) Publisher" rendering on government acts.
+   */
+  get showPublisher(): boolean {
+    const publisher = this.dso?.firstMetadataValue('dc.publisher');
+    if (!publisher) {
+      return false;
+    }
+    return publisher !== this.dso?.firstMetadataValue(['dc.contributor.author', 'dc.creator']);
+  }
 }

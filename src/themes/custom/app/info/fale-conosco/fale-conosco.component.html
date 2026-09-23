@@ -1,0 +1,252 @@
+<main class="pcirn-list pcirn-contact-surface">
+  <div class="pcirn-list-inner">
+
+    <!-- Hero Header -->
+    <header class="pcirn-contact-header">
+      <div class="pcirn-contact-pill-badge">
+        <i class="fas fa-headset" aria-hidden="true"></i>
+        <span>Canal Oficial de Atendimento</span>
+      </div>
+      <h1>{{ 'info.fale-conosco.title' | translate }}</h1>
+      <p class="pcirn-contact-header-lead">
+        Central de comunicação, esclarecimento de dúvidas e solicitações sobre o Repositório Institucional da Polícia Científica do Rio Grande do Norte (PCIRN).
+      </p>
+
+      <!-- Quick topic chips -->
+      <div class="pcirn-topic-chips" aria-label="Tópicos de atendimento">
+        <span class="pcirn-topic-chip">
+          <i class="fas fa-file-alt" aria-hidden="true"></i> Localização de Normas &amp; POPs
+        </span>
+        <span class="pcirn-topic-chip">
+          <i class="fas fa-user-shield" aria-hidden="true"></i> Solicitações LAI &amp; Sigilo
+        </span>
+        <span class="pcirn-topic-chip">
+          <i class="fas fa-upload" aria-hidden="true"></i> Suporte a Depósitos de Servidores
+        </span>
+        <span class="pcirn-topic-chip">
+          <i class="fas fa-comment-dots" aria-hidden="true"></i> Sugestões &amp; Elogios
+        </span>
+      </div>
+    </header>
+
+    <!-- Main 2x2 Grid Layout -->
+    <div class="pcirn-contact-grid">
+
+      <!-- CARD 1 (Row 1, Col 1): Contact Form Card -->
+      <section class="pcirn-form-card" aria-labelledby="form-heading">
+        <div class="pcirn-card-header">
+          <div class="pcirn-card-badge-icon">
+            <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2 id="form-heading">Envie sua mensagem</h2>
+            <small>Preencha o formulário abaixo. Nossa equipe técnica do NUGECID responderá no endereço de e-mail indicado.</small>
+          </div>
+        </div>
+
+        <div class="pcirn-form-body">
+          <ds-feedback-form></ds-feedback-form>
+        </div>
+
+        <div class="pcirn-form-card-note">
+          <i class="fas fa-shield-alt" aria-hidden="true"></i>
+          <div>
+            <strong>Privacidade e Sigilo:</strong> Os dados fornecidos são confidenciais e protegidos em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).
+          </div>
+        </div>
+      </section>
+
+      <!-- CARD 2 (Row 1, Col 2): Official Channels & NUGECID Unified Card -->
+      <aside class="pcirn-contact-sidebar" aria-labelledby="channels-heading">
+        <div class="pcirn-card-header">
+          <div class="pcirn-card-badge-icon">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2 id="channels-heading">Canais Oficiais de Atendimento</h2>
+            <small>Atendimento direto pela equipe técnica do NUGECID</small>
+          </div>
+        </div>
+
+        <ul class="pcirn-channel-list">
+          <!-- Email -->
+          <li class="pcirn-channel-item">
+            <div class="pcirn-channel-icon-wrap">
+              <i class="far fa-envelope" aria-hidden="true"></i>
+            </div>
+            <div class="pcirn-channel-info">
+              <span class="pcirn-channel-label">E-mail Institucional</span>
+              <a href="mailto:arquivogeral@pci.rn.gov.br" class="pcirn-channel-value">arquivogeral@pci.rn.gov.br</a>
+            </div>
+            <div class="pcirn-channel-actions">
+              <button type="button" (click)="copyEmail()" class="pcirn-action-btn" [class.copied]="copiedEmail" [title]="copiedEmail ? 'Copiado!' : 'Copiar e-mail'" [attr.aria-label]="copiedEmail ? 'E-mail copiado' : 'Copiar e-mail para a área de transferência'">
+                <i class="fas" [class.fa-copy]="!copiedEmail" [class.fa-check]="copiedEmail" aria-hidden="true"></i>
+                <span>{{ copiedEmail ? 'Copiado!' : 'Copiar' }}</span>
+              </button>
+            </div>
+          </li>
+
+          <!-- Telefone -->
+          <li class="pcirn-channel-item">
+            <div class="pcirn-channel-icon-wrap">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+            </div>
+            <div class="pcirn-channel-info">
+              <span class="pcirn-channel-label">Telefone / Ramal</span>
+              <a href="tel:+558432326928" class="pcirn-channel-value">(84) 3232-6928</a>
+            </div>
+            <div class="pcirn-channel-actions">
+              <a href="tel:+558432326928" class="pcirn-action-btn" title="Ligar para o telefone institucional" aria-label="Ligar para o telefone (84) 3232-6928">
+                <i class="fas fa-phone-volume" aria-hidden="true"></i>
+                <span>Ligar</span>
+              </a>
+            </div>
+          </li>
+
+          <!-- SEI-RN -->
+          <li class="pcirn-channel-item">
+            <div class="pcirn-channel-icon-wrap">
+              <i class="fas fa-file-contract" aria-hidden="true"></i>
+            </div>
+            <div class="pcirn-channel-info">
+              <span class="pcirn-channel-label">Processo Eletrônico (SEI-RN)</span>
+              <span class="pcirn-channel-badge">Unidade PCI-NUGECID</span>
+              <small class="pcirn-channel-hint">Para tramitação de processos administrativos oficiais e ofícios.</small>
+            </div>
+          </li>
+
+          <!-- Horário -->
+          <li class="pcirn-channel-item">
+            <div class="pcirn-channel-icon-wrap">
+              <i class="far fa-clock" aria-hidden="true"></i>
+            </div>
+            <div class="pcirn-channel-info">
+              <span class="pcirn-channel-label">Horário de Atendimento</span>
+              <span class="pcirn-channel-value text-dark">Segunda a Sexta, 08h às 14h</span>
+              <small class="pcirn-channel-hint">Dias úteis (expediente administrativo estadual).</small>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Embedded NUGECID Unit Identity -->
+        <div class="pcirn-unit-footer">
+          <div class="pcirn-unit-branding">
+            <img src="assets/pcirn/images/brasao-policia-cientifica-rn.png" alt="Brasão Polícia Científica RN" class="pcirn-unit-crest" />
+            <div>
+              <span class="pcirn-unit-acronym">NUGECID</span>
+              <div class="pcirn-unit-name">Núcleo de Gestão do Conhecimento, Informação, Documentação e Memória</div>
+            </div>
+          </div>
+          <p class="pcirn-unit-text">
+            Unidade responsável pela curadoria técnica, garantia do sigilo legal e preservação da memória científica da PCIRN.
+          </p>
+          <a href="https://www.instagram.com/policiacientificarn" target="_blank" rel="noopener noreferrer" class="pcirn-unit-social-link">
+            <i class="fab fa-instagram" aria-hidden="true"></i>
+            <span>Acompanhe a @policiacientificarn</span>
+            <i class="fas fa-external-link-alt ms-auto pcirn-unit-ext-icon" aria-hidden="true"></i>
+          </a>
+        </div>
+      </aside>
+
+      <!-- CARD 3 (Row 2, Col 1): Guidance Card -->
+      <section class="pcirn-guidance-card" aria-labelledby="guidance-heading">
+        <div class="pcirn-card-header">
+          <div class="pcirn-card-badge-icon">
+            <i class="fas fa-clipboard-list" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2 id="guidance-heading">Orientações Importantes de Atendimento</h2>
+            <small>Procedimentos recomendados para agilizar o retorno da sua demanda</small>
+          </div>
+        </div>
+
+        <ul class="pcirn-guide-list">
+          <li class="pcirn-guide-item">
+            <div class="pcirn-guide-num">01</div>
+            <div class="pcirn-guide-text">
+              <strong>Solicitação de Documentos com Restrição</strong>
+              <p>
+                Atos com dados protegidos pela LGPD ou peças periciais em sigilo legal exigem requerimento fundamentado via Lei de Acesso à Informação (LAI) ou processo no SEI-RN (unidade <strong>PCI-NUGECID</strong>).
+              </p>
+            </div>
+          </li>
+
+          <li class="pcirn-guide-item">
+            <div class="pcirn-guide-num">02</div>
+            <div class="pcirn-guide-text">
+              <strong>Habilitação de Servidores Submetedores</strong>
+              <p>
+                Servidores da PCIRN que necessitam depositar normas, POPs ou relatórios de suas unidades devem solicitar credenciamento informando matrícula funcional e setor via <a href="mailto:arquivogeral@pci.rn.gov.br">e-mail institucional</a>.
+              </p>
+            </div>
+          </li>
+
+          <li class="pcirn-guide-item">
+            <div class="pcirn-guide-num">03</div>
+            <div class="pcirn-guide-text">
+              <strong>Prazos e Acompanhamento de Resposta</strong>
+              <p>
+                As solicitações enviadas através deste formulário são protocoladas e encaminhadas aos técnicos responsáveis, com previsão de retorno inicial em até 48 horas úteis através do e-mail informado.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- CARD 4 (Row 2, Col 2): Acesso Rápido Card -->
+      <section class="pcirn-quick-nav-card" aria-labelledby="quicknav-heading">
+        <div class="pcirn-card-header">
+          <div class="pcirn-card-badge-icon">
+            <i class="fas fa-compass" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2 id="quicknav-heading">Acesso Rápido</h2>
+            <small>Guias, políticas e orientações adicionais</small>
+          </div>
+        </div>
+
+        <div class="pcirn-nav-links">
+          <a routerLink="/info/ajuda" class="pcirn-nav-card-item">
+            <div class="pcirn-nav-icon"><i class="fas fa-question-circle" aria-hidden="true"></i></div>
+            <div class="pcirn-nav-content">
+              <strong>Dúvidas Frequentes (FAQ)</strong>
+              <span>Orientações de consulta, busca e envio</span>
+            </div>
+            <i class="fas fa-chevron-right pcirn-nav-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a routerLink="/info/politica-acesso" class="pcirn-nav-card-item">
+            <div class="pcirn-nav-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+            <div class="pcirn-nav-content">
+              <strong>Política de Acesso</strong>
+              <span>Transparência ativa, restrições e LGPD</span>
+            </div>
+            <i class="fas fa-chevron-right pcirn-nav-arrow" aria-hidden="true"></i>
+          </a>
+
+          <a routerLink="/info/about" class="pcirn-nav-card-item">
+            <div class="pcirn-nav-icon"><i class="fas fa-info-circle" aria-hidden="true"></i></div>
+            <div class="pcirn-nav-content">
+              <strong>Sobre o Repositório</strong>
+              <span>Finalidade institucional e histórico</span>
+            </div>
+            <i class="fas fa-chevron-right pcirn-nav-arrow" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <!-- Quick Nav Helper Callout to balance height with Card 3 -->
+        <div class="pcirn-quick-nav-callout">
+          <div class="pcirn-callout-icon">
+            <i class="fas fa-info" aria-hidden="true"></i>
+          </div>
+          <div class="pcirn-callout-content">
+            <strong>Outras demandas periciais?</strong>
+            <p>Para agendamento de atendimentos periciais, laudos ou serviços ao cidadão, acesse o <a href="https://www.policiacientifica.rn.gov.br" target="_blank" rel="noopener noreferrer">portal da PCIRN</a>.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+</main>

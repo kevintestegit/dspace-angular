@@ -1,1 +1,41 @@
-
+<ng-container *ngVar="(bitstreams$ | async) as bitstreams">
+  @if (bitstreams?.length > 0) {
+    <section class="pcirn-document-files" aria-labelledby="pcirn-document-files-title">
+      <h2 id="pcirn-document-files-title" class="visually-hidden">{{ 'item.page.files' | translate }}</h2>
+      @for (file of bitstreams; track file; let first = $first) {
+        <div class="pcirn-document-file" [class.pcirn-document-file-primary]="first">
+          <ds-file-download-link
+            [bitstream]="file"
+            [item]="item"
+            [showIcon]="false"
+            [isBlank]="true"
+            [cssClasses]="first ? 'pcirn-document-download' : 'pcirn-document-download pcirn-document-download-secondary'">
+            <i class="fas fa-eye" aria-hidden="true"></i>
+            <span class="pcirn-document-download-copy">
+              <strong>
+                {{ 'pcirn.item.view' | translate }}
+                @if (first && fileExtension(file); as extension) {
+                  ({{ extension }})
+                }
+              </strong>
+            </span>
+          </ds-file-download-link>
+          <span class="pcirn-document-file-name">{{ dsoNameService.getName(file) }}</span>
+        </div>
+      }
+      @if (isLoading) {
+        <ds-loading message="{{ 'loading.default' | translate }}" [showMessage]="false"></ds-loading>
+      }
+      @if (!isLastPage) {
+        <button class="bitstream-view-more btn btn-outline-secondary btn-sm" type="button" (click)="getNextPage()">
+          {{ 'item.page.bitstreams.view-more' | translate }}
+        </button>
+      }
+      @if (isLastPage && currentPage !== 1) {
+        <button class="bitstream-collapse btn btn-outline-secondary btn-sm" type="button" (click)="currentPage = undefined; getNextPage()">
+          {{ 'item.page.bitstreams.collapse' | translate }}
+        </button>
+      }
+    </section>
+  }
+</ng-container>

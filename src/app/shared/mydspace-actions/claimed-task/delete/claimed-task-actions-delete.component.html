@@ -1,0 +1,39 @@
+<ng-template #deleteTipContent><p [innerHTML]="'submission.workflow.tasks.claimed.delete_help' | translate"></p></ng-template>
+<button type="button"
+  [className]="'btn btn-danger'"
+  [ngbTooltip]="deleteTipContent"
+  [dsBtnDisabled]="processing$ | async"
+  (click)="openDeleteModal(deleteModal)">
+  @if (processing$ | async) {
+    <span><i class='fas fa-circle-notch fa-spin'></i> {{'submission.workflow.tasks.generic.processing' | translate}}</span>
+  }
+  @if ((processing$ | async) !== true) {
+    <span><i class="fa fa-trash"></i> {{'submission.workflow.tasks.claimed.delete' | translate}}</span>
+  }
+</button>
+
+<ng-template #deleteModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">{{'submission.workflow.tasks.claimed.delete.confirm.title' | translate}}</h4>
+    <button type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="d('Cross click')">
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-warning" role="alert">
+      {{'submission.workflow.tasks.claimed.delete.confirm.info' | translate}}
+    </div>
+    <button class="btn btn-danger btn-lg btn-block w-100 mt-3"
+      [dsBtnDisabled]="processing$ | async"
+      (click)="submitTask()">
+      @if (processing$ | async) {
+        <span><i class='fas fa-circle-notch fa-spin'></i> {{'submission.workflow.tasks.generic.processing' | translate}}</span>
+      }
+      @if ((processing$ | async) !== true) {
+        <span>{{'submission.workflow.tasks.claimed.delete.confirm.submit' | translate}}</span>
+      }
+    </button>
+  </div>
+</ng-template>

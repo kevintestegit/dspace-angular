@@ -1,0 +1,15 @@
+<main class="pcirn-login-page">
+  <div class="pcirn-login-card">
+    <div class="pcirn-login-crest-wrapper mb-3">
+      <img class="pcirn-login-crest" src="assets/pcirn/images/brasao-policia-cientifica-rn.png" [alt]="'pcirn.header.institution' | translate">
+    </div>
+    <h1 class="pcirn-login-title h4 mb-1">{{"login.form.header" | translate}}</h1>
+    <p class="pcirn-login-subtitle mb-4 text-muted">{{"pcirn.header.institution" | translate}}</p>
+    <ds-log-in [isStandalonePage]="true"></ds-log-in>
+    <div class="mt-4 pt-3 border-top">
+      <a routerLink="/home" class="pcirn-login-back-link text-decoration-none">
+        <i class="fas fa-arrow-left me-1" aria-hidden="true"></i> Ir para a página inicial
+      </a>
+    </div>
+  </div>
+</main>

@@ -12,6 +12,7 @@ import {
 import {
   combineLatest as observableCombineLatest,
   Observable,
+  of,
 } from 'rxjs';
 import {
   distinctUntilChanged,
@@ -131,8 +132,9 @@ export class MenuService {
       select(menuByIDSelector(menuID)),
       select(getSubSectionsFromSectionSelector(parentID)),
       map((ids: string[]) => isNotEmpty(ids) ? ids : []),
-      switchMap((ids: string[]) =>
-        observableCombineLatest(ids.map((id: string) => this.getMenuSection(menuID, id))),
+      switchMap((ids: string[]) => isNotEmpty(ids)
+        ? observableCombineLatest(ids.map((id: string) => this.getMenuSection(menuID, id)))
+        : of([]),
       ),
       map((sections: MenuSection[]) => sections.filter((section: MenuSection) => hasValue(section) && (!mustBeVisible || section.visible))),
     );

@@ -1,0 +1,49 @@
+<main class="pcirn-list">
+  <div class="pcirn-list-inner">
+    <header class="pcirn-list-header">
+      <h1>{{ 'collectionList.title' | translate }}</h1>
+      <p>{{ 'collectionList.subtitle' | translate }}</p>
+    </header>
+
+    <div class="pcirn-list-toolbar">
+      <p class="pcirn-list-count" aria-live="polite">{{ (results().length === 1 ? 'collectionList.count.one' : 'collectionList.count') | translate:{ count: results().length } }}</p>
+      <label class="pcirn-list-search">
+        <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+        <input
+          type="search"
+          [value]="query()"
+          (input)="onSearch($event)"
+          [placeholder]="'collectionList.search' | translate"
+          [attr.aria-label]="'collectionList.search' | translate" />
+      </label>
+    </div>
+
+    @if (loading()) {
+      <ds-loading class="pcirn-list-loading"></ds-loading>
+    } @else if (failed()) {
+      <p class="pcirn-list-state">{{ 'collectionList.error' | translate }}</p>
+    } @else if (results().length > 0) {
+      <ul class="pcirn-list-cards">
+        @for (card of results(); track card.collection.id) {
+          <li>
+            <a [routerLink]="['/collections', card.collection.id]">
+              <span class="pcirn-list-icon" aria-hidden="true"><i [class]="'fas ' + card.icon"></i></span>
+              <span class="pcirn-list-copy">
+                @if (card.communityName) {
+                  <small class="pcirn-list-context">{{ card.communityName }}</small>
+                }
+                <strong>{{ card.name }}</strong>
+                @if (card.collection.shortDescription) {
+                  <small>{{ card.collection.shortDescription }}</small>
+                }
+              </span>
+              <i class="pcirn-list-chevron fas fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="pcirn-list-state">{{ 'collectionList.empty' | translate }}</p>
+    }
+  </div>
+</main>

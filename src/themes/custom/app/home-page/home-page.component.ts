@@ -33,6 +33,7 @@ import { ThemedSearchFormComponent } from '../../../../app/shared/search-form/th
 import { PcirnDocumentTypePipe } from '../../../../app/shared/utils/pcirn-document-type.pipe';
 import {
   buildQuickAccess,
+  PCIRN_SEARCH_CONFIGURATIONS,
   PcirnHomeDataService,
   PcirnQuickAccessCard,
 } from './pcirn-home-data.service';
@@ -54,6 +55,7 @@ import {
 export class HomePageComponent extends BaseComponent {
   readonly pcirnHomeData: PcirnHomeDataService;
   readonly quickAccess$: Observable<PcirnQuickAccessCard[]>;
+  readonly searchConfigurations = PCIRN_SEARCH_CONFIGURATIONS;
 
   constructor(
     @Inject(APP_CONFIG) appConfig: AppConfig,

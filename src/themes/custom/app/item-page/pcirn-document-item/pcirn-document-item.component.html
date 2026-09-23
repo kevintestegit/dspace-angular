@@ -245,7 +245,13 @@
           <dl class="pcirn-document-full-metadata-list">
             @for (entry of fullMetadata; track entry.uuid) {
               <div>
-                <dt>{{ entry.key }}</dt>
+                <dt>
+                  @if (metadataLabelKey(entry.key); as labelKey) {
+                    {{ labelKey | translate }}
+                  } @else {
+                    {{ entry.key }}
+                  }
+                </dt>
                 <dd>
                   {{ entry.value }}
                   @if (entry.language) {

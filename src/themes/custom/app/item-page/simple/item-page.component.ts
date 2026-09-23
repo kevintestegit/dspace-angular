@@ -15,15 +15,16 @@ import { ItemVersionsNoticeComponent } from '../../../../../app/item-page/versio
 import { fadeInOut } from '../../../../../app/shared/animations/fade';
 import { ErrorComponent } from '../../../../../app/shared/error/error.component';
 import { ThemedLoadingComponent } from '../../../../../app/shared/loading/themed-loading.component';
-import { ListableObjectComponentLoaderComponent } from '../../../../../app/shared/object-collection/shared/listable-object/listable-object-component-loader.component';
 import { VarDirective } from '../../../../../app/shared/utils/var.directive';
+import { PcirnDocumentItemComponent } from '../pcirn-document-item/pcirn-document-item.component';
 
 @Component({
   selector: 'ds-themed-item-page',
-  // styleUrls: ['./item-page.component.scss'],
-  styleUrls: ['../../../../../app/item-page/simple/item-page.component.scss'],
-  // templateUrl: './item-page.component.html',
-  templateUrl: '../../../../../app/item-page/simple/item-page.component.html',
+  styleUrls: [
+    '../../../../../app/item-page/simple/item-page.component.scss',
+    './item-page.component.scss',
+  ],
+  templateUrl: './item-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInOut],
   imports: [
@@ -32,7 +33,7 @@ import { VarDirective } from '../../../../../app/shared/utils/var.directive';
     ErrorComponent,
     ItemVersionsComponent,
     ItemVersionsNoticeComponent,
-    ListableObjectComponentLoaderComponent,
+    PcirnDocumentItemComponent,
     NotifyRequestsStatusComponent,
     QaEventNotificationComponent,
     ThemedItemAlertsComponent,

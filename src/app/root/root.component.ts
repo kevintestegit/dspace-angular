@@ -19,27 +19,19 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import {
   BehaviorSubject,
-  combineLatest as combineLatestObservable,
   Observable,
   of,
 } from 'rxjs';
-import {
-  first,
-  map,
-  skipWhile,
-  startWith,
-} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { INotificationBoardOptions } from 'src/config/notifications-config.interfaces';
 
 import { ThemeConfig } from '../../config/theme.config';
 import { environment } from '../../environments/environment';
-import { ThemedAdminSidebarComponent } from '../admin/admin-sidebar/themed-admin-sidebar.component';
 import { getPageInternalServerErrorRoute } from '../app-routing-paths';
 import {
   AppState,
   routerStateSelector,
 } from '../app.reducer';
-import { isAuthenticated } from '../core/auth/selectors';
 import { ThemedBreadcrumbsComponent } from '../breadcrumbs/themed-breadcrumbs.component';
 import {
   NativeWindowRef,
@@ -47,23 +39,15 @@ import {
 } from '../core/services/window.service';
 import { ThemedFooterComponent } from '../footer/themed-footer.component';
 import { ThemedHeaderNavbarWrapperComponent } from '../header-nav-wrapper/themed-header-navbar-wrapper.component';
-import { slideSidebarPadding } from '../shared/animations/slide';
-import { HostWindowService } from '../shared/host-window.service';
 import { LiveRegionComponent } from '../shared/live-region/live-region.component';
 import { ThemedLoadingComponent } from '../shared/loading/themed-loading.component';
-import { MenuService } from '../shared/menu/menu.service';
-import { MenuID } from '../shared/menu/menu-id.model';
 import { NotificationsBoardComponent } from '../shared/notifications/notifications-board/notifications-board.component';
-import { ThemedSectorSidebarComponent } from '../shared/sector-sidebar/themed-sector-sidebar.component';
-import { SectorSidebarService } from '../shared/sector-sidebar/sector-sidebar.service';
-import { CSSVariableService } from '../shared/sass-helper/css-variable.service';
 import { SystemWideAlertBannerComponent } from '../system-wide-alert/alert-banner/system-wide-alert-banner.component';
 
 @Component({
   selector: 'ds-base-root',
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.scss'],
-  animations: [slideSidebarPadding],
   imports: [
     AsyncPipe,
     LiveRegionComponent,
@@ -71,8 +55,6 @@ import { SystemWideAlertBannerComponent } from '../system-wide-alert/alert-banne
     NotificationsBoardComponent,
     RouterOutlet,
     SystemWideAlertBannerComponent,
-    ThemedAdminSidebarComponent,
-    ThemedSectorSidebarComponent,
     ThemedBreadcrumbsComponent,
     ThemedFooterComponent,
     ThemedHeaderNavbarWrapperComponent,
@@ -82,11 +64,6 @@ import { SystemWideAlertBannerComponent } from '../system-wide-alert/alert-banne
 })
 export class RootComponent implements OnInit {
   theme: Observable<ThemeConfig> = of({} as any);
-  isSidebarVisible$: Observable<boolean>;
-  slideSidebarOver$: Observable<boolean>;
-  collapsedSidebarWidth$: Observable<string>;
-  expandedSidebarWidth$: Observable<string>;
-  showFooter$: Observable<boolean> = of(false);
   isLoginRoute$: Observable<boolean> = of(false);
   notificationOptions: INotificationBoardOptions;
   models: any;
@@ -106,25 +83,12 @@ export class RootComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store<AppState>,
-    private cssService: CSSVariableService,
-    private menuService: MenuService,
-    private sectorSidebarService: SectorSidebarService,
-    private windowService: HostWindowService,
     @Inject(NativeWindowService) private _window: NativeWindowRef,
   ) {
     this.notificationOptions = environment.notifications;
   }
 
   ngOnInit() {
-    this.showFooter$ = combineLatestObservable([
-      this.store.pipe(select(isAuthenticated)),
-      this.store.pipe(select(routerStateSelector)),
-    ]).pipe(
-      map(([authenticated, routerState]) => {
-        const route = routerState?.state?.url?.split(/[?#]/)[0];
-        return !authenticated && route === '/home';
-      }),
-    );
     this.isLoginRoute$ = this.store.pipe(
       select(routerStateSelector),
       map((routerState) => routerState?.state?.url?.split(/[?#]/)[0] === '/login'),
@@ -140,32 +104,6 @@ export class RootComponent implements OnInit {
       }
       this.browserOsClasses.next(browserOsClasses);
     }
-
-    this.isSidebarVisible$ = combineLatestObservable([
-      this.menuService.isMenuVisibleWithVisibleSections(MenuID.ADMIN),
-      this.sectorSidebarService.visible$,
-    ]).pipe(
-      map(([adminSidebarVisible, sectorSidebarVisible]) => adminSidebarVisible || sectorSidebarVisible),
-    );
-
-    this.expandedSidebarWidth$ = this.cssService.getVariable('--ds-admin-sidebar-total-width').pipe(
-      skipWhile((val) => !val),
-      first(),
-    );
-    this.collapsedSidebarWidth$ = this.cssService.getVariable('--ds-admin-sidebar-fixed-element-width').pipe(
-      skipWhile((val) => !val),
-      first(),
-    );
-
-    const sidebarCollapsed = this.menuService.isMenuCollapsed(MenuID.ADMIN);
-    this.slideSidebarOver$ = combineLatestObservable([
-      sidebarCollapsed,
-      this.windowService.isXsOrSm(),
-      this.sectorSidebarService.visible$,
-    ]).pipe(
-        map(([collapsed, mobile, sectorSidebarVisible]) => collapsed || mobile || sectorSidebarVisible),
-        startWith(true),
-      );
 
     if (this.router.url === getPageInternalServerErrorRoute()) {
       this.shouldShowRouteLoader = false;

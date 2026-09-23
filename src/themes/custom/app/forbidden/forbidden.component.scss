@@ -1,0 +1,95 @@
+.pcirn-error-page {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 2rem 1rem;
+}
+
+.pcirn-error-card {
+  background: #fff;
+  border: 1px solid #dfe7f0;
+  border-radius: .75rem;
+  max-width: 32rem;
+  padding: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+  width: 100%;
+}
+
+.pcirn-error-icon {
+  color: #0b4f8a;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: .7;
+}
+
+.pcirn-error-code {
+  color: #07345f;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+  margin: 0 0 .25rem;
+}
+
+.pcirn-error-title {
+  color: #24364b;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.pcirn-error-message {
+  color: #5a6f85;
+  font-size: .95rem;
+  line-height: 1.6;
+  margin: 0 0 1.75rem;
+}
+
+.pcirn-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: center;
+}
+
+.pcirn-btn-primary {
+  background: #07345f;
+  border: 1px solid #07345f;
+  border-radius: .4rem;
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+  padding: .55rem 1.25rem;
+  text-decoration: none;
+  transition: background .15s;
+
+  &:hover {
+    background: #0b4f8a;
+    color: #fff;
+  }
+
+  i {
+    margin-right: .4rem;
+  }
+}
+
+.pcirn-btn-outline {
+  background: transparent;
+  border: 1px solid #07345f;
+  border-radius: .4rem;
+  color: #07345f;
+  font-size: .9rem;
+  font-weight: 600;
+  padding: .55rem 1.25rem;
+  text-decoration: none;
+  transition: background .15s, color .15s;
+
+  &:hover {
+    background: #07345f;
+    color: #fff;
+  }
+
+  i {
+    margin-right: .4rem;
+  }
+}

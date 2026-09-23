@@ -1,0 +1,33 @@
+@if (summary$ | async; as summary) {
+  @if (summary.total > 0) {
+    <section class="pcirn-task-banner" aria-live="polite">
+      <span class="pcirn-task-banner__icon" aria-hidden="true">
+        <i class="fas fa-clipboard-check"></i>
+      </span>
+      <span class="pcirn-task-banner__count" aria-hidden="true">{{ summary.total }}</span>
+      <div class="pcirn-task-banner__body">
+        <p class="pcirn-task-banner__title">{{ 'pcirn.mydspace.tasks.title' | translate }}</p>
+        <p class="pcirn-task-banner__detail">
+          {{ 'pcirn.mydspace.tasks.pool' | translate: { count: summary.pool } }}
+          @if (summary.claimed > 0) {
+            <span class="pcirn-task-banner__sep" aria-hidden="true">·</span>
+            {{ 'pcirn.mydspace.tasks.claimed' | translate: { count: summary.claimed } }}
+          }
+        </p>
+      </div>
+      <div class="pcirn-task-banner__actions">
+        <a class="btn btn-primary"
+           [routerLink]="['/mydspace']"
+           [queryParams]="{ configuration: 'workflow' }">
+          <i class="fas fa-list-check" aria-hidden="true"></i>
+          {{ 'pcirn.mydspace.tasks.action' | translate }}
+        </a>
+        <a class="btn btn-outline-primary"
+           [routerLink]="['/mydspace']"
+           [queryParams]="{ configuration: 'workspace' }">
+          {{ 'pcirn.mydspace.tasks.submissions' | translate }}
+        </a>
+      </div>
+    </section>
+  }
+}

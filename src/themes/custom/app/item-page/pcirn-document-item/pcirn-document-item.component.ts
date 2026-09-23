@@ -29,6 +29,25 @@ import { ThemedResultsBackButtonComponent } from '../../../../../app/shared/resu
 import { ThemedThumbnailComponent } from '../../../../../app/thumbnail/themed-thumbnail.component';
 import { PcirnDocumentTypePipe } from '../../../../../app/shared/utils/pcirn-document-type.pipe';
 
+const PCIRN_METADATA_LABEL_KEYS = new Set([
+  'dc.contributor.author',
+  'dc.coverage.temporal',
+  'dc.date.accessioned',
+  'dc.date.issued',
+  'dc.description.abstract',
+  'dc.description.provenance',
+  'dc.format.extent',
+  'dc.identifier.other',
+  'dc.identifier.uri',
+  'dc.language',
+  'dc.publisher',
+  'dc.rights',
+  'dc.source',
+  'dc.subject',
+  'dc.title',
+  'dc.type',
+]);
+
 @Component({
   selector: 'ds-pcirn-document-item',
   styleUrls: ['./pcirn-document-item.component.scss'],
@@ -105,6 +124,12 @@ export class PcirnDocumentItemComponent extends ItemComponent {
 
   get fullMetadata() {
     return this.object?.metadataAsList || [];
+  }
+
+  metadataLabelKey(metadataKey: string): string | undefined {
+    return PCIRN_METADATA_LABEL_KEYS.has(metadataKey)
+      ? `pcirn.item.metadata.${metadataKey}`
+      : undefined;
   }
 
   get itemName(): string {

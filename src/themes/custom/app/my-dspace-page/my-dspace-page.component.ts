@@ -15,13 +15,12 @@ import { SuggestionsNotificationComponent } from '../../../../app/notifications/
 import { pushInOut } from '../../../../app/shared/animations/push';
 import { RoleDirective } from '../../../../app/shared/roles/role.directive';
 import { ThemedSearchComponent } from '../../../../app/shared/search/themed-search.component';
+import { PcirnWorkflowTaskSummaryComponent } from './workflow-task-summary/pcirn-workflow-task-summary.component';
 
 @Component({
   selector: 'ds-themed-my-dspace-page',
-  // styleUrls: ['./my-dspace-page.component.scss'],
   styleUrls: ['../../../../app/my-dspace-page/my-dspace-page.component.scss'],
-  // templateUrl: './my-dspace-page.component.html',
-  templateUrl: '../../../../app/my-dspace-page/my-dspace-page.component.html',
+  templateUrl: './my-dspace-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [pushInOut],
   providers: [
@@ -34,6 +33,7 @@ import { ThemedSearchComponent } from '../../../../app/shared/search/themed-sear
     AsyncPipe,
     MyDSpaceNewSubmissionComponent,
     MyDspaceQaEventsNotificationsComponent,
+    PcirnWorkflowTaskSummaryComponent,
     RoleDirective,
     SuggestionsNotificationComponent,
     ThemedSearchComponent,

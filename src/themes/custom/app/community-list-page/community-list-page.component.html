@@ -1,0 +1,46 @@
+<main class="pcirn-list">
+  <div class="pcirn-list-inner">
+    <header class="pcirn-list-header">
+      <h1>{{ 'communityList.title' | translate }}</h1>
+      <p>{{ 'communityList.subtitle' | translate }}</p>
+    </header>
+
+    <div class="pcirn-list-toolbar">
+      <p class="pcirn-list-count" aria-live="polite">{{ (results().length === 1 ? 'communityList.count.one' : 'communityList.count') | translate:{ count: results().length } }}</p>
+      <label class="pcirn-list-search">
+        <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+        <input
+          type="search"
+          [value]="query()"
+          (input)="onSearch($event)"
+          [placeholder]="'communityList.search' | translate"
+          [attr.aria-label]="'communityList.search' | translate" />
+      </label>
+    </div>
+
+    @if (loading()) {
+      <ds-loading class="pcirn-list-loading"></ds-loading>
+    } @else if (failed()) {
+      <p class="pcirn-list-state">{{ 'communityList.error' | translate }}</p>
+    } @else if (results().length > 0) {
+      <ul class="pcirn-list-cards">
+        @for (card of results(); track card.community.id) {
+          <li>
+            <a [routerLink]="['/communities', card.community.id]">
+              <span class="pcirn-list-icon" aria-hidden="true"><i [class]="'fas ' + card.icon"></i></span>
+              <span class="pcirn-list-copy">
+                <strong>{{ card.name }}</strong>
+                @if (card.community.shortDescription) {
+                  <small>{{ card.community.shortDescription }}</small>
+                }
+              </span>
+              <i class="pcirn-list-chevron fas fa-chevron-right" aria-hidden="true"></i>
+            </a>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="pcirn-list-state">{{ 'communityList.empty' | translate }}</p>
+    }
+  </div>
+</main>

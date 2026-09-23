@@ -29,6 +29,10 @@ export const copyWebpackOptions = {
       }
     },
     {
+      from: path.join(__dirname, '..', 'src', 'favicon.ico'),
+      to: 'favicon.ico',
+    },
+    {
       from: path.join(__dirname, '..', 'src', 'assets'),
       to: 'assets',
     },

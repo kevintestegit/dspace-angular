@@ -1,0 +1,124 @@
+.pcirn-about-card {
+  background: #fff;
+  border: 1px solid #dfe7f0;
+  border-radius: .6rem;
+  max-width: 52rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.pcirn-about-section + .pcirn-about-section {
+  border-top: 1px solid #eef3f8;
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+}
+
+.pcirn-about-section h2 {
+  align-items: flex-start;
+  color: #07345f;
+  display: flex;
+  font-size: var(--pcirn-fs-section);
+  font-weight: 700;
+  gap: .6rem;
+  line-height: 1.35;
+  margin: 0 0 .75rem;
+}
+
+.pcirn-about-section h2 i {
+  color: #0b4f8a;
+  flex-shrink: 0;
+  margin-top: .15rem;
+}
+
+.pcirn-about-section p,
+.pcirn-about-section li {
+  color: #24364b;
+  font-size: .95rem;
+  line-height: 1.6;
+  margin: 0;
+  text-align: justify;
+}
+
+.pcirn-about-section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.pcirn-about-section li + li {
+  margin-top: .5rem;
+}
+
+.pcirn-about-contact {
+  display: grid;
+  gap: .5rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.pcirn-about-contact li {
+  align-items: center;
+  color: #24364b;
+  display: flex;
+  font-size: .95rem;
+  gap: .6rem;
+
+  strong {
+    color: #07345f;
+  }
+}
+
+.pcirn-about-contact i {
+  color: #0b4f8a;
+  width: 1rem;
+}
+
+.pcirn-about-contact a {
+  color: #07345f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pcirn-about-contact a:hover {
+  text-decoration: underline;
+}
+
+.pcirn-about-notice {
+  align-items: flex-start;
+  background: #f0f7fc;
+  border-left: 3px solid #0b4f8a;
+  border-radius: 0 .4rem .4rem 0;
+  color: #1e3a5f;
+  display: flex;
+  font-size: .9rem;
+  gap: .75rem;
+  line-height: 1.6;
+  margin-top: .85rem;
+  padding: .75rem 1rem;
+
+  i {
+    color: #0b4f8a;
+    flex-shrink: 0;
+    font-size: 1.05rem;
+    margin-top: .2rem;
+  }
+
+  .pcirn-about-notice-title {
+    color: #07345f;
+    font-size: .95rem;
+    font-weight: 700;
+    margin-bottom: .25rem;
+  }
+
+  .pcirn-about-notice-text {
+    color: #2c425c;
+    font-size: .9rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
+
+    strong {
+      color: #07345f;
+      display: inline;
+      font-weight: 700;
+    }
+  }
+}

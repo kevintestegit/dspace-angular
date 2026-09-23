@@ -18,7 +18,7 @@ import { RootModule } from '../../app/root.module';
 import { SearchResultsSkeletonComponent } from '../../app/shared/search/search-results/search-results-skeleton/search-results-skeleton.component';
 import { MetadataImportPageComponent } from './app/admin/admin-import-metadata-page/metadata-import-page.component';
 import { AdminSearchPageComponent } from './app/admin/admin-search-page/admin-search-page.component';
-import { AdminSidebarComponent } from './app/admin/admin-sidebar/admin-sidebar.component';
+import { AdminDashboardComponent } from './app/admin/admin-dashboard/admin-dashboard.component';
 import { AdminWorkflowPageComponent } from './app/admin/admin-workflow-page/admin-workflow-page.component';
 import { EditBitstreamPageComponent } from './app/bitstream-page/edit-bitstream-page/edit-bitstream-page.component';
 import { BreadcrumbsComponent } from './app/breadcrumbs/breadcrumbs.component';
@@ -26,9 +26,9 @@ import { BrowseByDateComponent } from './app/browse-by/browse-by-date/browse-by-
 import { BrowseByMetadataComponent } from './app/browse-by/browse-by-metadata/browse-by-metadata.component';
 import { BrowseByTaxonomyComponent } from './app/browse-by/browse-by-taxonomy/browse-by-taxonomy.component';
 import { BrowseByTitleComponent } from './app/browse-by/browse-by-title/browse-by-title.component';
+import { CollectionListPageComponent } from './app/collection-list-page/collection-list-page.component';
 import { CollectionPageComponent } from './app/collection-page/collection-page.component';
 import { EditItemTemplatePageComponent } from './app/collection-page/edit-item-template-page/edit-item-template-page.component';
-import { CommunityListComponent } from './app/community-list-page/community-list/community-list.component';
 import { CommunityListPageComponent } from './app/community-list-page/community-list-page.component';
 import { CommunityPageComponent } from './app/community-page/community-page.component';
 import { CommunityPageSubCollectionListComponent } from './app/community-page/sections/sub-com-col-section/sub-collection-list/community-page-sub-collection-list.component';
@@ -45,6 +45,7 @@ import { FaleConoscoComponent } from './app/info/fale-conosco/fale-conosco.compo
 import { PrivacyComponent } from './app/info/privacy/privacy.component';
 import { ItemAlertsComponent } from './app/item-page/alerts/item-alerts.component';
 import { ItemStatusComponent } from './app/item-page/edit-item-page/item-status/item-status.component';
+import { ItemAuthorizationsComponent } from './app/item-page/edit-item-page/item-authorizations/item-authorizations.component';
 import { FullFileSectionComponent } from './app/item-page/full/field-components/file-section/full-file-section.component';
 import { FullItemPageComponent } from './app/item-page/full/full-item-page.component';
 import { MediaViewerComponent } from './app/item-page/media-viewer/media-viewer.component';
@@ -59,6 +60,8 @@ import { LogoutPageComponent } from './app/logout-page/logout-page.component';
 import { ObjectNotFoundComponent } from './app/lookup-by-id/objectnotfound/objectnotfound.component';
 import { MyDSpacePageComponent } from './app/my-dspace-page/my-dspace-page.component';
 import { ExpandableNavbarSectionComponent } from './app/navbar/expandable-navbar-section/expandable-navbar-section.component';
+import { PageInternalServerErrorComponent } from './app/page-internal-server-error/page-internal-server-error.component';
+import { PageErrorComponent } from './app/page-error/page-error.component';
 import { PageNotFoundComponent } from './app/pagenotfound/pagenotfound.component';
 import { ProfilePageComponent } from './app/profile-page/profile-page.component';
 import { ProfilePageMetadataFormComponent } from './app/profile-page/profile-page-metadata-form/profile-page-metadata-form.component';
@@ -118,11 +121,14 @@ const DECLARATIONS = [
   HomePageComponent,
   RootComponent,
   CommunityListPageComponent,
+  CollectionListPageComponent,
   SearchPageComponent,
   ConfigurationSearchPageComponent,
   SearchFormComponent,
   EndUserAgreementComponent,
   PageNotFoundComponent,
+  PageInternalServerErrorComponent,
+  PageErrorComponent,
   ObjectNotFoundComponent,
   ForbiddenComponent,
   PrivacyComponent,
@@ -153,14 +159,13 @@ const DECLARATIONS = [
   FeedbackComponent,
   FeedbackFormComponent,
   FaleConoscoComponent,
-  CommunityListComponent,
   ComcolPageHandleComponent,
   AuthNavMenuComponent,
   ExpandableNavbarSectionComponent,
   EditItemTemplatePageComponent,
   LoadingComponent,
   SearchResultsComponent,
-  AdminSidebarComponent,
+  AdminDashboardComponent,
   SearchSettingsComponent,
   ComcolPageBrowseByComponent,
   ObjectListComponent,
@@ -194,6 +199,7 @@ const DECLARATIONS = [
   ThumbnailComponent,
   SubmissionSectionUploadFileComponent,
   ItemStatusComponent,
+  ItemAuthorizationsComponent,
   EditBitstreamPageComponent,
   UserMenuComponent,
   BrowseByComponent,

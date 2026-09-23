@@ -1,0 +1,47 @@
+<nav
+  [ngClass]="{'open': (menuCollapsed | async) !== true}"
+  [@slideMobileNav]="(isMobile$ | async) !== true ? 'default' : ((menuCollapsed | async) ? 'collapsed' : 'expanded')"
+  class="navbar navbar-light navbar-expand-md px-md-0 navbar-container"
+  role="navigation"
+  [attr.aria-label]="'nav.main.description' | translate"
+  id="main-navbar">
+  <div class="navbar-inner-container w-100" [class.container]="(isMobile$ | async) !== true">
+    <div class="w-100">
+      <div id="collapsingNav">
+        @if ((isMobile$ | async) && (isAuthenticated$ | async)) {
+          <ds-user-menu [inExpandableNavbar]="true"></ds-user-menu>
+        }
+        <div class="navbar-nav pcirn-header-nav-links align-items-md-center shadow-none" role="menubar">
+          <a
+            class="pcirn-header-nav-link"
+            routerLink="/home"
+            [class.active]="isNavActive('home')"
+            [attr.aria-current]="isNavActive('home') ? 'page' : null">
+            {{ 'home.breadcrumbs' | translate }}
+          </a>
+          <a
+            class="pcirn-header-nav-link"
+            routerLink="/community-list"
+            [class.active]="isNavActive('communities')"
+            [attr.aria-current]="isNavActive('communities') ? 'page' : null">
+            {{ 'communityList.breadcrumbs' | translate }}
+          </a>
+          <a
+            class="pcirn-header-nav-link"
+            routerLink="/collection-list"
+            [class.active]="isNavActive('collections')"
+            [attr.aria-current]="isNavActive('collections') ? 'page' : null">
+            {{ 'item.page.collections' | translate }}
+          </a>
+          <a
+            class="pcirn-header-nav-link"
+            routerLink="/search"
+            [class.active]="isNavActive('publications')"
+            [attr.aria-current]="isNavActive('publications') ? 'page' : null">
+            {{ 'item.page.publications' | translate }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

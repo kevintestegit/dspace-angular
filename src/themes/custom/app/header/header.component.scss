@@ -1,0 +1,105 @@
+:host {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pcirn-header-tools {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  min-height: 48px;
+}
+
+.pcirn-header-tools > ds-search-navbar {
+  flex: 0 1 18rem;
+  min-width: 0;
+  width: clamp(10rem, 18vw, 18rem);
+}
+
+@media (min-width: 768px) {
+  .pcirn-header-tools {
+    gap: .75rem;
+    transform: translateY(-.5rem);
+  }
+  .pcirn-header-tools > ds-search-navbar {
+    width: clamp(9rem, 15vw, 15rem);
+  }
+}
+
+.pcirn-header-account-tools {
+  align-items: center;
+  display: flex;
+  gap: .6rem;
+}
+
+.pcirn-header-account-tools ::ng-deep .navbar-nav {
+  align-items: center;
+  display: flex;
+  gap: .2rem;
+}
+
+.pcirn-header-account-tools ::ng-deep ds-lang-switch .btn {
+  font-size: .9rem;
+  padding: .15rem .1rem !important;
+}
+
+.pcirn-header-account-tools ::ng-deep .dropdownLogin {
+  font-size: .82rem;
+  gap: .3rem;
+  padding: .48rem .65rem !important;
+  border: 1px solid #d4e0ea;
+  border-radius: .5rem;
+  white-space: nowrap;
+}
+
+.pcirn-header-account-tools ::ng-deep .btn-link,
+.pcirn-header-account-tools ::ng-deep .loginLink,
+.pcirn-header-account-tools ::ng-deep .logoutLink {
+  color: #0b3154;
+  text-decoration: none;
+}
+
+.pcirn-header-account-tools ::ng-deep .btn-link:hover,
+.pcirn-header-account-tools ::ng-deep .btn-link:focus-visible,
+.pcirn-header-account-tools ::ng-deep .loginLink:hover,
+.pcirn-header-account-tools ::ng-deep .loginLink:focus-visible,
+.pcirn-header-account-tools ::ng-deep .logoutLink:hover,
+.pcirn-header-account-tools ::ng-deep .logoutLink:focus-visible {
+  color: #0e5a73;
+}
+
+.pcirn-header-menu-toggle {
+  background: transparent;
+  border: 0;
+  color: #0b3154;
+  font-size: 1.25rem;
+  padding: .3rem;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .pcirn-header-tools > ds-search-navbar {
+    flex: 1 1 auto;
+    width: 7rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pcirn-header-tools {
+    justify-content: space-between;
+    min-height: 2.85rem;
+    gap: .35rem;
+  }
+
+  .pcirn-header-tools > ds-search-navbar {
+    flex: 1 1 0;
+    max-width: none;
+    min-width: 0;
+    width: auto;
+  }
+
+  .pcirn-header-account-tools {
+    gap: .2rem;
+  }
+}

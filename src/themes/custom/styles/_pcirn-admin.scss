@@ -1,0 +1,382 @@
+$pcirn-admin-ink: #0b3154;
+$pcirn-admin-blue: #0e5a73;
+$pcirn-admin-border: #dce6ee;
+$pcirn-admin-surface: #fff;
+$pcirn-admin-soft: #f4f8fb;
+
+.epeople-registry,
+.groups-registry,
+.eperson-form,
+.group-form {
+  color: $pcirn-admin-ink;
+}
+
+.epeople-registry,
+.groups-registry {
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+
+  > .col-12 > .d-flex.justify-content-between:first-child {
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem !important;
+    padding-bottom: 1rem;
+    border-color: $pcirn-admin-border !important;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0 !important;
+    color: $pcirn-admin-ink;
+    font-size: clamp(1.55rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -.025em;
+  }
+
+  h2 {
+    margin: 2rem 0 1rem;
+    padding: 0 0 .6rem !important;
+    border-color: $pcirn-admin-border !important;
+    color: $pcirn-admin-ink;
+    font-size: 1.1rem;
+    font-weight: 750;
+  }
+
+  > .col-12 > form {
+    align-items: flex-start;
+    gap: .75rem;
+    padding: 1rem;
+    border: 1px solid $pcirn-admin-border;
+    border-radius: .75rem;
+    background: $pcirn-admin-soft;
+
+    > div {
+      min-width: 0;
+    }
+
+    .flex-grow-1 {
+      flex: 1 1 20rem;
+    }
+
+    .form-select,
+    .form-control {
+      min-height: 2.7rem;
+      border-color: $pcirn-admin-border;
+      border-radius: .45rem;
+      color: $pcirn-admin-ink;
+    }
+
+    .form-select:focus,
+    .form-control:focus {
+      border-color: $pcirn-admin-blue;
+      box-shadow: 0 0 0 .2rem rgba($pcirn-admin-blue, .15);
+    }
+
+    .input-group {
+      margin-bottom: 0 !important;
+    }
+
+    .input-group-append .btn {
+      min-height: 2.7rem;
+      border-radius: 0 .45rem .45rem 0;
+    }
+  }
+
+  .addEPerson-button,
+  > .col-12 > .d-flex:first-child .btn-success {
+    min-height: 2.65rem;
+    padding-inline: 1rem;
+    border-color: $pcirn-admin-blue;
+    border-radius: .5rem;
+    background: $pcirn-admin-blue;
+    font-weight: 700;
+  }
+
+  ds-pagination {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .table-responsive {
+    overflow: hidden;
+    border: 1px solid $pcirn-admin-border;
+    border-radius: .75rem;
+    background: $pcirn-admin-surface;
+    box-shadow: 0 8px 24px rgba(8, 47, 77, .05);
+  }
+
+  table {
+    margin: 0;
+    color: $pcirn-admin-ink;
+
+    thead th {
+      padding: .85rem 1rem;
+      border-color: $pcirn-admin-border;
+      background: $pcirn-admin-soft;
+      color: $pcirn-admin-blue;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: .8rem 1rem;
+      border-color: #e8eef3;
+      vertical-align: middle;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    a {
+      color: $pcirn-admin-blue;
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+      text-underline-offset: .15em;
+    }
+  }
+
+  .edit-field .btn {
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    border-radius: .4rem;
+  }
+}
+
+.eperson-form,
+.group-form {
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+
+  > .col-12 > h1 {
+    margin: 0 0 1.5rem;
+    padding: 0 0 1rem !important;
+    border-color: $pcirn-admin-border !important;
+    color: $pcirn-admin-ink;
+    font-size: clamp(1.55rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -.025em;
+  }
+
+  ds-form {
+    display: block;
+    padding: 1.25rem;
+    border: 1px solid $pcirn-admin-border;
+    border-radius: .75rem;
+    background: $pcirn-admin-surface;
+    box-shadow: 0 8px 24px rgba(8, 47, 77, .05);
+
+    .btn-group {
+      gap: .5rem;
+    }
+
+    .btn {
+      min-height: 2.5rem;
+      border-radius: .45rem;
+      font-weight: 650;
+    }
+
+    .form-control,
+    .form-select {
+      min-height: 2.65rem;
+      border-color: $pcirn-admin-border;
+      border-radius: .45rem;
+    }
+  }
+
+  h2,
+  h3,
+  h4 {
+    color: $pcirn-admin-ink;
+    font-weight: 750;
+  }
+
+  .table-responsive {
+    overflow: hidden;
+    border: 1px solid $pcirn-admin-border;
+    border-radius: .75rem;
+    background: $pcirn-admin-surface;
+  }
+
+  table {
+    margin: 0;
+    color: $pcirn-admin-ink;
+
+    thead th {
+      padding: .8rem 1rem;
+      border-color: $pcirn-admin-border;
+      background: $pcirn-admin-soft;
+      color: $pcirn-admin-blue;
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    tbody td {
+      padding: .75rem 1rem;
+      border-color: #e8eef3;
+      vertical-align: middle;
+    }
+  }
+
+  ds-members-list,
+  ds-subgroups-list {
+    display: block;
+    margin-top: 1rem;
+    padding: 1.25rem;
+    border: 1px solid $pcirn-admin-border;
+    border-radius: .75rem;
+    background: $pcirn-admin-surface;
+    box-shadow: 0 8px 24px rgba(8, 47, 77, .04);
+  }
+
+  ds-members-list,
+  ds-subgroups-list,
+  .eperson-form > .col-12 > div:last-child {
+    h2,
+    h3,
+    h4 {
+      margin: 0 0 1rem;
+      padding-bottom: .65rem;
+      border-bottom: 1px solid $pcirn-admin-border;
+    }
+
+    h3,
+    h4 {
+      margin-top: 1.5rem;
+    }
+  }
+
+  ds-members-list form,
+  ds-subgroups-list form {
+    align-items: flex-start;
+    gap: .75rem;
+
+    > div:first-child {
+      flex: 1 1 20rem;
+      min-width: 0;
+    }
+
+    .input-group,
+    .form-control {
+      min-height: 2.65rem;
+    }
+  }
+}
+
+.eperson-form > .col-12 > ds-form + div {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border: 1px solid $pcirn-admin-border;
+  border-radius: .75rem;
+  background: $pcirn-admin-surface;
+}
+
+.eperson-form > .col-12 > .pcirn-group-access-management {
+  display: block;
+  margin-top: 1rem;
+  padding: 1.25rem;
+  border: 1px solid $pcirn-admin-border;
+  border-radius: .75rem;
+  background: $pcirn-admin-surface;
+  box-shadow: 0 8px 24px rgba(8, 47, 77, .05);
+}
+
+.pcirn-administrator-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin: 0 0 1rem;
+  padding: 1rem 1.25rem;
+  border-left: .25rem solid #d4a017;
+  border-radius: .5rem;
+  background: #fff8e6;
+
+  h2 {
+    margin: 0 0 .5rem;
+    padding: 0 !important;
+    border: 0 !important;
+    color: $pcirn-admin-ink;
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 0;
+    color: $pcirn-admin-ink;
+  }
+
+  &__action {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: .75rem;
+  }
+
+  .btn {
+    min-height: 2.65rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .pcirn-administrator-control {
+    align-items: stretch;
+    flex-direction: column;
+
+    &__action {
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.pcirn-group-search {
+  max-width: 48rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .epeople-registry,
+  .groups-registry {
+    > .col-12 > form {
+      flex-direction: column;
+
+      > div,
+      .flex-grow-1 {
+        width: 100%;
+        margin-inline: 0 !important;
+      }
+
+      .input-group {
+        flex-wrap: nowrap;
+      }
+    }
+
+    .addEPerson-button,
+    > .col-12 > .d-flex:first-child .btn-success {
+      white-space: nowrap;
+    }
+
+    table {
+      min-width: 38rem;
+    }
+  }
+
+  .eperson-form,
+  .group-form {
+    ds-form,
+    ds-members-list,
+    ds-subgroups-list,
+    .eperson-form > .col-12 > div:last-child {
+      padding: 1rem;
+    }
+
+    table {
+      min-width: 34rem;
+    }
+  }
+}

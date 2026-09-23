@@ -1,7 +1,4 @@
-import {
-  AsyncPipe,
-  NgClass,
-} from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -18,8 +15,8 @@ import {
 
 @Component({
   selector: 'ds-themed-item-status',
-  // templateUrl: './item-status.component.html',
-  templateUrl: '../../../../../../app/item-page/edit-item-page/item-status/item-status.component.html',
+  styleUrls: ['./item-status.component.scss'],
+  templateUrl: './item-status.component.html',
   changeDetection: ChangeDetectionStrategy.Default,
   animations: [
     fadeIn,
@@ -28,7 +25,6 @@ import {
   imports: [
     AsyncPipe,
     ItemOperationComponent,
-    NgClass,
     RouterLink,
     TranslateModule,
   ],

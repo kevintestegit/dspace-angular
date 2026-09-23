@@ -63,7 +63,7 @@
       @for (mdField of form.fieldKeys; track mdField) {
         <div class="d-flex flex-row ds-field-row" role="row">
           <div class="lbl-cell" role="rowheader">
-            <span class="dont-break-out preserve-line-breaks">{{ mdField }}</span>
+            <span class="dont-break-out preserve-line-breaks">{{ (metadataLabelKey(mdField) || mdField) | translate }}</span>
             @if (form.hasOrderChanges(mdField)) {
               <div class="btn btn-warning reset-order-button mt-2 w-100"
                    (click)="form.resetOrder(mdField); onValueSaved()">

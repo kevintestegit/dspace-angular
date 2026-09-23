@@ -32,6 +32,7 @@ import {
 } from 'rxjs';
 import {
   debounceTime,
+  filter,
   finalize,
   map,
   switchMap,
@@ -202,6 +203,24 @@ export class EPersonFormComponent implements OnInit, OnDestroy {
    */
   groupsPageInfoState$: Observable<PageInfo>;
 
+  availableGroups$: Observable<RemoteData<PaginatedList<Group>>>;
+
+  administratorGroup: Group;
+
+  administratorAccessGranted: boolean | null;
+
+  administratorAccessLoading = true;
+
+  administratorActionPending = false;
+
+  groupSearchQuery = '';
+
+  groupSearchConfig: PaginationComponentOptions = Object.assign(new PaginationComponentOptions(), {
+    id: 'eperson-group-search',
+    pageSize: 5,
+    currentPage: 1,
+  });
+
   /**
    * Pagination config used to display the list of groups
    */
@@ -265,6 +284,7 @@ export class EPersonFormComponent implements OnInit, OnDestroy {
       }
     }));
     this.initialisePage();
+    this.loadAdministratorGroup();
   }
 
   /**
@@ -510,6 +530,83 @@ export class EPersonFormComponent implements OnInit, OnDestroy {
     });
   }
 
+  searchGroups(query: string, page = 1): void {
+    this.groupSearchQuery = query.trim();
+    this.groupSearchConfig.currentPage = page;
+
+    if (!this.groupSearchQuery) {
+      this.availableGroups$ = undefined;
+      return;
+    }
+
+    this.availableGroups$ = this.groupsDataService.searchGroups(this.groupSearchQuery, {
+      currentPage: page,
+      elementsPerPage: this.groupSearchConfig.pageSize,
+    }, false, true, followLink('object'));
+  }
+
+  isAdministratorGroup(group: Group): boolean {
+    return group?.name === 'Administrator';
+  }
+
+  toggleAdministratorAccess(): void {
+    this.updateAdministratorAccess(true);
+  }
+
+  confirmAdministratorAccessRemoval(): void {
+    this.activeEPerson$.pipe(
+      filter(hasValue),
+      take(1),
+    ).subscribe((eperson: EPerson) => {
+      const modalRef = this.modalService.open(ConfirmationModalComponent);
+      modalRef.componentInstance.name = this.dsoNameService.getName(eperson);
+      modalRef.componentInstance.headerLabel = `${this.messagePrefix}.groupManagement.administrator.confirmRemoval.header`;
+      modalRef.componentInstance.infoLabel = `${this.messagePrefix}.groupManagement.administrator.confirmRemoval.info`;
+      modalRef.componentInstance.cancelLabel = `${this.messagePrefix}.groupManagement.administrator.confirmRemoval.cancel`;
+      modalRef.componentInstance.confirmLabel = `${this.messagePrefix}.groupManagement.administrator.confirmRemoval.confirm`;
+      modalRef.componentInstance.brandColor = 'danger';
+      modalRef.componentInstance.confirmIcon = 'fas fa-user-minus';
+
+      modalRef.componentInstance.response.pipe(take(1)).subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          this.updateAdministratorAccess(false);
+        }
+      });
+    });
+  }
+
+  isGroupMember(group: Group, memberships: Group[] = []): boolean {
+    return memberships.some((membership: Group) => membership.id === group.id);
+  }
+
+  addGroupToEPerson(group: Group): void {
+    this.activeEPerson$.pipe(take(1)).subscribe((eperson: EPerson) => {
+      if (!hasValue(eperson)) {
+        return;
+      }
+
+      this.groupsDataService.addMemberToGroup(group, eperson).pipe(
+        getFirstCompletedRemoteData(),
+      ).subscribe((response: RemoteData<Group>) => {
+        this.notifyGroupMembershipChange(group, eperson, 'added', response.hasSucceeded);
+      });
+    });
+  }
+
+  removeGroupFromEPerson(group: Group): void {
+    this.activeEPerson$.pipe(take(1)).subscribe((eperson: EPerson) => {
+      if (!hasValue(eperson)) {
+        return;
+      }
+
+      this.groupsDataService.deleteMemberFromGroup(group, eperson).pipe(
+        getFirstCompletedRemoteData(),
+      ).subscribe((response: RemoteData<NoContent>) => {
+        this.notifyGroupMembershipChange(group, eperson, 'removed', response.hasSucceeded);
+      });
+    });
+  }
+
   /**
    * Start impersonating the EPerson
    */
@@ -627,8 +724,119 @@ export class EPersonFormComponent implements OnInit, OnDestroy {
    * Update the list of groups by fetching it from the rest api or cache
    */
   private updateGroups(options) {
-    this.subs.push(this.activeEPerson$.subscribe((eperson: EPerson) => {
+    this.subs.push(this.activeEPerson$.pipe(take(1)).subscribe((eperson: EPerson) => {
+      if (!hasValue(eperson)) {
+        return;
+      }
+
       this.groups$ = this.groupsDataService.findListByHref(eperson._links.groups.href, options);
+      this.groupsPageInfoState$ = this.groups$.pipe(
+        map((groupsRD: RemoteData<PaginatedList<Group>>) => groupsRD.payload.pageInfo),
+      );
     }));
+  }
+
+  private loadAdministratorGroup(): void {
+    this.groupsDataService.searchGroups('Administrator', {
+      currentPage: 1,
+      elementsPerPage: 10,
+    }, false, true).pipe(
+      getFirstCompletedRemoteData(),
+      take(1),
+    ).subscribe((response: RemoteData<PaginatedList<Group>>) => {
+      if (!response.hasSucceeded) {
+        this.administratorAccessLoading = false;
+        return;
+      }
+
+      this.administratorGroup = response.payload.page.find((group: Group) => this.isAdministratorGroup(group));
+      if (!hasValue(this.administratorGroup)) {
+        this.administratorAccessLoading = false;
+        return;
+      }
+
+      this.refreshAdministratorAccess();
+    });
+  }
+
+  private refreshAdministratorAccess(): void {
+    this.administratorAccessLoading = true;
+    this.activeEPerson$.pipe(
+      filter(hasValue),
+      take(1),
+      switchMap((eperson: EPerson) => this.hasAdministratorMembership(eperson, 1)),
+    ).subscribe((isAdministrator: boolean) => {
+      this.administratorAccessGranted = isAdministrator;
+      this.administratorAccessLoading = false;
+      this.changeDetectorRef.detectChanges();
+    });
+  }
+
+  private hasAdministratorMembership(eperson: EPerson, page: number): Observable<boolean | null> {
+    return this.groupsDataService.findListByHref(eperson._links.groups.href, {
+      currentPage: page,
+      elementsPerPage: this.config.pageSize,
+    }, false, true).pipe(
+      getFirstCompletedRemoteData(),
+      take(1),
+      switchMap((response: RemoteData<PaginatedList<Group>>) => {
+        if (!response.hasSucceeded) {
+          return of(null);
+        }
+
+        if (response.payload?.page?.some((group: Group) => group.id === this.administratorGroup.id)) {
+          return of(true);
+        }
+
+        if (!response.payload?.pageInfo || page >= response.payload.pageInfo.totalPages) {
+          return of(false);
+        }
+
+        return this.hasAdministratorMembership(eperson, page + 1);
+      }),
+    );
+  }
+
+  private updateAdministratorAccess(grantAccess: boolean): void {
+    if (!hasValue(this.administratorGroup) || this.administratorActionPending) {
+      return;
+    }
+
+    this.activeEPerson$.pipe(
+      filter(hasValue),
+      take(1),
+      switchMap((eperson: EPerson) => {
+        this.administratorActionPending = true;
+        const membershipRequest = grantAccess
+          ? this.groupsDataService.addMemberToGroup(this.administratorGroup, eperson)
+          : this.groupsDataService.deleteMemberFromGroup(this.administratorGroup, eperson);
+
+        return membershipRequest.pipe(
+          getFirstCompletedRemoteData(),
+          map((response: RemoteData<Group | NoContent>) => ({ eperson, response })),
+          finalize(() => this.administratorActionPending = false),
+        );
+      }),
+    ).subscribe(({ eperson, response }: { eperson: EPerson, response: RemoteData<Group | NoContent> }) => {
+      this.notifyGroupMembershipChange(this.administratorGroup, eperson, grantAccess ? 'added' : 'removed', response.hasSucceeded);
+      if (response.hasSucceeded) {
+        this.refreshAdministratorAccess();
+      }
+    });
+  }
+
+  private notifyGroupMembershipChange(group: Group, eperson: EPerson, action: 'added' | 'removed', succeeded: boolean): void {
+    const outcome = succeeded ? 'success' : 'failure';
+    const message = this.translateService.get(`${this.labelPrefix}groupManagement.notification.${action}.${outcome}`, {
+      group: this.dsoNameService.getName(group),
+      user: this.dsoNameService.getName(eperson),
+    });
+
+    if (succeeded) {
+      this.notificationsService.success(message);
+      this.updateGroups({ currentPage: 1, elementsPerPage: this.config.pageSize });
+    } else {
+      this.notificationsService.error(message);
+    }
   }
 }

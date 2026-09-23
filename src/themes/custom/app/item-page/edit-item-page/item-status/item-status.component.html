@@ -1,0 +1,62 @@
+<div class="pcirn-status-page">
+  <p class="pcirn-status-intro">
+    <i class="fas fa-circle-info" aria-hidden="true"></i>
+    <span>{{ 'item.edit.tabs.status.description' | translate }}</span>
+  </p>
+
+  <section class="pcirn-status-details" aria-labelledby="pcirn-status-details-title">
+    <h2 id="pcirn-status-details-title">
+      <i class="fas fa-list-check" aria-hidden="true"></i>
+      {{ 'pcirn.item.status.information' | translate }}
+    </h2>
+    <dl class="pcirn-status-detail-list">
+      @for (statusKey of statusDataKeys; track statusKey) {
+        <div class="pcirn-status-detail-row">
+          <dt class="status-label">
+            {{ 'item.edit.tabs.status.labels.' + statusKey | translate }}
+          </dt>
+          <dd class="status-data" id="status-{{statusKey}}">{{ statusData[statusKey] }}</dd>
+        </div>
+      }
+
+      @for (identifier of (identifiers$ | async); track identifier) {
+        @if (identifier.identifierType === 'doi') {
+          <div class="pcirn-status-detail-row">
+            <dt class="status-label">{{ identifier.identifierType.toLocaleUpperCase() }}</dt>
+            <dd class="status-data">
+              <span>{{ identifier.value }}</span>
+              <span class="pcirn-status-badge">
+                {{ 'item.edit.identifiers.doi.status.' + identifier.identifierStatus | translate }}
+              </span>
+            </dd>
+          </div>
+        }
+      }
+
+      <div class="pcirn-status-detail-row">
+        <dt class="status-label">{{ 'item.edit.tabs.status.labels.itemPage' | translate }}</dt>
+        <dd class="status-data" id="status-itemPage">
+          <a [routerLink]="itemPageRoute$ | async">{{ itemPageRoute$ | async }}</a>
+        </dd>
+      </div>
+    </dl>
+  </section>
+
+  @if (operations$ | async; as operations) {
+    @if (operations.length > 0) {
+      <section class="pcirn-status-actions" aria-labelledby="pcirn-status-actions-title">
+        <h2 id="pcirn-status-actions-title">
+          <i class="fas fa-sliders" aria-hidden="true"></i>
+          {{ 'pcirn.item.status.actions' | translate }}
+        </h2>
+        <div class="pcirn-status-action-list">
+          @for (operation of operations; track operation) {
+            <div class="pcirn-status-action-row">
+              <ds-item-operation [operation]="operation"></ds-item-operation>
+            </div>
+          }
+        </div>
+      </section>
+    }
+  }
+</div>

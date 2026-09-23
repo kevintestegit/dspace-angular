@@ -1,0 +1,22 @@
+// PCIRN type scale shared by page chrome and search surfaces
+:root {
+  --pcirn-fs-page-title: 1.5rem;
+  --pcirn-fs-section: 1.25rem;
+  --pcirn-fs-label: 1.05rem;
+  --pcirn-fs-card-title: 1rem;
+  --pcirn-fs-meta: .85rem;
+}
+
+ds-comcol-page-header h1 {
+  margin: 0 0 .35rem;
+  color: #07345f;
+  font-size: var(--pcirn-fs-page-title);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+}
+
+ds-comcol-page-handle {
+  color: #667587;
+  font-size: var(--pcirn-fs-meta);
+}

@@ -1,0 +1,27 @@
+<main class="pcirn-error-page">
+  <div class="pcirn-error-card">
+    <div class="pcirn-error-icon">
+      <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+    </div>
+    <h1 class="pcirn-error-code" data-test="status">{{status || 500}}</h1>
+    <h2 class="pcirn-error-title">Erro na aplicação</h2>
+    <p class="pcirn-error-message">
+      Ocorreu um erro inesperado durante a execução da operação.
+      Por favor, retorne à página inicial ou entre em contato com o suporte institucional.
+    </p>
+    <div class="pcirn-error-actions">
+      <a routerLink="/home" class="btn pcirn-btn-primary">
+        <i class="fas fa-home" aria-hidden="true"></i>
+        Ir para o Início
+      </a>
+      <a routerLink="/search" class="btn pcirn-btn-outline">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        Pesquisar no Acervo
+      </a>
+      <a routerLink="/info/fale-conosco" class="btn pcirn-btn-outline">
+        <i class="fas fa-envelope" aria-hidden="true"></i>
+        Fale Conosco
+      </a>
+    </div>
+  </div>
+</main>

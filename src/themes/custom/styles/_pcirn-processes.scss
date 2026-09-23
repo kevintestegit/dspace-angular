@@ -1,0 +1,151 @@
+// PCIRN: processes overview (/processes) in the same administration skin as the
+// registries. The page keeps the stock DSpace templates; only the chrome changes.
+// Depends on the $pcirn-admin-* variables defined in _pcirn-admin.scss.
+
+ds-process-overview {
+  display: block;
+  padding-block: clamp(1.5rem, 4vw, 3rem);
+  color: $pcirn-admin-ink;
+
+  h1 {
+    margin: 0 0 1.25rem;
+    color: $pcirn-admin-ink;
+    font-size: clamp(1.55rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -.025em;
+  }
+
+  .btn {
+    border-radius: .5rem;
+  }
+
+  // Primary action ("Novo") in the institutional teal, as in the registries.
+  // .btn.btn-success is restyled globally at (0,2,0), so match and exceed it here.
+  .btn.btn-success {
+    min-height: 2.65rem;
+    padding-inline: 1rem;
+    border-color: $pcirn-admin-blue;
+    background: $pcirn-admin-blue;
+    font-weight: 700;
+
+    &:hover,
+    &:focus {
+      border-color: darken($pcirn-admin-blue, 8%);
+      background: darken($pcirn-admin-blue, 8%);
+      color: #fff;
+    }
+  }
+}
+
+ds-process-overview-table {
+  display: block;
+
+  > div > .d-flex[role='button'] {
+    align-items: center;
+    margin-bottom: .9rem;
+  }
+
+  h2 {
+    margin: 0;
+    color: $pcirn-admin-ink;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    font-weight: 750;
+    letter-spacing: -.01em;
+  }
+
+  .badge-nb-processes {
+    min-width: 1.65rem;
+    padding-block: .3rem;
+    border-radius: 2rem;
+    // The stock markup ships `.bg-primary`, which is !important in Bootstrap.
+    background: #e8f0f9 !important;
+    color: $pcirn-admin-blue;
+    font-weight: 800;
+  }
+
+  .toggle-icon {
+    color: $pcirn-admin-blue;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 1px solid $pcirn-admin-border;
+    border-radius: .75rem;
+    background: $pcirn-admin-surface;
+    box-shadow: 0 8px 24px rgba(8, 47, 77, .05);
+  }
+
+  // The extra class on the chain gives (0,2,1), beating Bootstrap's
+  // `.table > :not(caption) > * > *` (0,1,1) cell background from `thead th`.
+  .table-responsive thead th {
+    padding: .85rem 1rem;
+    border-color: $pcirn-admin-border;
+    background: $pcirn-admin-soft;
+    color: $pcirn-admin-blue;
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: .045em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .table-responsive tbody td {
+    padding: .8rem 1rem;
+    border-color: #e8eef3;
+    vertical-align: middle;
+  }
+
+  table {
+    margin: 0;
+    color: $pcirn-admin-ink;
+
+    a {
+      color: $pcirn-admin-blue;
+      font-weight: 700;
+      text-decoration-thickness: 1px;
+      text-underline-offset: .15em;
+    }
+  }
+
+  .btn-outline-danger {
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    border-radius: .4rem;
+  }
+
+  // "Agora exibindo 1 - 1 de 1" and the pager, in the registries' look
+  ds-pagination {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .pagination-info {
+    color: #52708a;
+    font-size: .85rem;
+  }
+
+  ngb-pagination .page-link {
+    border-color: $pcirn-admin-border;
+    color: $pcirn-admin-blue;
+
+    &:focus {
+      box-shadow: 0 0 0 .2rem rgba($pcirn-admin-blue, .15);
+    }
+  }
+
+  // Empty-state message of a section with no processes
+  p {
+    color: #52708a;
+  }
+}
+
+@media (max-width: 767.98px) {
+  ds-process-overview .btn-success {
+    white-space: nowrap;
+  }
+
+  ds-process-overview-table table {
+    min-width: 38rem;
+  }
+}

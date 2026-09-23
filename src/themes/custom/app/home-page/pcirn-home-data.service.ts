@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Params } from '@angular/router';
 import {
   combineLatest,
   Observable,
@@ -28,6 +29,7 @@ export interface PcirnQuickAccessCard {
   description: string;
   icon: string;
   route: string;
+  queryParams?: Params;
   requiresLogin: boolean;
 }
 
@@ -37,8 +39,17 @@ export interface PcirnHomeMetrics {
   items: number;
 }
 
+export const PCIRN_SEARCH_CONFIGURATIONS: Record<string, Params> = {
+  regulations: { configuration: 'pcirnNormas' },
+  pops: { configuration: 'pcirnPops' },
+  research: { configuration: 'pcirnProducao' },
+  reports: { configuration: 'pcirnRelatorios' },
+};
+
 export function buildQuickAccess(isAuthenticated: boolean): PcirnQuickAccessCard[] {
   const privateRoute = isAuthenticated ? '/search' : '/login';
+  const filter = (key: string): Params | undefined =>
+    isAuthenticated || key === 'regulations' ? PCIRN_SEARCH_CONFIGURATIONS[key] : undefined;
   return [
     {
       titleKey: 'pcirn.home.quick-access.regulations.title',
@@ -47,6 +58,7 @@ export function buildQuickAccess(isAuthenticated: boolean): PcirnQuickAccessCard
       description: 'Acesse normas, portarias e atos oficiais.',
       icon: 'fa-gavel',
       route: '/search',
+      queryParams: filter('regulations'),
       requiresLogin: false,
     },
     {
@@ -56,6 +68,7 @@ export function buildQuickAccess(isAuthenticated: boolean): PcirnQuickAccessCard
       description: 'Procedimentos operacionais e fluxos de trabalho.',
       icon: 'fa-clipboard-list',
       route: privateRoute,
+      queryParams: filter('pops'),
       requiresLogin: true,
     },
     {
@@ -65,6 +78,7 @@ export function buildQuickAccess(isAuthenticated: boolean): PcirnQuickAccessCard
       description: 'Artigos, estudos e publicações científicas.',
       icon: 'fa-microscope',
       route: privateRoute,
+      queryParams: filter('research'),
       requiresLogin: true,
     },
     {
@@ -74,6 +88,7 @@ export function buildQuickAccess(isAuthenticated: boolean): PcirnQuickAccessCard
       description: 'Relatórios, pareceres e documentos técnicos.',
       icon: 'fa-chart-bar',
       route: privateRoute,
+      queryParams: filter('reports'),
       requiresLogin: true,
     },
   ];

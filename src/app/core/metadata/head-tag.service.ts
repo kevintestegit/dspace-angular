@@ -146,7 +146,9 @@ export class HeadTagService {
 
     if (hasValue(routeInfo.data.value.dso) && hasValue(routeInfo.data.value.dso.payload)) {
       this.currentObject.next(routeInfo.data.value.dso.payload);
-      this.setDSOMetaTags();
+      this.setDSOMetaTags(routeInfo.data.value.robots);
+    } else if (routeInfo.data.value.robots) {
+      this.addMetaTag('robots', routeInfo.data.value.robots);
     }
 
     if (routeInfo.data.value.title) {
@@ -171,9 +173,9 @@ export class HeadTagService {
     return route;
   }
 
-  protected setDSOMetaTags(): void {
+  protected setDSOMetaTags(robotsDirective?: string): void {
 
-    this.setNoIndexTag();
+    this.setNoIndexTag(robotsDirective);
 
     this.setTitleTag();
     this.setDescriptionTag();
@@ -215,8 +217,10 @@ export class HeadTagService {
   /**
    * Add <meta name="robots" content="noindex">  to the <head> if non-discoverable item
    */
-  protected setNoIndexTag(): void {
-    if (this.currentObject.value instanceof Item && this.currentObject.value.isDiscoverable === false) {
+  protected setNoIndexTag(robotsDirective?: string): void {
+    if (robotsDirective) {
+      this.addMetaTag('robots', robotsDirective);
+    } else if (this.currentObject.value instanceof Item && this.currentObject.value.isDiscoverable === false) {
       this.addMetaTag('robots', 'noindex');
     }
   }

@@ -8,11 +8,17 @@ import { i18nBreadcrumbResolver } from '../core/breadcrumbs/i18n-breadcrumb.reso
 import { notifyInfoGuard } from '../core/coar-notify/notify-info/notify-info.guard';
 import { feedbackGuard } from '../core/feedback/feedback.guard';
 import { hasValue } from '../shared/empty.util';
+import { ThemedAboutComponent } from './about/themed-about.component';
 import { AccessibilitySettingsComponent } from './accessibility-settings/accessibility-settings.component';
+import { ThemedAjudaComponent } from './ajuda/themed-ajuda.component';
 import { ThemedEndUserAgreementComponent } from './end-user-agreement/themed-end-user-agreement.component';
+import { ThemedFaleConoscoComponent } from './fale-conosco/themed-fale-conosco.component';
 import { ThemedFeedbackComponent } from './feedback/themed-feedback.component';
 import {
+  ABOUT_PATH,
   ACCESSIBILITY_SETTINGS_PATH,
+  ACCESS_POLICY_PATH,
+  AJUDA_PATH,
   COAR_NOTIFY_SUPPORT,
   END_USER_AGREEMENT_PATH,
   FALE_CONOSCO_PATH,
@@ -20,11 +26,17 @@ import {
   PRIVACY_PATH,
 } from './info-routing-paths';
 import { NotifyInfoComponent } from './notify-info/notify-info.component';
+import { ThemedPoliticaAcessoComponent } from './politica-acesso/themed-politica-acesso.component';
 import { ThemedPrivacyComponent } from './privacy/themed-privacy.component';
-import { ThemedFaleConoscoComponent } from './fale-conosco/themed-fale-conosco.component';
 
 
 export const ROUTES: Routes = [
+  {
+    path: ABOUT_PATH,
+    component: ThemedAboutComponent,
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    data: { title: 'info.about.title', breadcrumbKey: 'info.about' },
+  },
   {
     path: FEEDBACK_PATH,
     component: ThemedFeedbackComponent,
@@ -43,6 +55,18 @@ export const ROUTES: Routes = [
     component: AccessibilitySettingsComponent,
     resolve: { breadcrumb: i18nBreadcrumbResolver },
     data: { title: 'info.accessibility-settings.title', breadcrumbKey: 'info.accessibility-settings' },
+  },
+  {
+    path: ACCESS_POLICY_PATH,
+    component: ThemedPoliticaAcessoComponent,
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    data: { title: 'info.access-policy.title', breadcrumbKey: 'info.access-policy' },
+  },
+  {
+    path: AJUDA_PATH,
+    component: ThemedAjudaComponent,
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    data: { title: 'info.ajuda.title', breadcrumbKey: 'info.ajuda' },
   },
   environment.info.enableEndUserAgreement ? {
     path: END_USER_AGREEMENT_PATH,

@@ -6,10 +6,8 @@ import { ForbiddenComponent as BaseComponent } from '../../../../app/forbidden/f
 
 @Component({
   selector: 'ds-themed-forbidden',
-  // templateUrl: './forbidden.component.html',
-  templateUrl: '../../../../app/forbidden/forbidden.component.html',
-  // styleUrls: ['./forbidden.component.scss']
-  styleUrls: ['../../../../app/forbidden/forbidden.component.scss'],
+  templateUrl: './forbidden.component.html',
+  styleUrls: ['./forbidden.component.scss'],
   imports: [
     RouterLink,
     TranslateModule,

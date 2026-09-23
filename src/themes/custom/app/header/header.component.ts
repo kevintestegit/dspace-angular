@@ -2,6 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
+
 import { HeaderComponent as BaseComponent } from '../../../../app/header/header.component';
 import { ThemedSearchNavbarComponent } from '../../../../app/search-navbar/themed-search-navbar.component';
 import { ThemedAuthNavMenuComponent } from '../../../../app/shared/auth-nav-menu/themed-auth-nav-menu.component';
@@ -9,10 +10,8 @@ import { ThemedLangSwitchComponent } from '../../../../app/shared/lang-switch/th
 
 @Component({
   selector: 'ds-themed-header',
-  // styleUrls: ['header.component.scss'],
-  styleUrls: ['../../../../app/header/header.component.scss'],
-  // templateUrl: 'header.component.html',
-  templateUrl: '../../../../app/header/header.component.html',
+  styleUrls: ['./header.component.scss'],
+  templateUrl: './header.component.html',
   imports: [
     AsyncPipe,
     NgbDropdownModule,

@@ -223,6 +223,15 @@ export class DsoEditMetadataComponent implements OnInit, OnDestroy {
     this.dsoType = type.value;
   }
 
+  metadataLabelKey(metadataKey: string): string | undefined {
+    if (this.dsoType !== 'item') {
+      return undefined;
+    }
+
+    const labelKey = `pcirn.item.metadata.${metadataKey}`;
+    return this.translateService.instant(labelKey) === labelKey ? undefined : labelKey;
+  }
+
   /**
    * Initialise the data-service for the current DSpaceObject
    */

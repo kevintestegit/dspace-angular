@@ -2,10 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
-import { AdminSidebarSectionComponent } from './admin/admin-sidebar/admin-sidebar-section/admin-sidebar-section.component';
-import { ExpandableAdminSidebarSectionComponent } from './admin/admin-sidebar/expandable-admin-sidebar-section/expandable-admin-sidebar-section.component';
-import { ThemedAdminSidebarComponent } from './admin/admin-sidebar/themed-admin-sidebar.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { ThemedBreadcrumbsComponent } from './breadcrumbs/themed-breadcrumbs.component';
 import { FooterComponent } from './footer/footer.component';
@@ -44,10 +40,6 @@ const DECLARATIONS = [
   ThemedHeaderComponent,
   HeaderNavbarWrapperComponent,
   ThemedHeaderNavbarWrapperComponent,
-  AdminSidebarComponent,
-  ThemedAdminSidebarComponent,
-  AdminSidebarSectionComponent,
-  ExpandableAdminSidebarSectionComponent,
   FooterComponent,
   ThemedFooterComponent,
   PageNotFoundComponent,

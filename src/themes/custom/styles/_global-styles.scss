@@ -2,3 +2,122 @@
 
 // imports the base global style
 @import '../../../styles/_global-styles.scss';
+
+// PCIRN type scale, shared by page chrome and search surfaces
+@import './_pcirn-typography.scss';
+
+// PCIRN list surface, shared by the community and collection list pages
+@import './_pcirn-list.scss';
+
+// PCIRN search visuals, shared by the search page and community/collection search tabs
+@import './_pcirn-search.scss';
+
+// PCIRN: compact review-task cards on MyDSpace
+@import './_pcirn-workflow.scss';
+
+// PCIRN: consistent administration registries and access forms
+@import './_pcirn-admin.scss';
+
+// PCIRN: processes overview in the same administration skin
+@import './_pcirn-processes.scss';
+
+// PCIRN: item submission editor (create and review documents)
+@import './_pcirn-submission.scss';
+
+// PCIRN: the OpenSearch/Atom distribution feed is not used and returns a broken
+// XML document, so its RSS link is hidden on every page.
+ds-rss {
+  display: none !important;
+}
+
+// PCIRN: the home hero sits flush under the header. Pages that render
+// breadcrumbs get the base content spacing from the breadcrumb itself.
+main.my-cs {
+  margin-top: 0;
+}
+
+.pcirn-breadcrumb {
+  margin-bottom: var(--ds-content-spacing);
+}
+
+.inner-wrapper > main.my-cs:first-child {
+  margin-top: var(--ds-content-spacing);
+}
+
+// PCIRN: /forgot and /register render without breadcrumbs, so the shared
+// e-mail forms get the same top spacing the breadcrumb rail provides elsewhere.
+ds-forgot-email,
+ds-register-email,
+ds-forgot-password-form {
+  display: block;
+  padding-top: var(--ds-content-spacing);
+}
+
+// PCIRN: compact "Navegar" tabs on community/collection pages
+.comcol-browse-label {
+  margin: 0 0 .5rem;
+  color: #07345f;
+  font-size: var(--pcirn-fs-label);
+  font-weight: 800;
+}
+
+.comcol-browse {
+  .list-group-horizontal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: .35rem;
+    border: 0;
+  }
+
+  .list-group-horizontal .list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.75rem;
+    margin: 0;
+    padding: .3rem .6rem;
+    overflow: hidden;
+    border: 1px solid #dfe6ec;
+    border-radius: .45rem !important;
+    background: #fff;
+    color: #24364b;
+    font-size: .78rem;
+    line-height: 1.15;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      border-color: #07345f;
+      background: #f4f7fa;
+      color: #07345f;
+    }
+
+    &.active {
+      border-color: #07345f;
+      background: #07345f;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  .form-select {
+    padding: .35rem .75rem;
+    border-color: #dfe6ec;
+    border-radius: .45rem;
+    color: #24364b;
+    font-size: .85rem;
+  }
+}
+
+// PCIRN: When internal server error page (500) is shown, hide header, breadcrumbs, alert banner, footer and cookie notice
+body.pcirn-offline-mode {
+  ds-header-navbar-wrapper,
+  ds-breadcrumbs,
+  ds-system-wide-alert-banner,
+  ds-footer,
+  .orejime-Notice,
+  .orejime-Modal {
+    display: none !important;
+  }
+}

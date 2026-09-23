@@ -1,0 +1,29 @@
+<div class="pcirn-header-frame">
+  <div class="pcirn-header-shell">
+    <div [ngClass]="{'open': (isNavBarCollapsed$ | async) !== true}" id="header-navbar-wrapper">
+      <div class="pcirn-header-masthead">
+        <a class="pcirn-header-brand-link" routerLink="/home" role="link" tabindex="0">
+          <img
+            class="pcirn-header-brand-mark"
+            src="assets/pcirn/images/brasao-policia-cientifica-rn.png"
+            [attr.alt]="'menu.header.image.logo' | translate" />
+          <span class="pcirn-header-brand-copy">
+            <span>{{ 'pcirn.header.name' | translate }}</span>
+            <strong>{{ 'pcirn.header.acronym' | translate }}</strong>
+          </span>
+        </a>
+        <span class="pcirn-header-brand-subtitle">
+          <small>{{ 'pcirn.header.institution' | translate }}</small>
+          <small class="pcirn-header-brand-tagline">{{ 'pcirn.header.tagline' | translate }}</small>
+        </span>
+        <p class="pcirn-header-masthead-message">
+          {{ 'pcirn.header.slogan' | translate }}
+        </p>
+      </div>
+      <div class="pcirn-header-navigation">
+        <ds-navbar></ds-navbar>
+        <ds-header></ds-header>
+      </div>
+    </div>
+  </div>
+</div>

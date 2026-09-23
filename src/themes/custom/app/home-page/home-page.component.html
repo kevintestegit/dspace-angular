@@ -12,10 +12,10 @@
       <div class="pcirn-home-search-heading"><i class="fas fa-search" aria-hidden="true"></i><strong>{{ 'pcirn.home.search.heading' | translate }}</strong></div>
       <ds-search-form [inPlaceSearch]="false" [searchPlaceholder]="'home.search-form.placeholder' | translate"></ds-search-form>
       <div class="pcirn-home-search-chips" [attr.aria-label]="'pcirn.home.search.chips.aria' | translate">
-        <a routerLink="/search"><i class="fas fa-gavel" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.regulations' | translate }}</a>
-        <a routerLink="/search"><i class="fas fa-clipboard-list" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.pops' | translate }}</a>
-        <a routerLink="/search"><i class="fas fa-microscope" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.research' | translate }}</a>
-        <a routerLink="/search"><i class="fas fa-chart-bar" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.reports' | translate }}</a>
+        <a routerLink="/search" [queryParams]="searchConfigurations.regulations"><i class="fas fa-gavel" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.regulations' | translate }}</a>
+        <a routerLink="/search" [queryParams]="searchConfigurations.pops"><i class="fas fa-clipboard-list" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.pops' | translate }}</a>
+        <a routerLink="/search" [queryParams]="searchConfigurations.research"><i class="fas fa-microscope" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.research' | translate }}</a>
+        <a routerLink="/search" [queryParams]="searchConfigurations.reports"><i class="fas fa-chart-bar" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.reports' | translate }}</a>
       </div>
     </div>
   </section>
@@ -27,7 +27,7 @@
         <h2 id="pcirn-home-quick-title" class="visually-hidden">{{ 'pcirn.home.quick-access.title' | translate }}</h2>
         <div class="pcirn-home-card-grid">
           @for (card of (quickAccess$ | async); track card.title) {
-            <a class="pcirn-home-card" [class.pcirn-home-card-locked]="card.requiresLogin" [routerLink]="card.route" [attr.aria-label]="(card.titleKey ? (card.titleKey | translate) : card.title) + (card.requiresLogin ? (', ' + ('pcirn.home.quick-access.requires-login' | translate)) : '')">
+            <a class="pcirn-home-card" [class.pcirn-home-card-locked]="card.requiresLogin" [routerLink]="card.route" [queryParams]="card.queryParams" [attr.aria-label]="(card.titleKey ? (card.titleKey | translate) : card.title) + (card.requiresLogin ? (', ' + ('pcirn.home.quick-access.requires-login' | translate)) : '')">
               <i [class]="'pcirn-home-card-icon fas ' + card.icon" aria-hidden="true"></i>
               <span class="pcirn-home-card-copy"><strong>{{ card.titleKey ? (card.titleKey | translate) : card.title }}</strong><small>{{ card.descriptionKey ? (card.descriptionKey | translate) : card.description }}</small></span>
               <i class="pcirn-home-card-arrow fas fa-arrow-right" aria-hidden="true"></i>

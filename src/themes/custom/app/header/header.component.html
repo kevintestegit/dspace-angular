@@ -1,0 +1,18 @@
+<div class="pcirn-header-tools">
+  <ds-search-navbar></ds-search-navbar>
+  <div class="pcirn-header-account-tools" role="toolbar" [attr.aria-label]="'nav.user.description' | translate">
+    <ds-lang-switch></ds-lang-switch>
+    <ds-auth-nav-menu></ds-auth-nav-menu>
+  </div>
+  @if (isMobile$ | async) {
+    <button
+      class="pcirn-header-menu-toggle"
+      type="button"
+      (click)="toggleNavbar()"
+      aria-controls="collapsingNav"
+      [attr.aria-expanded]="(menuService.isMenuCollapsed(menuID) | async) === false"
+      [attr.aria-label]="'nav.toggle' | translate">
+      <span class="fas fa-bars" aria-hidden="true"></span>
+    </button>
+  }
+</div>

@@ -28,7 +28,6 @@ import { Bitstream } from '../core/shared/bitstream.model';
 import { Community } from '../core/shared/community.model';
 import { getAllSucceededRemoteDataPayload } from '../core/shared/operators';
 import { fadeInOut } from '../shared/animations/fade';
-import { ThemedComcolPageBrowseByComponent } from '../shared/comcol/comcol-page-browse-by/themed-comcol-page-browse-by.component';
 import { ThemedComcolPageContentComponent } from '../shared/comcol/comcol-page-content/themed-comcol-page-content.component';
 import { ThemedComcolPageHandleComponent } from '../shared/comcol/comcol-page-handle/themed-comcol-page-handle.component';
 import { ComcolPageHeaderComponent } from '../shared/comcol/comcol-page-header/comcol-page-header.component';
@@ -54,7 +53,6 @@ import { getCommunityPageRoute } from './community-page-routing-paths';
     ErrorComponent,
     RouterModule,
     RouterOutlet,
-    ThemedComcolPageBrowseByComponent,
     ThemedComcolPageContentComponent,
     ThemedComcolPageHandleComponent,
     ThemedLoadingComponent,

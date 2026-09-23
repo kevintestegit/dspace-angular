@@ -1,0 +1,124 @@
+.pcirn-breadcrumb {
+  background: #f0f5f9;
+  border-bottom: 1px solid #e3ebf2;
+}
+
+.pcirn-breadcrumb .breadcrumb {
+  align-items: center;
+  background: transparent;
+  color: #526b82;
+  gap: .1rem;
+  flex-wrap: nowrap;
+  min-height: 2.25rem;
+  overflow: hidden;
+  padding: .35rem .75rem;
+  white-space: nowrap;
+}
+
+// Each page family uses its own content rail; keep the breadcrumb flush with
+// the page content instead of the Bootstrap container alone.
+.pcirn-breadcrumb--list .breadcrumb,
+.pcirn-breadcrumb--search .breadcrumb {
+  margin: 0 auto;
+  max-width: calc(1150px + 2 * clamp(1rem, 4vw, 3.75rem));
+  padding-inline: clamp(1rem, 4vw, 3.75rem);
+}
+
+.pcirn-breadcrumb--item .breadcrumb {
+  margin: 0 auto;
+  max-width: calc(90.625rem + 4rem);
+  padding-inline: 2rem;
+}
+
+.pcirn-breadcrumb .breadcrumb-item {
+  align-items: center;
+  display: flex;
+  min-width: 0;
+}
+
+.pcirn-breadcrumb .breadcrumb-item:first-child {
+  flex-shrink: 0;
+}
+
+.pcirn-breadcrumb .breadcrumb-item-limiter {
+  display: inline-block;
+  max-width: min(24rem, 28vw);
+  min-width: 0;
+}
+
+.pcirn-breadcrumb .breadcrumb-item-limiter > * {
+  display: flex;
+  gap: .45rem;
+  max-width: 100%;
+}
+
+.pcirn-breadcrumb .breadcrumb-item-limiter > a > span,
+.pcirn-breadcrumb .breadcrumb-item-limiter > div {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pcirn-breadcrumb .breadcrumb-item a,
+.pcirn-breadcrumb .breadcrumb-item.active {
+  color: #274c70;
+  font-size: .7rem;
+  text-decoration: none;
+}
+
+.pcirn-breadcrumb .breadcrumb-item a:hover,
+.pcirn-breadcrumb .breadcrumb-item a:focus-visible {
+  color: #0e5a73;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.pcirn-breadcrumb .breadcrumb-item.active {
+  color: #60748a;
+  min-width: 0;
+}
+
+.pcirn-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: #91a5b7;
+  content: '›';
+  display: inline-block;
+  font-size: .95rem;
+  padding: 0 .4rem 0 .15rem;
+}
+
+.pcirn-breadcrumb .breadcrumb-item a .fa-house {
+  color: #0b4f8a;
+  font-size: .75rem;
+}
+
+@media (max-width: 991.98px) {
+  .pcirn-breadcrumb--item .breadcrumb {
+    max-width: calc(90.625rem + 2.5rem);
+    padding-inline: 1.25rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .pcirn-breadcrumb .breadcrumb {
+    min-height: 2.35rem;
+    overflow-x: auto;
+    padding-block: .45rem;
+    white-space: nowrap;
+  }
+
+  .pcirn-breadcrumb--item .breadcrumb {
+    max-width: calc(90.625rem + 1.7rem);
+    padding-inline: .85rem;
+  }
+
+  .pcirn-breadcrumb .breadcrumb-item-limiter {
+    max-width: 13rem;
+  }
+
+  .pcirn-breadcrumb .breadcrumb-item a,
+  .pcirn-breadcrumb .breadcrumb-item.active {
+    font-size: .7rem;
+  }
+}
+

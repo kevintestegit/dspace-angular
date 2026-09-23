@@ -1,0 +1,9 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)" role="search">
+  <input #searchInput formControlName="query" name="query" type="text"
+    [attr.aria-label]="'nav.search' | translate" [placeholder]="'nav.search' | translate"
+    [attr.data-test]="'header-search-box' | dsBrowserOnly">
+  <button type="submit" [attr.aria-label]="'nav.search.button' | translate"
+    [attr.data-test]="'header-search-icon' | dsBrowserOnly">
+    <em class="fas fa-search" aria-hidden="true"></em>
+  </button>
+</form>

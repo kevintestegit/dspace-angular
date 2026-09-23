@@ -1,0 +1,17 @@
+<div class="submission-submit-container pcirn-submission">
+  <div class="pcirn-submission-inner">
+    <header class="pcirn-submission-hero">
+      <span class="pcirn-submission-hero-icon" aria-hidden="true"><i class="fas fa-file-circle-plus"></i></span>
+      <h1>{{ 'submission.edit.title' | translate }}</h1>
+    </header>
+
+    <ds-submission-form [collectionId]="collectionId"
+                        [sections]="sections"
+                        [selfUrl]="selfUrl"
+                        [submissionDefinition]="submissionDefinition"
+                        [submissionErrors]="submissionErrors"
+                        [item]="item"
+                        [collectionModifiable]="collectionModifiable"
+                        [submissionId]="submissionId"></ds-submission-form>
+  </div>
+</div>

@@ -75,6 +75,11 @@ export const APP_ROUTES: Route[] = [
           .then((m) => m.ROUTES),
       },
       {
+        path: 'collection-list',
+        loadChildren: () => import('./collection-list-page/collection-list-page-routes')
+          .then((m) => m.ROUTES),
+      },
+      {
         path: 'id',
         loadChildren: () => import('./lookup-by-id/lookup-by-id-routes')
           .then((m) => m.ROUTES),
@@ -144,7 +149,6 @@ export const APP_ROUTES: Route[] = [
         path: 'browse',
         loadChildren: () => import('./browse-by/browse-by-page-routes')
           .then((m) => m.ROUTES),
-        canActivate: [authenticatedGuard, endUserAgreementCurrentUserGuard],
       },
       {
         path: ADMIN_MODULE_PATH,
@@ -223,7 +227,6 @@ export const APP_ROUTES: Route[] = [
       {
         path: INFO_MODULE_PATH,
         loadChildren: () => import('./info/info-routes').then((m) => m.ROUTES),
-        canActivate: [authenticatedGuard],
       },
       {
         path: REQUEST_COPY_MODULE_PATH,

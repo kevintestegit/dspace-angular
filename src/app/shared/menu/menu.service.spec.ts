@@ -250,10 +250,12 @@ describe('MenuService', () => {
       });
     });
     describe('when the subsection list is undefined', () => {
-      it('should return an observable that emits nothing', () => {
+      it('should return an observable that emits an empty list', () => {
 
         const result = service.getSubSectionsByParentID(MenuID.ADMIN, 'fakeId');
-        const expected = cold('');
+        const expected = cold('b', {
+          b: [],
+        });
 
         expect(result).toBeObservable(expected);
       });

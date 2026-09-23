@@ -129,6 +129,40 @@ describe('HeadTagService', () => {
   });
 
   describe(`robots tag`, () => {
+    it(`should use the robots directive configured for a route`, fakeAsync(() => {
+      (headTagService as any).processRouteChange({
+        data: {
+          value: {
+            robots: 'noindex, nofollow',
+          },
+        },
+      });
+      tick();
+      expect(meta.addTag).toHaveBeenCalledWith({
+        name: 'robots',
+        content: 'noindex, nofollow',
+      });
+    }));
+
+    it(`should prefer the route robots directive for an item`, fakeAsync(() => {
+      (headTagService as any).processRouteChange({
+        data: {
+          value: {
+            dso: createSuccessfulRemoteDataObject(NonDiscoverableItemMock),
+            robots: 'noindex, nofollow',
+          },
+        },
+      });
+      tick();
+      const robotsTags = (meta.addTag as jasmine.Spy).calls.allArgs()
+        .map(([tag]) => tag)
+        .filter((tag) => tag.name === 'robots');
+      expect(robotsTags).toEqual([{
+        name: 'robots',
+        content: 'noindex, nofollow',
+      }]);
+    }));
+
     it(`should be set to noindex for non-discoverable items`, fakeAsync(() => {
       (headTagService as any).processRouteChange({
         data: {

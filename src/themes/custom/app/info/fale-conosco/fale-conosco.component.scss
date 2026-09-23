@@ -1,0 +1,633 @@
+// PCIRN Fale Conosco component styles
+
+.pcirn-contact-surface {
+  --pcirn-navy-deep: #031b2d;
+  --pcirn-navy: #063a68;
+  --pcirn-blue: #0b4f8a;
+  --pcirn-blue-light: #e8f0f9;
+  --pcirn-paper: #f6f8fb;
+  --pcirn-line: #dfe7f0;
+  --pcirn-muted: #66758a;
+}
+
+// Hero Header
+.pcirn-contact-header {
+  margin-bottom: 2rem;
+
+  h1 {
+    color: var(--pcirn-navy-deep);
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin: 0 0 0.6rem;
+  }
+}
+
+.pcirn-contact-pill-badge {
+  align-items: center;
+  background: #e8f0f9;
+  border-radius: 2rem;
+  color: #0b4f8a;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 700;
+  gap: 0.45rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.85rem;
+  padding: 0.35rem 0.9rem;
+
+  i {
+    font-size: 0.85rem;
+  }
+}
+
+.pcirn-contact-header-lead {
+  color: #4b5c72;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+  max-width: 52rem;
+}
+
+.pcirn-topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.pcirn-topic-chip {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #dfe7f0;
+  border-radius: 2rem;
+  box-shadow: 0 1px 3px rgba(3, 27, 45, 0.04);
+  color: #063a68;
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 600;
+  gap: 0.45rem;
+  padding: 0.4rem 0.9rem;
+  transition: all 0.15s ease;
+
+  i {
+    color: #0b4f8a;
+    font-size: 0.8rem;
+  }
+
+  &:hover {
+    background: #f4f8fc;
+    border-color: #0b4f8a;
+    color: #0b4f8a;
+  }
+}
+
+// Layout Grid: Strict 2x2 Grid with aligned heights
+.pcirn-contact-grid {
+  align-items: stretch;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  margin-bottom: 2.75rem;
+
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Shared Card Header
+.pcirn-card-header {
+  align-items: center;
+  border-bottom: 1px solid #edf2f7;
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.85rem;
+
+  h2 {
+    color: #031b2d;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  small {
+    color: #64748b;
+    display: block;
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+}
+
+.pcirn-card-badge-icon {
+  align-items: center;
+  background: #e8f0f9;
+  border-radius: 0.5rem;
+  color: #0b4f8a;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  height: 2.25rem;
+  justify-content: center;
+  width: 2.25rem;
+}
+
+// CARD 1: Form Card (Row 1, Col 1)
+.pcirn-form-card {
+  background: #ffffff;
+  border: 1px solid #dfe7f0;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(3, 27, 45, 0.03);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.45rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #cad8e6;
+    box-shadow: 0 6px 20px rgba(3, 27, 45, 0.06);
+  }
+
+  // Remove nested card borders/padding inside pcirn-form-card
+  ::ng-deep .pcirn-feedback-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+}
+
+.pcirn-form-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.pcirn-form-card-note {
+  align-items: flex-start;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  color: #475569;
+  display: flex;
+  font-size: 0.8rem;
+  gap: 0.75rem;
+  line-height: 1.45;
+  margin-top: 1.15rem;
+  padding: 0.75rem 1rem;
+
+  i {
+    color: #0b4f8a;
+    flex-shrink: 0;
+    font-size: 0.95rem;
+    margin-top: 0.15rem;
+  }
+
+  strong {
+    color: #063a68;
+  }
+}
+
+// CARD 2: Channels & NUGECID Unified Card (Row 1, Col 2)
+.pcirn-contact-sidebar {
+  background: #ffffff;
+  border: 1px solid #dfe7f0;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(3, 27, 45, 0.03);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.45rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #cad8e6;
+    box-shadow: 0 6px 20px rgba(3, 27, 45, 0.06);
+  }
+}
+
+// Channel List
+.pcirn-channel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pcirn-channel-item {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.85rem;
+  padding-bottom: 0.75rem;
+
+  & + .pcirn-channel-item {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 0.75rem;
+  }
+}
+
+.pcirn-channel-icon-wrap {
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 0.45rem;
+  color: #0b4f8a;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.88rem;
+  height: 2.1rem;
+  justify-content: center;
+  margin-top: 0.1rem;
+  width: 2.1rem;
+}
+
+.pcirn-channel-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.pcirn-channel-label {
+  color: #64748b;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pcirn-channel-value {
+  color: #0b4f8a;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-all;
+
+  &.text-dark {
+    color: #24364b;
+  }
+}
+
+a.pcirn-channel-value:hover {
+  color: #063a68;
+  text-decoration: underline;
+}
+
+.pcirn-channel-badge {
+  background: #eef4fb;
+  border: 1px solid #d5e4f3;
+  border-radius: 0.35rem;
+  color: #063a68;
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-top: 0.1rem;
+  padding: 0.15rem 0.55rem;
+  width: fit-content;
+}
+
+.pcirn-channel-hint {
+  color: #64748b;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  margin-top: 0.15rem;
+}
+
+.pcirn-channel-actions {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.pcirn-action-btn {
+  align-items: center;
+  background: #f8fafc;
+  border: 1px solid #dfe7f0;
+  border-radius: 0.4rem;
+  color: #07345f;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.78rem;
+  font-weight: 600;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: #0b4f8a;
+    border-color: #0b4f8a;
+    color: #ffffff;
+  }
+
+  &.copied {
+    background: #198754;
+    border-color: #198754;
+    color: #ffffff;
+  }
+}
+
+// Embedded NUGECID Unit Footer
+.pcirn-unit-footer {
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.pcirn-unit-branding {
+  align-items: center;
+  display: flex;
+  gap: 0.85rem;
+  margin-bottom: 0.6rem;
+}
+
+.pcirn-unit-crest {
+  flex-shrink: 0;
+  height: 2.5rem;
+  object-fit: contain;
+  width: 2.5rem;
+}
+
+.pcirn-unit-acronym {
+  color: #07345f;
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.pcirn-unit-name {
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.pcirn-unit-text {
+  color: #475569;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+}
+
+.pcirn-unit-social-link {
+  align-items: center;
+  background: #fbf6f9;
+  border: 1px solid #f2d8e7;
+  border-radius: 0.45rem;
+  color: #b71c69;
+  display: flex;
+  font-size: 0.82rem;
+  font-weight: 600;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: #f7e8f2;
+    border-color: #b71c69;
+    color: #880e4f;
+  }
+}
+
+.pcirn-unit-ext-icon {
+  font-size: 0.75rem;
+  opacity: 0.75;
+}
+
+// CARD 3: Guidance Card (Row 2, Col 1)
+.pcirn-guidance-card {
+  background: #ffffff;
+  border: 1px solid #dfe7f0;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(3, 27, 45, 0.03);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.45rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #cad8e6;
+    box-shadow: 0 6px 20px rgba(3, 27, 45, 0.06);
+  }
+
+  .pcirn-guide-list {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.pcirn-guide-item {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.85rem;
+  padding-bottom: 0.75rem;
+
+  & + .pcirn-guide-item {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 0.75rem;
+  }
+}
+
+.pcirn-guide-num {
+  align-items: center;
+  background: #e8f0f9;
+  border-radius: 0.45rem;
+  color: #0b4f8a;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  height: 2.1rem;
+  justify-content: center;
+  line-height: 1;
+  margin-top: 0.1rem;
+  width: 2.1rem;
+}
+
+.pcirn-guide-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+
+  strong {
+    color: #031b2d;
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  p {
+    color: #475569;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  a {
+    color: #0b4f8a;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      color: #063a68;
+      text-decoration: underline;
+    }
+  }
+}
+
+// CARD 4: Quick Nav Card (Row 2, Col 2)
+.pcirn-quick-nav-card {
+  background: #ffffff;
+  border: 1px solid #dfe7f0;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(3, 27, 45, 0.03);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.45rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #cad8e6;
+    box-shadow: 0 6px 20px rgba(3, 27, 45, 0.06);
+  }
+
+  .pcirn-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+}
+
+.pcirn-nav-card-item {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 0.55rem;
+  color: inherit;
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  text-decoration: none;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: #f4f8fc;
+    border-color: #0b4f8a;
+    transform: translateX(2px);
+
+    .pcirn-nav-arrow {
+      color: #0b4f8a;
+      transform: translateX(2px);
+    }
+  }
+}
+
+.pcirn-nav-icon {
+  align-items: center;
+  background: #e8f0f9;
+  border-radius: 0.45rem;
+  color: #0b4f8a;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  height: 2.15rem;
+  justify-content: center;
+  width: 2.15rem;
+}
+
+.pcirn-nav-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+
+  strong {
+    color: #031b2d;
+    font-size: 0.88rem;
+    font-weight: 700;
+  }
+
+  span {
+    color: #64748b;
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+}
+
+.pcirn-nav-arrow {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  margin-left: auto;
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+// Quick Nav Helper Callout
+.pcirn-quick-nav-callout {
+  align-items: flex-start;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding: 0.75rem 0.95rem;
+
+  .pcirn-callout-icon {
+    align-items: center;
+    background: #e8f0f9;
+    border-radius: 50%;
+    color: #0b4f8a;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    height: 1.5rem;
+    justify-content: center;
+    margin-top: 0.15rem;
+    width: 1.5rem;
+  }
+
+  .pcirn-callout-content {
+    color: #475569;
+    font-size: 0.8rem;
+    line-height: 1.45;
+
+    strong {
+      color: #063a68;
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 0.15rem;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: #0b4f8a;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        color: #063a68;
+        text-decoration: underline;
+      }
+    }
+  }
+}

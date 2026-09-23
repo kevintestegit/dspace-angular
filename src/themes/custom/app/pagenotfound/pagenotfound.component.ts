@@ -9,10 +9,8 @@ import { PageNotFoundComponent as BaseComponent } from '../../../../app/pagenotf
 
 @Component({
   selector: 'ds-themed-pagenotfound',
-  // styleUrls: ['./pagenotfound.component.scss'],
-  styleUrls: ['../../../../app/pagenotfound/pagenotfound.component.scss'],
-  // templateUrl: './pagenotfound.component.html'
-  templateUrl: '../../../../app/pagenotfound/pagenotfound.component.html',
+  styleUrls: ['./pagenotfound.component.scss'],
+  templateUrl: './pagenotfound.component.html',
   changeDetection: ChangeDetectionStrategy.Default,
   imports: [
     RouterLink,

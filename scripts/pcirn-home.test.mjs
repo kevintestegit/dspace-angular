@@ -25,6 +25,8 @@ const footerTemplate = await readFile(new URL('../src/app/footer/footer.componen
 const footerStyles = await readFile(new URL('../src/app/footer/footer.component.scss', import.meta.url), 'utf8');
 const globalStyles = await readFile(new URL('../src/styles/_global-styles.scss', import.meta.url), 'utf8');
 const homeDataService = await readFile(new URL('../src/themes/custom/app/home-page/pcirn-home-data.service.ts', import.meta.url), 'utf8');
+const discoveryXml = await readFile(new URL('../../../dspace/config/spring/api/discovery.xml', import.meta.url), 'utf8');
+const vocabularyXml = await readFile(new URL('../../../dspace/config/controlled-vocabularies/pcirn-document-types.xml', import.meta.url), 'utf8');
 const statisticsMenu = await readFile(new URL('../src/app/shared/menu/providers/statistics.menu.ts', import.meta.url), 'utf8');
 const headerWrapperTemplate = await readFile(new URL('../src/app/header-nav-wrapper/header-navbar-wrapper.component.html', import.meta.url), 'utf8');
 const headerWrapperStyles = await readFile(new URL('../src/app/header-nav-wrapper/header-navbar-wrapper.component.scss', import.meta.url), 'utf8');
@@ -61,8 +63,22 @@ test('home cards and data facade use the approved access boundary', () => {
   assert.match(template, /pcirn\.home\.quick-access\.requires-login/);
 });
 
+test('home search shortcuts filter by the institutional document types', () => {
+  assert.match(homeDataService, /'pcirnNormas'/);
+  assert.match(homeDataService, /'pcirnProducao'/);
+  assert.match(template, /\[queryParams\]="card\.queryParams"/);
+  assert.match(template, /\[queryParams\]="searchConfigurations\.regulations"/);
+});
+
+test('home search configurations are registered in discovery.xml', () => {
+  for (const id of ['pcirnNormas', 'pcirnPops', 'pcirnProducao', 'pcirnRelatorios']) {
+    assert.match(discoveryXml, new RegExp(`<entry key="${id}" value-ref="${id}Configuration"`));
+  }
+  assert.match(vocabularyXml, /id="PRODUCAO_CIENTIFICA"/);
+});
+
 test('custom theme is enabled for the application', () => {
-  assert.match(appConfig, /\n    \{\n      name: 'custom',\n    \},\n\n    \{\n      \/\/ The default dspace theme/);
+  assert.match(appConfig, /\n    \{\n      name: 'custom',[\s\S]*?\n    \},\n\n    \{\n      \/\/ The default dspace theme/);
 });
 
 test('browse menu has Portuguese labels for custom definitions', () => {
@@ -94,10 +110,10 @@ test('home and public repository reads do not require authentication', () => {
   assert.doesNotMatch(routeBlock('search'), /canActivate: \[authenticatedGuard/);
 });
 
-test('footer is rendered across all pages', () => {
+test('footer is rendered on every page except login', () => {
   assert.doesNotMatch(rootComponent, /!authenticated && route === '\/home'/);
   assert.doesNotMatch(rootTemplate, /@if \(\(showFooter\$ \| async\) === true\)/);
-  assert.match(rootTemplate, /<ds-footer class="pcirn-home-footer"><\/ds-footer>/);
+  assert.match(rootTemplate, /@if \(\(isLoginRoute\$ \| async\) !== true\) \{\n      <ds-footer class="pcirn-home-footer"><\/ds-footer>\n    \}/);
 });
 
 test('login page hides the site chrome', () => {

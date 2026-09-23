@@ -11,8 +11,7 @@ import { SubmissionSectionUploadFileViewComponent } from '../../../../../../../a
   selector: 'ds-themed-submission-upload-section-file',
   // styleUrls: ['./section-upload-file.component.scss'],
   styleUrls: ['../../../../../../../app/submission/sections/upload/file/section-upload-file.component.scss'],
-  // templateUrl: './section-upload-file.component.html'
-  templateUrl: '../../../../../../../app/submission/sections/upload/file/section-upload-file.component.html',
+  templateUrl: './section-upload-file.component.html',
   imports: [
     AsyncPipe,
     BtnDisabledDirective,

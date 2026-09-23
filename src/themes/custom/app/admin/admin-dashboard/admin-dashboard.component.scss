@@ -1,0 +1,130 @@
+:host {
+  display: block;
+}
+
+.pcirn-admin-dashboard {
+  max-width: 1180px;
+  padding-block: clamp(2rem, 5vw, 4.5rem);
+}
+
+.pcirn-admin-dashboard-header {
+  margin-bottom: 2rem;
+  max-width: 42rem;
+}
+
+.pcirn-admin-dashboard-header p {
+  margin: 0 0 .45rem;
+  color: #0e5a73;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.pcirn-admin-dashboard-header h1 {
+  margin: 0;
+  color: #0b3154;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+}
+
+.pcirn-admin-dashboard-header span {
+  display: block;
+  margin-top: .6rem;
+  color: #52708a;
+}
+
+.pcirn-admin-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 767.98px) {
+  .pcirn-admin-dashboard-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.pcirn-admin-dashboard-group {
+  min-height: 10rem;
+  padding: 1.25rem;
+  border: 1px solid #dbe6ee;
+  border-radius: .85rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(8, 47, 77, .06);
+}
+
+.pcirn-admin-dashboard-group-heading {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  min-height: 2rem;
+}
+
+.pcirn-admin-dashboard-group-heading > i {
+  color: #0e5a73;
+  font-size: 1.05rem;
+}
+
+.pcirn-admin-dashboard-group h2,
+.pcirn-admin-dashboard-group a,
+.pcirn-admin-dashboard-group button {
+  color: #0b3154;
+  font-size: 1rem;
+  font-weight: 750;
+  text-align: left;
+}
+
+.pcirn-admin-dashboard-group h2 {
+  margin: 0;
+}
+
+.pcirn-admin-account-access p {
+  margin: 1rem 0;
+  color: #52708a;
+  font-size: .9rem;
+}
+
+.pcirn-admin-account-access nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1rem;
+}
+
+.pcirn-admin-account-access nav a {
+  color: #0b5b83;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+.pcirn-admin-dashboard-group a:hover,
+.pcirn-admin-dashboard-group a:focus-visible,
+.pcirn-admin-dashboard-group button:hover,
+.pcirn-admin-dashboard-group button:focus-visible {
+  color: #0e5a73;
+}
+
+.pcirn-admin-dashboard-group button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.pcirn-admin-dashboard-group ul {
+  display: grid;
+  gap: .5rem;
+  margin: 1rem 0 0;
+  padding: .9rem 0 0;
+  border-top: 1px solid #e8eef3;
+  list-style: none;
+}
+
+.pcirn-admin-dashboard-group li a,
+.pcirn-admin-dashboard-group li button {
+  color: #52708a;
+  font-size: .88rem;
+  font-weight: 650;
+  text-decoration: none;
+}

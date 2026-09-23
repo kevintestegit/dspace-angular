@@ -1,0 +1,71 @@
+.pcirn-document-files {
+  margin-top: 1.15rem;
+}
+
+.pcirn-document-file + .pcirn-document-file {
+  margin-top: .55rem;
+}
+
+.pcirn-document-files ::ng-deep .pcirn-document-download {
+  align-items: center;
+  background: #0e6870;
+  border-radius: .7rem;
+  color: #fff;
+  display: flex !important;
+  gap: .75rem;
+  justify-content: center;
+  margin: 0;
+  min-height: 3.2rem;
+  padding: .75rem .9rem;
+  text-decoration: none;
+  transition: background-color .18s ease, transform .18s ease;
+}
+
+.pcirn-document-files ::ng-deep .pcirn-document-download:hover,
+.pcirn-document-files ::ng-deep .pcirn-document-download:focus-visible {
+  background: #09555d;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.pcirn-document-files ::ng-deep .pcirn-document-download > .fas {
+  flex: 0 0 auto;
+  font-size: 1.15rem;
+}
+
+.pcirn-document-download-copy {
+  display: grid;
+  min-width: 0;
+}
+
+.pcirn-document-download-copy strong {
+  font-size: .9rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.pcirn-document-file-name {
+  color: #294b65;
+  display: block;
+  font-size: .82rem;
+  line-height: 1.35;
+  margin: .55rem .2rem 0;
+  overflow-wrap: anywhere;
+}
+
+.pcirn-document-files ::ng-deep .pcirn-document-download-secondary {
+  background: #edf4f8;
+  border: 1px solid #d8e5ed;
+  color: #0b3154;
+}
+
+.pcirn-document-files ::ng-deep .pcirn-document-download-secondary:hover,
+.pcirn-document-files ::ng-deep .pcirn-document-download-secondary:focus-visible {
+  background: #e1eef5;
+  color: #0b3154;
+}
+
+.bitstream-view-more,
+.bitstream-collapse {
+  margin-top: .65rem;
+}

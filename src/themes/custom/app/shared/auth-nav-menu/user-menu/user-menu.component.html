@@ -1,0 +1,130 @@
+@if ((loading$ | async)) {
+  <ds-loading></ds-loading>
+}
+@if ((loading$ | async) !== true) {
+  <ul class="user-menu pcirn-user-menu" role="menu"
+    [ngClass]="inExpandableNavbar ? 'user-menu-mobile pb-2 mb-2 border-bottom' : 'user-menu-dropdown'"
+    [attr.aria-label]="'nav.user-profile-menu-and-logout' | translate" id="user-menu-dropdown">
+    <li class="ds-menu-item-wrapper username-email-wrapper pcirn-user-menu-profile" role="presentation">
+      <span class="pcirn-user-menu-avatar" aria-hidden="true"><i class="fas fa-user"></i></span>
+      <span class="pcirn-user-menu-identity">
+        <strong>{{ dsoNameService.getName(user$ | async) }}</strong>
+        <span>{{ (user$ | async)?.email }}</span>
+      </span>
+    </li>
+    @if (userSectors.canSubmit$ | async) {
+      <li class="ds-menu-item-wrapper pcirn-user-menu-primary-wrapper" role="presentation">
+        <button type="button" class="ds-menu-item user-menu-action pcirn-user-menu-primary" role="menuitem" (click)="openSubmission()">
+          <i class="fas fa-plus fa-fw" aria-hidden="true"></i>
+          {{ 'user-menu.add-document' | translate }}
+        </button>
+      </li>
+      <li class="user-menu-section-title pcirn-user-menu-section-title" role="presentation">
+        <i class="fas fa-building-columns" aria-hidden="true"></i>
+        {{ 'user-menu.sectors' | translate }}
+      </li>
+      @for (community of (userSectors.communities$ | async); track trackCommunity($index, community)) {
+        <li class="ds-menu-item-wrapper pcirn-user-menu-sector" role="presentation" (click)="onMenuItemClick()">
+          <a class="ds-menu-item" role="menuitem" [routerLink]="['/communities', community.id]">
+            <i class="fas fa-location-dot" aria-hidden="true"></i>
+            <span>{{ dsoNameService.getName(community) }}</span>
+          </a>
+        </li>
+      }
+    }
+    @if (administrationAvailable$ | async) {
+      <li class="ds-menu-item-wrapper pcirn-user-menu-admin" role="presentation">
+        <button type="button"
+          class="ds-menu-item pcirn-user-menu-admin-toggle"
+          [attr.aria-expanded]="adminMenuOpen"
+          [attr.aria-controls]="'pcirn-user-menu-admin-list-' + adminMenuInstanceId"
+          (click)="toggleAdminMenu($event)">
+          <i class="fas fa-shield-halved fa-fw" aria-hidden="true"></i>
+          <span>{{ 'user-menu.administration' | translate }}</span>
+          <i class="fas" [ngClass]="adminMenuOpen ? 'fa-chevron-up' : 'fa-chevron-down'" aria-hidden="true"></i>
+        </button>
+        @if (adminMenuOpen) {
+          <ul [attr.id]="'pcirn-user-menu-admin-list-' + adminMenuInstanceId" class="pcirn-user-menu-admin-list" role="menu">
+            <li role="presentation">
+              <a class="ds-menu-item pcirn-user-menu-admin-item pcirn-user-menu-admin-direct" role="menuitem"
+                [routerLink]="['/admin']" (click)="onMenuItemClick()">
+                <i class="fas fa-gauge-high fa-fw" aria-hidden="true"></i>
+                <span>{{ 'admin.dashboard.title' | translate }}</span>
+              </a>
+            </li>
+            @for (group of (adminSections$ | async); track trackAdminSection($index, group)) {
+              <li role="presentation">
+                @if (group.items.length > 0) {
+                  <button type="button"
+                    class="ds-menu-item pcirn-user-menu-admin-group"
+                    [attr.aria-expanded]="isAdminSectionExpanded(group.section)"
+                    [attr.aria-controls]="'pcirn-admin-group-' + group.section.id + '-' + adminMenuInstanceId"
+                    (click)="toggleAdminSection(group.section, $event)">
+                    <i class="fas fa-{{ group.section.icon ?? 'cog' }} fa-fw" aria-hidden="true"></i>
+                    <span>{{ getAdminSectionText(group.section) | translate }}</span>
+                    <i class="fas" [ngClass]="isAdminSectionExpanded(group.section) ? 'fa-chevron-up' : 'fa-chevron-down'" aria-hidden="true"></i>
+                  </button>
+                  @if (isAdminSectionExpanded(group.section)) {
+                    <ul [attr.id]="'pcirn-admin-group-' + group.section.id + '-' + adminMenuInstanceId" class="pcirn-user-menu-admin-items" role="menu">
+                      @for (item of group.items; track trackAdminSection($index, item)) {
+                        <li role="presentation">
+                          @if (getAdminSectionLink(item); as link) {
+                            <a class="ds-menu-item pcirn-user-menu-admin-item" role="menuitem"
+                              [routerLink]="link" (click)="onMenuItemClick()">
+                              {{ getAdminSectionText(item) | translate }}
+                            </a>
+                          } @else if (isAdminSectionAction(item)) {
+                            <button type="button" class="ds-menu-item pcirn-user-menu-admin-item pcirn-user-menu-admin-action"
+                              role="menuitem" (click)="executeAdminSection(item)">
+                              {{ getAdminSectionText(item) | translate }}
+                            </button>
+                          }
+                        </li>
+                      }
+                    </ul>
+                  }
+                } @else if (getAdminSectionLink(group.section); as link) {
+                  <a class="ds-menu-item pcirn-user-menu-admin-item pcirn-user-menu-admin-direct" role="menuitem"
+                    [routerLink]="link" (click)="onMenuItemClick()">
+                    <i class="fas fa-{{ group.section.icon ?? 'cog' }} fa-fw" aria-hidden="true"></i>
+                    <span>{{ getAdminSectionText(group.section) | translate }}</span>
+                  </a>
+                } @else if (isAdminSectionAction(group.section)) {
+                  <button type="button" class="ds-menu-item pcirn-user-menu-admin-item pcirn-user-menu-admin-action"
+                    role="menuitem" (click)="executeAdminSection(group.section)">
+                    <i class="fas fa-{{ group.section.icon ?? 'cog' }} fa-fw" aria-hidden="true"></i>
+                    <span>{{ getAdminSectionText(group.section) | translate }}</span>
+                  </button>
+                }
+              </li>
+            }
+          </ul>
+        }
+      </li>
+    }
+    <li class="dropdown-divider pcirn-user-menu-divider" aria-hidden="true"></li>
+    <li class="ds-menu-item-wrapper pcirn-user-menu-utility" role="presentation" (click)="onMenuItemClick()">
+      <a class="ds-menu-item" role="menuitem" [routerLink]="[profileRoute]" routerLinkActive="active">
+        <i class="fas fa-id-card" aria-hidden="true"></i>
+        {{ 'nav.profile' | translate }}
+      </a>
+    </li>
+    <li class="ds-menu-item-wrapper pcirn-user-menu-utility" role="presentation" (click)="onMenuItemClick()">
+      <a class="ds-menu-item" role="menuitem" [routerLink]="[mydspaceRoute]" routerLinkActive="active">
+        <i class="fas fa-folder-open" aria-hidden="true"></i>
+        {{ 'nav.mydspace' | translate }}
+      </a>
+    </li>
+    <li class="ds-menu-item-wrapper pcirn-user-menu-utility" role="presentation" (click)="onMenuItemClick()">
+      <a class="ds-menu-item" role="menuitem" [routerLink]="[subscriptionsRoute]" routerLinkActive="active">
+        <i class="fas fa-bell" aria-hidden="true"></i>
+        {{ 'nav.subscriptions' | translate }}
+      </a>
+    </li>
+    @if (!inExpandableNavbar) {
+      <li class="ds-menu-item-wrapper pcirn-user-menu-logout" role="presentation">
+        <ds-log-out data-test="log-out-component"></ds-log-out>
+      </li>
+    }
+  </ul>
+}

@@ -1,0 +1,18 @@
+<div class="container">
+  <ds-suggestions-notification></ds-suggestions-notification>
+  <ds-my-dspace-qa-events-notifications></ds-my-dspace-qa-events-notifications>
+  <ds-my-dspace-new-submission *dsShowOnlyForRole="[roleTypeEnum.Submitter]"></ds-my-dspace-new-submission>
+  <ds-pcirn-workflow-task-summary></ds-pcirn-workflow-task-summary>
+</div>
+
+@if (configuration && context) {
+  <div class="pcirn-search-page pcirn-mydspace-page">
+    <ds-search
+      [configuration]="configuration"
+      [configurationList]="(configurationList$ | async)"
+      [context]="context"
+      [viewModeList]="viewModeList"
+      [showRSS]="false"
+    ></ds-search>
+  </div>
+}

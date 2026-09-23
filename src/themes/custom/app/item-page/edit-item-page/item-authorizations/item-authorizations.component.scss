@@ -1,0 +1,108 @@
+:host {
+  display: block;
+}
+
+.pcirn-authorizations-page {
+  display: grid;
+  gap: 1.25rem;
+  color: var(--bs-body-color);
+}
+
+.pcirn-authorizations-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid rgba(0, 70, 115, 0.15);
+  border-inline-start: 4px solid var(--bs-primary);
+  border-radius: 0.5rem;
+  background: linear-gradient(110deg, rgba(0, 70, 115, 0.07), rgba(0, 70, 115, 0.015));
+}
+
+.pcirn-authorizations-icon {
+  display: grid;
+  flex: 0 0 2.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--bs-primary);
+  color: var(--bs-white);
+}
+
+.pcirn-authorizations-eyebrow {
+  margin: 0 0 0.25rem;
+  color: var(--bs-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pcirn-authorizations-heading h1 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.3vw, 1.8rem);
+  font-weight: 700;
+}
+
+.pcirn-authorizations-description {
+  max-width: 62rem;
+  margin: 0.45rem 0 0;
+  line-height: 1.55;
+}
+
+.pcirn-authorizations-content {
+  display: grid;
+  gap: 1rem;
+}
+
+.pcirn-authorizations-resource,
+.pcirn-authorizations-bitstreams {
+  min-width: 0;
+  padding: 0.35rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0.5rem;
+  background: var(--bs-body-bg);
+  box-shadow: 0 0.15rem 0.5rem rgba(24, 44, 64, 0.06);
+}
+
+.pcirn-authorizations-bitstreams {
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.pcirn-authorizations-bitstreams .card-header {
+  padding: 0.8rem 1rem;
+  border-bottom-color: var(--bs-border-color);
+  background: rgba(0, 70, 115, 0.035);
+}
+
+.pcirn-authorizations-bitstreams .card-body {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.pcirn-authorizations-load-more {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 575.98px) {
+  .pcirn-authorizations-heading {
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .pcirn-authorizations-icon {
+    flex-basis: 2.35rem;
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+  .pcirn-authorizations-load-more .btn,
+  .pcirn-authorizations-bitstreams .card-header .btn {
+    width: 100%;
+    white-space: normal;
+  }
+}

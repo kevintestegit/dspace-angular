@@ -1,0 +1,49 @@
+<section class="pcirn-admin-dashboard container" aria-labelledby="pcirn-admin-dashboard-title">
+  <header class="pcirn-admin-dashboard-header">
+    <p>{{ 'user-menu.administration' | translate }}</p>
+    <h1 id="pcirn-admin-dashboard-title">{{ 'admin.dashboard.title' | translate }}</h1>
+    <span>{{ 'admin.dashboard.description' | translate }}</span>
+  </header>
+
+  <div class="pcirn-admin-dashboard-grid">
+    @for (group of (groups$ | async); track trackGroup($index, group)) {
+      <section class="pcirn-admin-dashboard-group">
+        <div class="pcirn-admin-dashboard-group-heading">
+          <i class="fas fa-{{ group.section.icon ?? 'cog' }}" aria-hidden="true"></i>
+          @if (getLink(group.section); as link) {
+            <a [routerLink]="link">{{ getText(group.section) | translate }}</a>
+          } @else if (isAction(group.section)) {
+            <button type="button" (click)="execute(group.section)">{{ getText(group.section) | translate }}</button>
+          } @else {
+            <h2>{{ getText(group.section) | translate }}</h2>
+          }
+        </div>
+        @if (group.items.length > 0) {
+          <ul>
+            @for (item of group.items; track trackSection($index, item)) {
+              <li>
+                @if (getLink(item); as link) {
+                  <a [routerLink]="link">{{ getText(item) | translate }}</a>
+                } @else if (isAction(item)) {
+                  <button type="button" (click)="execute(item)">{{ getText(item) | translate }}</button>
+                }
+              </li>
+            }
+          </ul>
+        }
+      </section>
+    }
+
+    <section class="pcirn-admin-dashboard-group pcirn-admin-account-access" aria-labelledby="pcirn-admin-account-access-title">
+      <div class="pcirn-admin-dashboard-group-heading">
+        <i class="fas fa-user-shield" aria-hidden="true"></i>
+        <h2 id="pcirn-admin-account-access-title">{{ 'pcirn-admin.users.title' | translate }}</h2>
+      </div>
+      <p>{{ 'pcirn-admin.users.description' | translate }}</p>
+      <nav aria-label="{{ 'pcirn-admin.users.title' | translate }}">
+        <a [routerLink]="userRegistryRoute">{{ 'pcirn-admin.users.accounts' | translate }}</a>
+        <a [routerLink]="groupRegistryRoute">{{ 'pcirn-admin.users.groups' | translate }}</a>
+      </nav>
+    </section>
+  </div>
+</section>

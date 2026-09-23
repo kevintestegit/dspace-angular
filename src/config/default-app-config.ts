@@ -429,6 +429,16 @@ export class DefaultAppConfig implements AppConfig {
 
     {
       name: 'custom',
+      headTags: [
+        {
+          tagName: 'link',
+          attributes: {
+            'rel': 'icon',
+            'href': 'assets/pcirn/images/brasao-policia-cientifica-rn.png',
+            'type': 'image/png',
+          },
+        },
+      ],
     },
 
     {
