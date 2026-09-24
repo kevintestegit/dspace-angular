@@ -26,9 +26,12 @@ export class ValidateEmailNotTaken {
         .pipe(
           getFirstCompletedRemoteData(),
           map(res => {
-            return res.hasSucceeded && res.payload ? { emailTaken: true } : null;
+            if (!res.hasSucceeded) {
+              return { emailCheckFailed: true };
+            }
+            return res.payload ? { emailTaken: true } : null;
           }),
-          catchError(() => of(null)),
+          catchError(() => of({ emailCheckFailed: true })),
         );
     };
   }

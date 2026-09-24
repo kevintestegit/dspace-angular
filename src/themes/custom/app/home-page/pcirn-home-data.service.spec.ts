@@ -88,7 +88,7 @@ describe('PcirnHomeDataService', () => {
     );
 
     service.metrics.subscribe(metrics => {
-      expect(metrics.hasSucceeded).toBeFalse();
+      expect(metrics.hasSucceeded).toBeFalsy();
       expect(metrics.payload).toBeUndefined();
       done();
     });

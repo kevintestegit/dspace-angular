@@ -53,6 +53,13 @@
   overflow-wrap: anywhere;
 }
 
+.pcirn-document-file-size {
+  color: #5b7186;
+  font-size: .78rem;
+  font-weight: 400;
+  margin-left: .25rem;
+}
+
 .pcirn-document-files ::ng-deep .pcirn-document-download-secondary {
   background: #edf4f8;
   border: 1px solid #d8e5ed;

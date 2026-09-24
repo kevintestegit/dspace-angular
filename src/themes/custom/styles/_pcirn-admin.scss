@@ -97,7 +97,7 @@ $pcirn-admin-soft: #f4f8fb;
   }
 
   .table-responsive {
-    overflow: hidden;
+    overflow-x: auto;
     border: 1px solid $pcirn-admin-border;
     border-radius: .75rem;
     background: $pcirn-admin-surface;
@@ -193,7 +193,7 @@ $pcirn-admin-soft: #f4f8fb;
   }
 
   .table-responsive {
-    overflow: hidden;
+    overflow-x: auto;
     border: 1px solid $pcirn-admin-border;
     border-radius: .75rem;
     background: $pcirn-admin-surface;

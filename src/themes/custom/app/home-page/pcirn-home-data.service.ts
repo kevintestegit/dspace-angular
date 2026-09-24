@@ -137,9 +137,16 @@ export class PcirnHomeDataService {
       this.latestPublications,
     ]).pipe(
       map(([communities, collections, items]) => {
-        const failed = [communities, collections, items].find(data => data.hasFailed);
+        const states = [communities, collections, items] as RemoteData<unknown>[];
+        const failed = states.find(data => data.hasFailed);
         if (failed) {
           return failed as unknown as RemoteData<PcirnHomeMetrics>;
+        }
+        if (!communities.hasSucceeded || !communities.payload ||
+          !collections.hasSucceeded || !collections.payload ||
+          !items.hasSucceeded || !items.payload) {
+          const incomplete = states.find(data => !data.hasSucceeded || !data.payload);
+          return incomplete as unknown as RemoteData<PcirnHomeMetrics>;
         }
         return new RemoteData(
           communities.timeCompleted,

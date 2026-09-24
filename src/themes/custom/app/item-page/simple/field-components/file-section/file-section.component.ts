@@ -7,6 +7,7 @@ import { FileSectionComponent as BaseComponent } from '../../../../../../../app/
 import { slideSidebarPadding } from '../../../../../../../app/shared/animations/slide';
 import { ThemedFileDownloadLinkComponent } from '../../../../../../../app/shared/file-download-link/themed-file-download-link.component';
 import { ThemedLoadingComponent } from '../../../../../../../app/shared/loading/themed-loading.component';
+import { FileSizePipe } from '../../../../../../../app/shared/utils/file-size-pipe';
 import { VarDirective } from '../../../../../../../app/shared/utils/var.directive';
 
 @Component({
@@ -16,6 +17,7 @@ import { VarDirective } from '../../../../../../../app/shared/utils/var.directiv
   animations: [slideSidebarPadding],
   imports: [
     CommonModule,
+    FileSizePipe,
     ThemedFileDownloadLinkComponent,
     ThemedLoadingComponent,
     TranslateModule,
