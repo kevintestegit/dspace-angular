@@ -19,6 +19,9 @@
 .pcirn-footer-column p { color: #b4c6dc; font-size: .72rem; margin: .7rem 0 0; text-align: left; }
 .pcirn-footer-column p strong { color: #e7a91b; }
 .pcirn-footer-bottom { border-top: 1px solid rgba(214, 229, 248, .18); color: #aebfd4; display: flex; font-size: .67rem; justify-content: space-between; margin: 0 auto; max-width: 1360px; padding: .75rem 1.6rem; }
+.pcirn-footer-bottom .notify-enabled { align-items: center; color: #c6d6e9; display: inline-flex; gap: .4rem; text-decoration: none; }
+.pcirn-footer-bottom .notify-enabled:hover, .pcirn-footer-bottom .notify-enabled:focus-visible { color: #fff; text-decoration: underline; }
+.pcirn-footer-bottom .notify-enabled .n-coar { height: 1.3rem; width: auto; }
 
 @media (max-width: 800px) { .pcirn-footer-main { grid-template-columns: repeat(2, 1fr); } .pcirn-footer-brand { grid-column: 1 / -1; } }
 @media (max-width: 520px) { .pcirn-footer-main { grid-template-columns: 1fr; } .pcirn-footer-column { border-left: 0; border-top: 1px solid rgba(214, 229, 248, .18); padding: 1rem 0 0; } .pcirn-footer-bottom { flex-direction: column; gap: .35rem; } }

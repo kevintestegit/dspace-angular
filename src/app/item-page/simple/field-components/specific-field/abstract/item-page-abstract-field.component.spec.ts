@@ -20,10 +20,14 @@ import { BrowseDefinitionDataService } from '../../../../../core/browse/browse-d
 import { BrowseDefinitionDataServiceStub } from '../../../../../shared/testing/browse-definition-data-service.stub';
 import { BrowseServiceStub } from '../../../../../shared/testing/browse-service.stub';
 import { TranslateLoaderMock } from '../../../../../shared/testing/translate-loader.mock';
+import { mockItemWithMetadataFieldsAndValue } from '../item-page-field.component.spec';
 import { ItemPageAbstractFieldComponent } from './item-page-abstract-field.component';
 
 let comp: ItemPageAbstractFieldComponent;
 let fixture: ComponentFixture<ItemPageAbstractFieldComponent>;
+
+const mockField = 'dc.description.abstract';
+const mockValue = 'test abstract';
 
 describe('ItemPageAbstractFieldComponent', () => {
   beforeEach(waitForAsync(() => {
@@ -52,6 +56,7 @@ describe('ItemPageAbstractFieldComponent', () => {
 
     fixture = TestBed.createComponent(ItemPageAbstractFieldComponent);
     comp = fixture.componentInstance;
+    comp.item = mockItemWithMetadataFieldsAndValue([mockField], mockValue);
     fixture.detectChanges();
   }));
 

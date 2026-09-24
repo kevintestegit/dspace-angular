@@ -1,6 +1,6 @@
 import {
   AsyncPipe,
-  DatePipe,
+  formatDate,
 } from '@angular/common';
 import {
   Component,
@@ -18,7 +18,7 @@ import { ItemPageFieldComponent } from '../item-page-field.component';
     <div class="item-page-field">
       <ds-metadata-field-wrapper [label]="label | translate">
         @for (mdValue of item?.allMetadata(fields); track mdValue; let last = $last) {
-          <span class="dont-break-out preserve-line-breaks">{{ (mdValue.value | date:'dd/MM/yyyy':'UTC') || mdValue.value }}</span>
+          <span class="dont-break-out preserve-line-breaks">{{ formatValue(mdValue.value) }}</span>
           @if (!last) {
             <span class="separator" [innerHTML]="separator"></span>
           }
@@ -28,7 +28,6 @@ import { ItemPageFieldComponent } from '../item-page-field.component';
   `,
   imports: [
     AsyncPipe,
-    DatePipe,
     MetadataFieldWrapperComponent,
     TranslateModule,
   ],
@@ -61,5 +60,10 @@ export class ItemPageDateFieldComponent extends ItemPageFieldComponent {
      * Label i18n key for the rendered metadata
      */
     label = 'item.page.date';
+
+    formatValue(value: string): string {
+        const parsed = new Date(value);
+        return isNaN(parsed.getTime()) ? value : formatDate(parsed, 'dd/MM/yyyy', 'UTC');
+    }
 
 }

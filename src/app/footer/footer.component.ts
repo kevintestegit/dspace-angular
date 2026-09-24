@@ -1,4 +1,7 @@
-import { DatePipe } from '@angular/common';
+import {
+  AsyncPipe,
+  DatePipe,
+} from '@angular/common';
 import {
   Component,
   Inject,
@@ -27,6 +30,7 @@ import { hasValue } from '../shared/empty.util';
   styleUrls: ['footer.component.scss'],
   templateUrl: 'footer.component.html',
   imports: [
+    AsyncPipe,
     DatePipe,
     RouterLink,
     TranslateModule,

@@ -23,5 +23,12 @@
       <span></span><span>{{ 'pcirn.footer.platform.system' | translate }}</span><p>{{ 'pcirn.footer.developed-by' | translate }} <a href="https://kevintestegit.github.io/nugecid-site/index.html" target="_blank" rel="noopener noreferrer"><strong>Núcleo de Gestão do Conhecimento, Informação, Documentação e Memória (NUGECID).</strong></a></p>
     </div>
   </div>
-  <div class="pcirn-footer-bottom"><span>{{ 'pcirn.footer.copyright' | translate }}</span><span>© {{ dateObj | date:'y' }} {{ 'pcirn.header.institution' | translate }}</span></div>
+  <div class="pcirn-footer-bottom"><span>{{ 'pcirn.footer.copyright' | translate }}</span><span>© {{ dateObj | date:'y' }} {{ 'pcirn.header.institution' | translate }}</span>
+    @if (coarLdnEnabled$ | async) {
+      <a class="coar-notify-support-route notify-enabled" routerLink="info/coar-notify-support" role="link" tabindex="0">
+        <img class="n-coar" src="assets/images/n-coar.svg" [attr.alt]="'menu.header.image.logo' | translate" />
+        {{ 'footer.link.coar-notify-support' | translate }}
+      </a>
+    }
+  </div>
 </footer>

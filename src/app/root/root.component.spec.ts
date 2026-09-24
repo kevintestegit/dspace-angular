@@ -6,6 +6,7 @@ import {
 } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
+import { provideMockStore } from '@ngrx/store/testing';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AccessibilitySettingsService } from '../accessibility/accessibility-settings.service';
@@ -34,6 +35,7 @@ describe('RootComponent', () => {
       providers: [
         { provide: Router, useValue: new RouterMock() },
         { provide: AccessibilitySettingsService, useValue: new AccessibilitySettingsServiceStub() },
+        provideMockStore(),
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })

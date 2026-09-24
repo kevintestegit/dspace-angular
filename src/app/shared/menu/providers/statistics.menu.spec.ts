@@ -1,7 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import {
+  MockStore,
+  provideMockStore,
+} from '@ngrx/store/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { of } from 'rxjs';
 
+import { isAuthenticated } from '../../../core/auth/selectors';
 import { AuthorizationDataService } from '../../../core/data/feature-authorization/authorization-data.service';
 import { Item } from '../../../core/shared/item.model';
 import { ITEM } from '../../../core/shared/item.resource-type';
@@ -83,8 +88,10 @@ describe('StatisticsMenuProvider', () => {
       providers: [
         StatisticsMenuProvider,
         { provide: AuthorizationDataService, useValue: authorizationService },
+        provideMockStore(),
       ],
     });
+    TestBed.inject(MockStore).overrideSelector(isAuthenticated, true);
     provider = TestBed.inject(StatisticsMenuProvider);
   });
 

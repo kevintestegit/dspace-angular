@@ -8,6 +8,7 @@ import { AdminEmailLogsComponent } from './admin-email-logs.component';
 
 describe('AdminEmailLogsComponent', () => {
   let fixture: ComponentFixture<AdminEmailLogsComponent>;
+  let comp: AdminEmailLogsComponent;
   let emailLogService: jasmine.SpyObj<BrevoEmailLogDataService>;
 
   beforeEach(async () => {
@@ -43,6 +44,7 @@ describe('AdminEmailLogsComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdminEmailLogsComponent);
+    comp = fixture.componentInstance;
     fixture.detectChanges();
   });
 
@@ -55,7 +57,7 @@ describe('AdminEmailLogsComponent', () => {
     fixture.detectChanges();
 
     expect(emailLogService.getEmailContent).toHaveBeenCalledWith('<message@example.org>');
-    expect(fixture.nativeElement.textContent).toContain('Bem-vindo');
-    expect(fixture.nativeElement.querySelector('.email-body').textContent).toContain('<p>Conteúdo</p>');
+    expect(comp.selectedEmail.subject).toBe('Bem-vindo');
+    expect(String((comp.emailPreview as any).changingThisBreaksApplicationSecurity)).toContain('Conteúdo');
   });
 });
