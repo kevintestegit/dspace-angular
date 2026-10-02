@@ -6941,6 +6941,10 @@
 
   // "profile.form.submit": "Save",
   "profile.form.submit": "Salvar",
+  // "profile.form.state.saved": "All changes saved",
+  "profile.form.state.saved": "Tudo salvo",
+  // "profile.form.state.unsaved": "Unsaved changes",
+  "profile.form.state.unsaved": "Alterações não salvas",
 
   // "profile.groups.head": "Authorization groups you belong to",
   "profile.groups.head": "Grupos de autorização aos quais você pertence",
@@ -6953,6 +6957,8 @@
 
   // "profile.metadata.form.error.lastname.required": "Last Name is required",
   "profile.metadata.form.error.lastname.required": "Sobrenome é obrigatório",
+  // "profile.metadata.form.hint.email": "Set by the administrator to keep the institutional record valid. To change it, contact NUGECID.",
+  "profile.metadata.form.hint.email": "Definido pelo administrador para manter a validade institucional do registro. Para alterar, contate o NUGECID.",
 
   // "profile.metadata.form.label.email": "Email Address",
   "profile.metadata.form.label.email": "Endereço de E-mail",
@@ -6986,6 +6992,8 @@
 
   // "profile.security.form.info": "Optionally, you can enter a new password in the box below, and confirm it by typing it again into the second box.",
   "profile.security.form.info": "Opcionalmente, você pode inserir uma nova senha na caixa abaixo e confirmá-la digitando-a novamente na segunda caixa.",
+  // "profile.security.form.submit": "Change password",
+  "profile.security.form.submit": "Alterar senha",
 
   // "profile.security.form.label.password": "Password",
   "profile.security.form.label.password": "Senha",
@@ -7013,6 +7021,10 @@
 
   // "profile.security.form.notifications.error.general": "Please fill required fields of security form.",
   "profile.security.form.notifications.error.general": "Por favor, preencha os campos obrigatórios do formulário de segurança.",
+  // "profile.security.form.notifications.warning.no-password.title": "No password entered",
+  "profile.security.form.notifications.warning.no-password.title": "Nenhuma senha informada",
+  // "profile.security.form.notifications.warning.no-password.content": "Fill in the new password and its confirmation to change your password.",
+  "profile.security.form.notifications.warning.no-password.content": "Preencha a nova senha e a confirmação para alterar a senha.",
 
   // "profile.title": "Update Profile",
   "profile.title": "Atualizar Perfil",

@@ -1,0 +1,261 @@
+// PCIRN styling for account pages. All rules stay beneath their route hosts so
+// shared account controls keep their native behavior and styling elsewhere.
+ds-themed-profile-page,
+ds-subscriptions-page {
+  --pcirn-user-ink: #0b3154;
+  --pcirn-user-blue: #0e5a73;
+  --pcirn-user-border: #dce6ee;
+  --pcirn-user-soft: #f4f8fb;
+  --pcirn-user-muted: #66758a;
+  display: block;
+  color: var(--pcirn-user-ink);
+}
+
+ds-themed-profile-page {
+  > .container {
+    max-width: 1050px;
+    padding-block: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  h1 {
+    margin: 0 0 1.5rem;
+    color: var(--pcirn-user-ink);
+    font-size: clamp(1.55rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -.025em;
+  }
+
+  .card {
+    overflow: hidden;
+    border: 1px solid var(--pcirn-user-border);
+    border-radius: .75rem;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(8, 47, 77, .05);
+  }
+
+  .card-header {
+    padding: .85rem 1.1rem;
+    border-bottom: 1px solid var(--pcirn-user-border);
+    background: var(--pcirn-user-soft);
+    color: var(--pcirn-user-blue);
+    font-size: 1.0625rem;
+    font-weight: 800;
+  }
+
+  .card-body {
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+  }
+
+  // Keep every control at a comfortable measure and at a 44px touch target: the upstream
+  // full-bleed inputs measured 952px wide (~119 characters) at 1440px.
+  .form-control,
+  .form-select {
+    max-width: 32rem;
+    min-height: 2.75rem;
+  }
+
+  h2 {
+    margin-bottom: .75rem;
+    color: var(--pcirn-user-ink);
+    font-size: 1.05rem;
+    font-weight: 750;
+  }
+
+  .list-group-item {
+    border-color: var(--pcirn-user-border);
+    color: var(--pcirn-user-ink);
+  }
+
+  .btn-primary {
+    min-height: 2.75rem;
+    padding-inline: 1rem;
+    border-color: var(--pcirn-user-blue);
+    border-radius: .5rem;
+    background: var(--pcirn-user-blue);
+    font-weight: 700;
+
+    &:hover,
+    &:focus-visible {
+      border-color: #0a485f;
+      background: #0a485f;
+    }
+  }
+
+  a:not(.btn) {
+    color: var(--pcirn-user-blue);
+    font-weight: 650;
+  }
+
+  .pcirn-account-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .4rem;
+    margin: -.75rem 0 1.5rem;
+    color: var(--pcirn-user-muted);
+    font-size: .95rem;
+  }
+
+  .pcirn-account-summary__name {
+    color: var(--pcirn-user-ink);
+    font-weight: 700;
+  }
+
+  .pcirn-account-email {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pcirn-account-email__value {
+    display: inline-flex;
+    gap: .5rem;
+    align-items: center;
+    align-self: flex-start;
+    max-width: 32rem;
+    padding: .55rem .75rem;
+    border: 1px solid var(--pcirn-user-border);
+    border-radius: .5rem;
+    background: var(--pcirn-user-soft);
+    color: var(--pcirn-user-ink);
+    font-weight: 650;
+    overflow-wrap: anywhere;
+  }
+
+  .pcirn-account-email__value i {
+    color: var(--pcirn-user-muted);
+    font-size: .8rem;
+  }
+
+  .pcirn-account-email__hint {
+    color: var(--pcirn-user-muted);
+    font-size: .82rem;
+  }
+
+  .pcirn-card-actions,
+  .pcirn-profile-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+  }
+
+  .pcirn-card-actions__state,
+  .pcirn-profile-actions__state {
+    color: var(--pcirn-user-muted);
+    font-size: .85rem;
+    font-weight: 650;
+  }
+
+  .pcirn-profile-actions__state {
+    margin-right: auto;
+  }
+
+  .pcirn-profile-actions__state i {
+    margin-right: .35rem;
+  }
+
+  // The page's only commit control used to float between two unrelated cards and scroll out of
+  // reach on mobile, so it is pinned to the bottom of the viewport instead.
+  .pcirn-profile-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    margin-top: 2rem;
+    padding-block: .85rem;
+    border-top: 1px solid var(--pcirn-user-border);
+    background: rgba(255, 255, 255, .97);
+  }
+}
+
+ds-subscriptions-page {
+  > .container {
+    max-width: 1150px;
+    padding-block: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  h1 {
+    margin: 0 0 1.5rem;
+    color: var(--pcirn-user-ink);
+    font-size: clamp(1.55rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -.025em;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    border: 1px solid var(--pcirn-user-border);
+    border-radius: .75rem;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(8, 47, 77, .05);
+  }
+
+  table {
+    min-width: 38rem;
+    margin: 0;
+    color: var(--pcirn-user-ink);
+
+    thead th {
+      padding: .85rem 1rem;
+      border-color: var(--pcirn-user-border);
+      background: var(--pcirn-user-soft);
+      color: var(--pcirn-user-blue);
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: .8rem 1rem;
+      border-color: #e8eef3;
+      vertical-align: middle;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    a {
+      color: var(--pcirn-user-blue);
+      font-weight: 700;
+    }
+  }
+
+  ds-alert {
+    display: block;
+    margin: .5rem 0 0;
+    border-radius: .65rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  ds-themed-profile-page > .container,
+  ds-subscriptions-page > .container {
+    padding-inline: 1rem;
+  }
+
+  ds-themed-profile-page .card-body {
+    padding: 1rem;
+  }
+
+  ds-themed-profile-page .pcirn-card-actions,
+  ds-themed-profile-page .pcirn-profile-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  ds-themed-profile-page .pcirn-card-actions .btn,
+  ds-themed-profile-page .pcirn-profile-actions .btn {
+    width: 100%;
+  }
+
+  ds-themed-profile-page .pcirn-profile-actions__state {
+    margin-right: 0;
+    text-align: center;
+  }
+}

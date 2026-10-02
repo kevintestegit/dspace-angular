@@ -4542,6 +4542,8 @@
   "profile.card.security": "Security",
 
   "profile.form.submit": "Save",
+  "profile.form.state.saved": "All changes saved",
+  "profile.form.state.unsaved": "Unsaved changes",
 
   "profile.groups.head": "Authorization groups you belong to",
 
@@ -4550,6 +4552,7 @@
   "profile.metadata.form.error.firstname.required": "First Name is required",
 
   "profile.metadata.form.error.lastname.required": "Last Name is required",
+  "profile.metadata.form.hint.email": "Set by the administrator to keep the institutional record valid. To change it, contact NUGECID.",
 
   "profile.metadata.form.label.email": "Email Address",
 
@@ -4572,6 +4575,7 @@
   "profile.security.form.error.matching-passwords": "The passwords do not match.",
 
   "profile.security.form.info": "Optionally, you can enter a new password in the box below, and confirm it by typing it again into the second box.",
+  "profile.security.form.submit": "Change password",
 
   "profile.security.form.label.password": "Password",
 
@@ -4590,6 +4594,8 @@
   "profile.security.form.notifications.error.not-same": "The provided passwords are not the same.",
 
   "profile.security.form.notifications.error.general": "Please fill required fields of security form.",
+  "profile.security.form.notifications.warning.no-password.title": "No password entered",
+  "profile.security.form.notifications.warning.no-password.content": "Fill in the new password and its confirmation to change your password.",
 
   "profile.title": "Update Profile",
 
