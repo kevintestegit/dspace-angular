@@ -2353,7 +2353,7 @@
   "collectionList.title": "Lista de Coleções",
 
   // "collectionList.subtitle": "Browse the collections to access their documents and publications.",
-  "collectionList.subtitle": "Navegue pelas coleções para acessar seus documentos e publicações.",
+  "collectionList.subtitle": "Escolha uma categoria para consultar documentos de todas as comunidades.",
 
   // "collectionList.search": "Search collections...",
   "collectionList.search": "Buscar coleções...",
@@ -4673,6 +4673,8 @@
   "pcirn.document-type.DECRETO": "Decreto",
   "pcirn.document-type.LEI": "Lei",
   "pcirn.document-type.POP": "Procedimento Operacional Padrão (POP)",
+  "pcirn.document-type.MEMORIA_INSTITUCIONAL": "Memória Institucional",
+  "pcirn.document-type.PAP": "Procedimento Administrativo Padrão",
   "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRÃO_(POP)": "Procedimento Operacional Padrão (POP)",
   "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRAO_POP": "Procedimento Operacional Padrão (POP)",
   "pcirn.document-type.NOTA_TECNICA": "Nota Técnica",
@@ -4698,10 +4700,14 @@
   "pcirn.document-type.DOCUMENTO": "Documento",
   "pcirn.document-type.DEFAULT": "Documento",
 
-  "pcirnNormas.search.results.head": "Normas e Portarias",
-  "pcirnPops.search.results.head": "POPs e Procedimentos",
+  "pcirnNormas.search.results.head": "Portarias e Atos Normativos",
+  "pcirnMemoriaInstitucional.search.results.head": "Memória Institucional",
+  "pcirnNotasTecnicas.search.results.head": "Notas Técnicas",
+  "pcirnGuiasManuais.search.results.head": "Guias e Manuais",
+  "pcirnPap.search.results.head": "Procedimento Administrativo Padrão (PAP)",
+  "pcirnPops.search.results.head": "Procedimento Operacional Padrão (POP)",
   "pcirnProducao.search.results.head": "Produção Científica",
-  "pcirnRelatorios.search.results.head": "Relatórios Técnicos",
+  "pcirnRelatorios.search.results.head": "Relatório de Produtividade e Prestação de Contas",
 
   "pcirn.home.hero.title.part1": "Documentos",
   "pcirn.home.hero.title.part2": "institucionais da",

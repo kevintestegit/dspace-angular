@@ -1561,7 +1561,7 @@
 
   "collectionList.title": "List of Collections",
 
-  "collectionList.subtitle": "Browse the collections to access their documents and publications.",
+  "collectionList.subtitle": "Choose a category to browse documents from all communities.",
 
   "collectionList.search": "Search collections...",
 
@@ -3113,6 +3113,8 @@
   "pcirn.document-type.DECRETO": "Decree",
   "pcirn.document-type.LEI": "Law",
   "pcirn.document-type.POP": "Standard Operating Procedure (SOP)",
+  "pcirn.document-type.MEMORIA_INSTITUCIONAL": "Institutional Memory",
+  "pcirn.document-type.PAP": "Standard Administrative Procedure",
   "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRÃO_(POP)": "Standard Operating Procedure (SOP)",
   "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRAO_POP": "Standard Operating Procedure (SOP)",
   "pcirn.document-type.NOTA_TECNICA": "Technical Note",
@@ -3139,9 +3141,13 @@
   "pcirn.document-type.DEFAULT": "Document",
 
   "pcirnNormas.search.results.head": "Ordinances and Normative Acts",
-  "pcirnPops.search.results.head": "SOPs and Procedures",
+  "pcirnMemoriaInstitucional.search.results.head": "Institutional Memory",
+  "pcirnNotasTecnicas.search.results.head": "Technical Notes",
+  "pcirnGuiasManuais.search.results.head": "Guides and Manuals",
+  "pcirnPap.search.results.head": "Standard Administrative Procedure (PAP)",
+  "pcirnPops.search.results.head": "Standard Operating Procedure (SOP)",
   "pcirnProducao.search.results.head": "Scientific Production",
-  "pcirnRelatorios.search.results.head": "Technical Reports",
+  "pcirnRelatorios.search.results.head": "Productivity and Accountability Reports",
 
   "pcirn.home.hero.title.part1": "Institutional",
   "pcirn.home.hero.title.part2": "documents of",
