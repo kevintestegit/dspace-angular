@@ -51,6 +51,7 @@ import { MatomoService } from '../../statistics/matomo.service';
 
 @Component({
   selector: 'ds-bitstream-download-page',
+  styleUrls: ['./bitstream-download-page.component.scss'],
   templateUrl: './bitstream-download-page.component.html',
   imports: [
     AsyncPipe,

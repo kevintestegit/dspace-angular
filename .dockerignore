@@ -1,4 +1,10 @@
 .git
+.env
+.env.*
+**/.env
+**/.env.*
+smtp.env
+**/smtp.env
 .idea
 .vscode
 .DS_Store

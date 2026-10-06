@@ -1,0 +1,284 @@
+// Route-scoped refinements for the remaining administrative screens.
+// Colors follow the PCIRN admin surfaces defined in _pcirn-admin.scss.
+ds-admin-search-page,
+ds-admin-workflow-page,
+ds-metadata-registry {
+  display: block;
+  color: #0b3154;
+}
+
+ds-admin-search-page,
+ds-admin-workflow-page {
+  #search-form {
+    display: block;
+    margin: 1.25rem 0 1rem;
+
+    form > div {
+      margin: 0;
+      padding: .9rem;
+      border: 1px solid #dce6ee;
+      border-radius: .65rem;
+      background: #f4f8fb;
+    }
+
+    .input-group {
+      margin: 0;
+    }
+
+    .form-control,
+    .scope-button,
+    .search-button {
+      min-height: 2.7rem;
+      border-radius: .4rem;
+    }
+
+    .form-control {
+      min-width: 0;
+      border-color: #dce6ee;
+      color: #0b3154;
+    }
+
+    .form-control:focus {
+      border-color: #0e5a73;
+      box-shadow: 0 0 0 .2rem rgba(14, 90, 115, .15);
+    }
+
+    .search-button {
+      border-color: #0e5a73;
+      background: #0e5a73;
+      font-weight: 700;
+    }
+  }
+
+  #search-content {
+    color: #0b3154;
+
+    > .d-flex:first-child {
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0 1rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid #dce6ee;
+    }
+
+    h1 {
+      margin: 0;
+      color: #0b3154;
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-weight: 750;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      border: 1px solid #dce6ee;
+      border-radius: .65rem;
+      background: #fff;
+    }
+
+    table {
+      margin: 0;
+      color: #0b3154;
+
+      thead th {
+        border-color: #dce6ee;
+        background: #f4f8fb;
+        color: #0e5a73;
+        font-size: .78rem;
+        font-weight: 750;
+      }
+
+      tbody td {
+        border-color: #e8eef3;
+        vertical-align: middle;
+      }
+    }
+
+    a {
+      color: #0e5a73;
+      text-underline-offset: .15em;
+    }
+  }
+
+  #search-sidebar,
+  #search-sidebar-sm {
+    color: #0b3154;
+
+    h2,
+    h3 {
+      color: #0b3154;
+      font-weight: 750;
+    }
+
+    .form-control,
+    .form-select {
+      border-color: #dce6ee;
+      border-radius: .4rem;
+    }
+  }
+
+  ds-page-with-sidebar {
+    display: block;
+  }
+
+  .btn-outline-primary,
+  .btn-primary {
+    border-color: #0e5a73;
+    font-weight: 650;
+  }
+
+  .btn-primary {
+    background-color: #0e5a73;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      border-color: #0b3154;
+      background-color: #0b3154;
+      color: #fff;
+    }
+
+    &:focus-visible {
+      outline-color: #0b3154;
+    }
+
+    &:disabled,
+    &.disabled {
+      border-color: #527887;
+      background-color: #527887;
+      color: #fff;
+      opacity: 1;
+    }
+  }
+
+  .btn-outline-primary {
+    background-color: transparent;
+    color: #0e5a73;
+
+    &:hover,
+    &:focus {
+      border-color: #0b3154;
+      background-color: #0b3154;
+      color: #fff;
+    }
+
+    &:focus-visible {
+      outline-color: #0b3154;
+    }
+
+    &:disabled,
+    &.disabled {
+      border-color: #527887;
+      background-color: transparent;
+      color: #527887;
+      opacity: 1;
+    }
+  }
+}
+
+ds-metadata-registry {
+  .metadata-registry {
+    padding-block: clamp(1.5rem, 4vw, 3rem);
+
+    h1 {
+      margin: 0 0 1rem;
+      padding: 0 0 .85rem !important;
+      border-color: #dce6ee !important;
+      color: #0b3154;
+      font-size: clamp(1.55rem, 3vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -.025em;
+    }
+
+    #description {
+      max-width: 68rem;
+      color: #52708a;
+      line-height: 1.6;
+    }
+
+    ds-metadata-schema-form {
+      display: block;
+      margin: 1.25rem 0 1.5rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid #dce6ee;
+      border-radius: .65rem;
+      background: #f4f8fb;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      border: 1px solid #dce6ee;
+      border-radius: .65rem;
+      background: #fff;
+    }
+
+    table {
+      min-width: 38rem;
+      margin: 0;
+      color: #0b3154;
+
+      thead th {
+        padding: .85rem 1rem;
+        border-color: #dce6ee;
+        background: #f4f8fb;
+        color: #0e5a73;
+        font-size: .76rem;
+        font-weight: 800;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      tbody td {
+        padding: .8rem 1rem;
+        border-color: #e8eef3;
+        vertical-align: middle;
+      }
+
+      tbody tr:hover > * {
+        --bs-table-bg-state: #f4f8fb;
+      }
+
+      a {
+        color: #0e5a73;
+        font-weight: 650;
+        text-underline-offset: .15em;
+      }
+    }
+
+    .btn-danger {
+      min-height: 2.6rem;
+      margin-top: 1rem;
+      border-radius: .45rem;
+      font-weight: 700;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  ds-admin-search-page,
+  ds-admin-workflow-page {
+    #search-form form > div {
+      padding: .65rem;
+    }
+
+    #search-form .input-group {
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    #search-form .form-control {
+      flex: 1 1 100%;
+      border-radius: .4rem !important;
+    }
+
+    #search-form .search-button {
+      margin-inline-start: auto;
+    }
+  }
+
+  ds-metadata-registry {
+    .metadata-registry ds-metadata-schema-form {
+      padding: .85rem;
+    }
+  }
+}

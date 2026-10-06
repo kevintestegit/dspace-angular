@@ -31,21 +31,25 @@
         <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
 
         <div class="pcirn-document-side-meta">
-          <div class="pcirn-document-meta-item pcirn-document-meta-date">
-            <i class="fas fa-calendar-days" aria-hidden="true"></i>
-            <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
-          </div>
+          @if (object.hasMetadata('dc.date.issued')) {
+            <div class="pcirn-document-meta-item pcirn-document-meta-date">
+              <i class="fas fa-calendar-days" aria-hidden="true"></i>
+              <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+            </div>
+          }
 
-          <div class="pcirn-document-meta-item pcirn-document-meta-authors">
-            <i class="fas fa-users" aria-hidden="true"></i>
-            <ds-metadata-representation-list
-              class="ds-item-page-mixed-author-field"
-              [parentItem]="object"
-              [itemType]="'Person'"
-              [metadataFields]="['dc.contributor.author', 'dc.creator']"
-              [label]="'item.page.authors' | translate">
-            </ds-metadata-representation-list>
-          </div>
+          @if (object.hasMetadata(['dc.contributor.author', 'dc.creator'])) {
+            <div class="pcirn-document-meta-item pcirn-document-meta-authors">
+              <i class="fas fa-users" aria-hidden="true"></i>
+              <ds-metadata-representation-list
+                class="ds-item-page-mixed-author-field"
+                [parentItem]="object"
+                [itemType]="'Person'"
+                [metadataFields]="['dc.contributor.author', 'dc.creator']"
+                [label]="'item.page.authors' | translate">
+              </ds-metadata-representation-list>
+            </div>
+          }
 
           @if (documentType; as type) {
             <div class="pcirn-document-meta-item">

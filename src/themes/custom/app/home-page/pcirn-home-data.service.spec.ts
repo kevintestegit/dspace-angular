@@ -4,35 +4,18 @@ import {
   createPendingRemoteDataObject$,
   createSuccessfulRemoteDataObject$,
 } from '../../../../app/shared/remote-data.utils';
-import { buildQuickAccess, PcirnHomeDataService } from './pcirn-home-data.service';
+import {
+  buildQuickAccess,
+  PcirnHomeDataService,
+} from './pcirn-home-data.service';
 
 describe('buildQuickAccess', () => {
-  it('returns four cards with only Portarias public', () => {
-    const cards = buildQuickAccess(false);
-
+  it('opens public filtered searches regardless of authentication', () => {
+    const cards = buildQuickAccess();
     expect(cards.length).toBe(4);
-    expect(cards.map(card => card.title)).toEqual([
-      'Normas e Portarias',
-      'POPs e Procedimentos',
-      'Produção Científica',
-      'Relatórios Técnicos',
+    expect(cards.map(card => card.queryParams.configuration)).toEqual([
+      'pcirnNormas', 'pcirnPops', 'pcirnProducao', 'pcirnRelatorios',
     ]);
-    expect(cards.find(card => card.title === 'Normas e Portarias')).toEqual(jasmine.objectContaining({
-      route: '/search',
-      queryParams: { configuration: 'pcirnNormas' },
-      requiresLogin: false,
-    }));
-    expect(cards.find(card => card.title === 'POPs e Procedimentos').queryParams).toBeUndefined();
-    expect(cards.find(card => card.title === 'Relatórios Técnicos').queryParams).toBeUndefined();
-    expect(cards.filter(card => card.title !== 'Normas e Portarias').every(card => card.requiresLogin)).toBeTrue();
-  });
-
-  it('applies the institutional search configuration to every card for authenticated users', () => {
-    const cards = buildQuickAccess(true);
-
-    expect(cards.find(card => card.title === 'POPs e Procedimentos').queryParams).toEqual({ configuration: 'pcirnPops' });
-    expect(cards.find(card => card.title === 'Produção Científica').queryParams).toEqual({ configuration: 'pcirnProducao' });
-    expect(cards.find(card => card.title === 'Relatórios Técnicos').queryParams).toEqual({ configuration: 'pcirnRelatorios' });
     expect(cards.every(card => card.route === '/search')).toBeTrue();
   });
 });

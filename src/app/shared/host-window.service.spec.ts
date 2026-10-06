@@ -7,6 +7,7 @@ import {
   cold,
   hot,
 } from 'jasmine-marbles';
+import { BehaviorSubject } from 'rxjs';
 
 import { AppState } from '../app.reducer';
 import {
@@ -25,6 +26,23 @@ describe('HostWindowService', () => {
     LG_MIN = 992,
     XL_MIN = 1200
   }
+
+  it('updates the category when theme breakpoints load without a window resize', () => {
+    const variables$ = new BehaviorSubject<Record<string, string>>({});
+    const variableService = new CSSVariableServiceStub();
+    spyOn(variableService, 'getAllVariables').and.returnValue(variables$ as any);
+    store = createMockStore({ initialState: { hostWindow: { width: 500, height: 770 } } });
+    service = new HostWindowService(store, variableService as any);
+    const categories: WidthCategory[] = [];
+    const subscription = service.widthCategory.subscribe((category) => categories.push(category));
+
+    variables$.next({ '--bs-sm': '576px', '--bs-md': '768px', '--bs-lg': '992px', '--bs-xl': '1200px' });
+    expect(categories[categories.length - 1]).toBe(WidthCategory.XS);
+
+    variables$.next({ '--bs-sm': '480px', '--bs-md': '768px', '--bs-lg': '992px', '--bs-xl': '1200px' });
+    expect(categories[categories.length - 1]).toBe(WidthCategory.SM);
+    subscription.unsubscribe();
+  });
 
   describe('', () => {
     beforeEach(() => {

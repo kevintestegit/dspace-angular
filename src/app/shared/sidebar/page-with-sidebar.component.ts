@@ -11,7 +11,6 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { pushInOut } from '../animations/push';
 import { HostWindowService } from '../host-window.service';
 import { SidebarService } from './sidebar.service';
 
@@ -19,7 +18,6 @@ import { SidebarService } from './sidebar.service';
   selector: 'ds-page-with-sidebar',
   styleUrls: ['./page-with-sidebar.component.scss'],
   templateUrl: './page-with-sidebar.component.html',
-  animations: [pushInOut],
   imports: [
     AsyncPipe,
     NgTemplateOutlet,

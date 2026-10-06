@@ -1,9 +1,8 @@
 <main class="pcirn-home">
   <section class="pcirn-home-hero" aria-labelledby="pcirn-home-title">
-    <div class="pcirn-home-hero-forensics" aria-hidden="true"><i class="fas fa-fingerprint"></i><i class="fas fa-search"></i></div>
     <div class="pcirn-home-hero-inner">
       <div class="pcirn-home-hero-copy">
-        <h1 id="pcirn-home-title"><span>{{ 'pcirn.home.hero.title.part1' | translate }}</span><span>{{ 'pcirn.home.hero.title.part2' | translate }} <em>PCIRN.</em></span></h1>
+        <h1 id="pcirn-home-title"><span>{{ 'pcirn.home.hero.title.part1' | translate }}</span><span>{{ 'pcirn.home.hero.title.part2' | translate }}<span class="pcirn-prep-wrap"><span class="pcirn-prep" aria-hidden="true"><span class="pcirn-prep-da">{{ 'pcirn.home.hero.title.prep.da' | translate }}</span><span class="pcirn-prep-do">{{ 'pcirn.home.hero.title.prep.do' | translate }}</span></span></span><em class="pcirn-kinetic" aria-label="PCIRN."><span class="visually-hidden">PCIRN.</span><span class="pcirn-k-stage" aria-hidden="true"><span class="pcirn-k-item pcirn-k-item-idle"><span class="k-root">PCIRN</span><span class="pcirn-k-dot">.</span></span><span class="pcirn-k-item pcirn-k-item-p"><span class="k-root">P</span><span class="k-ext">erícia</span><span class="pcirn-k-dot">.</span></span><span class="pcirn-k-item pcirn-k-item-c"><span class="k-root">C</span><span class="k-ext">iência</span><span class="pcirn-k-dot">.</span></span><span class="pcirn-k-item pcirn-k-item-i"><span class="k-root">I</span><span class="k-ext">nvestigação</span><span class="pcirn-k-dot">.</span></span><span class="pcirn-k-item pcirn-k-item-rn"><span class="k-root">R</span><span class="k-ext">io Grande do&nbsp;</span><span class="k-root">N</span><span class="k-ext">orte</span><span class="pcirn-k-dot">.</span></span></span></em></span></h1>
         <span class="pcirn-home-rule" aria-hidden="true"></span>
         <p class="pcirn-home-lead">{{ 'pcirn.home.hero.lead' | translate }}</p>
       </div>
@@ -26,8 +25,8 @@
       <div class="pcirn-home-section-body">
         <h2 id="pcirn-home-quick-title" class="visually-hidden">{{ 'pcirn.home.quick-access.title' | translate }}</h2>
         <div class="pcirn-home-card-grid">
-          @for (card of (quickAccess$ | async); track card.title) {
-            <a class="pcirn-home-card" [class.pcirn-home-card-locked]="card.requiresLogin" [routerLink]="card.route" [queryParams]="card.queryParams" [attr.aria-label]="(card.titleKey ? (card.titleKey | translate) : card.title) + (card.requiresLogin ? (', ' + ('pcirn.home.quick-access.requires-login' | translate)) : '')">
+          @for (card of quickAccess; track card.title) {
+            <a class="pcirn-home-card" [routerLink]="card.route" [queryParams]="card.queryParams" [attr.aria-label]="(card.titleKey ? (card.titleKey | translate) : card.title)">
               <i [class]="'pcirn-home-card-icon fas ' + card.icon" aria-hidden="true"></i>
               <span class="pcirn-home-card-copy"><strong>{{ card.titleKey ? (card.titleKey | translate) : card.title }}</strong><small>{{ card.descriptionKey ? (card.descriptionKey | translate) : card.description }}</small></span>
               <i class="pcirn-home-card-arrow fas fa-arrow-right" aria-hidden="true"></i>

@@ -1,12 +1,12 @@
-<ds-truncatable-part [maxLines]="1" [background]="isCurrent() ? 'primary' : 'default'" [showToggle]="false">
+<div class="dont-break-out preserve-line-breaks">
   <div [ngClass]="isCurrent() ? 'text-light' : 'text-body'"
   [innerHTML]="(parentTitle$ && parentTitle$ | async) ? (parentTitle$ | async) : ('home.breadcrumbs' | translate)"></div>
-</ds-truncatable-part>
-<ds-truncatable-part [maxLines]="1" [background]="isCurrent() ? 'primary' : 'default'" [showToggle]="false">
+</div>
+<div class="dont-break-out preserve-line-breaks">
   <div class="fw-bold"
     [ngClass]="isCurrent() ? 'text-light' : 'text-primary'"
   [innerHTML]="dsoTitle"></div>
-</ds-truncatable-part>
+</div>
 @if (description) {
   <ds-truncatable-part [maxLines]="1" [background]="isCurrent() ? 'primary' : 'default'" [showToggle]="false">
     <div class="text-secondary"

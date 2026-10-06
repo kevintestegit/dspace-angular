@@ -1,0 +1,21 @@
+<div class="tutorials-page">
+  <div class="tutorials-inner">
+    <h1>{{ 'info.tutoriais.title' | translate }}</h1>
+    <ul class="tutorials-list">
+      @for (group of groups; track group.id) {
+        @for (tutorial of group.documents; track tutorial.id) {
+          <li>
+            <a [href]="'assets/pcirn/tutoriais/' + tutorial.id + '.pdf'"
+              target="_blank" rel="noopener noreferrer" [attr.aria-describedby]="'tutorial-meta-' + tutorial.id">
+              {{ 'info.tutoriais.' + tutorial.id + '.title' | translate }}
+              <span class="visually-hidden">{{ 'info.tutoriais.new-tab' | translate }}</span>
+            </a>
+            <span class="visually-hidden" [id]="'tutorial-meta-' + tutorial.id">
+              PDF · {{ 'info.tutoriais.metadata' | translate: { version: tutorial.version, date: tutorial.date, pages: tutorial.pages, size: tutorial.size } }}
+            </span>
+          </li>
+        }
+      }
+    </ul>
+  </div>
+</div>

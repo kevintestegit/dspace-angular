@@ -347,6 +347,7 @@ $pcirn-admin-soft: #f4f8fb;
 
       > div,
       .flex-grow-1 {
+        flex: 0 1 auto;
         width: 100%;
         margin-inline: 0 !important;
       }
@@ -377,6 +378,66 @@ $pcirn-admin-soft: #f4f8fb;
 
     table {
       min-width: 34rem;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .epeople-registry #epeople {
+    display: block;
+    min-width: 0;
+    border: 0;
+
+    thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    tbody {
+      display: grid;
+      gap: .75rem;
+    }
+
+    tr {
+      display: grid;
+      padding: .75rem;
+      border: 1px solid $pcirn-admin-border;
+      border-radius: .55rem;
+      background: $pcirn-admin-surface;
+    }
+
+    td {
+      display: block;
+      padding: .35rem 0;
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow-wrap: anywhere;
+
+      &::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: .15rem;
+        color: $pcirn-admin-ink;
+        font-size: .8rem;
+        font-weight: 700;
+      }
+    }
+
+    .edit-field {
+      flex-wrap: wrap;
+      gap: .5rem;
+
+      .btn {
+        min-width: 44px;
+        min-height: 44px;
+        margin: 0;
+        border-radius: .35rem;
+      }
     }
   }
 }

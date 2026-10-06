@@ -3,7 +3,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { getTestScheduler } from 'jasmine-marbles';
 import clone from 'lodash/clone';
 import cloneDeep from 'lodash/cloneDeep';
-import { of } from 'rxjs';
+import {
+  of,
+  Subject,
+} from 'rxjs';
 import { TestScheduler } from 'rxjs/testing';
 
 import { environment } from '../../../environments/environment';
@@ -12,6 +15,7 @@ import { RestResponse } from '../../core/cache/response.models';
 import { ConfigurationDataService } from '../../core/data/configuration-data.service';
 import { EPersonDataService } from '../../core/eperson/eperson-data.service';
 import { EPerson } from '../../core/eperson/models/eperson.model';
+import { LocaleService } from '../../core/locale/locale.service';
 import { CookieService } from '../../core/services/cookie.service';
 import { ConfigurationProperty } from '../../core/shared/configuration-property.model';
 import { MetadataValue } from '../../core/shared/metadata.models';
@@ -61,6 +65,8 @@ describe('BrowserOrejimeService', () => {
     });
 
     translateService = getMockTranslateService();
+    translateService.use.and.returnValue(of('ready'));
+    translateService.get.and.returnValue(of('loading...'));
     ePersonService = jasmine.createSpyObj('ePersonService', {
       createPatchFromCache: of([]),
       patch: of(new RestResponse(true, 200, 'Ok')),
@@ -84,6 +90,7 @@ describe('BrowserOrejimeService', () => {
     TestBed.configureTestingModule({
       providers: [
         BrowserOrejimeService,
+        { provide: LocaleService, useValue: { getCurrentLanguageCode: () => of('pt-BR') } },
         {
           provide: TranslateService,
           useValue: translateService,
@@ -170,6 +177,18 @@ describe('BrowserOrejimeService', () => {
       expect(service.addAppMessages).toHaveBeenCalled();
       expect(service.translateConfiguration).toHaveBeenCalled();
     });
+  });
+
+  it('waits for the selected locale before translating the consent notice', () => {
+    const translationsReady = new Subject<any>();
+    translateService.use.and.returnValue(translationsReady);
+    spyOn(service, 'translateConfiguration');
+    service.initialize();
+    expect(service.translateConfiguration).not.toHaveBeenCalled();
+    expect(translateService.use).toHaveBeenCalledWith('pt-BR');
+    translationsReady.next({});
+    expect(service.translateConfiguration).toHaveBeenCalled();
+    translationsReady.complete();
   });
 
   it('addAppMessages', () => {

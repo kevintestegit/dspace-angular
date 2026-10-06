@@ -12,6 +12,7 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   NavigationCancel,
   NavigationEnd,
@@ -34,6 +35,7 @@ import {
 import {
   delay,
   distinctUntilChanged,
+  filter,
   take,
   withLatestFrom,
 } from 'rxjs/operators';
@@ -108,7 +110,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.isThemeLoading$ = this.themeService.isThemeLoading$;
 
-    this.storeCSSVariables();
+    this.themeService.isThemeCSSLoading$.pipe(
+      distinctUntilChanged(),
+      filter((loading) => !loading),
+      takeUntilDestroyed(),
+    ).subscribe(() => this.storeCSSVariables());
   }
 
   ngOnInit() {

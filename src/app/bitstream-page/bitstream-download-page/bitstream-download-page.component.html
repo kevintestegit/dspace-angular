@@ -1,8 +1,40 @@
-<div class="container">
-  <h1 class="h2">{{'bitstream.download.page' | translate:{ bitstream: dsoNameService.getName((bitstream$ | async)) } }}</h1>
-  <div class="pt-3">
-    <button (click)="back()" class="btn btn-outline-secondary">
-      <i class="fas fa-arrow-left"></i> {{'bitstream.download.page.back' | translate}}
-    </button>
+<main class="pcirn-list pcirn-download-surface">
+  <div class="pcirn-list-inner">
+
+    <!-- Header Hero -->
+    <header class="pcirn-download-header">
+      <div class="pcirn-download-pill-badge">
+        <i class="fas fa-file-download" aria-hidden="true"></i>
+        <span>Download de Arquivo</span>
+      </div>
+      <h1>{{'bitstream.download.page' | translate:{ bitstream: dsoNameService.getName((bitstream$ | async)) } }}</h1>
+      <p class="pcirn-download-header-lead">
+        Se o download do documento não iniciar automaticamente pelo navegador, utilize a opção abaixo para retornar.
+      </p>
+    </header>
+
+    <div class="pcirn-download-card">
+      <div class="pcirn-card-header">
+        <div class="pcirn-card-badge-icon">
+          <i class="fas fa-file-alt" aria-hidden="true"></i>
+        </div>
+        <div>
+          <h2>Arquivo Processado</h2>
+          <small>{{ dsoNameService.getName((bitstream$ | async)) }}</small>
+        </div>
+      </div>
+
+      <div class="pcirn-download-body">
+        <p class="text-muted mb-4">
+          A requisição de download foi direcionada com sucesso. Caso queira voltar à página do registro ou explorar outros anexos, clique no botão abaixo:
+        </p>
+
+        <button (click)="back()" class="btn btn-primary pcirn-btn-back">
+          <i class="fas fa-arrow-left me-2" aria-hidden="true"></i>
+          {{'bitstream.download.page.back' | translate}}
+        </button>
+      </div>
+    </div>
+
   </div>
-</div>
+</main>

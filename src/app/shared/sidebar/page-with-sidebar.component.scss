@@ -40,6 +40,17 @@
       height: 100%;
       overflow: auto;
     }
+
+    .sidebar-content.active {
+      position: relative;
+      left: 0;
+      right: auto;
+      height: auto;
+    }
+
+    > .invisible {
+      display: none;
+    }
   }
 }
 

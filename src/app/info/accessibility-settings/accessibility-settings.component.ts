@@ -38,6 +38,7 @@ import { NotificationsService } from '../../shared/notifications/notifications.s
  */
 @Component({
   selector: 'ds-accessibility-settings',
+  styleUrls: ['./accessibility-settings.component.scss'],
   templateUrl: './accessibility-settings.component.html',
   imports: [
     AlertComponent,

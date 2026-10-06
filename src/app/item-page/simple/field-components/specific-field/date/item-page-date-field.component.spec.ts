@@ -33,7 +33,7 @@ const mockValue = 'test value';
 
 describe('ItemPageDateFieldComponent', () => {
   beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
+    return TestBed.configureTestingModule({
       imports: [TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
@@ -58,6 +58,12 @@ describe('ItemPageDateFieldComponent', () => {
     comp.item = mockItemWithMetadataFieldsAndValue([mockField], mockValue);
     fixture.detectChanges();
   }));
+
+  it('formats an ISO date in UTC without treating the timezone as a locale', () => {
+    expect(comp.formatValue('2026-07-01T00:30:00Z')).toBe('01/07/2026');
+    expect(comp.formatValue('2026-06-30T23:30:00-03:00')).toBe('01/07/2026');
+    expect(comp.formatValue('not a date')).toBe('not a date');
+  });
 
   it('should display display the correct metadata value', () => {
     expect(fixture.nativeElement.innerHTML).toContain(mockValue);

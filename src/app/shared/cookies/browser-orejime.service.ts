@@ -24,6 +24,7 @@ import { ConfigurationDataService } from '../../core/data/configuration-data.ser
 import { EPersonDataService } from '../../core/eperson/eperson-data.service';
 import { EPerson } from '../../core/eperson/models/eperson.model';
 import { CAPTCHA_NAME } from '../../core/google-recaptcha/google-recaptcha.service';
+import { LocaleService } from '../../core/locale/locale.service';
 import { CookieService } from '../../core/services/cookie.service';
 import {
   NativeWindowRef,
@@ -107,6 +108,7 @@ export class BrowserOrejimeService extends OrejimeService {
     private ePersonService: EPersonDataService,
     private configService: ConfigurationDataService,
     private cookieService: CookieService,
+    private localeService: LocaleService,
     @Inject(LAZY_OREJIME) private lazyOrejime: Promise<any>,
   ) {
     super();
@@ -164,10 +166,13 @@ export class BrowserOrejimeService extends OrejimeService {
 
     const user$: Observable<EPerson> = this.getUser$();
 
-    const translationServiceReady$ = this.translateService.get('loading.default').pipe(take(1));
+    const translationServiceReady$ = this.localeService.getCurrentLanguageCode().pipe(
+      switchMap(language => this.translateService.use(language)),
+      take(1),
+    );
 
     observableCombineLatest([user$, appsToHide$, translationServiceReady$])
-      .subscribe(([user, appsToHide, _]: [EPerson, string[], string]) => {
+      .subscribe(([user, appsToHide]) => {
         user = cloneDeep(user);
 
         if (hasValue(user)) {
@@ -197,7 +202,7 @@ export class BrowserOrejimeService extends OrejimeService {
           this.orejimeConfig.apps = this.filterConfigApps(appsToHide);
         }
         this.applyUpdateSettingsCallbackToApps(user);
-        this.lazyOrejime.then(({ init }) => {
+        void this.lazyOrejime.then(({ init }) => {
           this.orejimeInstance = init(this.orejimeConfig);
         });
       });

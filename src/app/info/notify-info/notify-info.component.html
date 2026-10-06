@@ -1,13 +1,112 @@
-<div class="container">
-  <h1>{{ 'coar-notify-support.title' | translate }}</h1>
-  <p [innerHTML]="'coar-notify-support-title.content' | translate"></p>
+<main class="pcirn-list pcirn-notify-surface">
+  <div class="pcirn-list-inner">
 
-  <h2>{{ 'coar-notify-support.ldn-inbox.title' | translate }}</h2>
-  <p [innerHTML]="'coar-notify-support.ldn-inbox.content' | translate:{ ldnInboxUrl: coarRestApiUrls$ | async }"></p>
+    <!-- Hero Header -->
+    <header class="pcirn-notify-header">
+      <div class="pcirn-notify-pill-badge">
+        <i class="fas fa-network-wired" aria-hidden="true"></i>
+        <span>Interoperabilidade &amp; Protocolos</span>
+      </div>
+      <h1>{{ 'coar-notify-support.title' | translate }}</h1>
+      <p class="pcirn-notify-header-lead">
+        Comunicação acadêmica distribuída entre repositórios institucionais e plataformas de revisão via Linked Data Notifications (LDN).
+      </p>
+    </header>
 
-  <h2>{{ 'coar-notify-support.message-moderation.title' | translate }}</h2>
-  <p>
-    {{ 'coar-notify-support.message-moderation.content' | translate }}
-    <a routerLink="/info/feedback">{{ 'coar-notify-support.message-moderation.feedback-form' | translate }}</a>
-  </p>
-</div>
+    <!-- 2-Column Responsive Layout -->
+    <div class="pcirn-notify-grid">
+
+      <!-- Card Principal: Protocolo & Caixa de Entrada -->
+      <section class="pcirn-notify-card" aria-labelledby="coar-card-heading">
+        <div class="pcirn-card-header">
+          <div class="pcirn-card-badge-icon">
+            <i class="fas fa-exchange-alt" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2 id="coar-card-heading">Protocolo COAR Notify</h2>
+            <small>Padrão internacional de comunicação entre repositórios</small>
+          </div>
+        </div>
+
+        <div class="pcirn-card-body">
+          <p class="pcirn-lead-paragraph" [innerHTML]="'coar-notify-support-title.content' | translate"></p>
+
+          <hr class="pcirn-divider">
+
+          <div class="pcirn-section-block">
+            <h3>
+              <i class="fas fa-inbox" aria-hidden="true"></i>
+              {{ 'coar-notify-support.ldn-inbox.title' | translate }}
+            </h3>
+            <div class="pcirn-inbox-box">
+              <p class="m-0" [innerHTML]="'coar-notify-support.ldn-inbox.content' | translate:{ ldnInboxUrl: coarRestApiUrls$ | async }"></p>
+            </div>
+          </div>
+
+          <hr class="pcirn-divider">
+
+          <div class="pcirn-section-block">
+            <h3>
+              <i class="fas fa-shield-alt" aria-hidden="true"></i>
+              {{ 'coar-notify-support.message-moderation.title' | translate }}
+            </h3>
+            <p>
+              {{ 'coar-notify-support.message-moderation.content' | translate }}
+              <a routerLink="/info/fale-conosco" class="pcirn-inline-link">
+                {{ 'coar-notify-support.message-moderation.feedback-form' | translate }}
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card Lateral: Diretrizes Técnicas -->
+      <aside class="pcirn-notify-sidebar" aria-labelledby="sidebar-specs-heading">
+        <div class="pcirn-card-header">
+          <div class="pcirn-card-badge-icon">
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2 id="sidebar-specs-heading">Diretrizes do Repositório</h2>
+            <small>Padrões técnicos adotados pela PCIRN</small>
+          </div>
+        </div>
+
+        <div class="pcirn-sidebar-content">
+          <div class="pcirn-info-block">
+            <div class="pcirn-info-icon">
+              <i class="fas fa-project-diagram" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h3>Linked Data Notifications (W3C)</h3>
+              <p>O repositório utiliza o padrão LDN com payloads em JSON-LD baseados no vocabulário ActivityStreams 2.0 para registrar avisos e atualizações.</p>
+            </div>
+          </div>
+
+          <div class="pcirn-info-block">
+            <div class="pcirn-info-icon">
+              <i class="fas fa-user-shield" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h3>Homologação e Curadoria</h3>
+              <p>Todas as notificações e propostas de vínculo de publicações passam por validação técnica do Núcleo de Gestão do Conhecimento (NUGECID).</p>
+            </div>
+          </div>
+
+          <div class="pcirn-sidebar-callout">
+            <i class="fas fa-external-link-alt pcirn-callout-icon" aria-hidden="true"></i>
+            <div>
+              <strong>Documentação Oficial</strong>
+              <p>Acesse especificações técnicas, padrões de mensagens e iniciativas no site do consórcio.</p>
+              <a href="https://notify.coar-repositories.org/" target="_blank" rel="noopener noreferrer" class="pcirn-callout-link">
+                Visitar COAR Notify <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+</main>

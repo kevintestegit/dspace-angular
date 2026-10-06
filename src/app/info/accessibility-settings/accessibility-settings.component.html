@@ -1,96 +1,241 @@
-<div class="container">
-  <h2>{{ 'info.accessibility-settings.title' | translate }}</h2>
+<main class="pcirn-list pcirn-accessibility-surface">
+  <div class="pcirn-list-inner">
 
-  <form>
-    <div class="mb-3 row">
-      <label [for]="'disableNotificationTimeOutInput'" class="col-sm-4 col-form-label">
-        {{ 'info.accessibility-settings.disableNotificationTimeOut.label' | translate }}
-      </label>
-
-      <div class="col-sm-4">
-        <ui-switch [id]="'disableNotificationTimeOutInput'"
-                   [(ngModel)]="formValues.notificationTimeOutEnabled"
-                   [ngModelOptions]="{ standalone: true }"
-        ></ui-switch>
+    <!-- Hero Header -->
+    <header class="pcirn-accessibility-header">
+      <div class="pcirn-accessibility-pill-badge">
+        <i class="fas fa-universal-access" aria-hidden="true"></i>
+        <span>Preferências do Sistema</span>
       </div>
+      <h1>{{ 'info.accessibility-settings.title' | translate }}</h1>
+      <p class="pcirn-accessibility-header-lead">
+        Personalize o comportamento de alertas, notificações temporárias e recursos de tecnologia assistiva no Repositório Institucional PCIRN.
+      </p>
+    </header>
 
-      <div *dsContextHelp="{
-            content: 'info.accessibility-settings.disableNotificationTimeOut.hint',
-            id: 'disableNotificationTimeOutHelp',
-            iconPlacement: 'right',
-            tooltipPlacement: 'left'
-          }">
+    @if ((isAuthenticated | async) === false && (cookieIsAccepted | async) === false) {
+      <div class="mb-4">
+        <ds-alert [type]="AlertType.Warning">
+          <div class="d-flex align-items-start gap-2">
+            <i class="fas fa-exclamation-triangle mt-1 flex-shrink-0" aria-hidden="true"></i>
+            <div>{{ 'info.accessibility-settings.cookie-warning' | translate }}</div>
+          </div>
+        </ds-alert>
       </div>
-    </div>
+    }
 
-    <div class="mb-3 row">
-      <label [for]="'notificationTimeOutInput'" class="col-sm-4 col-form-label">
-        {{ 'info.accessibility-settings.notificationTimeOut.label' | translate }}
-      </label>
+    <!-- 2-Column Responsive Layout -->
+    <div class="pcirn-accessibility-grid">
 
-      <div class="col-sm-4">
-        <input [type]="'number'" [id]="'notificationTimeOutInput'" class="form-control"
-          [ngClass]="{'is-invalid': !settingsService.isValid('notificationTimeOut', formValues)}"
-          [min]="1"
-          [readOnly]="!formValues.notificationTimeOutEnabled"
-          [(ngModel)]="formValues.notificationTimeOut" [ngModelOptions]="{ standalone: true }"
-          [attr.aria-describedby]="'notificationTimeOutHint'">
-        <div class="invalid-feedback" [ngClass]="{ 'd-block': !settingsService.isValid('notificationTimeOut', formValues) }">
-          {{ 'info.accessibility-settings.notificationTimeOut.invalid' | translate }}
+      <!-- Coluna Principal: Formulário de Configurações -->
+      <section class="pcirn-accessibility-card" aria-labelledby="accessibility-form-heading">
+        <div class="pcirn-card-header">
+          <div class="pcirn-card-badge-icon">
+            <i class="fas fa-sliders-h" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2 id="accessibility-form-heading">Opções de Notificação e ARIA</h2>
+            <small>Defina prazos e o encerramento automático das mensagens em tela</small>
+          </div>
         </div>
-      </div>
 
+        <form (ngSubmit)="saveSettings()" novalidate class="pcirn-accessibility-form">
 
-      <div class="col-sm-1" *dsContextHelp="{
-            content: 'info.accessibility-settings.notificationTimeOut.hint',
-            id: 'notificationTimeOutHelp',
-            iconPlacement: 'right',
-            tooltipPlacement: 'left'
-          }">
-      </div>
-    </div>
+          <!-- Config 1: Fechar notificações automaticamente -->
+          <div class="pcirn-setting-row">
+            <div class="pcirn-setting-info">
+              <label [for]="'disableNotificationTimeOutInput'" class="pcirn-setting-label">
+                {{ 'info.accessibility-settings.disableNotificationTimeOut.label' | translate }}
+              </label>
+              <p class="pcirn-setting-hint" id="disableNotificationTimeOutHint">
+                {{ 'info.accessibility-settings.disableNotificationTimeOut.hint' | translate }}
+              </p>
+            </div>
+            <div class="pcirn-setting-control">
+              <div class="pcirn-control-wrapper">
+                <ui-switch [id]="'disableNotificationTimeOutInput'"
+                           [(ngModel)]="formValues.notificationTimeOutEnabled"
+                           [ngModelOptions]="{ standalone: true }"
+                           [color]="'#0b4f8a'"
+                           [defaultBgColor]="'#cbd5e1'"
+                           [attr.aria-describedby]="'disableNotificationTimeOutHint'"
+                ></ui-switch>
+                <div *dsContextHelp="{
+                      content: 'info.accessibility-settings.disableNotificationTimeOut.hint',
+                      id: 'disableNotificationTimeOutHelp',
+                      iconPlacement: 'right',
+                      tooltipPlacement: 'left'
+                    }">
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <div class="mb-3 row">
-      <label [for]="'liveRegionTimeOutInput'" class="col-sm-4 col-form-label">
-        {{ 'info.accessibility-settings.liveRegionTimeOut.label' | translate }}
-      </label>
+          <hr class="pcirn-divider">
 
-      <div class="col-sm-4">
-        <input [type]="'number'" [id]="'liveRegionTimeOutInput'" class="form-control"
-          [ngClass]="{'is-invalid': !settingsService.isValid('liveRegionTimeOut', formValues)}"
-          [min]="1"
-          [(ngModel)]="formValues.liveRegionTimeOut" [ngModelOptions]="{ standalone: true }"
-          [attr.aria-describedby]="'liveRegionTimeOutHint'">
-        <div class="invalid-feedback" [ngClass]="{ 'd-block': !settingsService.isValid('liveRegionTimeOut', formValues) }">
-          {{ 'info.accessibility-settings.liveRegionTimeOut.invalid' | translate }}
+          <!-- Config 2: Tempo limite de notificação -->
+          <div class="pcirn-setting-row" [class.is-disabled]="!formValues.notificationTimeOutEnabled">
+            <div class="pcirn-setting-info">
+              <label [for]="'notificationTimeOutInput'" class="pcirn-setting-label">
+                {{ 'info.accessibility-settings.notificationTimeOut.label' | translate }}
+              </label>
+              <p class="pcirn-setting-hint" id="notificationTimeOutHint">
+                {{ 'info.accessibility-settings.notificationTimeOut.hint' | translate }}
+              </p>
+              @if (!formValues.notificationTimeOutEnabled) {
+                <span class="pcirn-disabled-hint">
+                  <i class="fas fa-info-circle" aria-hidden="true"></i>
+                  Inativo enquanto o fechamento automático estiver desativado
+                </span>
+              }
+            </div>
+            <div class="pcirn-setting-control">
+              <div class="pcirn-control-wrapper">
+                <div class="input-group pcirn-number-group">
+                  <span class="input-group-text"><i class="fas fa-stopwatch" aria-hidden="true"></i></span>
+                  <input [type]="'number'"
+                         [id]="'notificationTimeOutInput'"
+                         class="form-control"
+                         [ngClass]="{'is-invalid': !settingsService.isValid('notificationTimeOut', formValues)}"
+                         [min]="1"
+                         [readOnly]="!formValues.notificationTimeOutEnabled"
+                         [(ngModel)]="formValues.notificationTimeOut"
+                         [ngModelOptions]="{ standalone: true }"
+                         [attr.aria-describedby]="'notificationTimeOutHint'">
+                  <span class="input-group-text pcirn-unit">s</span>
+                </div>
+                <div *dsContextHelp="{
+                      content: 'info.accessibility-settings.notificationTimeOut.hint',
+                      id: 'notificationTimeOutHelp',
+                      iconPlacement: 'right',
+                      tooltipPlacement: 'left'
+                    }">
+                </div>
+              </div>
+              <div class="invalid-feedback text-end w-100" [ngClass]="{ 'd-block': !settingsService.isValid('notificationTimeOut', formValues) }">
+                {{ 'info.accessibility-settings.notificationTimeOut.invalid' | translate }}
+              </div>
+            </div>
+          </div>
+
+          <hr class="pcirn-divider">
+
+          <!-- Config 3: Tempo limite da região ativa ARIA -->
+          <div class="pcirn-setting-row">
+            <div class="pcirn-setting-info">
+              <label [for]="'liveRegionTimeOutInput'" class="pcirn-setting-label">
+                {{ 'info.accessibility-settings.liveRegionTimeOut.label' | translate }}
+              </label>
+              <p class="pcirn-setting-hint" id="liveRegionTimeOutHint">
+                {{ 'info.accessibility-settings.liveRegionTimeOut.hint' | translate }}
+              </p>
+            </div>
+            <div class="pcirn-setting-control">
+              <div class="pcirn-control-wrapper">
+                <div class="input-group pcirn-number-group">
+                  <span class="input-group-text"><i class="fas fa-bullhorn" aria-hidden="true"></i></span>
+                  <input [type]="'number'"
+                         [id]="'liveRegionTimeOutInput'"
+                         class="form-control"
+                         [ngClass]="{'is-invalid': !settingsService.isValid('liveRegionTimeOut', formValues)}"
+                         [min]="1"
+                         [(ngModel)]="formValues.liveRegionTimeOut"
+                         [ngModelOptions]="{ standalone: true }"
+                         [attr.aria-describedby]="'liveRegionTimeOutHint'">
+                  <span class="input-group-text pcirn-unit">s</span>
+                </div>
+                <div *dsContextHelp="{
+                      content: 'info.accessibility-settings.liveRegionTimeOut.hint',
+                      id: 'liveRegionTimeOutHelp',
+                      iconPlacement: 'right',
+                      tooltipPlacement: 'left'
+                    }">
+                </div>
+              </div>
+              <div class="invalid-feedback text-end w-100" [ngClass]="{ 'd-block': !settingsService.isValid('liveRegionTimeOut', formValues) }">
+                {{ 'info.accessibility-settings.liveRegionTimeOut.invalid' | translate }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Botões de Ação -->
+          <div class="pcirn-actions-bar">
+            <button type="submit" (click)="saveSettings()" class="btn btn-primary pcirn-btn-save">
+              <i class="fas fa-check me-2" aria-hidden="true"></i>
+              {{ 'info.accessibility-settings.submit' | translate }}
+            </button>
+            <button type="button" (click)="resetSettings()" class="btn btn-outline-secondary pcirn-btn-reset">
+              <i class="fas fa-rotate-left me-2" aria-hidden="true"></i>
+              {{ 'info.accessibility-settings.reset' | translate }}
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Coluna Lateral: Diretrizes e Recursos Assistivos -->
+      <aside class="pcirn-accessibility-sidebar" aria-labelledby="sidebar-heading">
+        <div class="pcirn-card-header">
+          <div class="pcirn-card-badge-icon">
+            <i class="fas fa-universal-access" aria-hidden="true"></i>
+          </div>
+          <div>
+            <h2 id="sidebar-heading">Recursos Assistivos</h2>
+            <small>Padrões de acessibilidade do repositório</small>
+          </div>
         </div>
-      </div>
 
+        <div class="pcirn-sidebar-content">
+          <div class="pcirn-info-block">
+            <div class="pcirn-info-icon">
+              <i class="fas fa-volume-up" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h3>Leitores de Tela e ARIA</h3>
+              <p>
+                O repositório adota regiões ativas ARIA (Live Regions) e marcações semânticas que anunciam alterações em tempo real para softwares leitores de tela como NVDA, JAWS, Orca e TalkBack.
+              </p>
+            </div>
+          </div>
 
-      <div class="col-sm-1" *dsContextHelp="{
-            content: 'info.accessibility-settings.liveRegionTimeOut.hint',
-            id: 'liveRegionTimeOutHelp',
-            iconPlacement: 'right',
-            tooltipPlacement: 'left'
-          }">
-      </div>
+          <div class="pcirn-info-block">
+            <div class="pcirn-info-icon">
+              <i class="fas fa-keyboard" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h3>Navegação por Teclado</h3>
+              <p>
+                Utilize <kbd>Tab</kbd> para navegar sequencialmente entre campos interativos, <kbd>Shift + Tab</kbd> para retroceder e <kbd>Enter</kbd> ou <kbd>Espaço</kbd> para acionar botões e opções.
+              </p>
+            </div>
+          </div>
+
+          <div class="pcirn-info-block">
+            <div class="pcirn-info-icon">
+              <i class="fas fa-user-shield" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h3>Persistência das Escolhas</h3>
+              <p>
+                Ao efetuar login na conta institucional, as preferências são vinculadas ao seu usuário. Para visitantes públicos, os ajustes ficam armazenados localmente via cookies de acessibilidade.
+              </p>
+            </div>
+          </div>
+
+          <div class="pcirn-sidebar-callout">
+            <i class="fas fa-headset pcirn-callout-icon" aria-hidden="true"></i>
+            <div>
+              <strong>Dúvidas ou sugestões de acessibilidade?</strong>
+              <p>A equipe do NUGECID está disponível para orientar e receber feedback sobre a plataforma.</p>
+              <a href="/info/fale-conosco" class="pcirn-callout-link">
+                Ir para Fale Conosco <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
     </div>
 
-    <div role="group">
-      <button type="submit" (click)="saveSettings()" class="btn btn-primary me-2">
-        {{ 'info.accessibility-settings.submit' | translate }}
-      </button>
-      <button (click)="resetSettings()" class="btn btn-warning">
-        {{ 'info.accessibility-settings.reset' | translate }}
-      </button>
-    </div>
-
-  </form>
-
-  @if ((isAuthenticated | async) === false && (cookieIsAccepted | async) === false) {
-    <div class="mt-2">
-      <ds-alert [type]="AlertType.Warning">{{ 'info.accessibility-settings.cookie-warning' | translate }}</ds-alert>
-    </div>
-  }
-
-</div>
+  </div>
+</main>

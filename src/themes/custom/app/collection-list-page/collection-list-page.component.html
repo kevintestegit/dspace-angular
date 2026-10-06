@@ -12,6 +12,14 @@
             <span class="pcirn-list-icon" aria-hidden="true"><i [class]="'fas ' + category.icon"></i></span>
             <span class="pcirn-list-copy">
               <strong>{{ category.title | translate }}</strong>
+              @if (itemCounts()[category.configuration] !== undefined) {
+                <span class="pcirn-list-badges">
+                  <span class="pcirn-list-badge pcirn-list-badge--items">
+                    <i class="far fa-file-alt me-1" aria-hidden="true"></i>
+                    {{ (itemCounts()[category.configuration] === 1 ? 'communityList.items.one' : 'communityList.items') | translate:{ count: itemCounts()[category.configuration] } }}
+                  </span>
+                </span>
+              }
             </span>
             <i class="pcirn-list-chevron fas fa-chevron-right" aria-hidden="true"></i>
           </a>

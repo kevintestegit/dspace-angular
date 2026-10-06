@@ -1,0 +1,73 @@
+<main class="pcirn-list pcirn-workspace-delete-surface">
+  <div class="pcirn-list-inner">
+
+    <!-- Header Hero -->
+    <header class="pcirn-workspace-delete-header">
+      <div class="pcirn-workspace-delete-pill-badge">
+        <i class="fas fa-trash-alt" aria-hidden="true"></i>
+        <span>Gerenciamento de Submissões</span>
+      </div>
+      <h1>{{ 'workspace-item.delete.header' | translate }}</h1>
+      <p class="pcirn-workspace-delete-header-lead">
+        Confirme o descarte definitivo do rascunho de submissão do repositório.
+      </p>
+    </header>
+
+    <div class="pcirn-workspace-delete-card">
+      <div class="pcirn-card-header">
+        <div class="pcirn-card-badge-icon">
+          <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+        </div>
+        <div>
+          <h2>Atenção: Ação Irreversível</h2>
+          <small>Ao confirmar, todos os metadados e arquivos temporários associados a este rascunho serão excluídos</small>
+        </div>
+      </div>
+
+      <div class="pcirn-workspace-delete-body">
+        @if ((dso$ | async)) {
+          <div class="pcirn-item-preview-wrapper mb-4">
+            <ds-modify-item-overview [item]="$any(dso$ | async)"></ds-modify-item-overview>
+          </div>
+        }
+
+        <div class="pcirn-actions-bar">
+          <button class="btn btn-outline-secondary pcirn-btn-cancel" (click)="previousPage()">
+            <i class="fas fa-arrow-left me-2" aria-hidden="true"></i>
+            {{ 'workspace-item.delete.button.cancel' | translate }}
+          </button>
+          <button class="btn btn-danger pcirn-btn-delete" (click)="$event.preventDefault();confirmDelete(content)">
+            <i class="fas fa-trash-alt me-2" aria-hidden="true"></i>
+            {{ 'workspace-item.delete.button.confirm' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<ng-template #content let-c="close" let-d="dismiss" id="delete-modal">
+  <div class="modal-header">
+    <div class="modal-title text-danger h4 d-flex align-items-center gap-2">
+      <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+      <span>{{ 'workspace-item.delete.header' | translate }}</span>
+    </div>
+    <button type="button" id="delete_close" class="btn-close" aria-label="Close" (click)="d('cancel')">
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{ 'submission.general.discard.confirm.info' | translate }}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" id="delete_cancel" class="btn btn-outline-secondary"
+      (click)="c('cancel')">
+      {{ 'submission.general.discard.confirm.cancel' | translate }}
+    </button>
+    <button type="button" id="delete_confirm" class="btn btn-danger"
+      (click)="c('ok')">
+      <i class="fas fa-trash-alt me-1" aria-hidden="true"></i>
+      {{ 'submission.general.discard.confirm.submit' | translate }}
+    </button>
+  </div>
+</ng-template>

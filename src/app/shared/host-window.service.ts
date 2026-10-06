@@ -34,20 +34,10 @@ const widthSelector = createSelector(hostWindowStateSelector, (hostWindow: HostW
 
 @Injectable({ providedIn: 'root' })
 export class HostWindowService {
-  private breakPoints: { XS_MIN, SM_MIN, MD_MIN, LG_MIN, XL_MIN } = {} as any;
-
   constructor(
     private store: Store<AppState>,
     private variableService: CSSVariableService,
   ) {
-    /* See _exposed_variables.scss */
-    variableService.getAllVariables()
-      .subscribe((variables) => {
-        this.breakPoints.XL_MIN = parseInt(variables['--bs-xl'], 10);
-        this.breakPoints.LG_MIN = parseInt(variables['--bs-lg'], 10);
-        this.breakPoints.MD_MIN = parseInt(variables['--bs-md'], 10);
-        this.breakPoints.SM_MIN = parseInt(variables['--bs-sm'], 10);
-      });
   }
 
   private getWidthObs(): Observable<number> {
@@ -57,16 +47,26 @@ export class HostWindowService {
     );
   }
 
+  /**
+   * Returns the viewport category using the current theme's breakpoints.
+   */
   get widthCategory(): Observable<WidthCategory> {
-    return this.getWidthObs().pipe(
-      map((width: number) => {
-        if (width < this.breakPoints.SM_MIN) {
+    return observableCombineLatest([
+      this.getWidthObs(),
+      this.variableService.getAllVariables(),
+    ]).pipe(
+      map(([width, variables]) => {
+        const smMin = parseInt(variables['--bs-sm'], 10);
+        const mdMin = parseInt(variables['--bs-md'], 10);
+        const lgMin = parseInt(variables['--bs-lg'], 10);
+        const xlMin = parseInt(variables['--bs-xl'], 10);
+        if (width < smMin) {
           return WidthCategory.XS;
-        } else if (width >= this.breakPoints.SM_MIN && width < this.breakPoints.MD_MIN) {
+        } else if (width >= smMin && width < mdMin) {
           return WidthCategory.SM;
-        } else if (width >= this.breakPoints.MD_MIN && width < this.breakPoints.LG_MIN) {
+        } else if (width >= mdMin && width < lgMin) {
           return WidthCategory.MD;
-        } else if (width >= this.breakPoints.LG_MIN && width < this.breakPoints.XL_MIN) {
+        } else if (width >= lgMin && width < xlMin) {
           return WidthCategory.LG;
         } else {
           return WidthCategory.XL;

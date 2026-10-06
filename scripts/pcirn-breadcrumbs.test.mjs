@@ -17,8 +17,9 @@ test('breadcrumb aligns with the content rail of each page family', () => {
 });
 
 test('breadcrumb rails mirror the community/collection list and search containers', () => {
-  assert.match(styles, /\.pcirn-breadcrumb--list \.breadcrumb,\s*\.pcirn-breadcrumb--search \.breadcrumb\s*\{[^}]*max-width:\s*calc\(1150px \+ 2 \* clamp\(1rem, 4vw, 3\.75rem\)\)[^}]*padding-inline:\s*clamp\(1rem, 4vw, 3\.75rem\)/);
-  assert.match(searchStyles, /ds-page-with-sidebar > \.container\s*\{[^}]*max-width:\s*calc\(1150px \+ 2 \* clamp\(1rem, 4vw, 3\.75rem\)\)/);
+  assert.match(styles, /\.pcirn-breadcrumb--list \.breadcrumb\s*\{[^}]*max-width:\s*calc\(1150px \+ 2 \* clamp\(1rem, 4vw, 3\.75rem\)\)[^}]*padding-inline:\s*clamp\(1rem, 4vw, 3\.75rem\)/);
+  assert.match(styles, /\.pcirn-breadcrumb--search \.breadcrumb\s*\{[^}]*max-width:\s*calc\(1440px \+ 2 \* clamp\(1rem, 4vw, 3\.75rem\)\)/);
+  assert.match(searchStyles, /ds-page-with-sidebar > \.container\s*\{[^}]*max-width:\s*calc\(1440px \+ 2 \* clamp\(1rem, 4vw, 3\.75rem\)\)/);
 });
 
 test('breadcrumb rails mirror the item document container', () => {

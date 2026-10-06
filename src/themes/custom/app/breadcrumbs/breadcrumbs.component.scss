@@ -17,10 +17,15 @@
 
 // Each page family uses its own content rail; keep the breadcrumb flush with
 // the page content instead of the Bootstrap container alone.
-.pcirn-breadcrumb--list .breadcrumb,
-.pcirn-breadcrumb--search .breadcrumb {
+.pcirn-breadcrumb--list .breadcrumb {
   margin: 0 auto;
   max-width: calc(1150px + 2 * clamp(1rem, 4vw, 3.75rem));
+  padding-inline: clamp(1rem, 4vw, 3.75rem);
+}
+
+.pcirn-breadcrumb--search .breadcrumb {
+  margin: 0 auto;
+  max-width: calc(1440px + 2 * clamp(1rem, 4vw, 3.75rem));
   padding-inline: clamp(1rem, 4vw, 3.75rem);
 }
 

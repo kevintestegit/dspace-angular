@@ -18,6 +18,15 @@
 // PCIRN: consistent administration registries and access forms
 @import './_pcirn-admin.scss';
 
+// PCIRN: administrative search, workflow, and metadata registry pages
+@import './_pcirn-admin-missing-pages.scss';
+
+// PCIRN: profile and subscription pages
+@import './_pcirn-user-pages.scss';
+
+// PCIRN: health status and system-wide alert editor
+@import './_pcirn-health-alert-pages.scss';
+
 // PCIRN: processes overview in the same administration skin
 @import './_pcirn-processes.scss';
 
@@ -119,5 +128,55 @@ body.pcirn-offline-mode {
   .orejime-Notice,
   .orejime-Modal {
     display: none !important;
+  }
+}
+
+#orejime .orejime-Notice {
+  position: static;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: .65rem 1rem;
+  border-radius: 0;
+  background: #031b2d;
+  box-shadow: none;
+
+  .orejime-Notice-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .orejime-Notice-description {
+    margin: 0;
+    font-size: .85rem;
+    line-height: 1.4;
+  }
+
+  .orejime-Notice-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .orejime-Notice-actionItem {
+    margin: 0;
+  }
+
+  button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #orejime .orejime-Notice .orejime-Notice-body {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

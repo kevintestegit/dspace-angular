@@ -1,0 +1,53 @@
+.tutorials-page {
+  background: #fff;
+  margin: calc(var(--ds-content-spacing) * -1) 0;
+  min-height: 34rem;
+  padding: 1rem 1rem 3rem;
+}
+
+.tutorials-inner {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+h1 {
+  color: #343a40;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0 0 .5rem;
+}
+
+.tutorials-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.25rem;
+
+  a {
+    color: #00749e;
+    display: inline-block;
+    font-size: .875rem;
+    line-height: 1.5;
+    min-height: 24px;
+    overflow-wrap: anywhere;
+    padding: 1px 0;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #07345f;
+      outline-offset: 2px;
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (pointer: coarse) {
+  .tutorials-list a {
+    min-height: 44px;
+    padding: .625rem 0;
+  }
+}

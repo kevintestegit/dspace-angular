@@ -61,9 +61,12 @@ export class ItemPageDateFieldComponent extends ItemPageFieldComponent {
      */
     label = 'item.page.date';
 
+    /**
+     * Format an issue date in UTC, preserving unparseable metadata values.
+     */
     formatValue(value: string): string {
-        const parsed = new Date(value);
-        return isNaN(parsed.getTime()) ? value : formatDate(parsed, 'dd/MM/yyyy', 'UTC');
+      const parsed = new Date(value);
+      return isNaN(parsed.getTime()) ? value : formatDate(parsed, 'dd/MM/yyyy', 'en', 'UTC');
     }
 
 }

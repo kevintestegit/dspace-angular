@@ -424,6 +424,10 @@
   display: block;
   margin-top: 1.55rem;
   padding-top: 1.35rem;
+
+  &:empty {
+    display: none;
+  }
 }
 
 .pcirn-document-main ::ng-deep .simple-view-element-header {

@@ -7,15 +7,22 @@
 
     <div class="pcirn-list-toolbar">
       <p class="pcirn-list-count" aria-live="polite">{{ (results().length === 1 ? 'communityList.count.one' : 'communityList.count') | translate:{ count: results().length } }}</p>
-      <label class="pcirn-list-search">
-        <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
-        <input
-          type="search"
-          [value]="query()"
-          (input)="onSearch($event)"
-          [placeholder]="'communityList.search' | translate"
-          [attr.aria-label]="'communityList.search' | translate" />
-      </label>
+      <div class="d-flex align-items-center gap-2">
+        <label class="pcirn-list-search">
+          <i class="fas fa-magnifying-glass" aria-hidden="true"></i>
+          <input
+            type="search"
+            [value]="query()"
+            (input)="onSearch($event)"
+            [placeholder]="'communityList.search' | translate"
+            [attr.aria-label]="'communityList.search' | translate" />
+        </label>
+        @if (query().trim()) {
+          <button type="button" class="btn btn-outline-secondary btn-sm pcirn-list-clear-btn" (click)="clearSearch()">
+            <i class="fas fa-times me-1" aria-hidden="true"></i>{{ 'communityList.clear-search' | translate }}
+          </button>
+        }
+      </div>
     </div>
 
     @if (loading()) {
@@ -29,9 +36,25 @@
             <a [routerLink]="['/communities', card.community.id]">
               <span class="pcirn-list-icon" aria-hidden="true"><i [class]="'fas ' + card.icon"></i></span>
               <span class="pcirn-list-copy">
-                <strong>{{ card.name }}</strong>
+                <strong [innerHTML]="card.highlightedName"></strong>
                 @if (card.community.shortDescription) {
                   <small>{{ card.community.shortDescription }}</small>
+                }
+                @if (card.collectionsCount !== undefined || card.itemsCount !== undefined) {
+                  <div class="pcirn-list-badges">
+                    @if (card.collectionsCount !== undefined) {
+                      <span class="pcirn-list-badge">
+                        <i class="far fa-folder-open me-1" aria-hidden="true"></i>
+                        {{ (card.collectionsCount === 1 ? 'communityList.collections.one' : 'communityList.collections') | translate:{ count: card.collectionsCount } }}
+                      </span>
+                    }
+                    @if (card.itemsCount !== undefined) {
+                      <span class="pcirn-list-badge pcirn-list-badge--items">
+                        <i class="far fa-file-alt me-1" aria-hidden="true"></i>
+                        {{ (card.itemsCount === 1 ? 'communityList.items.one' : 'communityList.items') | translate:{ count: card.itemsCount } }}
+                      </span>
+                    }
+                  </div>
                 }
               </span>
               <i class="pcirn-list-chevron fas fa-chevron-right" aria-hidden="true"></i>
@@ -40,7 +63,12 @@
         }
       </ul>
     } @else {
-      <p class="pcirn-list-state">{{ 'communityList.empty' | translate }}</p>
+      <div class="text-center py-4">
+        <p class="pcirn-list-state mb-3">{{ 'communityList.empty' | translate }}</p>
+        <button type="button" class="btn btn-outline-primary btn-sm" (click)="clearSearch()">
+          <i class="fas fa-arrow-left me-1" aria-hidden="true"></i>{{ 'communityList.clear-search' | translate }}
+        </button>
+      </div>
     }
   </div>
 </main>

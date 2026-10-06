@@ -16,21 +16,29 @@ import { ThemedFaleConoscoComponent } from './fale-conosco/themed-fale-conosco.c
 import { ThemedFeedbackComponent } from './feedback/themed-feedback.component';
 import {
   ABOUT_PATH,
-  ACCESSIBILITY_SETTINGS_PATH,
   ACCESS_POLICY_PATH,
+  ACCESSIBILITY_SETTINGS_PATH,
   AJUDA_PATH,
   COAR_NOTIFY_SUPPORT,
   END_USER_AGREEMENT_PATH,
   FALE_CONOSCO_PATH,
   FEEDBACK_PATH,
   PRIVACY_PATH,
+  TUTORIAIS_PATH,
 } from './info-routing-paths';
 import { NotifyInfoComponent } from './notify-info/notify-info.component';
 import { ThemedPoliticaAcessoComponent } from './politica-acesso/themed-politica-acesso.component';
 import { ThemedPrivacyComponent } from './privacy/themed-privacy.component';
+import { TutoriaisComponent } from './tutoriais/tutoriais.component';
 
 
 export const ROUTES: Routes = [
+  {
+    path: TUTORIAIS_PATH,
+    component: TutoriaisComponent,
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    data: { title: 'info.tutoriais.title', breadcrumbKey: 'info.tutoriais' },
+  },
   {
     path: ABOUT_PATH,
     component: ThemedAboutComponent,

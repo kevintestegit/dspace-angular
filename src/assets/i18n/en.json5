@@ -1551,7 +1551,12 @@
 
   "communityList.count.one": "{{ count }} community found",
 
-  "communityList.empty": "No communities found.",
+  "communityList.empty": "No communities found for the search term.",
+  "communityList.clear-search": "Clear search",
+  "communityList.collections": "{{ count }} collections",
+  "communityList.collections.one": "{{ count }} collection",
+  "communityList.items": "{{ count }} publications",
+  "communityList.items.one": "{{ count }} publication",
 
   "communityList.error": "Unable to load communities right now.",
 
@@ -1561,6 +1566,7 @@
 
   "collectionList.title": "List of Collections",
 
+
   "collectionList.subtitle": "Choose a category to browse documents from all communities.",
 
   "collectionList.search": "Search collections...",
@@ -1569,7 +1575,10 @@
 
   "collectionList.count.one": "{{ count }} collection found",
 
-  "collectionList.empty": "No collections found.",
+  "collectionList.empty": "No collections found for the search term.",
+  "collectionList.clear-search": "Clear search",
+  "collectionList.items": "{{ count }} publications",
+  "collectionList.items.one": "{{ count }} publication",
 
   "collectionList.error": "Unable to load collections right now.",
 
@@ -2370,7 +2379,7 @@
 
   "info.accessibility-settings.breadcrumbs": "Accessibility settings",
 
-  "info.accessibility-settings.cookie-warning": "Saving the accessibility settings is currently not possible. Either log in to save the settings in user data, or accept the 'Accessibility Settings' cookie using the 'Cookie Settings' menu at the bottom of the page. Once the cookie has been accepted, you can reload the page to remove this message.",
+  "info.accessibility-settings.cookie-warning": "To save accessibility preferences, log in or allow the Accessibility Settings cookie in your cookie preferences. After allowing the cookie, reload the page.",
 
   "info.accessibility-settings.disableNotificationTimeOut.label": "Automatically close notifications after time out",
 
@@ -3112,11 +3121,11 @@
   "pcirn.document-type.PORTARIA_E_ATO_NORMATIVO_INTERNO": "Ordinance and Internal Normative Act",
   "pcirn.document-type.DECRETO": "Decree",
   "pcirn.document-type.LEI": "Law",
-  "pcirn.document-type.POP": "Standard Operating Procedure (SOP)",
-  "pcirn.document-type.MEMORIA_INSTITUCIONAL": "Institutional Memory",
+  "pcirn.document-type.POP": "Standard Operating Procedure",
   "pcirn.document-type.PAP": "Standard Administrative Procedure",
-  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRÃO_(POP)": "Standard Operating Procedure (SOP)",
-  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRAO_POP": "Standard Operating Procedure (SOP)",
+  "pcirn.document-type.MEMORIA_INSTITUCIONAL": "Institutional Memory",
+  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRÃO_(POP)": "Standard Operating Procedure",
+  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRAO_POP": "Standard Operating Procedure",
   "pcirn.document-type.NOTA_TECNICA": "Technical Note",
   "pcirn.document-type.NOTA_TÉCNICA": "Technical Note",
   "pcirn.document-type.MANUAL_GUIA": "Technical Manual and Guide",
@@ -3141,16 +3150,19 @@
   "pcirn.document-type.DEFAULT": "Document",
 
   "pcirnNormas.search.results.head": "Ordinances and Normative Acts",
-  "pcirnMemoriaInstitucional.search.results.head": "Institutional Memory",
-  "pcirnNotasTecnicas.search.results.head": "Technical Notes",
-  "pcirnGuiasManuais.search.results.head": "Guides and Manuals",
-  "pcirnPap.search.results.head": "Standard Administrative Procedure (PAP)",
   "pcirnPops.search.results.head": "Standard Operating Procedure (SOP)",
+  "pcirnPap.search.results.head": "Standard Administrative Procedure (PAP)",
+  "pcirnGuiasManuais.search.results.head": "Guides and Manuals",
+  "pcirnNotasTecnicas.search.results.head": "Technical Notes",
   "pcirnProducao.search.results.head": "Scientific Production",
   "pcirnRelatorios.search.results.head": "Productivity and Accountability Reports",
+  "pcirnMemoriaInstitucional.search.results.head": "Institutional Memory",
+  "publicacoes.search.results.head": "Publications Repository",
 
   "pcirn.home.hero.title.part1": "Institutional",
-  "pcirn.home.hero.title.part2": "documents of",
+  "pcirn.home.hero.title.part2": "documents",
+  "pcirn.home.hero.title.prep.da": "of",
+  "pcirn.home.hero.title.prep.do": "of",
   "pcirn.home.hero.lead": "Browse official regulations, ordinances, reports and publications of the Scientific Police of Rio Grande do Norte.",
   "pcirn.home.search.heading": "Search the repository",
   "pcirn.home.search.chips.aria": "Repository categories",
@@ -3190,16 +3202,20 @@
   "pcirn.home.latest.loading": "Loading publications",
 
   "pcirn.footer.slogan": "Science that identifies. Information that transforms.",
-  "pcirn.footer.social.aria": "Institutional channels",
-  "pcirn.footer.email.aria": "Send email",
-  "pcirn.footer.phone.aria": "Phone +55 84 3232-6928",
   "pcirn.footer.nav.title": "Navigation",
   "pcirn.footer.help.title": "Help and Information",
   "pcirn.footer.help.feedback": "Help",
   "pcirn.footer.platform.title": "Platform",
+  "pcirn.footer.contacts.title": "Contacts",
+  "pcirn.footer.contacts.phone": "Phone",
+  "pcirn.footer.institutional.title": "Useful links",
+  "pcirn.footer.institutional.government": "RN Government Portal",
+  "pcirn.footer.institutional.pci": "PCI/RN Portal",
+  "pcirn.footer.institutional.esic": "Access to Information — e-SIC",
+  "pcirn.footer.institutional.ombudsman": "PCIRN Ombudsman",
+  "pcirn.footer.developed-by": "Customized by",
   "pcirn.footer.platform.system": "DSpace System v9.0",
-  "pcirn.footer.developed-by": "Developed by",
-  "pcirn.footer.copyright": "Scientific Police of Rio Grande do Norte. All rights reserved.",
+  "pcirn.footer.copyright": "All rights reserved.",
 
 
   "item.page.author": "Author",
@@ -7669,4 +7685,24 @@
   "item.preview.organization.address.addressLocality": "City",
 
   "item.preview.organization.alternateName": "Alternative name",
+  "info.tutoriais": "Tutorials",
+  "info.tutoriais.title": "Tutorials",
+  "info.tutoriais.description": "Illustrated Portuguese manuals for finding, submitting and reviewing documents in the PCIRN Institutional Repository.",
+  "info.tutoriais.open-help": "These tutorials are public and written in Portuguese. Open a PDF to read, download or print it in a new tab.",
+  "info.tutoriais.new-tab": "(opens in a new tab)",
+  "info.tutoriais.metadata": "Version {{version}} · {{date}} · {{pages}} pages · {{size}}",
+  "info.tutoriais.support": "Need assistance? Visit",
+  "info.tutoriais.group.consulta": "Public consultation",
+  "info.tutoriais.group.servidores": "Staff access and submission",
+  "info.tutoriais.group.nugecid": "Review and institutional workflow",
+  "info.tutoriais.consulta-download.title": "Finding and downloading documents",
+  "info.tutoriais.consulta-download.description": "Find documents with search and filters, read metadata, download files and copy the permanent identifier.",
+  "info.tutoriais.acesso.title": "Accessing the repository",
+  "info.tutoriais.acesso.description": "Sign in, access MyDSpace and learn how to request document submission permissions.",
+  "info.tutoriais.submissao.title": "Submitting documents",
+  "info.tutoriais.submissao.description": "Choose your sector collection, enter metadata, upload the file and track submissions and returns.",
+  "info.tutoriais.revisao-publicacao.title": "NUGECID review and publication",
+  "info.tutoriais.revisao-publicacao.description": "Claim tasks, check files and metadata, return submissions for corrections or approve publication.",
+  "info.tutoriais.fluxo-deposito.title": "Institutional deposit workflow",
+  "info.tutoriais.fluxo-deposito.description": "See who handles preparation, submission, review, corrections and publication.",
 }

@@ -19,6 +19,10 @@ import {
   TranslateLoader,
   TranslateModule,
 } from '@ngx-translate/core';
+import {
+  BehaviorSubject,
+  of,
+} from 'rxjs';
 
 import { APP_CONFIG } from '../config/app-config.interface';
 import { environment } from '../environments/environment';
@@ -70,9 +74,11 @@ export function getMockLocaleService(): LocaleService {
 describe('App component', () => {
 
   let breadcrumbsServiceSpy;
+  let themeLoading$: BehaviorSubject<boolean>;
 
   const getDefaultTestBedConf = () => {
     breadcrumbsServiceSpy = jasmine.createSpyObj(['listenForRouteChanges']);
+    themeLoading$ = new BehaviorSubject(false);
 
     return {
       imports: [
@@ -96,7 +102,14 @@ describe('App component', () => {
         { provide: CSSVariableService, useClass: CSSVariableServiceStub },
         { provide: HostWindowService, useValue: new HostWindowServiceStub(800) },
         { provide: LocaleService, useValue: getMockLocaleService() },
-        { provide: ThemeService, useValue: getMockThemeService() },
+        {
+          provide: ThemeService,
+          useValue: {
+            ...getMockThemeService(),
+            isThemeLoading$: of(false),
+            isThemeCSSLoading$: themeLoading$,
+          },
+        },
         { provide: BreadcrumbsService, useValue: breadcrumbsServiceSpy },
         { provide: APP_CONFIG, useValue: environment },
         provideMockStore({ initialState }),
@@ -129,6 +142,21 @@ describe('App component', () => {
     // Perform test using fixture and service
     expect(app).toBeTruthy();
   }));
+
+  it('reloads CSS variables after the theme finishes loading', () => {
+    const cssService = TestBed.inject(CSSVariableService);
+    const readVariables = spyOn(cssService, 'getCSSVariablesFromStylesheets').and.callThrough();
+
+    themeLoading$.next(true);
+    expect(readVariables).not.toHaveBeenCalled();
+    themeLoading$.next(false);
+    expect(readVariables).toHaveBeenCalledTimes(1);
+    themeLoading$.next(false);
+    expect(readVariables).toHaveBeenCalledTimes(1);
+    themeLoading$.next(true);
+    themeLoading$.next(false);
+    expect(readVariables).toHaveBeenCalledTimes(2);
+  });
 
   describe('when the window is resized', () => {
     let width: number;

@@ -56,11 +56,10 @@ test('home follows the institutional PCIRN composition', () => {
   assert.doesNotMatch(template, /pcirn-home-about/);
 });
 
-test('home cards and data facade use the approved access boundary', () => {
+test('home cards share public search navigation', () => {
   assert.match(homeDataService, /buildQuickAccess/);
-  assert.match(homeDataService, /requiresLogin: true/);
-  assert.match(template, /pcirn-home-card-locked/);
-  assert.match(template, /pcirn\.home\.quick-access\.requires-login/);
+  assert.doesNotMatch(homeDataService, /requiresLogin|privateRoute/);
+  assert.doesNotMatch(template, /pcirn-home-card-locked/);
 });
 
 test('home search shortcuts filter by the institutional document types', () => {
@@ -253,7 +252,6 @@ test('header keeps the brand legible at every breakpoint', () => {
 
 test('home hero stacks above the search card on very narrow screens', () => {
   assert.match(heroStyles, /@media \(max-width: 364\.98px\) \{[\s\S]*?\.pcirn-home-hero \{[\s\S]*?height: auto;[\s\S]*?\.pcirn-home-search \{[\s\S]*?position: static;/);
-  assert.match(heroStyles, /\.pcirn-home-hero-forensics \{[\s\S]*?width: min\(20rem, 100%\)/);
 });
 
 test('legacy footer injection is not loaded', () => {

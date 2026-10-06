@@ -407,37 +407,37 @@
   "admin.access-control.bulk-access-settings.header": "Passo 2: Operação a ser Realizada",
 
   // "admin.access-control.epeople.actions.delete": "Delete EPerson",
-  "admin.access-control.epeople.actions.delete": "Excluir EPerson",
+  "admin.access-control.epeople.actions.delete": "Excluir Usuário",
 
   // "admin.access-control.epeople.actions.impersonate": "Impersonate EPerson",
-  "admin.access-control.epeople.actions.impersonate": "Assumir o papel do EPerson",
+  "admin.access-control.epeople.actions.impersonate": "Assumir o papel do Usuário",
 
   // "admin.access-control.epeople.actions.reset": "Reset password",
   "admin.access-control.epeople.actions.reset": "Redefinir senha",
 
   // "admin.access-control.epeople.actions.stop-impersonating": "Stop impersonating EPerson",
-  "admin.access-control.epeople.actions.stop-impersonating": "Parar de assumir o papel do EPerson",
+  "admin.access-control.epeople.actions.stop-impersonating": "Parar de assumir o papel do Usuário",
 
   // "admin.access-control.epeople.breadcrumbs": "EPeople",
-  "admin.access-control.epeople.breadcrumbs": "EPeople",
+  "admin.access-control.epeople.breadcrumbs": "Usuários",
 
   // "admin.access-control.epeople.title": "EPeople",
-  "admin.access-control.epeople.title": "EPeople",
+  "admin.access-control.epeople.title": "Usuários",
 
   // "admin.access-control.epeople.edit.breadcrumbs": "New EPerson",
-  "admin.access-control.epeople.edit.breadcrumbs": "Nova EPerson",
+  "admin.access-control.epeople.edit.breadcrumbs": "Novo usuário",
 
   // "admin.access-control.epeople.edit.title": "New EPerson",
-  "admin.access-control.epeople.edit.title": "Nova EPerson",
+  "admin.access-control.epeople.edit.title": "Novo usuário",
 
   // "admin.access-control.epeople.add.breadcrumbs": "Add EPerson",
-  "admin.access-control.epeople.add.breadcrumbs": "Adicionar EPerson",
+  "admin.access-control.epeople.add.breadcrumbs": "Adicionar Usuário",
 
   // "admin.access-control.epeople.add.title": "Add EPerson",
-  "admin.access-control.epeople.add.title": "Adicionar EPerson",
+  "admin.access-control.epeople.add.title": "Adicionar Usuário",
 
   // "admin.access-control.epeople.head": "EPeople",
-  "admin.access-control.epeople.head": "EPeople",
+  "admin.access-control.epeople.head": "Usuários",
 
   // "admin.access-control.epeople.search.head": "Search",
   "admin.access-control.epeople.search.head": "Pesquisar",
@@ -458,7 +458,7 @@
   "admin.access-control.epeople.search.placeholder": "Pesquisar pessoas...",
 
   // "admin.access-control.epeople.button.add": "Add EPerson",
-  "admin.access-control.epeople.button.add": "Adicionar EPerson",
+  "admin.access-control.epeople.button.add": "Adicionar Usuário",
 
   // "admin.access-control.epeople.table.id": "ID",
   "admin.access-control.epeople.table.id": "ID",
@@ -494,13 +494,13 @@
   "admin.access-control.epeople.table.edit.buttons.remove.modal.confirm": "Excluir",
 
   // "admin.access-control.epeople.no-items": "No EPeople to show.",
-  "admin.access-control.epeople.no-items": "Nenhuma EPeople para mostrar.",
+  "admin.access-control.epeople.no-items": "Nenhum usuário para mostrar.",
 
   // "admin.access-control.epeople.form.create": "Create EPerson",
-  "admin.access-control.epeople.form.create": "Criar EPerson",
+  "admin.access-control.epeople.form.create": "Criar Usuário",
 
   // "admin.access-control.epeople.form.edit": "Edit EPerson",
-  "admin.access-control.epeople.form.edit": "Editar EPerson",
+  "admin.access-control.epeople.form.edit": "Editar Usuário",
 
   // "admin.access-control.epeople.form.firstName": "First name",
   "admin.access-control.epeople.form.firstName": "Primeiro nome",
@@ -524,28 +524,28 @@
   "admin.access-control.epeople.form.return": "Voltar",
 
   // "admin.access-control.epeople.form.notification.created.success": "Successfully created EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.created.success": "EPerson \"{{name}}\" criada com sucesso",
+  "admin.access-control.epeople.form.notification.created.success": "Usuário \"{{name}}\" criado com sucesso",
 
   // "admin.access-control.epeople.form.notification.created.failure": "Failed to create EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.created.failure": "Falha ao criar EPerson \"{{name}}\"",
+  "admin.access-control.epeople.form.notification.created.failure": "Falha ao criar Usuário \"{{name}}\"",
 
   // "admin.access-control.epeople.form.notification.created.failure.emailInUse": "Failed to create EPerson \"{{name}}\", email \"{{email}}\" already in use.",
-  "admin.access-control.epeople.form.notification.created.failure.emailInUse": "Falha ao criar EPerson \"{{name}}\", email \"{{email}}\" já em uso.",
+  "admin.access-control.epeople.form.notification.created.failure.emailInUse": "Falha ao criar Usuário \"{{name}}\", email \"{{email}}\" já em uso.",
 
   // "admin.access-control.epeople.form.notification.edited.failure.emailInUse": "Failed to edit EPerson \"{{name}}\", email \"{{email}}\" already in use.",
-  "admin.access-control.epeople.form.notification.edited.failure.emailInUse": "Falha ao editar EPerson \"{{name}}\", email \"{{email}}\" já em uso.",
+  "admin.access-control.epeople.form.notification.edited.failure.emailInUse": "Falha ao editar Usuário \"{{name}}\", email \"{{email}}\" já em uso.",
 
   // "admin.access-control.epeople.form.notification.edited.success": "Successfully edited EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.edited.success": "EPerson \"{{name}}\" editada com sucesso.",
+  "admin.access-control.epeople.form.notification.edited.success": "Usuário \"{{name}}\" editado com sucesso.",
 
   // "admin.access-control.epeople.form.notification.edited.failure": "Failed to edit EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.edited.failure": "Falha ao editar EPerson \"{{name}}\"",
+  "admin.access-control.epeople.form.notification.edited.failure": "Falha ao editar Usuário \"{{name}}\"",
 
   // "admin.access-control.epeople.form.notification.deleted.success": "Successfully deleted EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.deleted.success": "EPerson \"{{name}}\" excluído com sucesso",
+  "admin.access-control.epeople.form.notification.deleted.success": "Usuário \"{{name}}\" excluído com sucesso",
 
   // "admin.access-control.epeople.form.notification.deleted.failure": "Failed to delete EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.deleted.failure": "Falha ao excluir EPerson \"{{name}}\"",
+  "admin.access-control.epeople.form.notification.deleted.failure": "Falha ao excluir Usuário \"{{name}}\"",
 
   // "admin.access-control.epeople.form.groupsEPersonIsMemberOf": "Member of these groups:",
   "admin.access-control.epeople.form.groupsEPersonIsMemberOf": "Membro destes grupos:",
@@ -560,7 +560,7 @@
   "admin.access-control.epeople.form.table.collectionOrCommunity": "Coleção/Comunidade",
 
   // "admin.access-control.epeople.form.memberOfNoGroups": "This EPerson is not a member of any groups",
-  "admin.access-control.epeople.form.memberOfNoGroups": "Esta EPerson não é membro de nenhum grupo",
+  "admin.access-control.epeople.form.memberOfNoGroups": "Este usuário não é membro de nenhum grupo",
 
   // "admin.access-control.epeople.form.goToGroups": "Add to groups",
   "admin.access-control.epeople.form.goToGroups": "Adicionar aos grupos",
@@ -591,10 +591,10 @@
   "admin.access-control.epeople.form.groupManagement.notification.removed.failure": "Não foi possível remover {{user}} do grupo {{group}}.",
 
   // "admin.access-control.epeople.notification.deleted.failure": "Error occurred when trying to delete EPerson with id \"{{id}}\" with code: \"{{statusCode}}\" and message: \"{{restResponse.errorMessage}}\"",
-  "admin.access-control.epeople.notification.deleted.failure": "Ocorreu um erro ao tentar excluir a EPerson com o ID \"{{id}}\" com código: \"{{statusCode}}\" e mensagem: \"{{restResponse.errorMessage}}\"",
+  "admin.access-control.epeople.notification.deleted.failure": "Ocorreu um erro ao tentar excluir o usuário com o ID \"{{id}}\" com código: \"{{statusCode}}\" e mensagem: \"{{restResponse.errorMessage}}\"",
 
   // "admin.access-control.epeople.notification.deleted.success": "Successfully deleted EPerson: \"{{name}}\"",
-  "admin.access-control.epeople.notification.deleted.success": "EPerson: \"{{name}}\" apagada com sucesso",
+  "admin.access-control.epeople.notification.deleted.success": "Usuário: \"{{name}}\" apagado com sucesso",
 
   // "admin.access-control.groups.title": "Groups",
   "admin.access-control.groups.title": "Grupos",
@@ -729,10 +729,10 @@
   "admin.access-control.groups.form.notification.deleted.failure.content": "Causa: \"{{ cause }}\"",
 
   // "admin.access-control.groups.form.members-list.head": "EPeople",
-  "admin.access-control.groups.form.members-list.head": "EPeople",
+  "admin.access-control.groups.form.members-list.head": "Usuários",
 
   // "admin.access-control.groups.form.members-list.search.head": "Add EPeople",
-  "admin.access-control.groups.form.members-list.search.head": "Adicionar EPeople",
+  "admin.access-control.groups.form.members-list.search.head": "Adicionar Usuários",
 
   // "admin.access-control.groups.form.members-list.button.see-all": "Browse All",
   "admin.access-control.groups.form.members-list.button.see-all": "Pesquisar Todos",
@@ -786,7 +786,7 @@
   "admin.access-control.groups.form.members-list.no-members-yet": "Nenhum membro no grupo ainda, procurar e adicionar.",
 
   // "admin.access-control.groups.form.members-list.no-items": "No EPeople found in that search",
-  "admin.access-control.groups.form.members-list.no-items": "Nenhuma EPeople encontrada nesta pesquisa",
+  "admin.access-control.groups.form.members-list.no-items": "Nenhum usuário encontrado nesta pesquisa",
 
   // "admin.access-control.groups.form.subgroups-list.notification.failure": "Something went wrong: \"{{cause}}\"",
   "admin.access-control.groups.form.subgroups-list.notification.failure": "Alguma coisa deu errado: \"{{cause}}\"",
@@ -1439,10 +1439,10 @@
   "advanced-workflow-action.select-reviewer.description-multiple": "Selecione um ou mais revisores abaixo antes de enviar",
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.head": "EPeople",
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.head": "EPeople",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.head": "Usuários",
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.search.head": "Add EPeople",
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.search.head": "Adicione EPeople",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.search.head": "Adicione Usuários",
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.button.see-all": "Browse All",
   "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.button.see-all": "Ver Todos",
@@ -1496,7 +1496,7 @@
   "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.no-members-yet": "Ainda não há membros no grupo, pesquise e adicione.",
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.no-items": "No EPeople found in that search",
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.no-items": "Nenhuma EPeople encontrada nesta pesquisa",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.no-items": "Nenhum usuário encontrado nesta pesquisa",
 
   // "advanced-workflow-action.select-reviewer.no-reviewer-selected.error": "No reviewer selected.",
   "advanced-workflow-action.select-reviewer.no-reviewer-selected.error": "Nenhum revisor selecionado.",
@@ -2338,7 +2338,13 @@
   "communityList.count.one": "{{ count }} comunidade encontrada",
 
   // "communityList.empty": "No communities found.",
-  "communityList.empty": "Nenhuma comunidade encontrada.",
+  "communityList.empty": "Nenhuma comunidade encontrada para o termo pesquisado.",
+
+  "communityList.clear-search": "Limpar busca",
+  "communityList.collections": "{{ count }} coleções",
+  "communityList.collections.one": "{{ count }} coleção",
+  "communityList.items": "{{ count }} publicações",
+  "communityList.items.one": "{{ count }} publicação",
 
   // "communityList.error": "Unable to load communities right now.",
   "communityList.error": "Não foi possível carregar as comunidades agora.",
@@ -2351,6 +2357,7 @@
 
   // "collectionList.title": "List of Collections",
   "collectionList.title": "Lista de Coleções",
+
 
   // "collectionList.subtitle": "Browse the collections to access their documents and publications.",
   "collectionList.subtitle": "Escolha uma categoria para consultar documentos de todas as comunidades.",
@@ -2365,7 +2372,11 @@
   "collectionList.count.one": "{{ count }} coleção encontrada",
 
   // "collectionList.empty": "No collections found.",
-  "collectionList.empty": "Nenhuma coleção encontrada.",
+  "collectionList.empty": "Nenhuma coleção encontrada para o termo pesquisado.",
+
+  "collectionList.clear-search": "Limpar busca",
+  "collectionList.items": "{{ count }} publicações",
+  "collectionList.items.one": "{{ count }} publicação",
 
   // "collectionList.error": "Unable to load collections right now.",
   "collectionList.error": "Não foi possível carregar as coleções agora.",
@@ -2557,13 +2568,13 @@
   "comcol-role.edit.submitters.name": "Remetentes",
 
   // "comcol-role.edit.submitters.description": "The E-People and Groups that have permission to submit new items to this collection.",
-  "comcol-role.edit.submitters.description": "As EPeople e Grupos que têm permissão para enviar novos itens para esta coleção.",
+  "comcol-role.edit.submitters.description": "Os usuários e grupos que têm permissão para enviar novos itens para esta coleção.",
 
   // "comcol-role.edit.item_read.name": "Default item read access",
   "comcol-role.edit.item_read.name": "Acesso padrão de leitura de itens",
 
   // "comcol-role.edit.item_read.description": "E-People and Groups that can read new items submitted to this collection. Changes to this role are not retroactive. Existing items in the system will still be viewable by those who had read access at the time of their addition.",
-  "comcol-role.edit.item_read.description": "EPeople e Grupos que podem ler novos itens enviados para esta coleção. As alterações nesta função não são retroativas. Os itens existentes no sistema ainda poderão ser visualizados por aqueles que tinham acesso de leitura no momento de sua adição.",
+  "comcol-role.edit.item_read.description": "Usuários e Grupos que podem ler novos itens enviados para esta coleção. As alterações nesta função não são retroativas. Os itens existentes no sistema ainda poderão ser visualizados por aqueles que tinham acesso de leitura no momento de sua adição.",
 
   // "comcol-role.edit.item_read.anonymous-group": "Default read for incoming items is currently set to Anonymous.",
   "comcol-role.edit.item_read.anonymous-group": "A leitura padrão dos itens recebidos está atualmente definida como Anônima.",
@@ -3011,10 +3022,10 @@
   "confirmation-modal.export-batch.confirm": "Exportar",
 
   // "confirmation-modal.delete-eperson.header": "Delete EPerson \"{{ dsoName }}\"",
-  "confirmation-modal.delete-eperson.header": "Excluir EPerson \"{{ dsoName }}\"",
+  "confirmation-modal.delete-eperson.header": "Excluir Usuário \"{{ dsoName }}\"",
 
   // "confirmation-modal.delete-eperson.info": "Are you sure you want to delete EPerson \"{{ dsoName }}\"",
-  "confirmation-modal.delete-eperson.info": "Tem certeza de que deseja excluir a EPerson \"{{ dsoName }}\"",
+  "confirmation-modal.delete-eperson.info": "Tem certeza de que deseja excluir o usuário \"{{ dsoName }}\"",
 
   // "confirmation-modal.delete-eperson.cancel": "Cancel",
   "confirmation-modal.delete-eperson.cancel": "Cancelar",
@@ -3567,7 +3578,7 @@
   "info.accessibility-settings.breadcrumbs": "Configurações de acessibilidade",
 
   // "info.accessibility-settings.cookie-warning": "Saving the accessibility settings is currently not possible. Either log in to save the settings in user data, or accept the 'Accessibility Settings' cookie using the 'Cookie Settings' menu at the bottom of the page. Once the cookie has been accepted, you can reload the page to remove this message.",
-  "info.accessibility-settings.cookie-warning": "Salvar as configurações de acessibilidade não é possível no momento. Realize o login para salvar as configurações nos dados de usuário, ou aceite o cookie de 'Configurações de Acessibilidade' através do menu 'Configurações de Cookies' na parte inferior da página. Assim que os cookies são aceitos, você pode recarregar a página para remover esta mensagem",
+  "info.accessibility-settings.cookie-warning": "Para salvar as preferências de acessibilidade, realize o login ou permita o cookie de Configurações de Acessibilidade nas preferências de cookies. Após permitir o cookie, recarregue a página.",
 
   // "info.accessibility-settings.disableNotificationTimeOut.label": "Automatically close notifications after time out",
   "info.accessibility-settings.disableNotificationTimeOut.label": "Fechar notificações automaticamente após período de tempo",
@@ -4672,11 +4683,11 @@
   "pcirn.document-type.PORTARIA_E_ATO_NORMATIVO_INTERNO": "Portaria e Ato Normativo Interno",
   "pcirn.document-type.DECRETO": "Decreto",
   "pcirn.document-type.LEI": "Lei",
-  "pcirn.document-type.POP": "Procedimento Operacional Padrão (POP)",
-  "pcirn.document-type.MEMORIA_INSTITUCIONAL": "Memória Institucional",
+  "pcirn.document-type.POP": "Procedimento Operacional Padrão",
   "pcirn.document-type.PAP": "Procedimento Administrativo Padrão",
-  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRÃO_(POP)": "Procedimento Operacional Padrão (POP)",
-  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRAO_POP": "Procedimento Operacional Padrão (POP)",
+  "pcirn.document-type.MEMORIA_INSTITUCIONAL": "Memória Institucional",
+  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRÃO_(POP)": "Procedimento Operacional Padrão",
+  "pcirn.document-type.PROCEDIMENTO_OPERACIONAL_PADRAO_POP": "Procedimento Operacional Padrão",
   "pcirn.document-type.NOTA_TECNICA": "Nota Técnica",
   "pcirn.document-type.NOTA_TÉCNICA": "Nota Técnica",
   "pcirn.document-type.MANUAL_GUIA": "Manual Técnico e Guia",
@@ -4701,16 +4712,19 @@
   "pcirn.document-type.DEFAULT": "Documento",
 
   "pcirnNormas.search.results.head": "Portarias e Atos Normativos",
-  "pcirnMemoriaInstitucional.search.results.head": "Memória Institucional",
-  "pcirnNotasTecnicas.search.results.head": "Notas Técnicas",
-  "pcirnGuiasManuais.search.results.head": "Guias e Manuais",
-  "pcirnPap.search.results.head": "Procedimento Administrativo Padrão (PAP)",
   "pcirnPops.search.results.head": "Procedimento Operacional Padrão (POP)",
+  "pcirnPap.search.results.head": "Procedimento Administrativo Padrão (PAP)",
+  "pcirnGuiasManuais.search.results.head": "Guias e Manuais",
+  "pcirnNotasTecnicas.search.results.head": "Notas Técnicas",
   "pcirnProducao.search.results.head": "Produção Científica",
   "pcirnRelatorios.search.results.head": "Relatório de Produtividade e Prestação de Contas",
+  "pcirnMemoriaInstitucional.search.results.head": "Memória Institucional",
+  "publicacoes.search.results.head": "Acervo de Publicações",
 
   "pcirn.home.hero.title.part1": "Documentos",
-  "pcirn.home.hero.title.part2": "institucionais da",
+  "pcirn.home.hero.title.part2": "institucionais",
+  "pcirn.home.hero.title.prep.da": "da",
+  "pcirn.home.hero.title.prep.do": "do",
   "pcirn.home.hero.lead": "Consulte normas, portarias, relatórios e publicações oficiais da Polícia Científica do Rio Grande do Norte.",
   "pcirn.home.search.heading": "Pesquise no acervo",
   "pcirn.home.search.chips.aria": "Categorias do acervo",
@@ -4750,16 +4764,20 @@
   "pcirn.home.latest.loading": "Carregando publicações",
 
   "pcirn.footer.slogan": "Ciência que identifica. Informação que transforma.",
-  "pcirn.footer.social.aria": "Canais institucionais",
-  "pcirn.footer.email.aria": "Enviar e-mail",
-  "pcirn.footer.phone.aria": "Telefone +55 84 3232-6928",
   "pcirn.footer.nav.title": "Navegação",
   "pcirn.footer.help.title": "Ajuda e informações",
   "pcirn.footer.help.feedback": "Ajuda",
   "pcirn.footer.platform.title": "Plataforma",
+  "pcirn.footer.contacts.title": "Contatos",
+  "pcirn.footer.contacts.phone": "Telefone",
+  "pcirn.footer.institutional.title": "Links úteis",
+  "pcirn.footer.institutional.government": "Portal do Governo do RN",
+  "pcirn.footer.institutional.pci": "Portal da PCI/RN",
+  "pcirn.footer.institutional.esic": "Acesso à Informação — e-SIC",
+  "pcirn.footer.institutional.ombudsman": "Ouvidoria da PCIRN",
+  "pcirn.footer.developed-by": "Customizado por",
   "pcirn.footer.platform.system": "Sistema DSpace v9.0",
-  "pcirn.footer.developed-by": "Desenvolvido por",
-  "pcirn.footer.copyright": "Polícia Científica do Rio Grande do Norte. Todos os direitos reservados.",
+  "pcirn.footer.copyright": "Todos os direitos reservados.",
 
 
   // "item.page.author": "Author",
@@ -6078,7 +6096,7 @@
   "nav.statistics.header": "Estatísticas",
 
   // "nav.stop-impersonating": "Stop impersonating EPerson",
-  "nav.stop-impersonating": "Deixar de assumir o papel do EPerson",
+  "nav.stop-impersonating": "Deixar de assumir o papel do Usuário",
 
   // "nav.subscriptions": "Subscriptions",
   "nav.subscriptions": "Assinaturas",
@@ -6357,7 +6375,7 @@
   "pagination.showing.detail": "{{ range }} de {{ total }}",
 
   // "pagination.showing.label": "Now showing ",
-  "pagination.showing.label": "Agora exibindo ",
+  "pagination.showing.label": "Exibindo ",
 
   // "pagination.sort-direction": "Sort Options",
   "pagination.sort-direction": "Opções de Ordenação",
@@ -7495,10 +7513,10 @@
   "resource-policies.edit.page.failure.content": "Ocorreu um erro ao editar a política de recursos.",
 
   // "resource-policies.edit.page.target-failure.content": "An error occurred while editing the target (ePerson or group) of the resource policy.",
-  "resource-policies.edit.page.target-failure.content": "Ocorreu um erro ao editar o destino (EPerson ou grupo) da política de recursos.",
+  "resource-policies.edit.page.target-failure.content": "Ocorreu um erro ao editar o destino (Usuário ou grupo) da política de recursos.",
 
   // "resource-policies.edit.page.other-failure.content": "An error occurred while editing the resource policy. The target (ePerson or group) has been successfully updated.",
-  "resource-policies.edit.page.other-failure.content": "Ocorreu um erro ao editar a política de recursos. O destino (EPerson ou grupo) foi atualizado com sucesso.",
+  "resource-policies.edit.page.other-failure.content": "Ocorreu um erro ao editar a política de recursos. O destino (Usuário ou grupo) foi atualizado com sucesso.",
 
   // "resource-policies.edit.page.success.content": "Operation successful",
   "resource-policies.edit.page.success.content": "Operação realizada com sucesso",
@@ -7513,14 +7531,14 @@
   "resource-policies.form.action-type.required": "Você deve selecionar a ação de política de recursos.",
 
   // "resource-policies.form.eperson-group-list.label": "The eperson or group that will be granted the permission",
-  "resource-policies.form.eperson-group-list.label": "A EPerson ou grupo que receberá a permissão",
+  "resource-policies.form.eperson-group-list.label": "O usuário ou grupo que receberá a permissão",
 
   // "resource-policies.form.eperson-group-list.select.btn": "Select",
   "resource-policies.form.eperson-group-list.select.btn": "Selecione",
 
   // "resource-policies.form.eperson-group-list.tab.eperson": "Search for an ePerson",
   // TODO Source message changed - Revise the translation
-  "resource-policies.form.eperson-group-list.tab.eperson": "Procurar por uma EPerson",
+  "resource-policies.form.eperson-group-list.tab.eperson": "Procurar por um usuário",
 
   // "resource-policies.form.eperson-group-list.tab.group": "Search for a group",
   "resource-policies.form.eperson-group-list.tab.group": "Procurar por um grupo",
@@ -7538,10 +7556,10 @@
   "resource-policies.form.eperson-group-list.modal.header": "Não é possível alterar o tipo",
 
   // "resource-policies.form.eperson-group-list.modal.text1.toGroup": "It is not possible to replace an ePerson with a group.",
-  "resource-policies.form.eperson-group-list.modal.text1.toGroup": "Não é possível substituir uma EPerson por um grupo.",
+  "resource-policies.form.eperson-group-list.modal.text1.toGroup": "Não é possível substituir um usuário por um grupo.",
 
   // "resource-policies.form.eperson-group-list.modal.text1.toEPerson": "It is not possible to replace a group with an ePerson.",
-  "resource-policies.form.eperson-group-list.modal.text1.toEPerson": "Não é possível substituir um grupo por uma EPerson.",
+  "resource-policies.form.eperson-group-list.modal.text1.toEPerson": "Não é possível substituir um grupo por um usuário.",
 
   // "resource-policies.form.eperson-group-list.modal.text2": "Delete the current resource policy and create a new one with the desired type.",
   "resource-policies.form.eperson-group-list.modal.text2": "Exclua a política de recursos atual e crie uma nova com o tipo desejado.",
@@ -7589,7 +7607,7 @@
   "resource-policies.table.headers.edit.policy": "Editar política",
 
   // "resource-policies.table.headers.eperson": "EPerson",
-  "resource-policies.table.headers.eperson": "EPerson",
+  "resource-policies.table.headers.eperson": "Usuário",
 
   // "resource-policies.table.headers.group": "Group",
   "resource-policies.table.headers.group": "Grupo",
@@ -8112,10 +8130,10 @@
   "search.results.head": "Resultados de Busca",
 
   // "search.results.no-results": "Your search returned no results. Having trouble finding what you're looking for? Try putting",
-  "search.results.no-results": "Sua pesquisa não retornou resultados. Está com dificuldades para encontrar o que procura? Tente incluir",
+  "search.results.no-results": "Sua pesquisa não retornou resultados. Está com dificuldades para encontrar o que procura? Tente colocar sua pesquisa",
 
   // "search.results.no-results-link": "quotes around it",
-  "search.results.no-results-link": "envolver entre aspas",
+  "search.results.no-results-link": "entre aspas.",
 
   // "search.results.empty": "Your search returned no results.",
   "search.results.empty": "Sua pesquisa não retornou resultados.",
@@ -8124,7 +8142,7 @@
   "search.results.geospatial-map.empty": "Não foram encontrados resultados nesta página com localizações geoespaciais",
 
   // "search.results.view-result": "View",
-  "search.results.view-result": "Visão",
+  "search.results.view-result": "Visualizar",
 
   // "search.results.response.500": "An error occurred during query execution, please try again later",
   "search.results.response.500": "Ocorreu um erro durante a execução da consulta. Tente novamente mais tarde",
@@ -8196,40 +8214,40 @@
   "sorting.DESC": "Descendente",
 
   // "sorting.dc.title.ASC": "Title Ascending",
-  "sorting.dc.title.ASC": "Título Ascendente",
+  "sorting.dc.title.ASC": "Título (A a Z)",
 
   // "sorting.dc.title.DESC": "Title Descending",
-  "sorting.dc.title.DESC": "Título Descendente",
+  "sorting.dc.title.DESC": "Título (Z a A)",
 
   // "sorting.score.ASC": "Least Relevant",
-  "sorting.score.ASC": "Menos Relevante",
+  "sorting.score.ASC": "Menos relevantes",
 
   // "sorting.score.DESC": "Most Relevant",
-  "sorting.score.DESC": "Mais Relevante",
+  "sorting.score.DESC": "Mais relevantes",
 
   // "sorting.dc.date.issued.ASC": "Date Issued Ascending",
-  "sorting.dc.date.issued.ASC": "Data de Emissão Crescente",
+  "sorting.dc.date.issued.ASC": "Data de publicação (mais antigas)",
 
   // "sorting.dc.date.issued.DESC": "Date Issued Descending",
-  "sorting.dc.date.issued.DESC": "Data de Emissão Descendente",
+  "sorting.dc.date.issued.DESC": "Data de publicação (mais recentes)",
 
   // "sorting.dc.date.accessioned.ASC": "Accessioned Date Ascending",
-  "sorting.dc.date.accessioned.ASC": "Data de Disponibilização Ascendente",
+  "sorting.dc.date.accessioned.ASC": "Data de cadastro (mais antigas)",
 
   // "sorting.dc.date.accessioned.DESC": "Accessioned Date Descending",
-  "sorting.dc.date.accessioned.DESC": "Data de Disponibilização Descendente",
+  "sorting.dc.date.accessioned.DESC": "Data de cadastro (mais recentes)",
 
   // "sorting.lastModified.ASC": "Last modified Ascending",
-  "sorting.lastModified.ASC": "Última Modificação Ascendente",
+  "sorting.lastModified.ASC": "Última modificação (mais antigas)",
 
   // "sorting.lastModified.DESC": "Last modified Descending",
-  "sorting.lastModified.DESC": "Última Modificação Descendente",
+  "sorting.lastModified.DESC": "Última modificação (mais recentes)",
 
   // "sorting.person.familyName.ASC": "Surname Ascending",
-  "sorting.person.familyName.ASC": "Sobrenome Ascendente",
+  "sorting.person.familyName.ASC": "Sobrenome (A a Z)",
 
   // "sorting.person.familyName.DESC": "Surname Descending",
-  "sorting.person.familyName.DESC": "Sobrenome Descendente",
+  "sorting.person.familyName.DESC": "Sobrenome (Z a A)",
 
   // "sorting.person.givenName.ASC": "Name Ascending",
   "sorting.person.givenName.ASC": "Nome Ascendente",
@@ -11693,6 +11711,24 @@
 
   // "item.preview.organization.alternateName": "Alternative name",
   "item.preview.organization.alternateName": "Nome alternativo",
-
-
+  "info.tutoriais": "Tutoriais",
+  "info.tutoriais.title": "Tutoriais",
+  "info.tutoriais.description": "Manuais ilustrados para consultar, submeter e revisar documentos no Repositório Institucional PCIRN.",
+  "info.tutoriais.open-help": "Os tutoriais são públicos. Abra um PDF para ler, baixar ou imprimir; o arquivo será aberto em uma nova aba.",
+  "info.tutoriais.new-tab": "(abre em nova aba)",
+  "info.tutoriais.metadata": "Versão {{version}} · {{date}} · {{pages}} páginas · {{size}}",
+  "info.tutoriais.support": "Precisa de orientação? Acesse",
+  "info.tutoriais.group.consulta": "Consulta pública",
+  "info.tutoriais.group.servidores": "Acesso e depósito por servidores",
+  "info.tutoriais.group.nugecid": "Revisão e fluxo institucional",
+  "info.tutoriais.consulta-download.title": "Consulta e download de documentos",
+  "info.tutoriais.consulta-download.description": "Encontre documentos por busca e filtros, consulte os metadados, baixe arquivos e copie o identificador permanente.",
+  "info.tutoriais.acesso.title": "Acesso ao repositório",
+  "info.tutoriais.acesso.description": "Entre no sistema, consulte sua área MeuDSpace e saiba como solicitar habilitação para submeter documentos.",
+  "info.tutoriais.submissao.title": "Submissão de documentos",
+  "info.tutoriais.submissao.description": "Selecione a coleção do setor, preencha os metadados, anexe o arquivo e acompanhe o depósito e as devoluções.",
+  "info.tutoriais.revisao-publicacao.title": "Revisão e publicação pelo NUGECID",
+  "info.tutoriais.revisao-publicacao.description": "Assuma a tarefa, confira arquivos e metadados, devolva para correção ou valide a publicação.",
+  "info.tutoriais.fluxo-deposito.title": "Fluxo de depósito institucional",
+  "info.tutoriais.fluxo-deposito.description": "Veja os responsáveis e o caminho entre preparação, submissão, revisão, correção e publicação.",
 }

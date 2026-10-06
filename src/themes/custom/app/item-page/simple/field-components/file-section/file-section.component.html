@@ -1,20 +1,21 @@
 <ng-container *ngVar="(bitstreams$ | async) as bitstreams">
   @if (bitstreams?.length > 0) {
     <section class="pcirn-document-files" aria-labelledby="pcirn-document-files-title">
-      <h2 id="pcirn-document-files-title" class="visually-hidden">{{ 'item.page.files' | translate }}</h2>
+      <span id="pcirn-document-files-title" class="visually-hidden">{{ 'item.page.files' | translate }}</span>
       @for (file of bitstreams; track file; let first = $first) {
+        @let isPrimary = primaryBitstreamId ? file.id === primaryBitstreamId : first;
         <div class="pcirn-document-file" [class.pcirn-document-file-primary]="file.id === primaryBitstreamId">
           <ds-file-download-link
             [bitstream]="file"
             [item]="item"
             [showIcon]="false"
             [isBlank]="true"
-            [cssClasses]="first ? 'pcirn-document-download' : 'pcirn-document-download pcirn-document-download-secondary'">
+            [cssClasses]="isPrimary ? 'pcirn-document-download' : 'pcirn-document-download pcirn-document-download-secondary'">
             <i class="fas fa-eye" aria-hidden="true"></i>
             <span class="pcirn-document-download-copy">
               <strong>
                 {{ 'pcirn.item.view' | translate }}
-                @if (first && fileExtension(file); as extension) {
+                @if (isPrimary && fileExtension(file); as extension) {
                   ({{ extension }})
                 }
               </strong>

@@ -63,22 +63,9 @@ describe('Footer component', () => {
     expect(comp.showEndUserAgreement).toBe(environment.info.enableEndUserAgreement);
   });
 
-  describe('openCookieSettings', () => {
-    it('should call cookies.showSettings() if cookies is defined', () => {
-      const cookies = jasmine.createSpyObj('cookies', ['showSettings']);
-      comp.cookies = cookies;
-      comp.openCookieSettings();
-      expect(cookies.showSettings).toHaveBeenCalled();
-    });
-
-    it('should not call cookies.showSettings() if cookies is undefined', () => {
-      comp.cookies = undefined;
-      expect(() => comp.openCookieSettings()).not.toThrow();
-    });
-
-    it('should return false', () => {
-      expect(comp.openCookieSettings()).toBeFalse();
-    });
+  it('should not render cookie settings in the footer', () => {
+    fixture.detectChanges();
+    expect(fixture.debugElement.query(By.css('.pcirn-footer-cookie-settings'))).toBeNull();
   });
 
   describe('when coarLdnEnabled is true', () => {

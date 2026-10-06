@@ -9,6 +9,7 @@ export const COAR_NOTIFY_SUPPORT = 'coar-notify-support';
 export const ACCESSIBILITY_SETTINGS_PATH = 'accessibility';
 export const ACCESS_POLICY_PATH = 'politica-acesso';
 export const AJUDA_PATH = 'ajuda';
+export const TUTORIAIS_PATH = 'tutoriais';
 
 export function getEndUserAgreementPath() {
   return getSubPath(END_USER_AGREEMENT_PATH);

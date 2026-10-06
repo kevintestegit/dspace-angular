@@ -7,10 +7,8 @@ import { WorkspaceItemsDeletePageComponent as BaseComponent } from '../../../../
 
 @Component({
   selector: 'ds-themed-workspaceitems-delete-page',
-  // styleUrls: ['./workspaceitems-delete-page.component.scss'],
-  styleUrls: ['../../../../../app/workspaceitems-edit-page/workspaceitems-delete-page/workspaceitems-delete-page.component.scss'],
-  // templateUrl: './workspaceitems-delete-page.component.html',
-  templateUrl: '../../../../../app/workspaceitems-edit-page/workspaceitems-delete-page/workspaceitems-delete-page.component.html',
+  styleUrls: ['./workspaceitems-delete-page.component.scss'],
+  templateUrl: './workspaceitems-delete-page.component.html',
   imports: [
     AsyncPipe,
     ModifyItemOverviewComponent,
