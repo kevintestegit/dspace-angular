@@ -21,6 +21,11 @@ coverage
 __build__
 __server_build__
 
+# Per-developer runtime configuration. It is gitignored and carries the local
+# host and ports; without this the Dockerfile compiles it into the browser
+# bundle and the published image ships one developer's settings.
+src/assets/config.json
+
 # Node
 *.log
 npm-debug.log.*
