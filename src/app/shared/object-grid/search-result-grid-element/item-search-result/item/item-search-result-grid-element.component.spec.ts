@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
+  DebugElement,
   NO_ERRORS_SCHEMA,
 } from '@angular/core';
 import {
@@ -220,6 +221,14 @@ export function getEntityGridElementTestComponent(component, searchResultWithMet
     let comp;
     let fixture;
 
+    // The PCIRN grid element renders the title inside a link, or inside a span
+    // when the item is not linkable. The upstream grid elements put it straight
+    // on the heading. Either way the highlighted title is the innermost markup.
+    const titleHtml = (heading: DebugElement): string => {
+      const node = heading.nativeNode;
+      return (node.querySelector('a, span') ?? node).innerHTML;
+    };
+
     const truncatableServiceStub: any = {
       isCollapsed: (id: number) => of(true),
     };
@@ -301,7 +310,7 @@ export function getEntityGridElementTestComponent(component, searchResultWithMet
         });
         it('should show highlighted title', () => {
           const titleField = fixture.debugElement.query(By.css('.card-title'));
-          expect(titleField.nativeNode.innerHTML).toEqual(dcTitle);
+          expect(titleHtml(titleField)).toEqual(dcTitle);
         });
       });
 
@@ -313,7 +322,7 @@ export function getEntityGridElementTestComponent(component, searchResultWithMet
 
         it('should show highlighted title', () => {
           const titleField = fixture.debugElement.query(By.css('.card-title'));
-          expect(titleField.nativeNode.innerHTML).toEqual('<em>Michel</em>');
+          expect(titleHtml(titleField)).toEqual('<em>Michel</em>');
         });
       });
 
@@ -325,7 +334,7 @@ export function getEntityGridElementTestComponent(component, searchResultWithMet
 
         it('should show highlighted title', () => {
           const titleField = fixture.debugElement.query(By.css('.card-title'));
-          expect(titleField.nativeNode.innerHTML).toEqual('<em>Science</em>');
+          expect(titleHtml(titleField)).toEqual('<em>Science</em>');
         });
       });
     });
