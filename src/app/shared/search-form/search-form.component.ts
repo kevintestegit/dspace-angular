@@ -28,6 +28,7 @@ import {
   hasValue,
   isNotEmpty,
 } from '../empty.util';
+import { normalizeSearchQuery } from '../search-query.util';
 import { BrowserOnlyPipe } from '../utils/browser-only.pipe';
 import { currentPath } from '../utils/route.utils';
 import { ScopeSelectorModalComponent } from './scope-selector-modal/scope-selector-modal.component';
@@ -127,6 +128,10 @@ export class SearchFormComponent implements OnChanges {
   onSubmit(data: any) {
     if (isNotEmpty(this.scope)) {
       data = Object.assign(data, { scope: this.scope });
+    }
+    if (hasValue(data?.query)) {
+      // Fixes the two shapes of query the API rejects or ignores; see the function for what and why.
+      data = Object.assign(data, { query: normalizeSearchQuery(data.query) });
     }
     this.updateSearch(data);
     this.submitSearch.emit(data);

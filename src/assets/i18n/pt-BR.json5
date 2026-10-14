@@ -3115,7 +3115,7 @@
   "error.search-results": "Erro ao carregar os resultados de busca",
 
   // "error.invalid-search-query": "Search query is not valid. Please check <a href=\"https://solr.apache.org/guide/query-syntax-and-parsing.html\" target=\"_blank\">Solr query syntax</a> best practices for further information about this error.",
-  "error.invalid-search-query": "A consulta de pesquisa não é válida. Por favor, verifique <a href=\"https://solr.apache.org/guide/query-syntax-and-parsing.html\" target=\"_blank\">Solr query syntax</a> para melhores práticas e mais informações sobre este erro.",
+  "error.invalid-search-query": "A consulta de pesquisa não é válida. Verifique se as aspas estão fechadas e se operadores como AND, OR e NOT estão entre dois termos. Exemplos: <em>portaria AND identidade</em> ou <em>\"cadeia de custódia\"</em>.",
 
   // "error.sub-collections": "Error fetching sub-collections",
   "error.sub-collections": "Erro ao carregar subcoleções",
