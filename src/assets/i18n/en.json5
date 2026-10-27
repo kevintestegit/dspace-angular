@@ -3082,6 +3082,8 @@
 
   "item.page.abstract": "Abstract",
 
+  "pcirn.search.semantic": "Meaning-based search",
+  "pcirn.search.semantic.help": "Finds documents by the meaning of the text, not only by exact words. Requires the embedding service configured on the server.",
   "pcirn.item.type": "Document type",
   "pcirn.item.view": "View",
   "pcirn.item.institution": "Institution",

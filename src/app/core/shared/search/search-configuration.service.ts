@@ -188,6 +188,15 @@ export class SearchConfigurationService implements OnDestroy {
   }
 
   /**
+   * @returns {Observable<boolean>} Emits true when the semantic search mode is active
+   */
+  getCurrentSemantic(): Observable<boolean> {
+    return this.routeService.getQueryParameterValue('semantic').pipe(
+      map((semantic) => semantic === 'true'),
+    );
+  }
+
+  /**
    * @returns {Observable<number>} Emits the current DSpaceObject type as a number
    */
   getCurrentDSOType(): Observable<DSpaceObjectType> {
@@ -360,6 +369,7 @@ export class SearchConfigurationService implements OnDestroy {
       this.getConfigurationPart(defaults.configuration),
       this.getScopePart(defaults.scope),
       this.getQueryPart(defaults.query),
+      this.getSemanticPart(),
       this.getDSOTypePart(),
       this.getFiltersPart(),
       this.getFixedFilterPart(),
@@ -384,6 +394,7 @@ export class SearchConfigurationService implements OnDestroy {
       this.getSortPart(paginationId, defaults.sort),
       this.getScopePart(defaults.scope),
       this.getQueryPart(defaults.query),
+      this.getSemanticPart(),
       this.getDSOTypePart(),
       this.getFiltersPart(),
       this.getFixedFilterPart(),
@@ -432,6 +443,15 @@ export class SearchConfigurationService implements OnDestroy {
   private getQueryPart(defaultQuery: string): Observable<any> {
     return this.getCurrentQuery(defaultQuery).pipe(map((query) => {
       return { query };
+    }));
+  }
+
+  /**
+   * @returns {Observable<boolean>} Emits the current semantic search mode as a partial SearchOptions object
+   */
+  private getSemanticPart(): Observable<any> {
+    return this.getCurrentSemantic().pipe(map((semantic) => {
+      return { semantic };
     }));
   }
 

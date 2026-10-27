@@ -18,11 +18,12 @@ export class SearchOptions {
   dsoTypes?: DSpaceObjectType[];
   filters?: SearchFilter[];
   fixedFilter?: string;
+  semantic?: boolean;
 
   constructor(
     options: {
       configuration?: string, scope?: string, query?: string, dsoTypes?: DSpaceObjectType[], filters?: SearchFilter[],
-      fixedFilter?: string
+      fixedFilter?: string, semantic?: boolean
     },
   ) {
     this.configuration = options.configuration;
@@ -31,6 +32,7 @@ export class SearchOptions {
     this.dsoTypes = options.dsoTypes;
     this.filters = options.filters;
     this.fixedFilter = options.fixedFilter;
+    this.semantic = options.semantic;
   }
 
   /**
@@ -48,6 +50,9 @@ export class SearchOptions {
     }
     if (isNotEmpty(this.query)) {
       args.push(`query=${encodeURIComponent(this.query)}`);
+    }
+    if (this.semantic) {
+      args.push('semantic=true');
     }
     if (isNotEmpty(this.scope)) {
       args.push(`scope=${encodeURIComponent(this.scope)}`);
