@@ -1,7 +1,3 @@
 <div class="pcirn-search-page">
-  <label class="pcirn-semantic-toggle" [title]="'pcirn.search.semantic.help' | translate">
-    <input type="checkbox" [checked]="semantic$ | async" (change)="toggleSemantic($event)">
-    <span>{{ 'pcirn.search.semantic' | translate }}</span>
-  </label>
   <ds-search [showCsvExport]="true" [showRSS]="false" [trackStatistics]="true"></ds-search>
 </div>

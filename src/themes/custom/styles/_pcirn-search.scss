@@ -11,21 +11,6 @@
   color: var(--pcirn-ink);
   background: #fff;
 
-  .pcirn-semantic-toggle {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: .45rem;
-    margin-bottom: .75rem;
-    color: var(--pcirn-muted);
-    font-size: .85rem;
-    cursor: pointer;
-
-    input {
-      accent-color: var(--pcirn-navy);
-    }
-  }
-
   ds-page-with-sidebar > .container {
     width: 100%;
     max-width: calc(1440px + 2 * clamp(1rem, 4vw, 3.75rem));

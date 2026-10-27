@@ -188,11 +188,11 @@ export class SearchConfigurationService implements OnDestroy {
   }
 
   /**
-   * @returns {Observable<boolean>} Emits true when the semantic search mode is active
+   * @returns {Observable<boolean>} Emits false only when semantic search was explicitly disabled
    */
   getCurrentSemantic(): Observable<boolean> {
     return this.routeService.getQueryParameterValue('semantic').pipe(
-      map((semantic) => semantic === 'true'),
+      map((semantic) => semantic !== 'false'),
     );
   }
 

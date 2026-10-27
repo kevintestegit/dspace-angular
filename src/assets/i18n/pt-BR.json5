@@ -4644,8 +4644,6 @@
   // "item.page.abstract": "Abstract",
   "item.page.abstract": "Resumo",
 
-  "pcirn.search.semantic": "Busca por significado",
-  "pcirn.search.semantic.help": "Encontra documentos pelo sentido do texto, não apenas pelas palavras exatas. Requer o serviço de embeddings configurado no servidor.",
   "pcirn.item.type": "Tipo de documento",
   "pcirn.item.view": "Visualizar",
   "pcirn.item.institution": "Instituição",
