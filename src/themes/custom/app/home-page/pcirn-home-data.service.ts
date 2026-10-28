@@ -87,8 +87,8 @@ export function buildQuickAccess(): PcirnQuickAccessCard[] {
     {
       titleKey: 'pcirn.home.quick-access.reports.title',
       descriptionKey: 'pcirn.home.quick-access.reports.desc',
-      title: 'Relatórios Técnicos',
-      description: 'Relatórios, pareceres e documentos técnicos.',
+      title: 'Relatórios de Produtividade',
+      description: 'Relatórios de produtividade e prestação de contas.',
       icon: 'fa-chart-bar',
       route: '/search',
       queryParams: PCIRN_SEARCH_CONFIGURATIONS.reports,
@@ -142,7 +142,7 @@ export class PcirnHomeDataService {
       }),
       shareReplay({ bufferSize: 1, refCount: true }),
     );
-    this.latestPublications = this.searchItems(6).pipe(
+    this.latestPublications = this.searchItems(3).pipe(
       shareReplay({ bufferSize: 1, refCount: true }),
     );
     this.metrics = this.buildMetrics();
