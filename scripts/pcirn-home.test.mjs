@@ -192,7 +192,7 @@ test('header uses only the glass navigation shell', () => {
 
 test('footer uses PCIRN institutional navigation', () => {
   assert.match(footerTemplate, /dspace-logo-mini\.svg/);
-  assert.match(footerTemplate, /brasao-estado-rn\.png/);
+  assert.match(footerTemplate, /brasao-estado-rn\.webp/);
   assert.match(footerTemplate, /'pcirn\.header\.name'\s*\|\s*translate/);
   assert.match(ptBrTranslations, /"pcirn\.header\.name":\s*"Repositório Institucional"/);
   assert.match(footerTemplate, /NUGECID/);
@@ -221,8 +221,8 @@ test('header trims the white flap without resizing the blue shape', () => {
 });
 
 test('masthead blue band tiles the seamless hair-cell texture under the drawing', () => {
-  assert.match(customHeaderWrapperStyles, /#header-navbar-wrapper::before \{[\s\S]*?url\('\/assets\/pcirn\/images\/desenho1\.png'\)[\s\S]*?url\('\/assets\/pcirn\/images\/haircell-blue\.svg'\) 0 0 \/ 240px 240px repeat,[\s\S]*?#073c66;/);
-  assert.match(customHeaderWrapperStyles, /@media \(max-width: 767\.98px\) \{[\s\S]*?#header-navbar-wrapper::before \{[\s\S]*?background-position: center 58%, 0 0;[\s\S]*?background-size: 100% auto, 240px 240px;/);
+  assert.match(customHeaderWrapperStyles, /#header-navbar-wrapper::before \{[\s\S]*?url\('\/assets\/pcirn\/images\/desenho1-desktop\.webp'\)[\s\S]*?url\('\/assets\/pcirn\/images\/haircell-blue\.svg'\) 0 0 \/ 240px 240px repeat,[\s\S]*?#073c66;/);
+  assert.match(customHeaderWrapperStyles, /@media \(max-width: 767\.98px\) \{[\s\S]*?#header-navbar-wrapper::before \{[\s\S]*?background-image: url\('\/assets\/pcirn\/images\/desenho1\.webp'\),[\s\S]*?background-position: center 58%, 0 0;[\s\S]*?background-size: 100% auto, 240px 240px;/);
 });
 
 test('header keeps one desktop masthead height across zoom breakpoints', () => {

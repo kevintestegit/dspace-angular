@@ -41,8 +41,8 @@ test('login-page template does not reference dspace-logo.svg', () => {
   assert.doesNotMatch(loginHtml, /dspace-logo\.svg/);
 });
 
-test('login-page template references brasao-policia-cientifica-rn.png', () => {
-  assert.match(loginHtml, /brasao-policia-cientifica-rn\.png/);
+test('login-page template references brasao-policia-cientifica-rn.webp', () => {
+  assert.match(loginHtml, /brasao-policia-cientifica-rn\.webp/);
 });
 
 test('login-page template contains pcirn-login-card, ds-log-in and home link', () => {
@@ -61,8 +61,8 @@ test('logout-page template does not reference dspace-logo.svg', () => {
   assert.doesNotMatch(logoutHtml, /dspace-logo\.svg/);
 });
 
-test('logout-page template references brasao-policia-cientifica-rn.png', () => {
-  assert.match(logoutHtml, /brasao-policia-cientifica-rn\.png/);
+test('logout-page template references brasao-policia-cientifica-rn.webp', () => {
+  assert.match(logoutHtml, /brasao-policia-cientifica-rn\.webp/);
 });
 
 test('logout-page template contains pcirn-login-card, ds-log-out and home link', () => {

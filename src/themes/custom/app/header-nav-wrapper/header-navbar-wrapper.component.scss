@@ -19,7 +19,7 @@
   inset: 0 0 auto;
   height: 80px;
   background:
-    url('/assets/pcirn/images/desenho1.png') right var(--header-gutter) bottom / auto 75px no-repeat,
+    url('/assets/pcirn/images/desenho1-desktop.webp') right var(--header-gutter) bottom / auto 75px no-repeat,
     url('/assets/pcirn/images/haircell-blue.svg') 0 0 / 240px 240px repeat,
     #073c66;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 96' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M0 0H1920V80H570C551 80 549 96 530 96H245C222 96 219 80 200 80H0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
@@ -168,6 +168,7 @@
 @media (max-width: 767.98px) {
   #header-navbar-wrapper::before {
     height: 80px;
+    background-image: url('/assets/pcirn/images/desenho1.webp'), url('/assets/pcirn/images/haircell-blue.svg');
     background-position: center 58%, 0 0;
     background-size: 100% auto, 240px 240px;
   }

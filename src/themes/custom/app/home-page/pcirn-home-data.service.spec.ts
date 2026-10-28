@@ -24,6 +24,7 @@ describe('PcirnHomeDataService', () => {
   it('shares collection and search reads used by content and metrics', () => {
     let collectionCalls = 0;
     let searchCalls = 0;
+    let searchPageSize: number;
     const emptyPage = buildPaginatedList(undefined, []);
 
     new PcirnHomeDataService(
@@ -35,8 +36,9 @@ describe('PcirnHomeDataService', () => {
         },
       } as any,
       {
-        search: () => {
+        search: options => {
           searchCalls++;
+          searchPageSize = options.pagination.pageSize;
           return createSuccessfulRemoteDataObject$(emptyPage);
         },
       } as any,
@@ -44,6 +46,7 @@ describe('PcirnHomeDataService', () => {
 
     expect(collectionCalls).toBe(1);
     expect(searchCalls).toBe(1);
+    expect(searchPageSize).toBe(3);
   });
 
   it('keeps a featured-collection error isolated from latest publications', done => {

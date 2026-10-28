@@ -12,7 +12,7 @@
   margin-top: 0;
 }
 
-.pcirn-home-hero { background: linear-gradient(90deg, rgba(3, 27, 45, 1) 0%, rgba(3, 38, 70, .97) 32%, rgba(3, 42, 76, .68) 56%, rgba(3, 31, 57, .12) 82%), url('/assets/pcirn/images/hero-pcirn.webp') 1.5rem 22% / 110% auto no-repeat; color: #fff; height: 350px; overflow: visible; position: relative; }
+.pcirn-home-hero { background: linear-gradient(90deg, rgba(3, 27, 45, 1) 0%, rgba(3, 38, 70, .97) 32%, rgba(3, 42, 76, .68) 56%, rgba(3, 31, 57, .12) 82%), var(--pcirn-home-hero-image, url('/assets/pcirn/images/hero-pcirn.webp')) 1.5rem 22% / 110% auto no-repeat; color: #fff; height: 350px; overflow: visible; position: relative; }
 .pcirn-home-hero::after { background: radial-gradient(circle at 18% 40%, rgba(13, 83, 137, .25), transparent 38%); content: ""; inset: 0; pointer-events: none; position: absolute; }
 .pcirn-home-hero-inner { align-items: center; display: flex; height: 100%; margin: 0 auto; max-width: 1300px; padding: 0 2rem; position: relative; z-index: 1; }
 .pcirn-home-hero-copy { max-width: min(840px, 100%); transform: translateY(-2.25rem); }
@@ -525,7 +525,7 @@
 }
 
 @media (max-width: 700px) {
-  .pcirn-home-hero { background-position: 67% 50%; background-size: cover; height: auto; padding-bottom: 1.25rem; }
+  .pcirn-home-hero { --pcirn-home-hero-image: url('/assets/pcirn/images/hero-pcirn-mobile.webp'); background-position: 67% 50%; background-size: cover; height: auto; padding-bottom: 1.25rem; }
   .pcirn-home-hero-inner { align-items: start; height: auto; padding: 2.25rem 1.25rem 0; }
   .pcirn-home-hero-copy { transform: none; }
   .pcirn-home h1 { font-size: clamp(2.55rem, 13vw, 3.6rem); }

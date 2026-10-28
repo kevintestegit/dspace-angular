@@ -1,10 +1,13 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
   EventEmitter,
+  Inject,
   Input,
   OnInit,
   Output,
+  PLATFORM_ID,
 } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -27,6 +30,8 @@ import { TranslateModule } from '@ngx-translate/core';
  */
 export class AltchaCaptchaComponent implements OnInit {
 
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+
   // Challenge URL, to query the backend (or other remote) for a challenge
   @Input() challengeUrl: string;
   // Whether / how to autoload the widget, e.g. 'onload', 'onsubmit', 'onfocus', 'off'
@@ -37,6 +42,9 @@ export class AltchaCaptchaComponent implements OnInit {
   @Output() payload = new EventEmitter<string>;
 
   ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
     document.querySelector('#altcha-widget').addEventListener('statechange', (ev: any) => {
       // state can be: unverified, verifying, verified, error
       if (ev.detail.state === 'verified') {
@@ -44,6 +52,7 @@ export class AltchaCaptchaComponent implements OnInit {
         this.payload.emit(ev.detail.payload);
       }
     });
+    void import('altcha');
   }
 
 }

@@ -434,7 +434,7 @@ export class DefaultAppConfig implements AppConfig {
           tagName: 'link',
           attributes: {
             'rel': 'icon',
-            'href': 'assets/pcirn/images/brasao-policia-cientifica-rn.png',
+            'href': 'assets/pcirn/images/pcirn-favicon.png',
             'type': 'image/png',
           },
         },

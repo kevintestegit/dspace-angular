@@ -43,4 +43,10 @@ describe('AltchaCaptchaComponent', () => {
 
     expect(payloadSpy).toHaveBeenCalledWith(testPayload);
   });
+
+  it('does not access the widget during server rendering', () => {
+    const query = spyOn(document, 'querySelector');
+    new AltchaCaptchaComponent('server').ngOnInit();
+    expect(query).not.toHaveBeenCalled();
+  });
 });
