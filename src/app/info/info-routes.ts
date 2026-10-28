@@ -20,12 +20,14 @@ import {
   ACCESSIBILITY_SETTINGS_PATH,
   AJUDA_PATH,
   COAR_NOTIFY_SUPPORT,
+  DOCUMENTOS_PATH,
   END_USER_AGREEMENT_PATH,
   FALE_CONOSCO_PATH,
   FEEDBACK_PATH,
   PRIVACY_PATH,
   TUTORIAIS_PATH,
 } from './info-routing-paths';
+import { DocumentosComponent } from './documentos/documentos.component';
 import { NotifyInfoComponent } from './notify-info/notify-info.component';
 import { ThemedPoliticaAcessoComponent } from './politica-acesso/themed-politica-acesso.component';
 import { ThemedPrivacyComponent } from './privacy/themed-privacy.component';
@@ -38,6 +40,12 @@ export const ROUTES: Routes = [
     component: TutoriaisComponent,
     resolve: { breadcrumb: i18nBreadcrumbResolver },
     data: { title: 'info.tutoriais.title', breadcrumbKey: 'info.tutoriais' },
+  },
+  {
+    path: DOCUMENTOS_PATH,
+    component: DocumentosComponent,
+    resolve: { breadcrumb: i18nBreadcrumbResolver },
+    data: { title: 'info.documentos.title', breadcrumbKey: 'info.documentos' },
   },
   {
     path: ABOUT_PATH,

@@ -17,6 +17,9 @@
           <a class="pcirn-header-nav-link" routerLink="/home"
             [class.active]="isNavActive('home')"
             [attr.aria-current]="isNavActive('home') ? 'page' : null">Início</a>
+          <a class="pcirn-header-nav-link" routerLink="/info/documentos"
+            [class.active]="isNavActive('documents')"
+            [attr.aria-current]="isNavActive('documents') ? 'page' : null">{{ 'info.documentos.title' | translate }}</a>
           <a class="pcirn-header-nav-link" routerLink="/community-list"
             [class.active]="isNavActive('communities')"
             [attr.aria-current]="isNavActive('communities') ? 'page' : null">Comunidades</a>

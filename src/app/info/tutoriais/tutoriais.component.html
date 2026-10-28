@@ -16,6 +16,20 @@
           </li>
         }
       }
+      @if (linkTutorials$ | async; as tutorials) {
+        @for (tutorial of tutorials; track tutorial.link) {
+          <li>
+            @if (tutorial.external) {
+              <a [href]="tutorial.link" target="_blank" rel="noopener noreferrer">
+                {{ tutorial.title }}
+                <span class="visually-hidden">{{ 'info.tutoriais.new-tab' | translate }}</span>
+              </a>
+            } @else {
+              <a [routerLink]="tutorial.link">{{ tutorial.title }}</a>
+            }
+          </li>
+        }
+      }
     </ul>
   </div>
 </div>

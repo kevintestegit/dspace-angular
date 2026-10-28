@@ -1,0 +1,22 @@
+<main class="documents-page">
+  <div class="documents-inner">
+    <h1>{{ 'info.documentos.title' | translate }}</h1>
+    <ul class="documents-list">
+      @for (document of documents; track document.id) {
+        <li><a [routerLink]="document.path">{{ 'info.documentos.' + document.id + '.title' | translate }}</a></li>
+      }
+      @if (linkDocuments$ | async; as linkDocuments) {
+        @for (document of linkDocuments; track document.link) {
+          <li>
+            @if (document.external) {
+              <a [href]="document.link" target="_blank" rel="noopener noreferrer">{{ document.title }}</a>
+            } @else {
+              <a [routerLink]="document.link">{{ document.title }}</a>
+            }
+          </li>
+        }
+      }
+      <li><a routerLink="/info/tutoriais">{{ 'info.documentos.tutoriais.title' | translate }}</a></li>
+    </ul>
+  </div>
+</main>

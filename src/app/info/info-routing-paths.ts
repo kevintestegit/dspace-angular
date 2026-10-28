@@ -10,6 +10,7 @@ export const ACCESSIBILITY_SETTINGS_PATH = 'accessibility';
 export const ACCESS_POLICY_PATH = 'politica-acesso';
 export const AJUDA_PATH = 'ajuda';
 export const TUTORIAIS_PATH = 'tutoriais';
+export const DOCUMENTOS_PATH = 'documentos';
 
 export function getEndUserAgreementPath() {
   return getSubPath(END_USER_AGREEMENT_PATH);

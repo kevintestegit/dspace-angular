@@ -92,7 +92,7 @@ export class NavbarComponent extends MenuComponent implements OnInit {
   /**
    * Whether a PCIRN header section matches the current URL.
    */
-  isNavActive(section: 'home' | 'communities' | 'collections' | 'publications'): boolean {
+  isNavActive(section: 'home' | 'communities' | 'collections' | 'publications' | 'documents'): boolean {
     const url = this.router.url.split(/[?#]/)[0].replace(/\/$/, '') || '/';
 
     switch (section) {
@@ -104,6 +104,8 @@ export class NavbarComponent extends MenuComponent implements OnInit {
         return url === '/collection-list' || url.startsWith('/collections/');
       case 'publications':
         return url === '/search' || url.startsWith('/search/');
+      case 'documents':
+        return url === '/info/documentos';
     }
   }
 }

@@ -56,6 +56,13 @@ nav.navbar {
   .pcirn-header-nav-link { font-size: .85rem; padding-inline: .35rem; }
 }
 
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  .pcirn-header-nav-links {
+    justify-content: flex-start;
+    padding-left: 6.5rem;
+  }
+}
+
 @media (max-width: 767.98px) {
   nav.navbar {
     align-items: stretch;
