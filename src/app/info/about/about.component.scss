@@ -1,3 +1,22 @@
+.pcirn-about-header {
+  max-width: 52rem;
+}
+
+.pcirn-list-header .pcirn-about-eyebrow {
+  color: #0b4f8a;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  margin: 0 0 .45rem;
+  text-transform: uppercase;
+}
+
+.pcirn-list-header .pcirn-about-tagline {
+  color: #24364b;
+  font-size: 1.05rem;
+  margin-top: .65rem;
+}
+
 .pcirn-about-card {
   background: #fff;
   border: 1px solid #dfe7f0;
@@ -30,8 +49,14 @@
 .pcirn-about-section li {
   color: #24364b;
   font-size: .95rem;
+  hyphens: auto;
   line-height: 1.6;
   margin: 0;
+  text-align: justify;
+}
+
+.pcirn-about-section p + p {
+  margin-top: .85rem;
 }
 
 .pcirn-about-section ul {

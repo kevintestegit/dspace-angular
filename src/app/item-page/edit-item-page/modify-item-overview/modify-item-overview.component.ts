@@ -4,7 +4,10 @@ import {
   Input,
   OnChanges,
 } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import {
+  TranslateModule,
+  TranslateService,
+} from '@ngx-translate/core';
 
 import { Item } from '../../../core/shared/item.model';
 import { MetadataMap } from '../../../core/shared/metadata.models';
@@ -24,6 +27,13 @@ export class ModifyItemOverviewComponent implements OnChanges  {
 
   @Input() item: Item;
   metadata: MetadataMap;
+
+  constructor(private translateService: TranslateService) {}
+
+  metadataLabelKey(metadataKey: string): string {
+    const labelKey = `pcirn.item.metadata.${metadataKey}`;
+    return this.translateService.instant(labelKey) === labelKey ? metadataKey : labelKey;
+  }
 
   ngOnChanges(): void {
     this.metadata = this.item?.metadata;

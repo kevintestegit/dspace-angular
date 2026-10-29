@@ -19,13 +19,34 @@
             [attr.aria-current]="isNavActive('home') ? 'page' : null">
             {{ 'home.breadcrumbs' | translate }}
           </a>
-          <a
-            class="pcirn-header-nav-link"
-            routerLink="/info/documentos"
-            [class.active]="isNavActive('documents')"
-            [attr.aria-current]="isNavActive('documents') ? 'page' : null">
-            {{ 'info.documentos.title' | translate }}
-          </a>
+          <div class="dropdown pcirn-header-nav-dropdown" ngbDropdown>
+            <button
+              class="pcirn-header-nav-link pcirn-header-nav-toggle"
+              ngbDropdownToggle
+              type="button"
+              [class.active]="isNavActive('about') || isNavActive('documents')"
+              [attr.aria-current]="isNavActive('about') || isNavActive('documents') ? 'page' : null">
+              {{ 'menu.section.about' | translate }}
+            </button>
+            <div class="dropdown-menu pcirn-header-dropdown-menu" ngbDropdownMenu>
+              <a
+                class="dropdown-item"
+                ngbDropdownItem
+                routerLink="/info/about"
+                [class.active]="isNavActive('about')"
+                [attr.aria-current]="isNavActive('about') ? 'page' : null">
+                {{ 'info.about.title' | translate }}
+              </a>
+              <a
+                class="dropdown-item"
+                ngbDropdownItem
+                routerLink="/info/documentos"
+                [class.active]="isNavActive('documents')"
+                [attr.aria-current]="isNavActive('documents') ? 'page' : null">
+                {{ 'info.documentos.title' | translate }}
+              </a>
+            </div>
+          </div>
           <a
             class="pcirn-header-nav-link"
             routerLink="/community-list"

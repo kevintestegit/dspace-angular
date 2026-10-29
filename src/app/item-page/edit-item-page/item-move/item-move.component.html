@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5 pb-4">
   <div class="row">
     <div class="col-12">
       <h1>{{'item.edit.move.head' | translate: {id: (itemRD$ | async)?.payload?.handle} }}</h1>
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="button-row bottom">
+      <div class="button-row bottom mb-4">
         <div class="float-end space-children-mr">
           <button [routerLink]="[(itemPageRoute$ | async), 'edit']" class="btn btn-outline-secondary">
             <i class="fas fa-arrow-left"></i> {{'item.edit.move.cancel' | translate}}

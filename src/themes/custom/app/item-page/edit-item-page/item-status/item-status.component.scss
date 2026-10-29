@@ -9,21 +9,8 @@
 }
 
 .pcirn-status-intro {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+  display: block;
   margin: 0;
-  padding: 1rem 1.1rem;
-  border: 1px solid rgba(0, 70, 115, 0.14);
-  border-inline-start: 4px solid var(--bs-primary);
-  border-radius: 0.4rem;
-  background: rgba(0, 70, 115, 0.045);
-  line-height: 1.55;
-}
-
-.pcirn-status-intro i {
-  margin-top: 0.2rem;
-  color: var(--bs-primary);
 }
 
 .pcirn-status-details,

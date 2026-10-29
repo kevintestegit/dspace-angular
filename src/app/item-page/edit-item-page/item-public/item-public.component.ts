@@ -14,6 +14,7 @@ import { RemoteData } from '../../../core/data/remote-data';
 import { Item } from '../../../core/shared/item.model';
 import { getFirstCompletedRemoteData } from '../../../core/shared/operators';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
+import { AlertComponent } from '../../../shared/alert/alert.component';
 import { ModifyItemOverviewComponent } from '../modify-item-overview/modify-item-overview.component';
 import { AbstractSimpleItemActionComponent } from '../simple-item-action/abstract-simple-item-action.component';
 
@@ -21,6 +22,7 @@ import { AbstractSimpleItemActionComponent } from '../simple-item-action/abstrac
   selector: 'ds-item-public',
   templateUrl: '../simple-item-action/abstract-simple-item-action.component.html',
   imports: [
+    AlertComponent,
     ModifyItemOverviewComponent,
     RouterLink,
     TranslateModule,

@@ -62,6 +62,8 @@ import {
 } from '../../../shared/empty.util';
 import { NotificationsService } from '../../../shared/notifications/notifications.service';
 import { CollectionSelectComponent } from '../../../shared/object-select/collection-select/collection-select.component';
+import { AlertComponent } from '../../../shared/alert/alert.component';
+import { AlertType } from '../../../shared/alert/alert-type';
 import { PaginatedSearchOptions } from '../../../shared/search/models/paginated-search-options.model';
 import { ThemedSearchFormComponent } from '../../../shared/search-form/themed-search-form.component';
 import { BrowserOnlyPipe } from '../../../shared/utils/browser-only.pipe';
@@ -77,6 +79,7 @@ import { getItemPageRoute } from '../../item-page-routing-paths';
     fadeInOut,
   ],
   imports: [
+    AlertComponent,
     AsyncPipe,
     BrowserOnlyPipe,
     CollectionSelectComponent,
@@ -93,6 +96,7 @@ import { getItemPageRoute } from '../../item-page-routing-paths';
  * Component for mapping collections to an item
  */
 export class ItemCollectionMapperComponent implements OnInit {
+  protected readonly AlertType = AlertType;
 
   /**
    * A view on the tabset element

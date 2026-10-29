@@ -4,6 +4,7 @@ import {
 } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { NavbarComponent as BaseComponent } from '../../../../app/navbar/navbar.component';
@@ -17,6 +18,7 @@ import { ThemedUserMenuComponent } from '../../../../app/shared/auth-nav-menu/us
   animations: [slideMobileNav],
   imports: [
     AsyncPipe,
+    NgbDropdownModule,
     NgClass,
     RouterLink,
     ThemedUserMenuComponent,

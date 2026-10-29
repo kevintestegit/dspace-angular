@@ -182,6 +182,14 @@ describe('NavbarComponent', () => {
     currentUrl.and.returnValue('/community-list');
     expect(comp.isNavActive('communities')).toBeTrue();
     expect(comp.isNavActive('collections')).toBeFalse();
+
+    currentUrl.and.returnValue('/info/about');
+    expect(comp.isNavActive('about')).toBeTrue();
+    expect(comp.isNavActive('documents')).toBeFalse();
+
+    currentUrl.and.returnValue('/info/documentos');
+    expect(comp.isNavActive('documents')).toBeTrue();
+    expect(comp.isNavActive('about')).toBeFalse();
   });
 
 

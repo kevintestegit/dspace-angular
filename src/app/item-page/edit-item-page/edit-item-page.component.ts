@@ -4,6 +4,7 @@ import {
 } from '@angular/common';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Injector,
   OnInit,
@@ -72,7 +73,12 @@ export class EditItemPageComponent implements OnInit {
    */
   pages: { page: string, enabled: Observable<boolean> }[];
 
-  constructor(private route: ActivatedRoute, private router: Router, private injector: Injector) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private injector: Injector,
+    private cdr: ChangeDetectorRef,
+  ) {
     this.router.events.subscribe(() => this.initPageParamsByRoute());
   }
 
@@ -109,6 +115,7 @@ export class EditItemPageComponent implements OnInit {
    * Set page params depending on the route
    */
   initPageParamsByRoute() {
-    this.currentPage = this.route.snapshot.firstChild.routeConfig.path;
+    this.currentPage = this.route.snapshot.firstChild?.routeConfig?.path;
+    this.cdr.markForCheck();
   }
 }

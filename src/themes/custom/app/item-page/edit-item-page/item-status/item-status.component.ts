@@ -8,6 +8,8 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { ItemOperationComponent } from '../../../../../../app/item-page/edit-item-page/item-operation/item-operation.component';
 import { ItemStatusComponent as BaseComponent } from '../../../../../../app/item-page/edit-item-page/item-status/item-status.component';
+import { AlertComponent } from '../../../../../../app/shared/alert/alert.component';
+import { AlertType } from '../../../../../../app/shared/alert/alert-type';
 import {
   fadeIn,
   fadeInOut,
@@ -23,6 +25,7 @@ import {
     fadeInOut,
   ],
   imports: [
+    AlertComponent,
     AsyncPipe,
     ItemOperationComponent,
     RouterLink,
@@ -30,4 +33,5 @@ import {
   ],
 })
 export class ItemStatusComponent extends BaseComponent {
+  AlertType = AlertType;
 }

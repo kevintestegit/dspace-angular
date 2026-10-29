@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5 pb-4">
   <div class="row">
     <div class="col-12">
       <h2>{{headerMessage | translate: {id: item.handle} }}</h2>
@@ -15,7 +15,7 @@
         </div>
       }
       <ds-modify-item-overview [item]="item"></ds-modify-item-overview>
-      <div class="space-children-mr">
+      <div class="space-children-mr mb-4">
         <button (click)="performAction()" class="btn btn-outline-secondary perform-action">{{confirmMessage | translate}}
         </button>
         <button [routerLink]="[itemPageRoute, 'edit']" class="btn btn-outline-secondary cancel">

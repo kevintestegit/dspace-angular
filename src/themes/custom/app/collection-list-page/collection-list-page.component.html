@@ -11,7 +11,7 @@
           <a [routerLink]="['/search']" [queryParams]="{ configuration: category.configuration }">
             <span class="pcirn-list-icon" aria-hidden="true"><i [class]="'fas ' + category.icon"></i></span>
             <span class="pcirn-list-copy">
-              <strong>{{ category.title | translate }}</strong>
+              <strong>{{ category.titleKey | translate }}</strong>
               @if (itemCounts()[category.configuration] !== undefined) {
                 <span class="pcirn-list-badges">
                   <span class="pcirn-list-badge pcirn-list-badge--items">

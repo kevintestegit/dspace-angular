@@ -89,9 +89,9 @@ test('500 page displays "fora do ar" and "tente novamente em alguns instantes"',
 });
 
 test('500 page displays marks of PCIRN, DSpace and RN state crest', () => {
-  assert.match(internalErrorHtml, /brasao-policia-cientifica-rn\.png/);
+  assert.match(internalErrorHtml, /brasao-policia-cientifica-rn\.webp/);
   assert.match(internalErrorHtml, /dspace-logo-mini\.svg/);
-  assert.match(internalErrorHtml, /brasao-estado-rn\.png/);
+  assert.match(internalErrorHtml, /brasao-estado-rn\.webp/);
 });
 
 test('500 page includes reload action and home link', () => {

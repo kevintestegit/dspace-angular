@@ -28,6 +28,8 @@ import {
   getItemPageRoute,
 } from '../../item-page-routing-paths';
 import { findSuccessfulAccordingTo } from '../edit-item-operators';
+import { AlertComponent } from '../../../shared/alert/alert.component';
+import { AlertType } from '../../../shared/alert/alert-type';
 import { ModifyItemOverviewComponent } from '../modify-item-overview/modify-item-overview.component';
 
 /**
@@ -38,12 +40,14 @@ import { ModifyItemOverviewComponent } from '../modify-item-overview/modify-item
   selector: 'ds-simple-action',
   templateUrl: './abstract-simple-item-action.component.html',
   imports: [
+    AlertComponent,
     ModifyItemOverviewComponent,
     RouterLink,
     TranslateModule,
   ],
 })
 export class AbstractSimpleItemActionComponent implements OnInit {
+  protected readonly AlertType = AlertType;
 
   itemRD$: Observable<RemoteData<Item>>;
   item: Item;

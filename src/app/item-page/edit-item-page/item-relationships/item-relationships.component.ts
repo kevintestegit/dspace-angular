@@ -9,6 +9,7 @@ import {
 import {
   ActivatedRoute,
   Router,
+  RouterLink,
 } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
@@ -59,6 +60,7 @@ import { EditRelationshipListWrapperComponent } from './edit-relationship-list-w
     BtnDisabledDirective,
     EditRelationshipListWrapperComponent,
     NgTemplateOutlet,
+    RouterLink,
     ThemedLoadingComponent,
     TranslateModule,
   ],

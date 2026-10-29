@@ -257,8 +257,8 @@
                   }
                 </dt>
                 <dd>
-                  {{ entry.value }}
-                  @if (entry.language) {
+                  {{ formatMetadataValue(entry) }}
+                  @if (entry.language && entry.key !== 'dc.language.iso' && entry.key !== 'dc.language') {
                     <span class="pcirn-document-metadata-language">{{ entry.language }}</span>
                   }
                 </dd>

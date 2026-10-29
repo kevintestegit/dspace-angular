@@ -12,6 +12,7 @@ import {
 import {
   ActivatedRoute,
   Data,
+  RouterLink,
 } from '@angular/router';
 import {
   TranslateModule,
@@ -52,6 +53,7 @@ import {
 } from '../../shared/empty.util';
 import { ThemedLoadingComponent } from '../../shared/loading/themed-loading.component';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
+import { getItemPageRoute } from '../../item-page/item-page-routing-paths';
 import { DsoEditMetadataFieldValuesComponent } from './dso-edit-metadata-field-values/dso-edit-metadata-field-values.component';
 import { DsoEditMetadataForm } from './dso-edit-metadata-form';
 import { DsoEditMetadataHeadersComponent } from './dso-edit-metadata-headers/dso-edit-metadata-headers.component';
@@ -72,6 +74,7 @@ import { MetadataFieldSelectorComponent } from './metadata-field-selector/metada
     DsoEditMetadataValueComponent,
     DsoEditMetadataValueHeadersComponent,
     MetadataFieldSelectorComponent,
+    RouterLink,
     ThemedLoadingComponent,
     TranslateModule,
   ],
@@ -102,6 +105,11 @@ export class DsoEditMetadataComponent implements OnInit, OnDestroy {
    * Used to resolve i18n messages
    */
   dsoType: string;
+
+  /**
+   * Route to the DSpaceObject page for return link
+   */
+  dsoPageRoute: string;
 
   /**
    * A dynamic form object containing all information about the metadata and the changes made to them, see {@link DsoEditMetadataForm}
@@ -180,6 +188,9 @@ export class DsoEditMetadataComponent implements OnInit, OnDestroy {
       });
     } else {
       this.initDSOType(this.dso);
+      if (this.dsoType === 'item' && this.dso) {
+        this.dsoPageRoute = getItemPageRoute(this.dso as any);
+      }
       this.retrieveDataService().subscribe((dataService: UpdateDataService<DSpaceObject>) => {
         this.initDataService(dataService);
         this.initForm();
@@ -208,6 +219,9 @@ export class DsoEditMetadataComponent implements OnInit, OnDestroy {
   initDSO(object: DSpaceObject) {
     this.dso = object;
     this.initDSOType(object);
+    if (this.dsoType === 'item' && this.dso) {
+      this.dsoPageRoute = getItemPageRoute(this.dso as any);
+    }
   }
 
   /**

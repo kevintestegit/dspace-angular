@@ -32,26 +32,21 @@ test('community list loads top communities and filters them locally', () => {
   assert.match(communityComponent, /totalPages/);
 });
 
-test('collection list follows the approved flat card composition', () => {
+test('collection list follows the category card composition', () => {
   assert.match(collectionTemplate, /pcirn-list/);
-  assert.match(collectionTemplate, /pcirn-list-search/);
-  assert.match(collectionTemplate, /collectionList\.search/);
-  assert.match(collectionTemplate, /collectionList\.count/);
+  assert.match(collectionTemplate, /categories/);
   assert.match(collectionTemplate, /pcirn-list-icon/);
   assert.match(collectionTemplate, /pcirn-list-chevron/);
-  assert.match(collectionTemplate, /pcirn-list-context/);
-  assert.match(collectionTemplate, /card\.communityName/);
-  assert.match(collectionTemplate, /\['\/collections', card\.collection\.id\]/);
+  assert.match(collectionTemplate, /queryParams/);
+  assert.match(collectionTemplate, /itemCounts\(\)/);
   assert.doesNotMatch(collectionTemplate, /ds-collection-list-element/);
 });
 
-test('collection list loads all collections and filters them locally', () => {
-  assert.match(collectionComponent, /collectionDataService\.findAll/);
-  assert.match(collectionComponent, /communityDataService\.findByHref/);
-  assert.match(collectionComponent, /parentCommunity/);
-  assert.match(collectionComponent, /shortDescription/);
-  assert.match(collectionComponent, /filterCollectionCards/);
-  assert.match(collectionComponent, /totalPages/);
+test('collection list loads item counts for every category', () => {
+  assert.match(collectionComponent, /PCIRN_COLLECTION_CATEGORIES/);
+  assert.match(collectionComponent, /searchService\.search/);
+  assert.match(collectionComponent, /itemCounts/);
+  assert.match(collectionComponent, /catchError/);
 });
 
 test('community and collection list copy exists in both languages', () => {
@@ -59,7 +54,7 @@ test('community and collection list copy exists in both languages', () => {
   assert.match(ptBrTranslations, /"communityList\.search":\s*"Buscar comunidades\.\.\."/);
   assert.match(ptBrTranslations, /"communityList\.count":\s*"\{\{ count \}\} comunidades encontradas"/);
   assert.match(ptBrTranslations, /"communityList\.count\.one":\s*"\{\{ count \}\} comunidade encontrada"/);
-  assert.match(ptBrTranslations, /"collectionList\.subtitle":\s*"Navegue pelas coleções/);
+  assert.match(ptBrTranslations, /"collectionList\.subtitle":\s*"Escolha uma categoria/);
   assert.match(ptBrTranslations, /"collectionList\.search":\s*"Buscar coleções\.\.\."/);
   assert.match(ptBrTranslations, /"collectionList\.count":\s*"\{\{ count \}\} coleções encontradas"/);
   assert.match(ptBrTranslations, /"collectionList\.count\.one":\s*"\{\{ count \}\} coleção encontrada"/);

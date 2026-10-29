@@ -96,3 +96,11 @@ test('PCIRN submission stylesheet is imported and scoped', () => {
   assert.match(partial, /\.pcirn-submission-actions/);
   assert.match(partial, /ds-base-drop-zone/);
 });
+
+test('submission sections allow dropdowns to overflow without clipping', () => {
+  const partial = readFileSync(join(stylesDir, '_pcirn-submission.scss'), 'utf8');
+
+  assert.match(partial, /\.pcirn-submission-section \.accordion-item\s*\{[\s\S]*overflow:\s*visible;/);
+  assert.match(partial, /\.pcirn-submission-section:focus-within/);
+  assert.match(partial, /\.pcirn-submission \.dropdown-menu\s*\{[\s\S]*z-index:/);
+});

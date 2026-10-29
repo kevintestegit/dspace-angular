@@ -88,8 +88,13 @@
         <ds-alert [content]="dsoType + '.edit.metadata.empty'" [type]="AlertTypeEnum.Info"></ds-alert>
       </div>
     }
-    <div class="button-row bottom d-inline-block w-100">
-      <div class="mt-2 float-end space-children-mr ms-gap">
+    <div class="button-row bottom mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
+        @if (dsoPageRoute) {
+          <a [routerLink]="dsoPageRoute" role="button" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> {{ 'item.edit.return' | translate }}
+          </a>
+        }
         @if (isReinstatable) {
           <button class="btn btn-warning" [dsBtnDisabled]="(saving$ | async)"
                   [attr.aria-label]="dsoType + '.edit.metadata.reinstate-button' | translate"

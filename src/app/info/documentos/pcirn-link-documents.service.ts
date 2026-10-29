@@ -23,7 +23,7 @@ import { hasValue } from '../../shared/empty.util';
 import { PaginationComponentOptions } from '../../shared/pagination/pagination-component-options.model';
 import { PaginatedSearchOptions } from '../../shared/search/models/paginated-search-options.model';
 
-export type PcirnLinkDocumentType = 'Documento institucional' | 'Tutorial';
+export type PcirnLinkDocumentType = 'DOCUMENTO_INSTITUCIONAL' | 'TUTORIAL';
 
 export interface PcirnLinkDocument {
   title: string;
@@ -45,7 +45,7 @@ export class PcirnLinkDocumentsService {
   /**
    * List the published items of the given type, newest first.
    *
-   * @param type value stored in dc.type, used by the Documents and Tutorials tabs
+   * @param type controlled-vocabulary ID stored in dc.type, used by the tabs
    */
   find(type: PcirnLinkDocumentType): Observable<PcirnLinkDocument[]> {
     return this.collectionDataService.findAll({ elementsPerPage: 100 }).pipe(

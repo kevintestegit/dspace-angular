@@ -50,16 +50,12 @@ test('documents and tutorials also read link entries published in the NUGECID co
 test('link-only deposits are enabled for the NUGECID collection', () => {
   assert.match(submissionForms, /<dc-qualifier>isreferencedby<\/dc-qualifier>/);
   assert.match(submissionForms, /<label>Link do documento<\/label>/);
-  assert.match(submissionForms, /<form name="pcirnlinkdestino">/);
-  assert.match(submissionForms, /<label>Destino no site<\/label>/);
-  assert.match(submissionForms, /value-pairs-name="pcirn_destinos">dropdown<\/input-type>/);
-  assert.match(submissionForms, /<value-pairs value-pairs-name="pcirn_destinos" dc-term="type">/);
-  assert.match(vocabulary, /label="Documento institucional"/);
-  assert.match(vocabulary, /label="Tutorial"/);
+  assert.match(vocabulary, /id="DOCUMENTO_INSTITUCIONAL" label="Documento institucional"/);
+  assert.match(vocabulary, /id="TUTORIAL" label="Tutorial"/);
   assert.match(itemSubmission, /collection-handle="123456789\/34" submission-name="pcirnlink"/);
-  assert.match(itemSubmission, /<step-definition id="pcirnlinkdestino" mandatory="true">/);
   assert.match(itemSubmission, /<step-definition id="uploadoptional" mandatory="false">/);
-  assert.match(itemSubmission, /<submission-process name="pcirnlink">[\s\S]*?<step id="pcirnlinkdestino"\/>/);
+  assert.match(itemSubmission, /<submission-process name="pcirnlink">[\s\S]*?<step id="pcirnpagetwo"\/>/);
+  assert.doesNotMatch(submissionForms, /pcirnlinkdestino|pcirn_destinos/);
 });
 
 test('page translates every document name in both languages', () => {

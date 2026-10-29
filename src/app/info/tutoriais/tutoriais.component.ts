@@ -26,6 +26,6 @@ export class TutoriaisComponent {
   protected readonly linkTutorials$: Observable<PcirnLinkDocument[]>;
 
   constructor(private linkDocuments: PcirnLinkDocumentsService) {
-    this.linkTutorials$ = this.linkDocuments.find('Tutorial');
+    this.linkTutorials$ = this.linkDocuments.find('TUTORIAL');
   }
 }

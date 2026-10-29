@@ -282,3 +282,55 @@ ds-metadata-registry {
     }
   }
 }
+
+ds-edit-item-page {
+  display: block;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+
+  .container {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .button-row,
+  .button-row.bottom {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0;
+    clear: both;
+  }
+}
+
+.item-page-edit-item-page,
+ds-item-authorizations,
+ds-themed-item-authorizations,
+ds-item-collection-mapper,
+ds-item-curate,
+ds-item-version-history,
+ds-item-access-control,
+ds-item-move,
+ds-item-delete,
+ds-item-withdraw,
+ds-item-reinstate,
+ds-item-private,
+ds-item-public,
+ds-item-register-doi,
+ds-modify-item-overview {
+  display: block;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+
+  .container {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .button-row,
+  .button-row.bottom,
+  .space-children-mr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0;
+  }
+}

@@ -14,10 +14,11 @@ import {
 } from 'rxjs';
 
 import { CollectionListPageComponent as BaseComponent } from '../../../../app/collection-list-page/collection-list-page.component';
-import { SearchService } from '../../../../app/core/shared/search/search.service';
 import { getFirstCompletedRemoteData } from '../../../../app/core/shared/operators';
+import { SearchService } from '../../../../app/core/shared/search/search.service';
 import { PaginationComponentOptions } from '../../../../app/shared/pagination/pagination-component-options.model';
 import { PaginatedSearchOptions } from '../../../../app/shared/search/models/paginated-search-options.model';
+import { PCIRN_COLLECTION_CATEGORIES } from '../shared/pcirn-collection-categories';
 
 @Component({
   selector: 'ds-themed-collection-list-page',
@@ -31,15 +32,7 @@ import { PaginatedSearchOptions } from '../../../../app/shared/search/models/pag
 export class CollectionListPageComponent extends BaseComponent {
   private readonly searchService = inject(SearchService);
 
-  protected readonly categories = [
-    { configuration: 'pcirnNormas', title: 'pcirnNormas.search.results.head', icon: 'fa-file-signature' },
-    { configuration: 'pcirnPops', title: 'pcirnPops.search.results.head', icon: 'fa-clipboard-list' },
-    { configuration: 'pcirnPap', title: 'pcirnPap.search.results.head', icon: 'fa-folder-open' },
-    { configuration: 'pcirnGuiasManuais', title: 'pcirnGuiasManuais.search.results.head', icon: 'fa-book-open' },
-    { configuration: 'pcirnNotasTecnicas', title: 'pcirnNotasTecnicas.search.results.head', icon: 'fa-note-sticky' },
-    { configuration: 'pcirnRelatorios', title: 'pcirnRelatorios.search.results.head', icon: 'fa-chart-column' },
-    { configuration: 'pcirnMemoriaInstitucional', title: 'pcirnMemoriaInstitucional.search.results.head', icon: 'fa-landmark' },
-  ];
+  protected readonly categories = PCIRN_COLLECTION_CATEGORIES;
 
   protected readonly itemCounts = signal<Record<string, number>>({});
 

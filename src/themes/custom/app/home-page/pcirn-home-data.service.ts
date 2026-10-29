@@ -17,19 +17,20 @@ import {
   SortDirection,
   SortOptions,
 } from '../../../../app/core/cache/models/sort-options.model';
-import { CollectionDataService } from '../../../../app/core/data/collection-data.service';
 import { CommunityDataService } from '../../../../app/core/data/community-data.service';
-import { FindListOptions } from '../../../../app/core/data/find-list-options.model';
-import { PaginatedList } from '../../../../app/core/data/paginated-list.model';
-import { buildPaginatedList } from '../../../../app/core/data/paginated-list.model';
+import {
+  buildPaginatedList,
+  PaginatedList,
+} from '../../../../app/core/data/paginated-list.model';
 import { RemoteData } from '../../../../app/core/data/remote-data';
-import { Collection } from '../../../../app/core/shared/collection.model';
+import { Community } from '../../../../app/core/shared/community.model';
 import { DSpaceObjectType } from '../../../../app/core/shared/dspace-object-type.model';
 import { Item } from '../../../../app/core/shared/item.model';
 import { toDSpaceObjectListRD } from '../../../../app/core/shared/operators';
 import { SearchService } from '../../../../app/core/shared/search/search.service';
 import { PaginationComponentOptions } from '../../../../app/shared/pagination/pagination-component-options.model';
 import { PaginatedSearchOptions } from '../../../../app/shared/search/models/paginated-search-options.model';
+import { PCIRN_COLLECTION_CATEGORIES } from '../shared/pcirn-collection-categories';
 
 export interface PcirnQuickAccessCard {
   titleKey: string;
@@ -60,8 +61,8 @@ export function buildQuickAccess(): PcirnQuickAccessCard[] {
     {
       titleKey: 'pcirn.home.quick-access.regulations.title',
       descriptionKey: 'pcirn.home.quick-access.regulations.desc',
-      title: 'Normas e Portarias',
-      description: 'Acesse normas, portarias e atos oficiais.',
+      title: 'Legislações e Portarias',
+      description: 'Acesse legislações, portarias e atos oficiais.',
       icon: 'fa-gavel',
       route: '/search',
       queryParams: PCIRN_SEARCH_CONFIGURATIONS.regulations,
@@ -69,7 +70,7 @@ export function buildQuickAccess(): PcirnQuickAccessCard[] {
     {
       titleKey: 'pcirn.home.quick-access.pops.title',
       descriptionKey: 'pcirn.home.quick-access.pops.desc',
-      title: 'POPs e Procedimentos',
+      title: 'POP',
       description: 'Procedimentos operacionais e fluxos de trabalho.',
       icon: 'fa-clipboard-list',
       route: '/search',
@@ -98,36 +99,39 @@ export function buildQuickAccess(): PcirnQuickAccessCard[] {
 
 @Injectable({ providedIn: 'root' })
 export class PcirnHomeDataService {
-  readonly featuredCollections: Observable<RemoteData<PaginatedList<Collection>>>;
+  readonly featuredCommunities: Observable<RemoteData<PaginatedList<Community>>>;
   readonly latestPublications: Observable<RemoteData<PaginatedList<Item>>>;
   readonly metrics: Observable<RemoteData<PcirnHomeMetrics>>;
-  readonly allCollections: Observable<RemoteData<PaginatedList<Collection>>>;
 
   constructor(
     private communityDataService: CommunityDataService,
-    private collectionDataService: CollectionDataService,
     private searchService: SearchService,
   ) {
-    const listOptions: FindListOptions = { elementsPerPage: 12 };
-    const allCollections = collectionDataService.findAll(listOptions).pipe(
+    this.featuredCommunities = this.buildFeaturedCommunities().pipe(
       shareReplay({ bufferSize: 1, refCount: true }),
     );
-    this.allCollections = allCollections;
-    this.featuredCollections = allCollections.pipe(
+    this.latestPublications = this.searchItems(3).pipe(
+      shareReplay({ bufferSize: 1, refCount: true }),
+    );
+    this.metrics = this.buildMetrics();
+  }
+
+  private buildFeaturedCommunities(): Observable<RemoteData<PaginatedList<Community>>> {
+    return this.communityDataService.findTop({ elementsPerPage: 10 }).pipe(
       switchMap(rd => {
-        if (!rd.hasSucceeded || !rd.payload) {
+        if (!rd.hasSucceeded || !rd.payload || !rd.payload.page?.length) {
           return of(rd);
         }
-        return combineLatest(rd.payload.page.map(c => this.latestItemDate(c.uuid).pipe(
-          map(date => ({ collection: c, date })),
+        return combineLatest(rd.payload.page.map(community => this.communityItemCount(community.uuid).pipe(
+          map(count => ({ community, count })),
         ))).pipe(
           take(1),
           map(pairs => {
-            const active = pairs
-              .filter(p => p.date !== null)
-              .sort((a, b) => b.date.localeCompare(a.date))
-              .map(p => p.collection);
-            const payload = buildPaginatedList(rd.payload.pageInfo, active);
+            const top = pairs
+              .sort((a, b) => b.count - a.count)
+              .slice(0, 4)
+              .map(pair => pair.community);
+            const payload = buildPaginatedList(rd.payload.pageInfo, top);
             return new RemoteData(
               rd.timeCompleted,
               rd.msToLive,
@@ -140,15 +144,10 @@ export class PcirnHomeDataService {
           }),
         );
       }),
-      shareReplay({ bufferSize: 1, refCount: true }),
     );
-    this.latestPublications = this.searchItems(3).pipe(
-      shareReplay({ bufferSize: 1, refCount: true }),
-    );
-    this.metrics = this.buildMetrics();
   }
 
-  private latestItemDate(uuid: string): Observable<string | null> {
+  private communityItemCount(uuid: string): Observable<number> {
     const pagination = Object.assign(new PaginationComponentOptions(), {
       currentPage: 1,
       pageSize: 1,
@@ -157,17 +156,10 @@ export class PcirnHomeDataService {
       dsoTypes: [DSpaceObjectType.ITEM],
       scope: uuid,
       pagination,
-      sort: new SortOptions('dc.date.accessioned', SortDirection.DESC),
     })).pipe(
       toDSpaceObjectListRD(),
       filter(rd => rd.hasSucceeded || rd.hasFailed),
-      map(rd => {
-        if (!rd.hasSucceeded || !rd.payload || !rd.payload.page?.length) {
-          return null;
-        }
-        const item = rd.payload.page[0] as Item;
-        return item.metadata?.['dc.date.accessioned']?.[0]?.value || '0000-00-00';
-      }),
+      map(rd => rd.hasSucceeded && rd.payload ? rd.payload.totalElements : 0),
     );
   }
 
@@ -189,17 +181,15 @@ export class PcirnHomeDataService {
   private buildMetrics(): Observable<RemoteData<PcirnHomeMetrics>> {
     return combineLatest([
       this.communityDataService.findTop({ elementsPerPage: 1 }),
-      this.allCollections,
       this.latestPublications,
     ]).pipe(
-      map(([communities, collections, items]) => {
-        const states = [communities, collections, items] as RemoteData<unknown>[];
+      map(([communities, items]) => {
+        const states = [communities, items] as RemoteData<unknown>[];
         const failed = states.find(data => data.hasFailed);
         if (failed) {
           return failed as unknown as RemoteData<PcirnHomeMetrics>;
         }
         if (!communities.hasSucceeded || !communities.payload ||
-          !collections.hasSucceeded || !collections.payload ||
           !items.hasSucceeded || !items.payload) {
           const incomplete = states.find(data => !data.hasSucceeded || !data.payload);
           return incomplete as unknown as RemoteData<PcirnHomeMetrics>;
@@ -212,7 +202,7 @@ export class PcirnHomeDataService {
           undefined,
           {
             communities: communities.payload.totalElements,
-            collections: collections.payload.totalElements,
+            collections: PCIRN_COLLECTION_CATEGORIES.length,
             items: items.payload.totalElements,
           },
           communities.statusCode,

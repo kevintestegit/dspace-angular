@@ -1,4 +1,4 @@
-<div class="container">
+<div class="access-control-form-container mt-2 mb-4">
   <div class="card border-0">
     <div class="card-body">
       @if (titleMessage) {
@@ -159,7 +159,7 @@
         }
 
         @if (showSubmit) {
-          <div class="d-flex justify-content-end">
+          <div class="d-flex justify-content-end mb-4">
             <button class="btn btn-outline-primary me-3" (click)="reset()" type="button">
               {{ 'access-control-cancel' | translate }}
             </button>

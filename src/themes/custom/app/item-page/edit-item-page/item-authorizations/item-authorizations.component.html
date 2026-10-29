@@ -1,17 +1,9 @@
 <div class="container pcirn-authorizations-page">
-  <header class="pcirn-authorizations-heading">
-    <span class="pcirn-authorizations-icon" aria-hidden="true">
-      <i class="fas fa-shield-alt"></i>
-    </span>
-    <div>
-      <p class="pcirn-authorizations-eyebrow">{{ 'item.edit.head' | translate }}</p>
-      <h1>{{ 'item.edit.authorizations.title' | translate }}</h1>
-      <p class="pcirn-authorizations-description">{{ 'item.edit.authorizations.description' | translate }}</p>
-    </div>
-  </header>
+  <div class="mt-2">
+    <ds-alert [type]="AlertType.Info" [content]="'item.edit.authorizations.heading'"></ds-alert>
+  </div>
 
   <section class="pcirn-authorizations-content" aria-label="{{ 'item.edit.authorizations.title' | translate }}">
-    <ds-alert [type]="AlertType.Info" [content]="'item.edit.authorizations.heading'"></ds-alert>
 
     <section class="pcirn-authorizations-resource" aria-label="{{ itemName$ | async }}">
       <ds-resource-policies [resourceType]="'item'" [resourceName]="itemName$ | async"

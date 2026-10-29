@@ -4,6 +4,7 @@ import {
   createPendingRemoteDataObject$,
   createSuccessfulRemoteDataObject$,
 } from '../../../../app/shared/remote-data.utils';
+import { PCIRN_COLLECTION_CATEGORIES } from '../shared/pcirn-collection-categories';
 import {
   buildQuickAccess,
   PcirnHomeDataService,
@@ -21,20 +22,13 @@ describe('buildQuickAccess', () => {
 });
 
 describe('PcirnHomeDataService', () => {
-  it('shares collection and search reads used by content and metrics', () => {
-    let collectionCalls = 0;
+  it('loads the latest three publications from one search', () => {
     let searchCalls = 0;
     let searchPageSize: number;
     const emptyPage = buildPaginatedList(undefined, []);
 
     new PcirnHomeDataService(
       { findTop: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
-      {
-        findAll: () => {
-          collectionCalls++;
-          return createSuccessfulRemoteDataObject$(emptyPage);
-        },
-      } as any,
       {
         search: options => {
           searchCalls++;
@@ -44,24 +38,46 @@ describe('PcirnHomeDataService', () => {
       } as any,
     );
 
-    expect(collectionCalls).toBe(1);
     expect(searchCalls).toBe(1);
     expect(searchPageSize).toBe(3);
   });
 
-  it('keeps a featured-collection error isolated from latest publications', done => {
+  it('features the four communities with the most items', done => {
+    const communities = [
+      { id: 'dg', uuid: 'dg' },
+      { id: 'ic', uuid: 'ic' },
+      { id: 'ii', uuid: 'ii' },
+      { id: 'iml', uuid: 'iml' },
+      { id: 'nu', uuid: 'nu' },
+    ] as any[];
+    const counts: Record<string, number> = { dg: 4, ic: 3, ii: 1, iml: 2, nu: 0 };
     const service = new PcirnHomeDataService(
-      { findTop: () => createSuccessfulRemoteDataObject$(buildPaginatedList(undefined, [])) } as any,
-      { findAll: () => createFailedRemoteDataObject$('collections unavailable') } as any,
-      { search: () => createSuccessfulRemoteDataObject$(buildPaginatedList(undefined, [])) } as any,
+      { findTop: () => createSuccessfulRemoteDataObject$(buildPaginatedList(undefined, communities)) } as any,
+      {
+        search: options => createSuccessfulRemoteDataObject$(
+          buildPaginatedList(undefined, new Array(counts[options.scope]).fill({})),
+        ),
+      } as any,
     );
 
-    service.featuredCollections.subscribe(featured => {
-      expect(featured.hasFailed).toBeTrue();
-      service.latestPublications.subscribe(latest => {
-        expect(latest.hasSucceeded).toBeTrue();
-        done();
-      });
+    service.featuredCommunities.subscribe(featured => {
+      expect(featured.hasSucceeded).toBeTrue();
+      expect(featured.payload.page.map(community => community.id)).toEqual(['dg', 'ic', 'iml', 'ii']);
+      done();
+    });
+  });
+
+  it('derives the collections metric from the shared category list', done => {
+    const emptyPage = buildPaginatedList(undefined, []);
+    const service = new PcirnHomeDataService(
+      { findTop: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
+      { search: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
+    );
+
+    service.metrics.subscribe(metrics => {
+      expect(metrics.hasSucceeded).toBeTrue();
+      expect(metrics.payload.collections).toBe(PCIRN_COLLECTION_CATEGORIES.length);
+      done();
     });
   });
 
@@ -69,7 +85,6 @@ describe('PcirnHomeDataService', () => {
     const emptyPage = buildPaginatedList(undefined, []);
     const service = new PcirnHomeDataService(
       { findTop: () => createPendingRemoteDataObject$() } as any,
-      { findAll: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
       { search: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
     );
 
@@ -84,7 +99,6 @@ describe('PcirnHomeDataService', () => {
     const emptyPage = buildPaginatedList(undefined, []);
     const service = new PcirnHomeDataService(
       { findTop: () => createFailedRemoteDataObject$('communities unavailable') } as any,
-      { findAll: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
       { search: () => createSuccessfulRemoteDataObject$(emptyPage) } as any,
     );
 

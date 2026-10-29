@@ -1,8 +1,7 @@
 <div class="pcirn-status-page">
-  <p class="pcirn-status-intro">
-    <i class="fas fa-circle-info" aria-hidden="true"></i>
-    <span>{{ 'item.edit.tabs.status.description' | translate }}</span>
-  </p>
+  <div class="mt-2 pcirn-status-intro">
+    <ds-alert [content]="'item.edit.tabs.status.description'" [type]="AlertType.Info"></ds-alert>
+  </div>
 
   <section class="pcirn-status-details" aria-labelledby="pcirn-status-details-title">
     <h2 id="pcirn-status-details-title">

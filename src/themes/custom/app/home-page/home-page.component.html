@@ -10,12 +10,6 @@
     <div class="pcirn-home-search" role="search" [attr.aria-label]="'pcirn.home.search.heading' | translate">
       <div class="pcirn-home-search-heading"><i class="fas fa-search" aria-hidden="true"></i><strong>{{ 'pcirn.home.search.heading' | translate }}</strong></div>
       <ds-search-form [inPlaceSearch]="false" [searchPlaceholder]="'home.search-form.placeholder' | translate"></ds-search-form>
-      <div class="pcirn-home-search-chips" [attr.aria-label]="'pcirn.home.search.chips.aria' | translate">
-        <a routerLink="/search" [queryParams]="searchConfigurations.regulations"><i class="fas fa-gavel" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.regulations' | translate }}</a>
-        <a routerLink="/search" [queryParams]="searchConfigurations.pops"><i class="fas fa-clipboard-list" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.pops' | translate }}</a>
-        <a routerLink="/search" [queryParams]="searchConfigurations.research"><i class="fas fa-microscope" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.research' | translate }}</a>
-        <a routerLink="/search" [queryParams]="searchConfigurations.reports"><i class="fas fa-chart-bar" aria-hidden="true"></i>{{ 'pcirn.home.search.chip.reports' | translate }}</a>
-      </div>
     </div>
   </section>
 
@@ -41,12 +35,12 @@
       <div class="pcirn-home-section-body">
         <h2 id="pcirn-home-featured-title" class="visually-hidden">{{ 'pcirn.home.featured.title' | translate }}</h2>
         <div class="pcirn-home-featured-row">
-          @if (pcirnHomeData.featuredCollections | async; as featured) {
+          @if (pcirnHomeData.featuredCommunities | async; as featured) {
             @if (featured.hasSucceeded && featured.payload; as payload) {
-              @for (collection of payload.page.slice(0, 3); track collection.id; let index = $index) {
-                <a class="pcirn-home-featured-card" [routerLink]="['/collections', collection.id]">
-                  <i class="pcirn-home-featured-mark fas" [class.fa-dna]="index === 0" [class.fa-fingerprint]="index === 1" [class.fa-flask]="index === 2" aria-hidden="true"></i>
-                  <span><strong>{{ collection.name }}</strong><small>{{ 'pcirn.home.featured.default-desc' | translate }}</small><b>{{ 'pcirn.home.featured.explore' | translate }} <i class="fas fa-arrow-right" aria-hidden="true"></i></b></span>
+              @for (community of payload.page; track community.id) {
+                <a class="pcirn-home-featured-card" [routerLink]="['/communities', community.id]">
+                  <i class="pcirn-home-featured-mark fas fa-building-columns" aria-hidden="true"></i>
+                  <span><strong>{{ community.name }}</strong><small>{{ 'pcirn.home.featured.default-desc' | translate }}</small><b>{{ 'pcirn.home.featured.explore' | translate }} <i class="fas fa-arrow-right" aria-hidden="true"></i></b></span>
                 </a>
               }
             } @else if (featured.hasFailed) {
@@ -58,9 +52,9 @@
           @if (pcirnHomeData.metrics | async; as metrics) {
             @if (metrics.hasSucceeded && metrics.payload; as payload) {
               <div class="pcirn-home-metrics-grid" [attr.aria-label]="'pcirn.home.metrics.aria' | translate">
-                <div><i class="far fa-file-alt" aria-hidden="true"></i><strong>{{ payload.items | number }}</strong><span>{{ 'pcirn.home.metrics.documents' | translate }}</span></div>
-                <div><i class="far fa-folder-open" aria-hidden="true"></i><strong>{{ payload.collections | number }}</strong><span>{{ 'pcirn.home.metrics.collections' | translate }}</span></div>
-                <div><i class="fas fa-users" aria-hidden="true"></i><strong>{{ payload.communities | number }}</strong><span>{{ 'pcirn.home.metrics.communities' | translate }}</span></div>
+                <a routerLink="/search"><i class="far fa-file-alt" aria-hidden="true"></i><strong>{{ payload.items | number }}</strong><span>{{ 'pcirn.home.metrics.documents' | translate }}</span></a>
+                <a routerLink="/collection-list"><i class="far fa-folder-open" aria-hidden="true"></i><strong>{{ payload.collections | number }}</strong><span>{{ 'pcirn.home.metrics.collections' | translate }}</span></a>
+                <a routerLink="/community-list"><i class="fas fa-users" aria-hidden="true"></i><strong>{{ payload.communities | number }}</strong><span>{{ 'pcirn.home.metrics.communities' | translate }}</span></a>
               </div>
             }
           }

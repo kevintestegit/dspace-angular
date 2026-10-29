@@ -1,7 +1,7 @@
 @if (fileData) {
   <div class="pcirn-submission-file">
-    <div class="pcirn-submission-file-primary">
-      <div class="form-check form-switch">
+    <div class="pcirn-submission-file-primary" [title]="isPrimary ? 'Miniatura / Arquivo Principal da publicação' : 'Marcar para usar este arquivo como miniatura / principal'">
+      <div class="form-check form-switch text-center">
         <input
           type="checkbox"
           class="form-check-input"
@@ -9,18 +9,31 @@
           [disabled]="processingSaveStatus$ | async"
           [checked]="isPrimary"
           (change)="togglePrimaryBitstream($event)">
-        <label class="form-check-label" for="primaryBitstream{{fileIndex}}">
-          @if (!isPrimary) {
-            <span class="sr-only">{{'submission.sections.upload.primary.make' | translate:{ fileName: fileName } }}</span>
-          }
+        <label class="form-check-label d-block small mt-1" for="primaryBitstream{{fileIndex}}">
           @if (isPrimary) {
-            <span class="sr-only">{{'submission.sections.upload.primary.remove' | translate:{ fileName: fileName } }}</span>
+            <span class="badge bg-success pcirn-thumbnail-active-badge">
+              <i class="fas fa-check me-1" aria-hidden="true"></i>Miniatura
+            </span>
           }
+          @if (!isPrimary) {
+            <span class="text-muted pcirn-thumbnail-toggle-hint">
+              Miniatura
+            </span>
+          }
+          <span class="sr-only">{{ (isPrimary ? 'submission.sections.upload.primary.remove' : 'submission.sections.upload.primary.make') | translate:{ fileName: fileName } }}</span>
         </label>
       </div>
     </div>
     <div class="pcirn-submission-file-main">
       <div class="pcirn-submission-file-info">
+        @if (isPrimary) {
+          <div class="pcirn-primary-thumbnail-notice mb-1">
+            <span class="badge pcirn-badge-thumbnail-tag me-2">
+              <i class="fas fa-image me-1" aria-hidden="true"></i> Capa / Miniatura da Publicação
+            </span>
+            <small class="text-muted">A 1ª página deste documento será puxada automaticamente como miniatura.</small>
+          </div>
+        }
         <ds-submission-section-upload-file-view [fileData]="fileData"></ds-submission-section-upload-file-view>
       </div>
       <div class="pcirn-submission-file-actions">

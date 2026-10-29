@@ -38,14 +38,9 @@ const customGlobalStyles = await readFile(new URL('../src/themes/custom/styles/_
 test('home follows the institutional PCIRN composition', () => {
   assert.match(template, /'pcirn\.home\.hero\.title\.part1'\s*\|\s*translate/);
   assert.match(template, /'pcirn\.home\.hero\.lead'\s*\|\s*translate/);
-  assert.match(ptBrTranslations, /"pcirn\.home\.hero\.lead":\s*"Consulte normas, portarias, relatórios e publicações oficiais/i);
+  assert.match(ptBrTranslations, /"pcirn\.home\.hero\.lead":\s*"Consulte legislações, portarias, relatórios e publicações oficiais/i);
   assert.match(template, /pcirn-home-hero/);
   assert.match(template, /pcirn-home-search/);
-  assert.match(template, /pcirn-home-search-chips/);
-  assert.match(template, /'pcirn\.home\.search\.chip\.regulations'\s*\|\s*translate/);
-  assert.match(template, /'pcirn\.home\.search\.chip\.pops'\s*\|\s*translate/);
-  assert.match(template, /'pcirn\.home\.search\.chip\.research'\s*\|\s*translate/);
-  assert.match(template, /'pcirn\.home\.search\.chip\.reports'\s*\|\s*translate/);
   assert.match(template, /pcirn-home-featured-row/);
   assert.match(template, /pcirn-home-metrics-grid/);
   assert.match(template, /pcirn-home-latest/);
@@ -66,7 +61,6 @@ test('home search shortcuts filter by the institutional document types', () => {
   assert.match(homeDataService, /'pcirnNormas'/);
   assert.match(homeDataService, /'pcirnProducao'/);
   assert.match(template, /\[queryParams\]="card\.queryParams"/);
-  assert.match(template, /\[queryParams\]="searchConfigurations\.regulations"/);
 });
 
 test('home search configurations are registered in discovery.xml', () => {
@@ -93,7 +87,6 @@ test('hero and search match the compact desktop composition', () => {
   assert.match(heroStyles, /height:\s*350px/);
   assert.match(heroStyles, /1\.5rem 22% \/ 110% auto/);
   assert.match(heroStyles, /\.pcirn-home-search[\s\S]*?max-width:\s*1090px[\s\S]*?width:\s*calc/);
-  assert.match(heroStyles, /\.pcirn-home-search-chips/);
   assert.doesNotMatch(heroStyles, /f023/);
 });
 

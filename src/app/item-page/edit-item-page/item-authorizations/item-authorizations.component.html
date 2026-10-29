@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-5 pb-4">
   <ds-alert [type]="AlertType.Info" [content]="'item.edit.authorizations.heading'"></ds-alert>
   <ds-resource-policies [resourceType]="'item'" [resourceName]="itemName$ | async"
     [resourceUUID]="(item$ | async)?.id">

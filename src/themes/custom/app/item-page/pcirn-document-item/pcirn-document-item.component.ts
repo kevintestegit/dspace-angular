@@ -40,11 +40,13 @@ const PCIRN_METADATA_LABEL_KEYS = new Set([
   'dc.identifier.other',
   'dc.identifier.uri',
   'dc.language',
+  'dc.language.iso',
   'dc.publisher',
   'dc.rights',
   'dc.source',
   'dc.subject',
   'dc.title',
+  'dc.title.alternative',
   'dc.type',
 ]);
 
@@ -127,9 +129,41 @@ export class PcirnDocumentItemComponent extends ItemComponent {
   }
 
   metadataLabelKey(metadataKey: string): string | undefined {
+    if (metadataKey === 'dc.language.iso' || metadataKey === 'dc.language') {
+      return 'pcirn.item.metadata.dc.language.iso';
+    }
+    if (metadataKey === 'dc.title.alternative') {
+      return 'pcirn.item.metadata.dc.title.alternative';
+    }
     return PCIRN_METADATA_LABEL_KEYS.has(metadataKey)
       ? `pcirn.item.metadata.${metadataKey}`
       : undefined;
+  }
+
+  formatMetadataValue(entry: { key?: string; value?: string }): string {
+    if (!entry?.value) {
+      return '';
+    }
+    if (entry.key === 'dc.language.iso' || entry.key === 'dc.language') {
+      const code = entry.value.trim().toLowerCase();
+      const languageMap: Record<string, string> = {
+        pt: 'Português',
+        'pt-br': 'Português (Brasil)',
+        pt_br: 'Português (Brasil)',
+        en: 'Inglês',
+        'en-us': 'Inglês (Estados Unidos)',
+        en_us: 'Inglês (Estados Unidos)',
+        es: 'Espanhol',
+        fr: 'Francês',
+        de: 'Alemão',
+        it: 'Italiano',
+        ja: 'Japonês',
+        zh: 'Chinês',
+        other: 'Outro',
+      };
+      return languageMap[code] || entry.value;
+    }
+    return entry.value;
   }
 
   get itemName(): string {

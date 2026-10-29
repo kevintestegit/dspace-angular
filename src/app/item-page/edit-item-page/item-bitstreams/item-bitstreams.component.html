@@ -63,8 +63,11 @@ class="fas fa-save"></i>
   <ds-loading message="{{'loading.bitstreams' | translate}}"></ds-loading>
 }
 
-<div class="button-row bottom">
-  <div class="mt-4 float-end space-children-mr ms-gap">
+<div class="button-row bottom mb-3">
+  <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
+    <a [routerLink]="itemPageRoute" role="button" class="btn btn-outline-secondary">
+      <i class="fas fa-arrow-left"></i> {{'item.edit.return' | translate}}
+    </a>
     @if (isReinstatable$ | async) {
       <button class="btn btn-warning"
         [attr.aria-label]="'item.edit.bitstreams.reinstate-button' | translate"
@@ -88,7 +91,7 @@ class="fas fa-save"></i>
   <span class="d-none d-sm-inline">&nbsp;{{"item.edit.bitstreams.discard-button" | translate}}</span>
 </button>
 }
-</div>
+  </div>
 </div>
 </div>
 

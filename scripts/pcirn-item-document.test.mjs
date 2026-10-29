@@ -55,11 +55,13 @@ test('full metadata displays translated labels for PCIRN metadata fields', () =>
     'dc.identifier.other',
     'dc.identifier.uri',
     'dc.language',
+    'dc.language.iso',
     'dc.publisher',
     'dc.rights',
     'dc.source',
     'dc.subject',
     'dc.title',
+    'dc.title.alternative',
     'dc.type',
   ];
 

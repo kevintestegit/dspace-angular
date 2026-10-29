@@ -42,3 +42,23 @@ test('EPerson edit exposes a direct administrator control with revoke confirmati
     assert.match(translations, /groupManagement\.administrator\.confirmRemoval/);
   }
 });
+
+test('item publication editor keeps comfortable spacing above the footer for action buttons', async () => {
+  const missingPagesStyles = await readFile(new URL('../src/themes/custom/styles/_pcirn-admin-missing-pages.scss', import.meta.url), 'utf8');
+  const editItemPage = await readFile(new URL('../src/app/item-page/edit-item-page/edit-item-page.component.html', import.meta.url), 'utf8');
+  const itemBitstreams = await readFile(new URL('../src/app/item-page/edit-item-page/item-bitstreams/item-bitstreams.component.html', import.meta.url), 'utf8');
+  const itemCurate = await readFile(new URL('../src/app/item-page/edit-item-page/item-curate/item-curate.component.html', import.meta.url), 'utf8');
+  const itemMove = await readFile(new URL('../src/app/item-page/edit-item-page/item-move/item-move.component.html', import.meta.url), 'utf8');
+  const itemDelete = await readFile(new URL('../src/app/item-page/edit-item-page/item-delete/item-delete.component.html', import.meta.url), 'utf8');
+
+  assert.match(missingPagesStyles, /ds-edit-item-page\s*\{[\s\S]*margin-bottom:[\s\S]*padding-bottom:/);
+  assert.match(missingPagesStyles, /ds-item-move[\s\S]*margin-bottom:[\s\S]*padding-bottom:/);
+  assert.match(editItemPage, /class="container mb-4"/);
+  assert.match(editItemPage, /class="button-row bottom mb-4"/);
+  assert.match(itemBitstreams, /class="button-row bottom mb-3"/);
+  assert.match(itemCurate, /class="container mt-3 mb-5 pb-4"/);
+  assert.match(itemMove, /class="container mb-5 pb-4"/);
+  assert.match(itemMove, /class="button-row bottom mb-4"/);
+  assert.match(itemDelete, /class="container mb-5 pb-4"/);
+  assert.match(itemDelete, /class="space-children-mr mb-4"/);
+});

@@ -20,8 +20,8 @@
     } @else {
       <ds-loading></ds-loading>
     }
-    <div class="button-row bottom">
-      <div class="float-end ms-gap">
+    <div class="button-row bottom mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mt-3">
         <ng-container *ngTemplateOutlet="buttons"></ng-container>
       </div>
     </div>
@@ -35,7 +35,10 @@
 
 
 <ng-template #buttons>
-  <div class="d-flex space-children-mr justify-content-end">
+  <div class="d-flex space-children-mr justify-content-end align-items-center gap-2">
+    <a [routerLink]="itemPageRoute" role="button" class="btn btn-outline-secondary">
+      <i class="fas fa-arrow-left"></i> {{ 'item.edit.return' | translate }}
+    </a>
     @if ((isReinstatable$ | async) !== true) {
       <button class="btn btn-danger"
         [dsBtnDisabled]="(hasChanges$ | async) !== true"
